@@ -223,6 +223,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
               <img 
                 src={project.image} 
                 alt={project.title[lang]} 
+                draggable="false"
                 className="w-full h-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-110" 
               />
               
@@ -276,7 +277,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                       className="hidden lg:block w-full overflow-hidden rounded-sm mb-12"
                       style={{ aspectRatio: '3/2' }}
                     >
-                      <img src={selectedProject.gallery[0] || selectedProject.image} alt="" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+                      <img src={selectedProject.gallery[0] || selectedProject.image} alt="" draggable="false" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
                     </div>
                   </div>
                   
@@ -293,7 +294,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                         className="w-full overflow-hidden rounded-sm"
                         style={{ aspectRatio: '3/2' }}
                       >
-                        <img src={selectedProject.gallery[1]} alt="" className="w-full h-full object-cover" />
+                        <img src={selectedProject.gallery[1]} alt="" draggable="false" className="w-full h-full object-cover" />
                       </div>
                     )}
                   </div>
@@ -345,6 +346,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                         <img 
                           src={img} 
                           alt="" 
+                          draggable="false"
                           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000" 
                         />
                       </div>
