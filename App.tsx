@@ -269,12 +269,12 @@ const App: React.FC = () => {
             <div className="md:w-1/2 space-y-10 md:space-y-12">
               <div>
                 <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block mb-4">{t.contact.emailLabel}</span>
-                <a href="mailto:hello@magicpop.berlin" className="font-archivo text-2xl md:text-5xl uppercase tracking-tighter text-magic-black dark:text-off-white hover:text-magic-pink transition-colors duration-300 underline underline-offset-8 decoration-transparent hover:decoration-magic-pink break-words">hello@magicpop.berlin</a>
+                <a href="mailto:hello@magicpop.berlin" className="font-archivo text-2xl md:text-5xl uppercase tracking-tighter text-magic-black dark:text-off-white hover:text-magic-orange transition-colors duration-300 underline underline-offset-8 decoration-transparent hover:decoration-magic-orange break-words">hello@magicpop.berlin</a>
               </div>
               <div>
                 <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block mb-4">{t.contact.followLabel}</span>
                 <div className="flex gap-6 md:gap-8 font-archivo uppercase text-xs md:text-sm tracking-widest text-magic-black dark:text-off-white">
-                  <a href="https://www.instagram.com/magicpop.berlin" target="_blank" rel="noopener noreferrer" className="hover:text-magic-pink transition-colors">Instagram</a>
+                  <a href="https://www.instagram.com/magicpop.berlin" target="_blank" rel="noopener noreferrer" className="hover:text-magic-orange transition-colors">Instagram</a>
                 </div>
               </div>
             </div>
