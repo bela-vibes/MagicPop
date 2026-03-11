@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useMemo } from 'react';
 import { PROJECTS, TRANSLATIONS } from '../constants';
 import { Project, Language } from '../types';
@@ -38,7 +37,6 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
     return () => window.removeEventListener('keydown', handleEsc);
   }, [selectedProject]);
 
-  // Handle URL Hash for Deep Linking and Back Button
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '');
@@ -53,9 +51,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
       }
     };
 
-    // Initial check on mount
     handleHashChange();
-
     window.addEventListener('hashchange', handleHashChange);
     window.addEventListener('popstate', handleHashChange);
     return () => {
@@ -69,13 +65,8 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
   };
 
   const handleCloseProject = () => {
-    // 1. Force close the UI state immediately for instant feedback
     setSelectedProject(null);
-    
-    // 2. Clean up the URL hash reliably
     if (window.location.hash) {
-      // pushState is more reliable than history.back() because it doesn't 
-      // depend on the history stack (e.g. after a page refresh)
       window.history.pushState(null, '', window.location.pathname + window.location.search);
     }
   };
@@ -99,13 +90,11 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
       id="projects" 
       className="py-24 md:py-32 bg-transparent relative overflow-hidden transition-colors duration-500"
     >
-      {/* Header Info */}
       <div className="px-6 md:px-12 mb-16 flex flex-col md:flex-row justify-between items-end gap-12 relative z-10">
         <div className="max-w-2xl">
           <h2 className="font-archivo text-6xl md:text-8xl uppercase tracking-tighter mb-6 text-magic-black dark:text-off-white">{t.title}</h2>
           <p className="font-medium text-magic-black/60 dark:text-off-white/60 text-lg leading-relaxed mb-10">{t.description}</p>
           
-          {/* Filter Bar */}
           <div className="flex flex-wrap gap-x-8 gap-y-4">
             <button 
               onClick={() => setActiveFilter(null)}
@@ -127,7 +116,6 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
           </div>
         </div>
         
-        {/* Navigation Buttons */}
         <div className="hidden md:flex gap-4 mb-2">
           <button 
             onClick={() => scroll('left')}
@@ -150,7 +138,6 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
         </div>
       </div>
 
-      {/* Horizontal Slider */}
       <div 
         ref={scrollRef}
         className="flex overflow-x-auto gap-8 px-6 md:px-12 scroll-px-6 md:scroll-px-12 no-scrollbar scroll-smooth snap-x snap-mandatory pb-12 min-h-[400px] relative z-10"
@@ -199,14 +186,10 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
         ))}
       </div>
 
-      {/* Project Detail Modal */}
       {selectedProject && (
         <div className="fixed inset-0 z-[200] bg-off-white dark:bg-magic-dark overflow-hidden">
-          
-          {/* SCROLLABLE CONTENT - Animated separately */}
           <div className="absolute inset-0 overflow-y-auto overscroll-contain z-[210] animate-in duration-500">
             <div className="max-w-7xl mx-auto px-6 md:px-12 py-32 md:py-48">
-              {/* Editorial Header Section */}
               <div className="mb-32"> 
                 <h1 className="font-archivo text-5xl md:text-[11vw] leading-[0.75] uppercase tracking-tighter mb-16 text-magic-black dark:text-off-white pr-4 md:pr-12 break-normal hyphens-auto">
                   {selectedProject.title[lang]}
@@ -239,10 +222,8 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                 </div>
               </div>
               
-              {/* Interwoven Gallery Grid */}
               <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-start">
                 {selectedProject.gallery.slice(2).map((img, i) => {
-                  // Create an editorial rhythm that adapts to content
                   const spans = [
                     "md:col-span-12", 
                     "md:col-span-7", 
@@ -254,28 +235,16 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                   ];
                   const span = spans[i % spans.length];
                   
-                  // Determine aspect ratio class based on index for HANA (ID 2)
-                  // 4 landscape, 1 portrait, 2 square
-                  // Gallery starts at slice(2), so:
-                  // i=0: Gallery[2] (Landscape)
-                  // i=1: Gallery[3] (Landscape)
-                  // i=2: Gallery[4] (Portrait)
-                  // i=3: Gallery[5] (Square)
-                  // i=4: Gallery[6] (Square)
                   let aspectClass = "aspect-video";
                   if (selectedProject.id === 2) {
                     if (i === 2) aspectClass = "aspect-[3/4]";
                     if (i === 3 || i === 4) aspectClass = "aspect-square";
                   } else if (selectedProject.id === 3) {
-                    // 6 landscape total, 1 square
-                    // Gallery[0,1,2,3,4,6] are landscape, Gallery[5] is square
-                    // In slice(2): i=0(G2), i=1(G3), i=2(G4), i=3(G5), i=4(G6)
                     if (i === 3) aspectClass = "aspect-square";
                   }
 
                   return (
                     <React.Fragment key={i}>
-                      {/* Inject the 3rd paragraph after the 3rd image in the gallery (index 2 of slice(2)) */}
                       {i === 2 && selectedProject.description[lang].split('\n\n')[2] && (
                         <div className="md:col-span-12 py-24 flex justify-center">
                           <p className="font-editorial text-2xl md:text-3xl lg:text-4xl leading-tight text-magic-black/60 dark:text-off-white/60 italic max-w-3xl text-center">
@@ -295,7 +264,6 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                 })}
               </div>
 
-              {/* Remaining Description Paragraphs (e.g. Director Credits) */}
               {selectedProject.description[lang].split('\n\n').slice(3).length > 0 && (
                 <div className="mt-24 flex flex-col items-center text-center">
                   {selectedProject.description[lang].split('\n\n').slice(3).map((para, idx) => (
