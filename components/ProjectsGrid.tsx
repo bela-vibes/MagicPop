@@ -11,7 +11,10 @@ interface ProjectsGridProps {
 
 const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setSelectedProject }) => {
   const [activeFilter, setActiveFilter] = React.useState<string | null>(null);
+  const [isEdgeScrolling, setIsEdgeScrolling] = React.useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollSpeedRef = useRef<number>(0);
+  const animationFrameRef = useRef<number | null>(null);
   const t = TRANSLATIONS[lang].projects;
 
   const categories = useMemo(() => {
@@ -23,6 +26,53 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
     if (!activeFilter) return PROJECTS;
     return PROJECTS.filter(p => p.category[lang] === activeFilter);
   }, [activeFilter, lang]);
+
+  // Edge Scrolling Logic
+  useEffect(() => {
+    const startScrolling = () => {
+      if (scrollRef.current && scrollSpeedRef.current !== 0) {
+        scrollRef.current.scrollLeft += scrollSpeedRef.current;
+      }
+      animationFrameRef.current = requestAnimationFrame(startScrolling);
+    };
+
+    animationFrameRef.current = requestAnimationFrame(startScrolling);
+
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, []);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!scrollRef.current) return;
+
+    const rect = scrollRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const width = rect.width;
+    const edgeSize = width * 0.15; // 15% of the width is the hot zone
+
+    if (x < edgeSize) {
+      // Left edge
+      const intensity = (edgeSize - x) / edgeSize;
+      scrollSpeedRef.current = -intensity * 15; // Max speed 15px per frame
+      if (!isEdgeScrolling) setIsEdgeScrolling(true);
+    } else if (x > width - edgeSize) {
+      // Right edge
+      const intensity = (x - (width - edgeSize)) / edgeSize;
+      scrollSpeedRef.current = intensity * 15;
+      if (!isEdgeScrolling) setIsEdgeScrolling(true);
+    } else {
+      scrollSpeedRef.current = 0;
+      if (isEdgeScrolling) setIsEdgeScrolling(false);
+    }
+  };
+
+  const handleMouseLeave = () => {
+    scrollSpeedRef.current = 0;
+    setIsEdgeScrolling(false);
+  };
 
   useEffect(() => {
     const handleEsc = (e: KeyboardEvent) => {
@@ -153,7 +203,9 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
       {/* Horizontal Slider */}
       <div 
         ref={scrollRef}
-        className="flex overflow-x-auto gap-8 px-6 md:px-12 scroll-px-6 md:scroll-px-12 no-scrollbar scroll-smooth snap-x snap-mandatory pb-12 min-h-[400px] relative z-10"
+        onMouseMove={handleMouseMove}
+        onMouseLeave={handleMouseLeave}
+        className={`flex overflow-x-auto gap-8 px-6 md:px-12 scroll-px-6 md:scroll-px-12 no-scrollbar pb-12 min-h-[400px] relative z-10 ${!isEdgeScrolling ? 'snap-x snap-mandatory' : ''}`}
       >
         {filteredProjects.map((project, index) => (
           <div 
