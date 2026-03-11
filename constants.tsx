@@ -117,7 +117,7 @@ export const PROJECTS: Project[] = [
       en: "A room tells its stories. Introducing “Nachtzimmer,” a photo series created as an independent project.\n\nThese images transport you to a cinematic world inspired by Americana aesthetics, capturing individual moments in a hotel room that leave you wondering about the story before and after. Each photograph creates a unique scene, inspired by the timeless allure of old Hollywood glamour, surreal lighting, and fantastic characters. 25 unique motifs were created, each telling a complex story with visual craftsmanship and professional execution.\n\nFor every story, we crafted vibrant color schemes, detailed costumes, and characteristic hair and makeup. For each shot, we built real settings, employed atmospheric lighting, and created custom props, including lifelike animal replicas. The postproduction work added the final touches, maintaining visual coherence and narrative impact."
     },
     year: "2017",
-    image: "https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?auto=format&fit=crop&q=80&w=1200",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773222132/Nachtzimmer1_MagicPop2024.jpg_rluwrt.webp",
     gallery: [
       "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=1200",
       "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&q=80&w=1200",
