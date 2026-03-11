@@ -247,7 +247,7 @@ const App: React.FC = () => {
           <div className="relative z-10 flex flex-col lg:flex-row gap-8 md:gap-16 items-center">
             <div className="w-full lg:w-1/2">
               <div className="relative group overflow-hidden rounded-sm">
-                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200" alt="Studio" className="w-full grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100 aspect-video md:aspect-auto object-cover" />
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200" alt="Studio" draggable="false" className="w-full grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100 aspect-video md:aspect-auto object-cover" />
                 <div className="absolute inset-0 bg-magic-blue/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               </div>
             </div>
