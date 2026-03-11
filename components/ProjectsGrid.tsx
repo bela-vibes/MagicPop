@@ -162,7 +162,10 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
             className="min-w-[80vw] md:min-w-[45vw] snap-start group cursor-pointer animate-in"
             style={{ animationDelay: `${index * 50}ms` }}
           >
-            <div className="relative aspect-[3/2] overflow-hidden bg-magic-black/5 dark:bg-off-white/5 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.02] group-hover:shadow-[0_40px_80px_-20px_rgba(28,25,23,0.3)] dark:group-hover:shadow-[0_40px_80px_-20px_rgba(255,77,0,0.3)] rounded-sm">
+            <div 
+              className="relative overflow-hidden bg-magic-black/5 dark:bg-off-white/5 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.02] group-hover:shadow-[0_40px_80px_-20px_rgba(28,25,23,0.3)] dark:group-hover:shadow-[0_40px_80px_-20px_rgba(255,77,0,0.3)] rounded-sm"
+              style={{ aspectRatio: '3/2' }}
+            >
               <div className={`absolute inset-0 z-10 transition-transform duration-700 ease-[cubic-bezier(0.83,0,0.17,1)] translate-y-full group-hover:translate-y-0 ${project.color} opacity-90`}></div>
               
               <img 
@@ -217,7 +220,10 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                     <p className="font-editorial text-2xl md:text-4xl lg:text-5xl leading-[1.1] text-magic-black dark:text-off-white italic whitespace-pre-line mb-12">
                       {selectedProject.description[lang].split('\n\n')[0]}
                     </p>
-                    <div className="hidden lg:block w-full aspect-video overflow-hidden rounded-sm mb-12">
+                    <div 
+                      className="hidden lg:block w-full overflow-hidden rounded-sm mb-12"
+                      style={{ aspectRatio: '3/2' }}
+                    >
                       <img src={selectedProject.gallery[0] || selectedProject.image} alt="" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
                     </div>
                   </div>
@@ -231,7 +237,10 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                       {selectedProject.description[lang].split('\n\n')[1]}
                     </p>
                     {selectedProject.gallery[1] && (
-                      <div className="w-full aspect-video overflow-hidden rounded-sm">
+                      <div 
+                        className="w-full overflow-hidden rounded-sm"
+                        style={{ aspectRatio: '3/2' }}
+                      >
                         <img src={selectedProject.gallery[1]} alt="" className="w-full h-full object-cover" />
                       </div>
                     )}
@@ -262,15 +271,12 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                   // i=2: Gallery[4] (Portrait)
                   // i=3: Gallery[5] (Square)
                   // i=4: Gallery[6] (Square)
-                  let aspectClass = "aspect-video";
+                  let currentAspect = "3/2";
                   if (selectedProject.id === 2) {
-                    if (i === 2) aspectClass = "aspect-[3/4]";
-                    if (i === 3 || i === 4) aspectClass = "aspect-square";
+                    if (i === 2) currentAspect = "3/4";
+                    if (i === 3 || i === 4) currentAspect = "1/1";
                   } else if (selectedProject.id === 3) {
-                    // 6 landscape total, 1 square
-                    // Gallery[0,1,2,3,4,6] are landscape, Gallery[5] is square
-                    // In slice(2): i=0(G2), i=1(G3), i=2(G4), i=3(G5), i=4(G6)
-                    if (i === 3) aspectClass = "aspect-square";
+                    if (i === 3) currentAspect = "1/1";
                   }
 
                   return (
@@ -283,11 +289,11 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                           </p>
                         </div>
                       )}
-                      <div className={`${span} overflow-hidden rounded-sm group`}>
+                      <div className={`${span} overflow-hidden rounded-sm group`} style={{ aspectRatio: currentAspect }}>
                         <img 
                           src={img} 
                           alt="" 
-                          className={`w-full ${aspectClass} object-cover transform group-hover:scale-105 transition-transform duration-1000`} 
+                          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000" 
                         />
                       </div>
                     </React.Fragment>
