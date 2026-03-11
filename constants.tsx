@@ -119,16 +119,17 @@ export const PROJECTS: Project[] = [
     year: "2017",
     image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773222132/Nachtzimmer1_MagicPop2024.jpg_rluwrt.webp",
     gallery: [
-      "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1551882547-ff43c63e1c04?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1560185007-cde436f6a4d0?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1591088398332-8a77d399e875?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&q=80&w=1200"
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773222132/Nachtzimmer0_MagicPop2024.jpg_smb0xk.webp",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773222132/Nachtzimmer1_MagicPop2024.jpg_rluwrt.webp",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773222133/Nachtzimmer3_MagicPop2024.jpg_rhocgm.webp",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773222132/Nachtzimmer2_MagicPop2024.jpg_hurxul.webp",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773222133/Nachtzimmer4_MagicPop2024.jpg_m4krth.webp",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773222133/Nachtzimmer5_MagicPop2024.jpg_ervhsl.webp",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773222132/Nachtzimmer6_MagicPop2024.jpg_fl20cq.webp",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773222132/Nachtzimmer7_MagicPop2024.jpg_ampsx6.webp",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773222131/Nachtzimmer8_MagicPop2024.jpg_a458ir.webp",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773222133/Nachtzimmer9_MagicPop2024.jpg_psmywb.webp",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773222133/Nachtzimmer10_MagicPop2024.jpg_qjdmqk.webp"
     ],
     color: "bg-orange-500"
   },
