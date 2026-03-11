@@ -108,20 +108,23 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
       <div ref={scrollRef} className="flex overflow-x-auto gap-8 px-6 md:px-12 no-scrollbar scroll-smooth snap-x snap-mandatory pb-12 relative z-10">
         {filteredProjects.map((project, index) => (
           <div key={project.id} onClick={() => handleOpenProject(project)} className="min-w-[80vw] md:min-w-[45vw] snap-start group cursor-pointer">
-            {/* DER FIX: Absolute Positionierung & Object-Fit als Inline Style */}
-            <div className="relative w-full rounded-sm overflow-hidden bg-magic-black/5" style={{ aspectRatio: '16/10' }}>
+            <div className="relative w-full rounded-sm overflow-hidden bg-magic-black/5">
               <div className={`absolute inset-0 z-10 transition-transform duration-700 translate-y-full group-hover:translate-y-0 ${project.color} opacity-90`}></div>
+              
+              {/* IMAGE-LOGIK OPTIMIERT */}
               <img 
                 src={project.image} 
                 alt={project.title[lang]} 
                 style={{ 
-                  position: 'absolute', 
-                  top: 0, left: 0, width: '100%', height: '100%', 
-                  objectFit: 'cover', // Dies verhindert das Stauchen!
-                  objectPosition: 'center' 
+                  width: '100%', 
+                  height: 'auto', 
+                  aspectRatio: '16 / 10', 
+                  objectFit: 'cover', 
+                  display: 'block' 
                 }}
                 className="transition-transform duration-[1.2s] group-hover:scale-110" 
               />
+              
               <div className="absolute inset-0 z-20 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity p-8 text-white text-center">
                  <span className="font-archivo text-xs uppercase tracking-[0.3em] mb-4">{project.category[lang]}</span>
                  <h3 className="font-archivo text-3xl md:text-5xl uppercase tracking-tighter">{project.title[lang]}</h3>
@@ -150,11 +153,11 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
                   <div className="lg:col-span-7">
                     <p className="font-editorial text-2xl md:text-4xl lg:text-5xl leading-[1.1] text-magic-black dark:text-off-white italic mb-12">{selectedProject.description[lang].split('\n\n')[0]}</p>
-                    <div className="w-full overflow-hidden rounded-sm mb-12 relative" style={{ aspectRatio: '16/9' }}>
+                    <div className="w-full overflow-hidden rounded-sm mb-12">
                       <img 
                         src={selectedProject.gallery[0] || selectedProject.image} 
                         alt="" 
-                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }}
+                        style={{ width: '100%', height: 'auto', aspectRatio: '16 / 9', objectFit: 'cover' }}
                         className="grayscale hover:grayscale-0 transition-all duration-700" 
                       />
                     </div>
@@ -166,8 +169,8 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                     </div>
                     <p className="font-archivo text-sm md:text-base leading-relaxed text-magic-black/70 dark:text-off-white/70 mb-12">{selectedProject.description[lang].split('\n\n')[1]}</p>
                     {selectedProject.gallery[1] && (
-                      <div className="w-full overflow-hidden rounded-sm relative" style={{ aspectRatio: '16/9' }}>
-                        <img src={selectedProject.gallery[1]} alt="" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }} />
+                      <div className="w-full overflow-hidden rounded-sm">
+                        <img src={selectedProject.gallery[1]} alt="" style={{ width: '100%', height: 'auto', aspectRatio: '16 / 9', objectFit: 'cover' }} />
                       </div>
                     )}
                   </div>
@@ -178,8 +181,8 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                   const spans = ["md:col-span-12", "md:col-span-7", "md:col-span-5", "md:col-span-6", "md:col-span-6", "md:col-span-8 md:col-start-2", "md:col-span-12"];
                   const span = spans[i % spans.length];
                   return (
-                    <div key={i} className={`${span} overflow-hidden rounded-sm group relative`} style={{ aspectRatio: '16/9' }}>
-                      <img src={img} alt="" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover' }} className="transform group-hover:scale-105 transition-transform duration-1000" />
+                    <div key={i} className={`${span} overflow-hidden rounded-sm group`}>
+                      <img src={img} alt="" style={{ width: '100%', height: 'auto', aspectRatio: '16 / 9', objectFit: 'cover' }} className="transform group-hover:scale-105 transition-transform duration-1000" />
                     </div>
                   );
                 })}
