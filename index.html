@@ -136,10 +136,30 @@
         -ms-hyphens: auto;
         hyphens: auto;
       }
+
+      /* Image Protection */
+      img {
+        -webkit-user-drag: none;
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+        user-drag: none;
+        user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+      }
     </style>
 </head>
   <body class="bg-off-white text-magic-black dark:bg-magic-dark dark:text-off-white">
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
+    <script>
+      // Image protection: Disable right-click on images
+      document.addEventListener('contextmenu', function(e) {
+        if (e.target.tagName === 'IMG') {
+          e.preventDefault();
+        }
+      }, false);
+    </script>
   </body>
 </html>
