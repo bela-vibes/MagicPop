@@ -120,8 +120,8 @@ export const PROJECTS: Project[] = [
     image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773222132/Nachtzimmer1_MagicPop2024.jpg_rluwrt.webp",
     gallery: [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773222132/Nachtzimmer0_MagicPop2024.jpg_smb0xk.webp",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773222132/Nachtzimmer1_MagicPop2024.jpg_rluwrt.webp",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773222133/Nachtzimmer3_MagicPop2024.jpg_rhocgm.webp",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600,h_1000,c_fill,g_auto/v1773247550/02_-_Fisch_q9rvsk.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600,h_1000,c_fill,g_auto/v1773261659/08---Mermaid_bk4obw.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773222132/Nachtzimmer2_MagicPop2024.jpg_hurxul.webp",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773222133/Nachtzimmer4_MagicPop2024.jpg_m4krth.webp",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773222133/Nachtzimmer5_MagicPop2024.jpg_ervhsl.webp",
