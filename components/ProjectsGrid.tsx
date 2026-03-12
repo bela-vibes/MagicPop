@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useMemo } from 'react';
 import { motion } from 'motion/react';
 import { PROJECTS, TRANSLATIONS } from '../constants';
@@ -52,15 +51,13 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
     const rect = scrollRef.current.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const width = rect.width;
-    const edgeSize = width * 0.15; // 15% of the width is the hot zone
+    const edgeSize = width * 0.15;
 
     if (x < edgeSize) {
-      // Left edge
       const intensity = (edgeSize - x) / edgeSize;
-      scrollSpeedRef.current = -intensity * 15; // Max speed 15px per frame
+      scrollSpeedRef.current = -intensity * 15;
       if (!isEdgeScrolling) setIsEdgeScrolling(true);
     } else if (x > width - edgeSize) {
-      // Right edge
       const intensity = (x - (width - edgeSize)) / edgeSize;
       scrollSpeedRef.current = intensity * 15;
       if (!isEdgeScrolling) setIsEdgeScrolling(true);
@@ -89,7 +86,6 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
     return () => window.removeEventListener('keydown', handleEsc);
   }, [selectedProject]);
 
-  // Handle URL Hash for Deep Linking and Back Button
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '');
@@ -104,9 +100,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
       }
     };
 
-    // Initial check on mount
     handleHashChange();
-
     window.addEventListener('hashchange', handleHashChange);
     window.addEventListener('popstate', handleHashChange);
     return () => {
@@ -120,13 +114,8 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
   };
 
   const handleCloseProject = () => {
-    // 1. Force close the UI state immediately for instant feedback
     setSelectedProject(null);
-    
-    // 2. Clean up the URL hash reliably
     if (window.location.hash) {
-      // pushState is more reliable than history.back() because it doesn't 
-      // depend on the history stack (e.g. after a page refresh)
       window.history.pushState(null, '', window.location.pathname + window.location.search);
     }
   };
@@ -150,7 +139,6 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
       id="projects" 
       className="py-24 md:py-32 bg-transparent relative overflow-hidden transition-colors duration-500"
     >
-      {/* Header Info */}
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -159,34 +147,47 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
         className="px-6 md:px-12 mb-16 flex flex-col md:flex-row justify-between items-end gap-12 relative z-10"
       >
         <div className="max-w-2xl">
-          <h2 className="font-archivo text-6xl md:text-8xl uppercase tracking-tighter mb-6 text-magic-black dark:text-off-white">{t.title}</h2>
-          <p className="font-medium text-magic-black/60 dark:text-off-white/60 text-lg leading-relaxed mb-10">{t.description}</p>
+          <h2 className="font-archivo text-6xl md:text-8xl uppercase tracking-tighter mb-6 text-magic-black dark:text-off-white">
+            {t.title}
+          </h2>
+          <p className="font-medium text-magic-black/60 dark:text-off-white/60 text-lg leading-relaxed mb-10">
+            {t.description}
+          </p>
           
           {/* Filter Bar */}
-<div className="flex flex-wrap gap-x-8 gap-y-4">
-  {[null, ...categories].map((cat) => {
-    const isActive = activeFilter === cat;
-    return (
-      <button
-        key={cat || 'all'}
-        onClick={() => setActiveFilter(cat)}
-        className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 
-          ${isActive 
-            ? 'text-magic-black dark:text-off-white' 
-            : 'text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white'
-          }`}
-      >
-        {cat === null ? (t.featured || (lang === 'de' ? 'Alle' : 'All')) : cat}
-        
-        {/* Animated Underline */}
-        {isActive && (
-          <span className="absolute bottom-0 left-0 w-full h-[3px] bg-magic-blue"></span>
-        )}
-      </button>
-    );
-  })}
-</div>
+          <div className="flex flex-wrap gap-x-8 gap-y-4">
+            <button
+              onClick={() => setActiveFilter(null)}
+              className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 ${
+                activeFilter === null
+                  ? "text-magic-black dark:text-off-white"
+                  : "text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white"
+              }`}
+            >
+              {t.featured || (lang === "de" ? "Alle" : "All")}
+              {activeFilter === null && (
+                <span className="absolute bottom-0 left-0 w-full h-[3px] bg-magic-blue"></span>
+              )}
+            </button>
 
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveFilter(cat)}
+                className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 ${
+                  activeFilter === cat
+                    ? "text-magic-black dark:text-off-white"
+                    : "text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white"
+                }`}
+              >
+                {cat}
+                {activeFilter === cat && (
+                  <span className="absolute bottom-0 left-0 w-full h-[3px] bg-magic-blue"></span>
+                )}
+              </button>
+            ))}
+          </div>
+        </div>
         
         {/* Navigation Buttons */}
         <div className="hidden md:flex gap-4 mb-2">
@@ -237,14 +238,12 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
               style={{ aspectRatio: '3/2' }}
             >
               <div className={`absolute inset-0 z-10 transition-transform duration-700 ease-[cubic-bezier(0.83,0,0.17,1)] translate-y-full group-hover:translate-y-0 ${project.color} opacity-90`}></div>
-              
               <img 
                 src={project.image} 
                 alt={project.title[lang]} 
                 draggable="false"
                 className="w-full h-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-110" 
               />
-              
               <div className="absolute inset-0 z-20 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-8 text-white text-center">
                  <span className="font-archivo text-xs uppercase tracking-[0.3em] mb-4 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] translate-y-8 group-hover:translate-y-0 group-hover:scale-125">
                   {project.category[lang]}
@@ -276,8 +275,6 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
       {/* Project Detail Modal */}
       {selectedProject && (
         <div className="fixed inset-0 z-[200] bg-off-white dark:bg-magic-dark overflow-hidden">
-          
-          {/* SCROLLABLE CONTENT - Animated separately */}
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -285,7 +282,6 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
             className="absolute inset-0 overflow-y-auto overscroll-contain z-[210]"
           >
             <div className="max-w-7xl mx-auto px-6 md:px-12 py-32 md:py-48">
-              {/* Editorial Header Section */}
               <div className="mb-32"> 
                 <motion.h1 
                   initial={{ opacity: 0, y: 100 }}
@@ -306,9 +302,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                     <p className="font-editorial text-2xl md:text-4xl lg:text-5xl leading-[1.1] text-magic-black dark:text-off-white italic whitespace-pre-line mb-12">
                       {selectedProject.description[lang].split('\n\n')[0]}
                     </p>
-                    <div 
-                      className="w-full overflow-hidden rounded-sm mb-12"
-                    >
+                    <div className="w-full overflow-hidden rounded-sm mb-12">
                       <img src={selectedProject.gallery[0] || selectedProject.image} alt="" draggable="false" className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700" />
                     </div>
                   </motion.div>
@@ -327,9 +321,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                       {selectedProject.description[lang].split('\n\n')[1]}
                     </p>
                     {selectedProject.gallery[1] && (
-                      <div 
-                        className="w-full overflow-hidden rounded-sm"
-                      >
+                      <div className="w-full overflow-hidden rounded-sm">
                         <img src={selectedProject.gallery[1]} alt="" draggable="false" className="w-full h-auto" />
                       </div>
                     )}
@@ -340,37 +332,11 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
               {/* Interwoven Gallery Grid */}
               <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-start">
                 {selectedProject.gallery.slice(2).map((img, i) => {
-                  // Create an editorial rhythm that adapts to content
-                  const spans = [
-                    "md:col-span-12", 
-                    "md:col-span-7", 
-                    "md:col-span-5", 
-                    "md:col-span-6", 
-                    "md:col-span-6",
-                    "md:col-span-8 md:col-start-2",
-                    "md:col-span-12"
-                  ];
+                  const spans = ["md:col-span-12", "md:col-span-7", "md:col-span-5", "md:col-span-6", "md:col-span-6", "md:col-span-8 md:col-start-2", "md:col-span-12"];
                   const span = spans[i % spans.length];
                   
-                  // Determine aspect ratio class based on index for HANA (ID 2)
-                  // 4 landscape, 1 portrait, 2 square
-                  // Gallery starts at slice(2), so:
-                  // i=0: Gallery[2] (Landscape)
-                  // i=1: Gallery[3] (Landscape)
-                  // i=2: Gallery[4] (Portrait)
-                  // i=3: Gallery[5] (Square)
-                  // i=4: Gallery[6] (Square)
-                  let currentAspect = "3/2";
-                  if (selectedProject.id === 2) {
-                    if (i === 2) currentAspect = "3/4";
-                    if (i === 3 || i === 4) currentAspect = "1/1";
-                  } else if (selectedProject.id === 3) {
-                    if (i === 3) currentAspect = "1/1";
-                  }
-
                   return (
                     <React.Fragment key={i}>
-                      {/* Inject the 3rd paragraph after the 3rd image in the gallery (index 2 of slice(2)) */}
                       {i === 2 && selectedProject.description[lang].split('\n\n')[2] && (
                         <motion.div 
                           initial={{ opacity: 0, y: 50 }}
@@ -403,7 +369,6 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                 })}
               </div>
 
-              {/* Remaining Description Paragraphs (e.g. Director Credits) */}
               {selectedProject.description[lang].split('\n\n').slice(3).length > 0 && (
                 <div className="mt-24 flex flex-col items-center text-center">
                   {selectedProject.description[lang].split('\n\n').slice(3).map((para, idx) => (
