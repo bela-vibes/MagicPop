@@ -119,7 +119,7 @@ export const PROJECTS: Project[] = [
     year: "2017",
     image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773222132/Nachtzimmer1_MagicPop2024.jpg_rluwrt.webp",
     gallery: [
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773222132/Nachtzimmer0_MagicPop2024.jpg_smb0xk.webp",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773294351/Nachtzimmer0_MagicPop2024.jpg_ylyg9j.webp",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600,h_1000,c_fill,g_auto/v1773261659/08---Mermaid_bk4obw.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600,h_1000,c_fill,g_auto/v1773247550/02_-_Fisch_q9rvsk.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600,h_1000,c_fill,g_auto/v1773247550/11_-_Kedi_sienok.jpg",
