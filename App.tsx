@@ -141,9 +141,16 @@ const App: React.FC = () => {
       }
     };
 
-    handleScroll(); // Fix: sofort beim Mount aufrufen, kein Flackern mehr
+    // Sofort aufrufen für Desktop, nach kurzem Delay für Mobile —
+    // damit das DOM vollständig gerendert ist und offsetTop korrekt gemessen wird
+    handleScroll();
+    const timer = setTimeout(handleScroll, 100);
+
     window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   useEffect(() => {
