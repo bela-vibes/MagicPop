@@ -131,7 +131,7 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
       </header>
 
       <div 
-        className={`fixed inset-0 z-[600] bg-magic-black transition-transform duration-700 ease-[cubic-bezier(0.83,0,0.17,1)] flex flex-col justify-center px-6 ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}
+        className={`fixed inset-0 z-[600] bg-magic-black transition-transform duration-700 ease-[cubic-bezier(0.83,0,0.17,1)] flex flex-col justify-center px-6 ${isMenuOpen ? 'translate-y-0' : '-translate-y-[100dvh]'}`}
       >
         <nav className="flex flex-col gap-6">
           {navItems.map((item, i) => (
