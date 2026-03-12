@@ -116,15 +116,15 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
   };
 
   return (
-    // HIER WIEDER PX-6 MD:PX-12 HINZUGEFÜGT FÜR DIE MAIN PAGE
-    <section id="projects" className="py-24 md:py-32 bg-transparent relative overflow-hidden px-6 md:px-12 transition-colors duration-500">
+    // Die section steuert den Rand für die gesamte Main-Page (Desktop & Mobile)
+    <section id="projects" className="py-24 md:py-32 bg-transparent relative overflow-hidden transition-colors duration-500">
       
-      {/* Filter Header */}
+      {/* Header Info - Hier nutzen wir px-6 für Mobile, md:px-12 für Desktop */}
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mb-16 flex flex-col md:flex-row justify-between items-end gap-12 relative z-10"
+        className="px-6 md:px-12 mb-16 flex flex-col md:flex-row justify-between items-end gap-12 relative z-10"
       >
         <div className="max-w-2xl">
           <h2 className="font-archivo text-6xl md:text-8xl uppercase tracking-tighter mb-6 text-magic-black dark:text-off-white">{t.title}</h2>
@@ -151,8 +151,13 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
         </div>
       </motion.div>
 
-      {/* Slider Grid - Das Padding ist jetzt im <section> Container */}
-      <div ref={scrollRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className={`flex overflow-x-auto gap-8 no-scrollbar pb-12 ${!isEdgeScrolling ? 'snap-x snap-mandatory' : ''}`}>
+      {/* Slider Grid - Das Padding hier sorgt dafür, dass das erste Bild nicht am Rand klebt */}
+      <div 
+        ref={scrollRef} 
+        onMouseMove={handleMouseMove} 
+        onMouseLeave={handleMouseLeave} 
+        className={`flex overflow-x-auto gap-8 px-6 md:px-12 no-scrollbar pb-12 ${!isEdgeScrolling ? 'snap-x snap-mandatory' : ''}`}
+      >
         {filteredProjects.map((project) => (
           <div key={project.id} onClick={() => handleOpenProject(project)} className="min-w-[80vw] md:min-w-[45vw] snap-start group cursor-pointer">
             <div className="relative overflow-hidden aspect-[3/2] rounded-sm bg-magic-black/5 dark:bg-off-white/5">
@@ -166,18 +171,20 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
         ))}
       </div>
 
-      {/* DAS MODAL - Bleibt Full-Screen */}
+      {/* MODAL (MOBILE & DESKTOP) */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div 
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            exit={{ opacity: 0 }}
             className="fixed inset-0 z-[2000] bg-off-white dark:bg-magic-dark overflow-hidden flex flex-col"
           >
-            {/* DAS ORANGE BANNER (HEADER IM MODAL) */}
-            <div className="w-full h-20 bg-[#ff4d00] flex items-center justify-between px-6 md:px-12 z-[2010] shrink-0">
+            {/* DAS BANNER - Mobil h-20, Desktop h-24 für mehr Luft */}
+            <div className="w-full h-20 md:h-24 bg-[#ff4d00] flex items-center justify-between px-6 md:px-12 z-[2010] shrink-0">
               <div className="flex items-baseline gap-2 text-white">
-                <span className="font-archivo font-bold text-xl uppercase tracking-tighter">MAGIC POP</span>
-                <span className="font-editorial italic text-lg">studio</span>
+                <span className="font-archivo font-bold text-xl md:text-2xl uppercase tracking-tighter">MAGIC POP</span>
+                <span className="font-editorial italic text-lg md:text-xl">studio</span>
               </div>
               <button onClick={handleCloseProject} className="text-white hover:rotate-90 transition-transform duration-300 p-2">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M18 6L6 18M6 6l12 12" /></svg>
@@ -186,14 +193,15 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
 
             {/* SCROLL-INHALT */}
             <div className="flex-1 overflow-y-auto overscroll-contain">
-              <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24">
-                <h1 className="font-archivo text-5xl md:text-[11vw] leading-[0.75] uppercase tracking-tighter mb-16 text-magic-black dark:text-off-white">
+              <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-24">
+                <h1 className="font-archivo text-5xl md:text-[11vw] leading-[0.85] md:leading-[0.75] uppercase tracking-tighter mb-12 md:mb-16 text-magic-black dark:text-off-white">
                   {selectedProject.title[lang]}
                 </h1>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 mb-32">
+                {/* Intro Section */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 mb-20 md:mb-32">
                   <div className="lg:col-span-7">
-                    <p className="font-editorial text-2xl md:text-5xl italic text-magic-black dark:text-off-white mb-12">
+                    <p className="font-editorial text-2xl md:text-5xl italic text-magic-black dark:text-off-white mb-10 md:mb-12">
                       {selectedProject.description[lang].split('\n\n')[0]}
                     </p>
                     <img src={selectedProject.gallery[0] || selectedProject.image} className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700" alt="" />
@@ -203,13 +211,14 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                       <span>{selectedProject.category[lang]}</span>
                       <span>{selectedProject.year}</span>
                     </div>
-                    <p className="font-archivo text-sm md:text-base leading-relaxed text-magic-black/70 dark:text-off-white/70">
+                    <p className="font-archivo text-base md:text-lg leading-relaxed text-magic-black/70 dark:text-off-white/70">
                       {selectedProject.description[lang].split('\n\n')[1]}
                     </p>
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
+                {/* Galerie - Mobil untereinander, Desktop Zeitungs-Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-16">
                   {selectedProject.gallery.slice(1).map((img, i) => {
                     const spans = ["md:col-span-12", "md:col-span-7", "md:col-span-5", "md:col-span-6", "md:col-span-6", "md:col-span-8 md:col-start-2"];
                     const span = spans[i % spans.length];
@@ -222,8 +231,8 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                 </div>
 
                 <div className="mt-24 pb-32 flex flex-col items-center">
-                  <button onClick={handleCloseProject} className="font-archivo uppercase tracking-widest text-xs text-magic-black/40 dark:text-off-white/40 hover:text-[#ff4d00] transition-colors">
-                    ← {t.backToProjects}
+                  <button onClick={handleCloseProject} className="font-archivo uppercase tracking-widest text-xs text-magic-black/40 dark:text-off-white/40 hover:text-[#ff4d00] transition-colors flex items-center gap-2">
+                    <span className="text-lg">←</span> {t.backToProjects}
                   </button>
                 </div>
               </div>
