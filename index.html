@@ -1,16 +1,165 @@
 
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Magic Pop | Creative Studio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              'magic-black': '#000000',
+              'magic-dark': '#000000',
+              'off-white': '#F9F7F2',
+              'magic-orange': '#FF4D00',
+              'magic-blue': '#0038FF',
+              'magic-pink': '#FFB7D5',
+            },
+            fontFamily: {
+              archivo: ['Archivo Black', 'sans-serif'],
+              editorial: ['Instrument Serif', 'serif'],
+              inter: ['Inter', 'sans-serif'],
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-out both',
+            },
+            aspectRatio: {
+              '3/2': '3 / 2',
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* LOCAL FONTS (GDPR COMPLIANT) */
+      @font-face {
+        font-family: 'Archivo Black';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/fonts/archivo-black.woff2') format('woff2'),
+             url('/fonts/archivo-black.woff') format('woff');
+      }
 
-const rootElement = document.getElementById('root');
-if (!rootElement) {
-  throw new Error("Could not find root element to mount to");
-}
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/fonts/inter-regular.woff2') format('woff2'),
+             url('/fonts/inter-regular.woff') format('woff');
+      }
 
-const root = ReactDOM.createRoot(rootElement);
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 500;
+        font-display: swap;
+        src: url('/fonts/inter-500.woff2') format('woff2'),
+             url('/fonts/inter-500.woff') format('woff');
+      }
+
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: url('/fonts/inter-700.woff2') format('woff2'),
+             url('/fonts/inter-700.woff') format('woff');
+      }
+
+      @font-face {
+        font-family: 'Inter';
+        font-style: normal;
+        font-weight: 900;
+        font-display: swap;
+        src: url('/fonts/inter-900.woff2') format('woff2'),
+             url('/fonts/inter-900.woff') format('woff');
+      }
+
+      @font-face {
+        font-family: 'Instrument Serif';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/fonts/instrument-serif-regular.woff2') format('woff2'),
+             url('/fonts/instrument-serif-regular.woff') format('woff');
+      }
+
+      @font-face {
+        font-family: 'Instrument Serif';
+        font-style: italic;
+        font-weight: 400;
+        font-display: swap;
+        src: url('/fonts/instrument-serif-italic.woff2') format('woff2'),
+             url('/fonts/instrument-serif-italic.woff') format('woff');
+      }
+
+      /* STRIKTES RESET FÜR OUTLINES & FOCUS */
+      * {
+        -webkit-tap-highlight-color: transparent !important;
+        outline: none !important;
+      }
+
+      a, button, input, textarea, select {
+        outline: none !important;
+        box-shadow: none !important;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        transition: background-color 0.5s ease, color 0.5s ease;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      
+      /* Transitions */
+      @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+      @keyframes slideInFromBottom { from { transform: translateY(20px); } to { transform: translateY(0); } }
+      .animate-in { animation: fadeIn 0.5s ease-out both, slideInFromBottom 0.5s ease-out both; }
+
+      /* Smooth scroll offset for fixed header */
+      section[id] {
+        scroll-margin-top: 100px;
+      }
+
+      /* Hide scrollbar */
+      ::-webkit-scrollbar { display: none; }
+      html { -ms-overflow-style: none; scrollbar-width: none; }
+      .hyphens-auto {
+        -webkit-hyphens: auto;
+        -ms-hyphens: auto;
+        hyphens: auto;
+      }
+
+      /* Image Protection */
+      img {
+        -webkit-user-drag: none;
+        -khtml-user-drag: none;
+        -moz-user-drag: none;
+        -o-user-drag: none;
+        user-drag: none;
+        user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+      }
+    </style>
+</head>
+  <body class="bg-off-white text-magic-black dark:bg-magic-dark dark:text-off-white">
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+    <script>
+      // Image protection: Disable right-click on images
+      document.addEventListener('contextmenu', function(e) {
+        if (e.target.tagName === 'IMG') {
+          e.preventDefault();
+        }
+      }, false);
+    </script>
+  </body>
+</html>
