@@ -23,12 +23,10 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
     { label: t.contact, href: '#contact' },
   ];
 
-  // Static delay classes — dynamic strings don't work with Tailwind CDN
   const delayClasses = ['delay-100', 'delay-150', 'delay-200', 'delay-300'];
 
   const handleNavItemClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    
     if (onNavClick) onNavClick();
     setIsMenuOpen(false);
 
@@ -39,12 +37,7 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
       const headerOffset = 80;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-      
+      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
       window.history.pushState(null, '', href);
     }
   };
@@ -58,8 +51,6 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
           paddingRight: 'max(1.5rem, env(safe-area-inset-right))',
         }}
       >
-        {/* Logo — textColor Prop ist wieder aktiv, kein Flackern mehr
-            weil transition:all aus dem CSS-Reset entfernt wurde */}
         <div className={`font-archivo text-2xl md:text-3xl tracking-tighter uppercase ${textColor} transition-colors duration-500 relative z-[110]`}>
           <a 
             href="#hero" 
@@ -71,8 +62,6 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
         </div>
         
         <div className="flex items-center gap-4 lg:gap-10">
-
-          {/* Desktop Nav — visible from lg (1024px) upwards */}
           <nav className="hidden lg:flex gap-6 xl:gap-10">
             {navItems.map((item) => (
               <a
@@ -107,20 +96,15 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
               <button 
                 onClick={() => setLang('de')}
                 className={`transition-all duration-300 ${lang === 'de' ? 'opacity-100 font-black' : 'opacity-40 hover:opacity-100'}`}
-              >
-                DE
-              </button>
+              >DE</button>
               <span className="opacity-20">/</span>
               <button 
                 onClick={() => setLang('en')}
                 className={`transition-all duration-300 ${lang === 'en' ? 'opacity-100 font-black' : 'opacity-40 hover:opacity-100'}`}
-              >
-                EN
-              </button>
+              >EN</button>
             </div>
           </div>
 
-          {/* Hamburger — visible below lg */}
           <button 
             className={`lg:hidden p-2 relative z-[110] transition-colors duration-300 ${isMenuOpen ? 'text-off-white' : textColor}`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -138,26 +122,32 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
-      <div 
-        className={`fixed inset-0 z-[600] bg-magic-black transition-transform duration-700 ease-[cubic-bezier(0.83,0,0.17,1)] flex flex-col justify-center px-6 ${isMenuOpen ? 'translate-y-0' : '-translate-y-[100dvh]'}`}
-      >
-        <nav className="flex flex-col gap-6">
-          {navItems.map((item, i) => (
-            <a
-              key={item.label}
-              href={item.href}
-              onClick={(e) => handleNavItemClick(e, item.href)}
-              className={`font-archivo text-5xl md:text-7xl uppercase tracking-tighter text-off-white transition-all duration-700 ${delayClasses[i]} ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
-            >
-              {item.label}
-            </a>
-          ))}
-        </nav>
+      {/* Mobile Menu Overlay
+          Fix für iOS Safari dvh-Bug:
+          - overflow:hidden auf dem äußeren Wrapper schneidet alles ab
+          - Das innere Div ragt mit -top-[80px] und pb-[80px] extra weit raus,
+            sodass dvh-Sprünge der URL-Bar nie eine schwarze Kante zeigen */}
+      <div className="fixed inset-0 z-[600] overflow-hidden pointer-events-none">
+        <div 
+          className={`absolute inset-x-0 -top-[80px] bottom-0 pb-[80px] bg-magic-black transition-transform duration-700 ease-[cubic-bezier(0.83,0,0.17,1)] flex flex-col justify-center px-6 pointer-events-auto ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}
+        >
+          <nav className="flex flex-col gap-6 mt-[80px]">
+            {navItems.map((item, i) => (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={(e) => handleNavItemClick(e, item.href)}
+                className={`font-archivo text-5xl md:text-7xl uppercase tracking-tighter text-off-white transition-all duration-700 ${delayClasses[i]} ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
 
-        {/* Copyright — portrait only */}
-        <div className="mt-20 pt-10 text-off-white/20 font-archivo text-[10px] uppercase tracking-widest hidden portrait:block">
-          Magic Pop Studio &copy; 2024 / Berlin
+          {/* Copyright — portrait only */}
+          <div className="mt-20 pt-10 text-off-white/20 font-archivo text-[10px] uppercase tracking-widest hidden portrait:block">
+            Magic Pop Studio &copy; 2024 / Berlin
+          </div>
         </div>
       </div>
     </>
