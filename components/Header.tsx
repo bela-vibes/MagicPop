@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Language } from '../types';
 import { TRANSLATIONS } from '../constants';
@@ -10,20 +11,9 @@ interface HeaderProps {
   isDarkMode: boolean;
   toggleDarkMode: () => void;
   onNavClick?: () => void;
-  // Wichtig: Diese Prop steuert, ob der Header sich versteckt
-  selectedProject: any; 
 }
 
-const Header: React.FC<HeaderProps> = ({ 
-  bgColor, 
-  textColor, 
-  lang, 
-  setLang, 
-  isDarkMode, 
-  toggleDarkMode, 
-  onNavClick,
-  selectedProject 
-}) => {
+const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDarkMode, toggleDarkMode, onNavClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const t = TRANSLATIONS[lang].nav;
   
@@ -37,15 +27,16 @@ const Header: React.FC<HeaderProps> = ({
   const handleNavItemClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     
-    // Schließt das Mobile-Menü und eventuell offene Modals
+    // 1. Close Modals & Mobile Menu
     if (onNavClick) onNavClick();
     setIsMenuOpen(false);
 
+    // 2. Smooth Scroll Logic
     const targetId = href.replace('#', '');
     const element = document.getElementById(targetId);
     
     if (element) {
-      const headerOffset = 80;
+      const headerOffset = 80; // Adjusted for fixed header
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
 
@@ -54,6 +45,7 @@ const Header: React.FC<HeaderProps> = ({
         behavior: 'smooth'
       });
       
+      // Update URL hash without jump
       window.history.pushState(null, '', href);
     }
   };
@@ -61,15 +53,7 @@ const Header: React.FC<HeaderProps> = ({
   return (
     <>
       <header 
-        className={`fixed top-0 left-0 w-full z-[700] transition-all duration-500 ease-in-out py-5 md:py-6 flex justify-between items-center ${bgColor} ${
-          /* Wenn ein Projekt offen ist, verstecken wir diesen Header komplett */
-          selectedProject ? 'opacity-0 pointer-events-none' : 'opacity-100'
-        }`}
-        /* Fix für Landscape/Handy-Querformat (Safe Areas) */
-        style={{ 
-          paddingLeft: 'calc(env(safe-area-inset-left) + 1.5rem)', 
-          paddingRight: 'calc(env(safe-area-inset-right) + 1.5rem)' 
-        }}
+        className={`fixed top-0 left-0 w-full z-[700] transition-all duration-500 ease-in-out px-6 md:px-12 py-5 md:py-6 flex justify-between items-center ${bgColor}`}
       >
         <div className={`font-archivo text-2xl md:text-3xl tracking-tighter uppercase ${textColor} transition-colors duration-500 relative z-[110]`}>
           <a 
@@ -146,7 +130,6 @@ const Header: React.FC<HeaderProps> = ({
         </div>
       </header>
 
-      {/* Mobile Menu Overlay */}
       <div 
         className={`fixed inset-0 z-[600] bg-magic-black transition-transform duration-700 ease-[cubic-bezier(0.83,0,0.17,1)] flex flex-col justify-center px-6 ${isMenuOpen ? 'translate-y-0' : '-translate-y-full'}`}
       >
@@ -156,8 +139,7 @@ const Header: React.FC<HeaderProps> = ({
               key={item.label}
               href={item.href}
               onClick={(e) => handleNavItemClick(e, item.href)}
-              className={`font-archivo text-5xl md:text-7xl uppercase tracking-tighter text-off-white transition-all duration-700 ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
-              style={{ transitionDelay: `${100 + i * 50}ms` }}
+              className={`font-archivo text-5xl md:text-7xl uppercase tracking-tighter text-off-white transition-all duration-700 delay-[${100 + i * 50}ms] ${isMenuOpen ? 'translate-y-0 opacity-100' : 'translate-y-12 opacity-0'}`}
             >
               {item.label}
             </a>
