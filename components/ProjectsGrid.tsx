@@ -303,7 +303,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                       {selectedProject.description[lang].split('\n\n')[0]}
                     </p>
                     <div 
-                      className="hidden lg:block w-full overflow-hidden rounded-sm mb-12"
+                      className="w-full overflow-hidden rounded-sm mb-12"
                     >
                       <img src={selectedProject.gallery[0] || selectedProject.image} alt="" draggable="false" className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700" />
                     </div>
