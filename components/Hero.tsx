@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { motion } from 'motion/react';
 import { Language } from '../types';
 import { TRANSLATIONS } from '../constants';
 
@@ -20,22 +21,46 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
       <div className="relative z-10 w-full flex-1 flex flex-col">
         <div className="flex-1 flex flex-col justify-start pt-12 md:pt-0">
           <h1 className="font-archivo text-[20vw] md:text-[18vw] leading-[0.8] uppercase tracking-tighter text-magic-black dark:text-off-white flex flex-col select-none pointer-events-none transition-colors duration-500">
-            <span className="relative inline-block animate-in" style={{ animationDelay: '100ms' }}>Magic</span>
-            <span className="text-right -mt-[2vw] md:-mt-[3vw] relative inline-block animate-in" style={{ animationDelay: '200ms' }}>Pop</span>
+            <motion.span 
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
+              className="relative inline-block"
+            >
+              Magic
+            </motion.span>
+            <motion.span 
+              initial={{ opacity: 0, y: 100 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, delay: 0.1, ease: [0.19, 1, 0.22, 1] }}
+              className="text-right -mt-[2vw] md:-mt-[3vw] relative inline-block"
+            >
+              Pop
+            </motion.span>
           </h1>
         </div>
         
-        <div className="mt-auto md:mt-4 mb-12 md:mb-8 max-w-4xl relative z-20 animate-in" style={{ animationDelay: '400ms' }}>
+        <motion.div 
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.4, ease: [0.19, 1, 0.22, 1] }}
+          className="mt-auto md:mt-4 mb-12 md:mb-8 max-w-4xl relative z-20"
+        >
           <p className="font-editorial text-3xl md:text-6xl leading-[1.1] text-magic-black dark:text-off-white italic drop-shadow-sm">
             {t.subline} <br />
             <span className="font-archivo not-italic text-2xl md:text-5xl uppercase tracking-tight text-magic-orange">
               {t.sublineBold}
             </span>
           </p>
-        </div>
+        </motion.div>
       </div>
       
-      <div className="mt-auto flex justify-between items-end relative z-10 animate-in" style={{ animationDelay: '600ms' }}>
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1, delay: 0.8 }}
+        className="mt-auto flex justify-between items-end relative z-10"
+      >
         <div className="flex flex-col gap-1 md:gap-2">
            <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] font-black text-magic-black/30 dark:text-off-white/30">{t.location}</span>
            <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] font-black text-magic-black/30 dark:text-off-white/30">{t.est}</span>
@@ -55,7 +80,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
             <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 13.5L12 21m0 0l-7.5-7.5M12 21V3" />
           </svg>
         </div>
-      </div>
+      </motion.div>
 
       <style>{`
         @keyframes bounce {
