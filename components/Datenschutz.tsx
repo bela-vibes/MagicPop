@@ -1,5 +1,4 @@
 import React from 'react';
-import { X } from 'lucide-react';
 
 interface DatenschutzProps {
   onClose: () => void;
@@ -8,14 +7,6 @@ interface DatenschutzProps {
 const Datenschutz: React.FC<DatenschutzProps> = ({ onClose }) => {
   return (
     <div className="fixed inset-0 z-[200] bg-off-white dark:bg-magic-dark flex flex-col">
-      {/* Close Button */}
-      <button 
-        onClick={onClose}
-        className="absolute top-8 right-8 z-[210] p-2 hover:rotate-90 transition-transform duration-300"
-      >
-        <X size={32} />
-      </button>
-
       <div className="flex-1 overflow-y-auto pt-24 md:pt-32 pb-24 animate-in">
         <div className="max-w-4xl mx-auto px-6 relative">
           <header className="mb-16 md:mb-24">
