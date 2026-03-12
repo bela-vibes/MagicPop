@@ -141,7 +141,7 @@ const App: React.FC = () => {
       }
     };
 
-    handleScroll(); // ← Fix: sofort beim Mount aufrufen, kein Flackern mehr
+    handleScroll(); // Fix: sofort beim Mount aufrufen, kein Flackern mehr
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -149,7 +149,6 @@ const App: React.FC = () => {
   useEffect(() => {
     const handleHashChange = () => {
       setCurrentHash(window.location.hash);
-      // Scroll to top when opening legal pages
       if (window.location.hash === '#impressum' || window.location.hash === '#datenschutz') {
         window.scrollTo(0, 0);
       }
@@ -168,7 +167,14 @@ const App: React.FC = () => {
     setCurrentHash('');
   };
 
-  const toggleDarkMode = () => setIsDarkMode(!isDarkMode);
+  // Dark Mode Toggle — setzt kurz eine CSS-Klasse für sanfte Transition aller Elemente
+  const toggleDarkMode = () => {
+    document.documentElement.classList.add('transitioning');
+    setIsDarkMode(prev => !prev);
+    setTimeout(() => {
+      document.documentElement.classList.remove('transitioning');
+    }, 500);
+  };
 
   return (
     <div className="relative overflow-hidden selection:bg-magic-orange selection:text-white bg-off-white dark:bg-magic-dark transition-colors duration-500 min-h-screen">
