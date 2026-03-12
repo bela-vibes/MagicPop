@@ -27,7 +27,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
     return PROJECTS.filter(p => p.category[lang] === activeFilter);
   }, [activeFilter, lang]);
 
-  // Edge Scrolling Logic
+  // Edge Scrolling Logik (Unverändert aus deinem Original)
   useEffect(() => {
     const startScrolling = () => {
       if (scrollRef.current && scrollSpeedRef.current !== 0) {
@@ -110,54 +110,39 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
   return (
     <section id="projects" className="py-24 md:py-32 bg-transparent relative overflow-hidden transition-colors duration-500">
       
-      {/* 1. FILTER HEADER - Fester Seitenabstand */}
+      {/* FILTER HEADER */}
       <div className="px-6 md:px-12 mb-16 relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex flex-col md:flex-row justify-between items-end gap-12"
-        >
-          <div className="max-w-2xl">
-            <h2 className="font-archivo text-6xl md:text-8xl uppercase tracking-tighter mb-6 text-magic-black dark:text-off-white">
-              {t.title}
-            </h2>
-            
-            <div className="flex flex-wrap gap-x-8 gap-y-4">
-              <button 
-                onClick={() => setActiveFilter(null)}
-                className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 ${!activeFilter ? 'text-magic-black dark:text-off-white' : 'text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white'}`}
-              >
-                {t.featured || (lang === 'de' ? 'Alle' : 'All')}
-                {!activeFilter && <span className="absolute bottom-0 left-0 w-full h-[3px] bg-magic-blue"></span>}
-              </button>
-              {categories.map((cat) => (
-                <button 
-                  key={cat}
-                  onClick={() => setActiveFilter(cat)}
-                  className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 ${activeFilter === cat ? 'text-magic-black dark:text-off-white' : 'text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white'}`}
-                >
-                  {cat}
-                  {activeFilter === cat && <span className="absolute bottom-0 left-0 w-full h-[3px] bg-magic-blue"></span>}
-                </button>
-              ))}
-            </div>
-          </div>
-        </motion.div>
+        <h2 className="font-archivo text-6xl md:text-8xl uppercase tracking-tighter mb-6 text-magic-black dark:text-off-white">{t.title}</h2>
+        <div className="flex flex-wrap gap-x-8 gap-y-4">
+          <button 
+            onClick={() => setActiveFilter(null)}
+            className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 ${!activeFilter ? 'text-magic-black dark:text-off-white' : 'text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white'}`}
+          >
+            {t.featured || (lang === 'de' ? 'Alle' : 'All')}
+            {!activeFilter && <span className="absolute bottom-0 left-0 w-full h-[3px] bg-magic-blue"></span>}
+          </button>
+          {categories.map((cat) => (
+            <button 
+              key={cat}
+              onClick={() => setActiveFilter(cat)}
+              className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 ${activeFilter === cat ? 'text-magic-black dark:text-off-white' : 'text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white'}`}
+            >
+              {cat}
+              {activeFilter === cat && <span className="absolute bottom-0 left-0 w-full h-[3px] bg-magic-blue"></span>}
+            </button>
+          ))}
+        </div>
       </div>
 
-      {/* 2. PROJEKT SLIDER - Mit Spacer-Elementen statt Container-Padding */}
+      {/* PROJEKT SLIDER - Zurück auf px-6 md:px-12 (Dein Original-Stand) */}
       <div 
         ref={scrollRef} 
         onMouseMove={handleMouseMove} 
         onMouseLeave={handleMouseLeave} 
-        className={`flex overflow-x-auto gap-8 no-scrollbar pb-12 px-0 ${!isEdgeScrolling ? 'snap-x snap-mandatory' : ''}`}
+        className={`flex overflow-x-auto gap-8 no-scrollbar pb-12 px-6 md:px-12 ${!isEdgeScrolling ? 'snap-x snap-mandatory' : ''}`}
       >
-        {/* LINKER SPACER (entspricht px-6 / md:px-12) */}
-        <div className="min-w-[24px] md:min-w-[48px] h-full shrink-0"></div>
-
         {filteredProjects.map((project) => (
-          <div key={project.id} onClick={() => handleOpenProject(project)} className="min-w-[85vw] md:min-w-[45vw] snap-start group cursor-pointer">
+          <div key={project.id} onClick={() => handleOpenProject(project)} className="min-w-[80vw] md:min-w-[45vw] snap-start group cursor-pointer">
             <div className="relative overflow-hidden aspect-[3/2] rounded-sm bg-magic-black/5 dark:bg-off-white/5">
               <img src={project.image} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             </div>
@@ -167,74 +152,49 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
             </div>
           </div>
         ))}
-        
-        {/* RECHTER SPACER */}
-        <div className="min-w-[24px] md:min-w-[48px] h-full shrink-0"></div>
       </div>
 
-      {/* 3. DAS MODAL */}
+      {/* MODAL */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div 
-            initial={{ opacity: 0 }} 
-            animate={{ opacity: 1 }} 
-            exit={{ opacity: 0 }}
+            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             className="fixed inset-0 z-[9999] bg-off-white dark:bg-magic-dark overflow-hidden flex flex-col"
           >
-            {/* ORANGE BANNER */}
-            <div className="w-full h-20 md:h-24 bg-[#ff4d00] flex items-center justify-between px-6 md:px-12 z-[10000] shrink-0">
+            {/* DAS BANNER */}
+            <div className="w-full h-20 bg-[#ff4d00] flex items-center justify-between px-6 md:px-12 z-[10000] shrink-0">
               <div className="flex items-baseline gap-2 text-white">
-                <span className="font-archivo font-bold text-xl md:text-2xl uppercase tracking-tighter">MAGIC POP</span>
-                <span className="font-editorial italic text-lg md:text-xl">studio</span>
+                <span className="font-archivo font-bold text-xl uppercase tracking-tighter">MAGIC POP</span>
+                <span className="font-editorial italic text-lg">studio</span>
               </div>
-              <button onClick={handleCloseProject} className="text-white hover:rotate-90 transition-transform duration-300 p-2">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                  <path d="M18 6L6 18M6 6l12 12" />
-                </svg>
-              </button>
+              <button onClick={handleCloseProject} className="text-white p-2"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M18 6L6 18M6 6l12 12" /></svg></button>
             </div>
 
-            {/* MODAL CONTENT */}
-            <div className="flex-1 overflow-y-auto overscroll-contain bg-off-white dark:bg-magic-dark">
+            {/* CONTENT */}
+            <div className="flex-1 overflow-y-auto bg-off-white dark:bg-magic-dark">
               <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-24">
-                <h1 className="font-archivo text-5xl md:text-[11vw] leading-[0.85] md:leading-[0.75] uppercase tracking-tighter mb-12 md:mb-16 text-magic-black dark:text-off-white">
-                  {selectedProject.title[lang]}
-                </h1>
+                <h1 className="font-archivo text-5xl md:text-[11vw] leading-[0.75] uppercase tracking-tighter mb-16 text-magic-black dark:text-off-white">{selectedProject.title[lang]}</h1>
                 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 mb-20 md:mb-32">
-                  <div className="lg:col-span-7">
-                    <p className="font-editorial text-2xl md:text-5xl italic text-magic-black dark:text-off-white mb-10 md:mb-12">
-                      {selectedProject.description[lang].split('\n\n')[0]}
-                    </p>
-                    <img src={selectedProject.gallery[0] || selectedProject.image} className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700" alt="" />
-                  </div>
-                  <div className="lg:col-span-5 lg:pt-24">
-                    <div className="text-magic-black/40 dark:text-off-white/40 font-archivo text-[10px] uppercase tracking-widest mb-8 border-b border-magic-black/10 pb-4 flex justify-between">
-                      <span>{selectedProject.category[lang]}</span>
-                      <span>{selectedProject.year}</span>
-                    </div>
-                    <p className="font-archivo text-base md:text-lg leading-relaxed text-magic-black/70 dark:text-off-white/70">
-                      {selectedProject.description[lang].split('\n\n')[1]}
-                    </p>
-                  </div>
+                {/* Dein Zeitungs-Grid Logik */}
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 mb-32">
+                   <div className="lg:col-span-7">
+                     <p className="font-editorial text-2xl md:text-5xl italic text-magic-black dark:text-off-white mb-12">{selectedProject.description[lang].split('\n\n')[0]}</p>
+                     <img src={selectedProject.gallery[0] || selectedProject.image} className="w-full h-auto" alt="" />
+                   </div>
+                   <div className="lg:col-span-5 lg:pt-24">
+                     <p className="font-archivo text-base text-magic-black/70 dark:text-off-white/70">{selectedProject.description[lang].split('\n\n')[1]}</p>
+                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-16">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
                   {selectedProject.gallery.slice(1).map((img, i) => {
                     const spans = ["md:col-span-12", "md:col-span-7", "md:col-span-5", "md:col-span-6", "md:col-span-6", "md:col-span-8 md:col-start-2"];
-                    const span = spans[i % spans.length];
                     return (
-                      <div key={i} className={`${span} overflow-hidden rounded-sm group`}>
-                        <img src={img} className="w-full h-auto group-hover:scale-105 transition-transform duration-1000" alt="" />
+                      <div key={i} className={`${spans[i % spans.length]} overflow-hidden`}>
+                        <img src={img} className="w-full h-auto" alt="" />
                       </div>
                     );
                   })}
-                </div>
-
-                <div className="mt-24 pb-32 flex flex-col items-center">
-                  <button onClick={handleCloseProject} className="font-archivo uppercase tracking-widest text-xs text-magic-black/40 dark:text-off-white/40 hover:text-[#ff4d00] transition-colors flex items-center gap-2">
-                    <span className="text-lg">←</span> {t.backToProjects}
-                  </button>
                 </div>
               </div>
             </div>
