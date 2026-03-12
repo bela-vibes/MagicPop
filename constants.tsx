@@ -117,19 +117,19 @@ export const PROJECTS: Project[] = [
       en: "A room tells its stories. Introducing “Nachtzimmer,” a photo series created as an independent project.\n\nThese images transport you to a cinematic world inspired by Americana aesthetics, capturing individual moments in a hotel room that leave you wondering about the story before and after. Each photograph creates a unique scene, inspired by the timeless allure of old Hollywood glamour, surreal lighting, and fantastic characters. 25 unique motifs were created, each telling a complex story with visual craftsmanship and professional execution.\n\nFor every story, we crafted vibrant color schemes, detailed costumes, and characteristic hair and makeup. For each shot, we built real settings, employed atmospheric lighting, and created custom props, including lifelike animal replicas. The postproduction work added the final touches, maintaining visual coherence and narrative impact."
     },
     year: "2017",
-    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773222132/Nachtzimmer1_MagicPop2024.jpg_rluwrt.webp",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247550/02_-_Fisch_q9rvsk.jpg",
     gallery: [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773294351/Nachtzimmer0_MagicPop2024.jpg_ylyg9j.webp",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600,h_1000,c_fill,g_auto/v1773261659/08---Mermaid_bk4obw.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600,h_1000,c_fill,g_auto/v1773247550/02_-_Fisch_q9rvsk.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600,h_1000,c_fill,g_auto/v1773247550/11_-_Kedi_sienok.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600,h_1000,c_fill,g_auto/v1773293311/07_-_Koffer_mvfu6e.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600,h_1000,c_fill,g_auto/v1773247551/14_-_Circus_slbpcz.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600,h_1000,c_fill,g_auto/v1773247468/benny_3_Kopie_ufsdlm.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600,h_1000,c_fill,g_auto/v1773247509/mariamagdalena_Kopie_taojlr.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600,h_1000,c_fill,g_auto/v1773247510/spies_Kopie_lttwm9.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600,h_1000,c_fill,g_auto/v1773247515/lowe_2_Kopie_xqmf6g.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600,h_1000,c_fill,g_auto/v1773247514/hexenfinal_Kopie_gn2dvb.jpg"
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773261659/08---Mermaid_bk4obw.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247550/02_-_Fisch_q9rvsk.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247550/11_-_Kedi_sienok.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773293311/07_-_Koffer_mvfu6e.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247551/14_-_Circus_slbpcz.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247468/benny_3_Kopie_ufsdlm.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247509/mariamagdalena_Kopie_taojlr.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247510/spies_Kopie_lttwm9.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247515/lowe_2_Kopie_xqmf6g.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247514/hexenfinal_Kopie_gn2dvb.jpg"
     ],
     color: "bg-orange-500"
   },
