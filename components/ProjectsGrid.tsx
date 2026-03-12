@@ -275,9 +275,8 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                     </p>
                     <div 
                       className="hidden lg:block w-full overflow-hidden rounded-sm mb-12"
-                      style={{ aspectRatio: '3/2' }}
                     >
-                      <img src={selectedProject.gallery[0] || selectedProject.image} alt="" draggable="false" className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+                      <img src={selectedProject.gallery[0] || selectedProject.image} alt="" draggable="false" className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700" />
                     </div>
                   </div>
                   
@@ -292,9 +291,8 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                     {selectedProject.gallery[1] && (
                       <div 
                         className="w-full overflow-hidden rounded-sm"
-                        style={{ aspectRatio: '3/2' }}
                       >
-                        <img src={selectedProject.gallery[1]} alt="" draggable="false" className="w-full h-full object-cover" />
+                        <img src={selectedProject.gallery[1]} alt="" draggable="false" className="w-full h-auto" />
                       </div>
                     )}
                   </div>
@@ -342,12 +340,12 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                           </p>
                         </div>
                       )}
-                      <div className={`${span} overflow-hidden rounded-sm group`} style={{ aspectRatio: currentAspect }}>
+                      <div className={`${span} overflow-hidden rounded-sm group`}>
                         <img 
                           src={img} 
                           alt="" 
                           draggable="false"
-                          className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000" 
+                          className="w-full h-auto transform group-hover:scale-105 transition-transform duration-1000" 
                         />
                       </div>
                     </React.Fragment>
