@@ -58,9 +58,9 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
           paddingRight: 'max(1.5rem, env(safe-area-inset-right))',
         }}
       >
-        {/* Logo — verwendet direkte dark:-Klassen statt textColor-Prop,
-            damit der Dark-Mode-Wechsel nicht flackert */}
-        <div className="font-archivo text-2xl md:text-3xl tracking-tighter uppercase text-magic-black dark:text-off-white relative z-[110]">
+        {/* Logo — textColor Prop ist wieder aktiv, kein Flackern mehr
+            weil transition:all aus dem CSS-Reset entfernt wurde */}
+        <div className={`font-archivo text-2xl md:text-3xl tracking-tighter uppercase ${textColor} transition-colors duration-500 relative z-[110]`}>
           <a 
             href="#hero" 
             onClick={(e) => handleNavItemClick(e, '#hero')} 
