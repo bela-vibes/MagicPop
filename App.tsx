@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect, useRef } from 'react';
+import { motion } from 'motion/react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import ProjectsGrid from './components/ProjectsGrid';
@@ -229,11 +230,18 @@ const App: React.FC = () => {
         <Section id="services" title={t.whatWeDo.title} subtitle={t.whatWeDo.subtitle} className="bg-transparent py-16 md:py-32">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mt-12">
             {t.whatWeDo.services.map((service, i) => (
-              <div key={i} className="group pt-0 md:pt-4 transition-all duration-500">
+              <motion.div 
+                key={i} 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: i * 0.1, ease: [0.19, 1, 0.22, 1] }}
+                className="group pt-0 md:pt-4 transition-all duration-500"
+              >
                 <span className="font-archivo text-xs md:text-sm uppercase tracking-widest mb-4 block text-magic-black/30 dark:text-off-white/30">0{i+1}</span>
                 <h3 className="font-archivo text-2xl md:text-3xl uppercase tracking-tighter mb-4 md:mb-6 text-magic-black dark:text-off-white group-hover:translate-x-2 transition-transform duration-300">{service.title}</h3>
                 <p className="text-base md:text-lg text-magic-black/60 dark:text-off-white/60 leading-relaxed font-medium">{service.desc}</p>
-              </div>
+              </motion.div>
             ))}
           </div>
         </Section>
@@ -245,13 +253,25 @@ const App: React.FC = () => {
           className="relative overflow-hidden py-16 md:py-48"
         >
           <div className="relative z-10 flex flex-col lg:flex-row gap-8 md:gap-16 items-center">
-            <div className="w-full lg:w-1/2">
+            <motion.div 
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
+              className="w-full lg:w-1/2"
+            >
               <div className="relative group overflow-hidden rounded-sm">
-                <img src="https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773295288/Dennis_Ruf_und_Be%CC%81la_Lehrnickel_Magic_Pop_Creative_Studio_tm4vyk.webp" alt="Studio" draggable="false" className="w-full grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100 aspect-video md:aspect-auto object-cover" />
+                <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200" alt="Studio" draggable="false" className="w-full grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100 aspect-video md:aspect-auto object-cover" />
                 <div className="absolute inset-0 bg-magic-blue/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               </div>
-            </div>
-            <div className="w-full lg:w-1/2 space-y-6 md:space-y-8 text-magic-black dark:text-off-white">
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
+              className="w-full lg:w-1/2 space-y-6 md:space-y-8 text-magic-black dark:text-off-white"
+            >
               <p className="font-editorial text-3xl md:text-4xl italic leading-tight drop-shadow-sm opacity-90">{t.studio.p1}</p>
               <p className="text-lg md:text-xl opacity-60 font-medium leading-relaxed">{t.studio.p2}</p>
               <a 
@@ -260,13 +280,19 @@ const App: React.FC = () => {
               >
                 {t.studio.startProject}
               </a>
-            </div>
+            </motion.div>
           </div>
         </Section>
 
         <Section id="contact" title={t.contact.title} subtitle={t.contact.subtitle} className="bg-transparent py-16 md:py-32">
           <div className="flex flex-col md:flex-row gap-12 md:gap-16 mt-12">
-            <div className="md:w-1/2 space-y-10 md:space-y-12">
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
+              className="md:w-1/2 space-y-10 md:space-y-12"
+            >
               <div>
                 <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block mb-4">{t.contact.emailLabel}</span>
                 <a href="mailto:hello@magicpop.berlin" className="font-archivo text-2xl md:text-5xl uppercase tracking-tighter text-magic-black dark:text-off-white hover:text-magic-orange transition-colors duration-300 underline underline-offset-8 decoration-transparent hover:decoration-magic-orange break-words">hello@magicpop.berlin</a>
@@ -277,8 +303,14 @@ const App: React.FC = () => {
                   <a href="https://www.instagram.com/magicpop.berlin" target="_blank" rel="noopener noreferrer" className="hover:text-magic-orange transition-colors">Instagram</a>
                 </div>
               </div>
-            </div>
-            <div className="md:w-1/2 bg-yellow-400 p-8 md:p-12 flex flex-col justify-center shadow-[0_30px_80px_-20px_rgba(250,204,21,0.3)] rounded-sm">
+            </motion.div>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
+              className="md:w-1/2 bg-yellow-400 p-8 md:p-12 flex flex-col justify-center shadow-[0_30px_80px_-20px_rgba(250,204,21,0.3)] rounded-sm"
+            >
               <p className="font-editorial text-3xl md:text-5xl text-magic-black italic leading-tight mb-8">{t.contact.footerNote}</p>
               <a 
                 href="mailto:hello@magicpop.berlin"
@@ -286,7 +318,7 @@ const App: React.FC = () => {
               >
                 {t.studio.startProject}
               </a>
-            </div>
+            </motion.div>
           </div>
         </Section>
       </main>
