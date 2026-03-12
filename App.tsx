@@ -20,12 +20,17 @@ const App: React.FC = () => {
   const [currentHash, setCurrentHash] = useState(window.location.hash);
   const requestRef = useRef<number>(null);
   
-  const [headerTheme, setHeaderTheme] = useState({
+  const [scrollTheme, setScrollTheme] = useState({
     bg: 'bg-transparent',
     text: 'text-magic-black dark:text-off-white',
     shadow: '',
     blobColor: 'bg-magic-orange'
   });
+
+  // Wenn ein Projekt offen ist → immer orange Header
+  const headerTheme = selectedProject
+    ? { bg: 'bg-magic-orange', text: 'text-white', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,77,0,0.6)]', blobColor: 'bg-magic-orange' }
+    : scrollTheme;
 
   const t = TRANSLATIONS[lang] || TRANSLATIONS.de;
 
@@ -96,24 +101,19 @@ const App: React.FC = () => {
       const contact = document.getElementById('contact');
 
       if (contact && scrollPos >= contact.offsetTop) {
-        setHeaderTheme({ bg: 'bg-magic-pink', text: 'text-magic-black', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,183,213,0.6)]', blobColor: 'bg-magic-pink' });
+        setScrollTheme({ bg: 'bg-magic-pink', text: 'text-magic-black', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,183,213,0.6)]', blobColor: 'bg-magic-pink' });
       } else if (about && scrollPos >= about.offsetTop) {
-        setHeaderTheme({ bg: 'bg-magic-blue', text: 'text-white', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(0,56,255,0.6)]', blobColor: 'bg-magic-blue' });
+        setScrollTheme({ bg: 'bg-magic-blue', text: 'text-white', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(0,56,255,0.6)]', blobColor: 'bg-magic-blue' });
       } else if (services && scrollPos >= services.offsetTop) {
-        setHeaderTheme({ bg: 'bg-yellow-400', text: 'text-magic-black', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.6)]', blobColor: 'bg-yellow-400' });
+        setScrollTheme({ bg: 'bg-yellow-400', text: 'text-magic-black', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.6)]', blobColor: 'bg-yellow-400' });
       } else if (projects && scrollPos >= projects.offsetTop) {
-        setHeaderTheme({ bg: 'bg-magic-orange', text: 'text-white', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,77,0,0.6)]', blobColor: 'bg-magic-orange' });
+        setScrollTheme({ bg: 'bg-magic-orange', text: 'text-white', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,77,0,0.6)]', blobColor: 'bg-magic-orange' });
       } else {
-        setHeaderTheme({ bg: 'bg-transparent', text: 'text-magic-black dark:text-off-white', shadow: '', blobColor: 'bg-magic-orange' });
+        setScrollTheme({ bg: 'bg-transparent', text: 'text-magic-black dark:text-off-white', shadow: '', blobColor: 'bg-magic-orange' });
       }
     };
 
-    // requestAnimationFrame wartet bis das DOM vollständig gerendert und
-    // gemessen ist — zuverlässiger als setTimeout, auch auf Mobile Safari
-    const raf = requestAnimationFrame(() => {
-      handleScroll();
-    });
-
+    const raf = requestAnimationFrame(() => handleScroll());
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
       cancelAnimationFrame(raf);
