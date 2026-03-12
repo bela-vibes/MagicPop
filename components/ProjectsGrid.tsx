@@ -107,59 +107,54 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
     };
   }, [setSelectedProject, selectedProject]);
 
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollRef.current) {
-      const { scrollLeft, clientWidth } = scrollRef.current;
-      const scrollTo = direction === 'left' ? scrollLeft - clientWidth : scrollLeft + clientWidth;
-      scrollRef.current.scrollTo({ left: scrollTo, behavior: 'smooth' });
-    }
-  };
-
   return (
-    // Die section steuert den Rand für die gesamte Main-Page (Desktop & Mobile)
     <section id="projects" className="py-24 md:py-32 bg-transparent relative overflow-hidden transition-colors duration-500">
       
-      {/* Header Info - Hier nutzen wir px-6 für Mobile, md:px-12 für Desktop */}
-      <motion.div 
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="px-6 md:px-12 mb-16 flex flex-col md:flex-row justify-between items-end gap-12 relative z-10"
-      >
-        <div className="max-w-2xl">
-          <h2 className="font-archivo text-6xl md:text-8xl uppercase tracking-tighter mb-6 text-magic-black dark:text-off-white">{t.title}</h2>
-          
-          <div className="flex flex-wrap gap-x-8 gap-y-4">
-            <button 
-              onClick={() => setActiveFilter(null)}
-              className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 ${!activeFilter ? 'text-magic-black dark:text-off-white' : 'text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white'}`}
-            >
-              {t.featured || (lang === 'de' ? 'Alle' : 'All')}
-              {!activeFilter && <span className="absolute bottom-0 left-0 w-full h-[3px] bg-magic-blue"></span>}
-            </button>
-            {categories.map((cat) => (
+      {/* 1. FILTER HEADER - Mit Seitenabstand */}
+      <div className="px-6 md:px-12 mb-16 relative z-10">
+        <motion.div 
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="flex flex-col md:flex-row justify-between items-end gap-12"
+        >
+          <div className="max-w-2xl">
+            <h2 className="font-archivo text-6xl md:text-8xl uppercase tracking-tighter mb-6 text-magic-black dark:text-off-white">
+              {t.title}
+            </h2>
+            
+            <div className="flex flex-wrap gap-x-8 gap-y-4">
               <button 
-                key={cat}
-                onClick={() => setActiveFilter(cat)}
-                className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 ${activeFilter === cat ? 'text-magic-black dark:text-off-white' : 'text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white'}`}
+                onClick={() => setActiveFilter(null)}
+                className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 ${!activeFilter ? 'text-magic-black dark:text-off-white' : 'text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white'}`}
               >
-                {cat}
-                {activeFilter === cat && <span className="absolute bottom-0 left-0 w-full h-[3px] bg-magic-blue"></span>}
+                {t.featured || (lang === 'de' ? 'Alle' : 'All')}
+                {!activeFilter && <span className="absolute bottom-0 left-0 w-full h-[3px] bg-magic-blue"></span>}
               </button>
-            ))}
+              {categories.map((cat) => (
+                <button 
+                  key={cat}
+                  onClick={() => setActiveFilter(cat)}
+                  className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 ${activeFilter === cat ? 'text-magic-black dark:text-off-white' : 'text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white'}`}
+                >
+                  {cat}
+                  {activeFilter === cat && <span className="absolute bottom-0 left-0 w-full h-[3px] bg-magic-blue"></span>}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
-      </motion.div>
+        </motion.div>
+      </div>
 
-      {/* Slider Grid - Das Padding hier sorgt dafür, dass das erste Bild nicht am Rand klebt */}
+      {/* 2. PROJEKT SLIDER - Padding hier sorgt für bündigen Start */}
       <div 
         ref={scrollRef} 
         onMouseMove={handleMouseMove} 
         onMouseLeave={handleMouseLeave} 
-        className={`flex overflow-x-auto gap-8 px-6 md:px-12 no-scrollbar pb-12 ${!isEdgeScrolling ? 'snap-x snap-mandatory' : ''}`}
+        className={`flex overflow-x-auto gap-8 no-scrollbar pb-12 px-6 md:px-12 ${!isEdgeScrolling ? 'snap-x snap-mandatory' : ''}`}
       >
         {filteredProjects.map((project) => (
-          <div key={project.id} onClick={() => handleOpenProject(project)} className="min-w-[80vw] md:min-w-[45vw] snap-start group cursor-pointer">
+          <div key={project.id} onClick={() => handleOpenProject(project)} className="min-w-[85vw] md:min-w-[45vw] snap-start group cursor-pointer">
             <div className="relative overflow-hidden aspect-[3/2] rounded-sm bg-magic-black/5 dark:bg-off-white/5">
               <img src={project.image} alt="" className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
             </div>
@@ -169,36 +164,40 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
             </div>
           </div>
         ))}
+        {/* Spacer für rechtes Ende */}
+        <div className="min-w-[1px] pr-6 md:pr-12"></div>
       </div>
 
-      {/* MODAL (MOBILE & DESKTOP) */}
+      {/* 3. MODAL */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div 
             initial={{ opacity: 0 }} 
             animate={{ opacity: 1 }} 
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[2000] bg-off-white dark:bg-magic-dark overflow-hidden flex flex-col"
+            className="fixed inset-0 z-[9999] bg-off-white dark:bg-magic-dark overflow-hidden flex flex-col"
           >
-            {/* DAS BANNER - Mobil h-20, Desktop h-24 für mehr Luft */}
-            <div className="w-full h-20 md:h-24 bg-[#ff4d00] flex items-center justify-between px-6 md:px-12 z-[2010] shrink-0">
+            {/* ORANGE BANNER - Füllt immer volle Breite */}
+            <div className="w-full h-20 md:h-24 bg-[#ff4d00] flex items-center justify-between px-6 md:px-12 z-[10000] shrink-0">
               <div className="flex items-baseline gap-2 text-white">
                 <span className="font-archivo font-bold text-xl md:text-2xl uppercase tracking-tighter">MAGIC POP</span>
                 <span className="font-editorial italic text-lg md:text-xl">studio</span>
               </div>
               <button onClick={handleCloseProject} className="text-white hover:rotate-90 transition-transform duration-300 p-2">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M18 6L6 18M6 6l12 12" /></svg>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
               </button>
             </div>
 
-            {/* SCROLL-INHALT */}
-            <div className="flex-1 overflow-y-auto overscroll-contain">
+            {/* MODAL CONTENT SCROLLBAR */}
+            <div className="flex-1 overflow-y-auto overscroll-contain bg-off-white dark:bg-magic-dark">
               <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-24">
                 <h1 className="font-archivo text-5xl md:text-[11vw] leading-[0.85] md:leading-[0.75] uppercase tracking-tighter mb-12 md:mb-16 text-magic-black dark:text-off-white">
                   {selectedProject.title[lang]}
                 </h1>
                 
-                {/* Intro Section */}
+                {/* Zeitungs-Raster */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 mb-20 md:mb-32">
                   <div className="lg:col-span-7">
                     <p className="font-editorial text-2xl md:text-5xl italic text-magic-black dark:text-off-white mb-10 md:mb-12">
@@ -217,7 +216,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                   </div>
                 </div>
 
-                {/* Galerie - Mobil untereinander, Desktop Zeitungs-Grid */}
+                {/* Galerie-Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-16">
                   {selectedProject.gallery.slice(1).map((img, i) => {
                     const spans = ["md:col-span-12", "md:col-span-7", "md:col-span-5", "md:col-span-6", "md:col-span-6", "md:col-span-8 md:col-start-2"];
@@ -230,6 +229,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                   })}
                 </div>
 
+                {/* Back Button */}
                 <div className="mt-24 pb-32 flex flex-col items-center">
                   <button onClick={handleCloseProject} className="font-archivo uppercase tracking-widest text-xs text-magic-black/40 dark:text-off-white/40 hover:text-[#ff4d00] transition-colors flex items-center gap-2">
                     <span className="text-lg">←</span> {t.backToProjects}
