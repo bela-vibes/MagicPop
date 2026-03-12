@@ -145,9 +145,6 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
             </a>
           ))}
         </nav>
-        <div className="mt-20 pt-10 text-off-white/20 font-archivo text-[10px] uppercase tracking-widest">
-          Magic Pop Studio &copy; 2024 / Berlin
-        </div>
       </div>
     </>
   );
