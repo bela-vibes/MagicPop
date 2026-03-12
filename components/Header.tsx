@@ -58,11 +58,13 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
           paddingRight: 'max(1.5rem, env(safe-area-inset-right))',
         }}
       >
-        <div className={`font-archivo text-2xl md:text-3xl tracking-tighter uppercase ${textColor} transition-colors duration-500 relative z-[110]`}>
+        {/* Logo — verwendet direkte dark:-Klassen statt textColor-Prop,
+            damit der Dark-Mode-Wechsel nicht flackert */}
+        <div className="font-archivo text-2xl md:text-3xl tracking-tighter uppercase text-magic-black dark:text-off-white relative z-[110]">
           <a 
             href="#hero" 
             onClick={(e) => handleNavItemClick(e, '#hero')} 
-            className="hover:opacity-60 transition-opacity"
+            className="hover:opacity-60 transition-opacity duration-150"
           >
             Magic Pop<span className="font-editorial lowercase text-xl md:text-2xl ml-1">studio</span>
           </a>
