@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useMemo } from 'react';
 import { motion } from 'motion/react';
 import { PROJECTS, TRANSLATIONS } from '../constants';
@@ -125,8 +124,6 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
     
     // 2. Clean up the URL hash reliably
     if (window.location.hash) {
-      // pushState is more reliable than history.back() because it doesn't 
-      // depend on the history stack (e.g. after a page refresh)
       window.history.pushState(null, '', window.location.pathname + window.location.search);
     }
   };
@@ -166,7 +163,11 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
           <div className="flex flex-wrap gap-x-8 gap-y-4">
             <button 
               onClick={() => setActiveFilter(null)}
-              className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 ${!activeFilter ? 'text-magic-black' : 'text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white'}`}
+              className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 
+                ${!activeFilter 
+                  ? 'text-magic-black dark:text-off-white' 
+                  : 'text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white'
+                }`}
             >
               {t.featured || (lang === 'de' ? 'Alle' : 'All')}
               {!activeFilter && <span className="absolute bottom-0 left-0 w-full h-[3px] bg-magic-blue"></span>}
@@ -175,7 +176,11 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
               <button 
                 key={cat}
                 onClick={() => setActiveFilter(cat)}
-                className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 ${activeFilter === cat ? 'text-magic-black' : 'text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white'}`}
+                className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 
+                  ${activeFilter === cat 
+                    ? 'text-magic-black dark:text-off-white' 
+                    : 'text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white'
+                  }`}
               >
                 {cat}
                 {activeFilter === cat && <span className="absolute bottom-0 left-0 w-full h-[3px] bg-magic-blue"></span>}
@@ -348,22 +353,6 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                   ];
                   const span = spans[i % spans.length];
                   
-                  // Determine aspect ratio class based on index for HANA (ID 2)
-                  // 4 landscape, 1 portrait, 2 square
-                  // Gallery starts at slice(2), so:
-                  // i=0: Gallery[2] (Landscape)
-                  // i=1: Gallery[3] (Landscape)
-                  // i=2: Gallery[4] (Portrait)
-                  // i=3: Gallery[5] (Square)
-                  // i=4: Gallery[6] (Square)
-                  let currentAspect = "3/2";
-                  if (selectedProject.id === 2) {
-                    if (i === 2) currentAspect = "3/4";
-                    if (i === 3 || i === 4) currentAspect = "1/1";
-                  } else if (selectedProject.id === 3) {
-                    if (i === 3) currentAspect = "1/1";
-                  }
-
                   return (
                     <React.Fragment key={i}>
                       {/* Inject the 3rd paragraph after the 3rd image in the gallery (index 2 of slice(2)) */}
