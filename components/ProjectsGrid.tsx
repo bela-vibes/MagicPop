@@ -116,13 +116,15 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
   };
 
   return (
-    <section id="projects" className="py-24 md:py-32 bg-transparent relative overflow-hidden transition-colors duration-500">
+    // HIER WIEDER PX-6 MD:PX-12 HINZUGEFÜGT FÜR DIE MAIN PAGE
+    <section id="projects" className="py-24 md:py-32 bg-transparent relative overflow-hidden px-6 md:px-12 transition-colors duration-500">
+      
       {/* Filter Header */}
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="px-6 md:px-12 mb-16 flex flex-col md:flex-row justify-between items-end gap-12 relative z-10"
+        className="mb-16 flex flex-col md:flex-row justify-between items-end gap-12 relative z-10"
       >
         <div className="max-w-2xl">
           <h2 className="font-archivo text-6xl md:text-8xl uppercase tracking-tighter mb-6 text-magic-black dark:text-off-white">{t.title}</h2>
@@ -149,8 +151,8 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
         </div>
       </motion.div>
 
-      {/* Slider Grid */}
-      <div ref={scrollRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className={`flex overflow-x-auto gap-8 px-6 md:px-12 no-scrollbar pb-12 ${!isEdgeScrolling ? 'snap-x snap-mandatory' : ''}`}>
+      {/* Slider Grid - Das Padding ist jetzt im <section> Container */}
+      <div ref={scrollRef} onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className={`flex overflow-x-auto gap-8 no-scrollbar pb-12 ${!isEdgeScrolling ? 'snap-x snap-mandatory' : ''}`}>
         {filteredProjects.map((project) => (
           <div key={project.id} onClick={() => handleOpenProject(project)} className="min-w-[80vw] md:min-w-[45vw] snap-start group cursor-pointer">
             <div className="relative overflow-hidden aspect-[3/2] rounded-sm bg-magic-black/5 dark:bg-off-white/5">
@@ -164,7 +166,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
         ))}
       </div>
 
-      {/* DAS MODAL */}
+      {/* DAS MODAL - Bleibt Full-Screen */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div 
@@ -182,14 +184,13 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
               </button>
             </div>
 
-            {/* SCROLL-INHALT MIT DEINEM KOMPLEXEN LAYOUT */}
+            {/* SCROLL-INHALT */}
             <div className="flex-1 overflow-y-auto overscroll-contain">
               <div className="max-w-7xl mx-auto px-6 md:px-12 py-16 md:py-24">
                 <h1 className="font-archivo text-5xl md:text-[11vw] leading-[0.75] uppercase tracking-tighter mb-16 text-magic-black dark:text-off-white">
                   {selectedProject.title[lang]}
                 </h1>
                 
-                {/* Dein Zeitungs-Raster */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 mb-32">
                   <div className="lg:col-span-7">
                     <p className="font-editorial text-2xl md:text-5xl italic text-magic-black dark:text-off-white mb-12">
@@ -208,10 +209,8 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                   </div>
                 </div>
 
-                {/* Galerie mit wechselnden Spaltenbreiten */}
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16">
                   {selectedProject.gallery.slice(1).map((img, i) => {
-                    // Hier steckt deine Logik für die unterschiedlichen Bildgrößen
                     const spans = ["md:col-span-12", "md:col-span-7", "md:col-span-5", "md:col-span-6", "md:col-span-6", "md:col-span-8 md:col-start-2"];
                     const span = spans[i % spans.length];
                     return (
