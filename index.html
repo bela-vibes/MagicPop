@@ -118,6 +118,18 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
       }
+
+      /* Dark Mode Transition — nur aktiv während des Umschaltens */
+      html.transitioning *,
+      html.transitioning *::before,
+      html.transitioning *::after {
+        transition:
+          background-color 0.4s ease,
+          color 0.4s ease,
+          border-color 0.4s ease,
+          fill 0.4s ease,
+          stroke 0.4s ease !important;
+      }
       
       /* Transitions */
       @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
