@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import Header from './components/Header';
@@ -142,6 +141,7 @@ const App: React.FC = () => {
       }
     };
 
+    handleScroll(); // ← Fix: sofort beim Mount aufrufen, kein Flackern mehr
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -164,7 +164,6 @@ const App: React.FC = () => {
   }, []);
 
   const closeOverlay = () => {
-    // Remove hash from URL without reload and trigger state update
     window.history.pushState("", document.title, window.location.pathname + window.location.search);
     setCurrentHash('');
   };
