@@ -10,7 +10,7 @@ interface HeaderProps {
   isDarkMode: boolean;
   toggleDarkMode: () => void;
   onNavClick?: () => void;
-  // NEU: Hinzugefügt, um den Header zu verstecken, wenn ein Projekt offen ist
+  // Wichtig: Diese Prop steuert, ob der Header sich versteckt
   selectedProject: any; 
 }
 
@@ -36,6 +36,8 @@ const Header: React.FC<HeaderProps> = ({
 
   const handleNavItemClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
+    
+    // Schließt das Mobile-Menü und eventuell offene Modals
     if (onNavClick) onNavClick();
     setIsMenuOpen(false);
 
@@ -59,13 +61,13 @@ const Header: React.FC<HeaderProps> = ({
   return (
     <>
       <header 
-        className={`fixed top-0 left-0 w-full z-[700] transition-all duration-500 ease-in-out px-6 md:px-12 py-5 md:py-6 flex justify-between items-center ${bgColor} ${
-          /* Fix für Geisterschrift: Header unsichtbar machen wenn Projekt offen */
+        className={`fixed top-0 left-0 w-full z-[700] transition-all duration-500 ease-in-out py-5 md:py-6 flex justify-between items-center ${bgColor} ${
+          /* Wenn ein Projekt offen ist, verstecken wir diesen Header komplett */
           selectedProject ? 'opacity-0 pointer-events-none' : 'opacity-100'
         }`}
-        /* Fix für weiße Streifen im Querformat */
+        /* Fix für Landscape/Handy-Querformat (Safe Areas) */
         style={{ 
-          paddingLeft: 'calc(env(safe-area-inset-left) + 1.5rem)',
+          paddingLeft: 'calc(env(safe-area-inset-left) + 1.5rem)', 
           paddingRight: 'calc(env(safe-area-inset-right) + 1.5rem)' 
         }}
       >
