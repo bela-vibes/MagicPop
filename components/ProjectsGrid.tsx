@@ -276,7 +276,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
 
       {/* Project Detail Modal */}
       {selectedProject && (
-        <div className="fixed inset-0 z-[200] bg-off-white dark:bg-magic-dark overflow-hidden">
+        <div className="fixed inset-0 z-[200] bg-off-white dark:bg-magic-dark overflow-hidden" style={{ margin: 0 }}>
           
           {/* SCROLLABLE CONTENT - Animated separately */}
           <motion.div 
