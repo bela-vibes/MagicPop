@@ -1,5 +1,6 @@
 
 import React, { useEffect, useRef, useMemo } from 'react';
+import { motion } from 'motion/react';
 import { PROJECTS, TRANSLATIONS } from '../constants';
 import { Project, Language } from '../types';
 
@@ -150,7 +151,13 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
       className="py-24 md:py-32 bg-transparent relative overflow-hidden transition-colors duration-500"
     >
       {/* Header Info */}
-      <div className="px-6 md:px-12 mb-16 flex flex-col md:flex-row justify-between items-end gap-12 relative z-10">
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
+        className="px-6 md:px-12 mb-16 flex flex-col md:flex-row justify-between items-end gap-12 relative z-10"
+      >
         <div className="max-w-2xl">
           <h2 className="font-archivo text-6xl md:text-8xl uppercase tracking-tighter mb-6 text-magic-black dark:text-off-white">{t.title}</h2>
           <p className="font-medium text-magic-black/60 dark:text-off-white/60 text-lg leading-relaxed mb-10">{t.description}</p>
@@ -198,21 +205,28 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
             </svg>
           </button>
         </div>
-      </div>
+      </motion.div>
 
       {/* Horizontal Slider */}
-      <div 
+      <motion.div 
         ref={scrollRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
+        initial={{ opacity: 0, x: 100 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
         className={`flex overflow-x-auto gap-8 px-6 md:px-12 scroll-px-6 md:scroll-px-12 no-scrollbar pb-12 min-h-[400px] relative z-10 ${!isEdgeScrolling ? 'snap-x snap-mandatory' : ''}`}
       >
         {filteredProjects.map((project, index) => (
-          <div 
+          <motion.div 
             key={project.id}
             onClick={() => handleOpenProject(project)}
-            className="min-w-[80vw] md:min-w-[45vw] snap-start group cursor-pointer animate-in"
-            style={{ animationDelay: `${index * 50}ms` }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: index * 0.1, ease: [0.19, 1, 0.22, 1] }}
+            className="min-w-[80vw] md:min-w-[45vw] snap-start group cursor-pointer"
           >
             <div 
               className="relative overflow-hidden bg-magic-black/5 dark:bg-off-white/5 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.02] group-hover:shadow-[0_40px_80px_-20px_rgba(28,25,23,0.3)] dark:group-hover:shadow-[0_40px_80px_-20px_rgba(255,77,0,0.3)] rounded-sm"
@@ -251,25 +265,40 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                  </svg>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
 
       {/* Project Detail Modal */}
       {selectedProject && (
         <div className="fixed inset-0 z-[200] bg-off-white dark:bg-magic-dark overflow-hidden">
           
           {/* SCROLLABLE CONTENT - Animated separately */}
-          <div className="absolute inset-0 overflow-y-auto overscroll-contain z-[210] animate-in duration-500">
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="absolute inset-0 overflow-y-auto overscroll-contain z-[210]"
+          >
             <div className="max-w-7xl mx-auto px-6 md:px-12 py-32 md:py-48">
               {/* Editorial Header Section */}
               <div className="mb-32"> 
-                <h1 className="font-archivo text-5xl md:text-[11vw] leading-[0.75] uppercase tracking-tighter mb-16 text-magic-black dark:text-off-white pr-4 md:pr-12 break-normal hyphens-auto">
+                <motion.h1 
+                  initial={{ opacity: 0, y: 100 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
+                  className="font-archivo text-5xl md:text-[11vw] leading-[0.75] uppercase tracking-tighter mb-16 text-magic-black dark:text-off-white pr-4 md:pr-12 break-normal hyphens-auto"
+                >
                   {selectedProject.title[lang]}
-                </h1>
+                </motion.h1>
                 
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
-                  <div className="lg:col-span-7">
+                  <motion.div 
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
+                    className="lg:col-span-7"
+                  >
                     <p className="font-editorial text-2xl md:text-4xl lg:text-5xl leading-[1.1] text-magic-black dark:text-off-white italic whitespace-pre-line mb-12">
                       {selectedProject.description[lang].split('\n\n')[0]}
                     </p>
@@ -278,9 +307,14 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                     >
                       <img src={selectedProject.gallery[0] || selectedProject.image} alt="" draggable="false" className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700" />
                     </div>
-                  </div>
+                  </motion.div>
                   
-                  <div className="lg:col-span-5 lg:pt-24">
+                  <motion.div 
+                    initial={{ opacity: 0, y: 50 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, delay: 0.4, ease: [0.19, 1, 0.22, 1] }}
+                    className="lg:col-span-5 lg:pt-24"
+                  >
                     <div className="text-magic-black/40 dark:text-off-white/40 font-archivo text-[10px] uppercase tracking-widest mb-8 flex justify-between border-b border-magic-black/10 dark:border-off-white/10 pb-4">
                       <span>{selectedProject.category[lang]}</span>
                       <span>{selectedProject.year}</span>
@@ -295,7 +329,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                         <img src={selectedProject.gallery[1]} alt="" draggable="false" className="w-full h-auto" />
                       </div>
                     )}
-                  </div>
+                  </motion.div>
                 </div>
               </div>
               
@@ -334,20 +368,32 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                     <React.Fragment key={i}>
                       {/* Inject the 3rd paragraph after the 3rd image in the gallery (index 2 of slice(2)) */}
                       {i === 2 && selectedProject.description[lang].split('\n\n')[2] && (
-                        <div className="md:col-span-12 py-24 flex justify-center">
+                        <motion.div 
+                          initial={{ opacity: 0, y: 50 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.8 }}
+                          className="md:col-span-12 py-24 flex justify-center"
+                        >
                           <p className="font-editorial text-2xl md:text-3xl lg:text-4xl leading-tight text-magic-black/60 dark:text-off-white/60 italic max-w-3xl text-center">
                             {selectedProject.description[lang].split('\n\n')[2]}
                           </p>
-                        </div>
+                        </motion.div>
                       )}
-                      <div className={`${span} overflow-hidden rounded-sm group`}>
+                      <motion.div 
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className={`${span} overflow-hidden rounded-sm group`}
+                      >
                         <img 
                           src={img} 
                           alt="" 
                           draggable="false"
                           className="w-full h-auto transform group-hover:scale-105 transition-transform duration-1000" 
                         />
-                      </div>
+                      </motion.div>
                     </React.Fragment>
                   );
                 })}
@@ -357,9 +403,16 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
               {selectedProject.description[lang].split('\n\n').slice(3).length > 0 && (
                 <div className="mt-24 flex flex-col items-center text-center">
                   {selectedProject.description[lang].split('\n\n').slice(3).map((para, idx) => (
-                    <p key={idx} className="font-archivo text-xs md:text-sm uppercase tracking-widest text-magic-black/40 dark:text-off-white/40 mb-4">
+                    <motion.p 
+                      key={idx}
+                      initial={{ opacity: 0 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: idx * 0.1 }}
+                      className="font-archivo text-xs md:text-sm uppercase tracking-widest text-magic-black/40 dark:text-off-white/40 mb-4"
+                    >
                       {para}
-                    </p>
+                    </motion.p>
                   ))}
                 </div>
               )}
@@ -377,7 +430,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                 </button>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       )}
     </section>
