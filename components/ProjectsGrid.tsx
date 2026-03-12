@@ -163,26 +163,30 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
           <p className="font-medium text-magic-black/60 dark:text-off-white/60 text-lg leading-relaxed mb-10">{t.description}</p>
           
           {/* Filter Bar */}
-          <div className="flex flex-wrap gap-x-8 gap-y-4">
-            <button 
-              onClick={() => setActiveFilter(null)}
-              className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 ${!activeFilter ? 'text-magic-black' : 'text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white'}`}
-            >
-              {t.featured || (lang === 'de' ? 'Alle' : 'All')}
-              {!activeFilter && <span className="absolute bottom-0 left-0 w-full h-[3px] bg-magic-blue"></span>}
-            </button>
-            {categories.map((cat) => (
-              <button 
-                key={cat}
-                onClick={() => setActiveFilter(cat)}
-                className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 ${activeFilter === cat ? 'text-magic-black' : 'text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white'}`}
-              >
-                {cat}
-                {activeFilter === cat && <span className="absolute bottom-0 left-0 w-full h-[3px] bg-magic-blue"></span>}
-              </button>
-            ))}
-          </div>
-        </div>
+<div className="flex flex-wrap gap-x-8 gap-y-4">
+  {[null, ...categories].map((cat) => {
+    const isActive = activeFilter === cat;
+    return (
+      <button
+        key={cat || 'all'}
+        onClick={() => setActiveFilter(cat)}
+        className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 
+          ${isActive 
+            ? 'text-magic-black dark:text-off-white' 
+            : 'text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white'
+          }`}
+      >
+        {cat === null ? (t.featured || (lang === 'de' ? 'Alle' : 'All')) : cat}
+        
+        {/* Animated Underline */}
+        {isActive && (
+          <span className="absolute bottom-0 left-0 w-full h-[3px] bg-magic-blue"></span>
+        )}
+      </button>
+    );
+  })}
+</div>
+
         
         {/* Navigation Buttons */}
         <div className="hidden md:flex gap-4 mb-2">
