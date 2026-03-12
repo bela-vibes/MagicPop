@@ -284,6 +284,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
             className="absolute inset-0 overflow-y-auto overscroll-contain z-[210]"
+            style={{ paddingLeft: 'env(safe-area-inset-left)', paddingRight: 'env(safe-area-inset-right)' }}
           >
             <div className="max-w-7xl mx-auto px-6 md:px-12 py-32 md:py-48">
               {/* Editorial Header Section */}
