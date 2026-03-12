@@ -110,7 +110,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
   return (
     <section id="projects" className="py-24 md:py-32 bg-transparent relative overflow-hidden transition-colors duration-500">
       
-      {/* 1. FILTER HEADER - Mit Seitenabstand */}
+      {/* 1. FILTER HEADER - Fester Seitenabstand */}
       <div className="px-6 md:px-12 mb-16 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 50 }}
@@ -146,13 +146,16 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
         </motion.div>
       </div>
 
-      {/* 2. PROJEKT SLIDER - Padding hier sorgt für bündigen Start */}
+      {/* 2. PROJEKT SLIDER - Mit Spacer-Elementen statt Container-Padding */}
       <div 
         ref={scrollRef} 
         onMouseMove={handleMouseMove} 
         onMouseLeave={handleMouseLeave} 
-        className={`flex overflow-x-auto gap-8 no-scrollbar pb-12 px-6 md:px-12 ${!isEdgeScrolling ? 'snap-x snap-mandatory' : ''}`}
+        className={`flex overflow-x-auto gap-8 no-scrollbar pb-12 px-0 ${!isEdgeScrolling ? 'snap-x snap-mandatory' : ''}`}
       >
+        {/* LINKER SPACER (entspricht px-6 / md:px-12) */}
+        <div className="min-w-[24px] md:min-w-[48px] h-full shrink-0"></div>
+
         {filteredProjects.map((project) => (
           <div key={project.id} onClick={() => handleOpenProject(project)} className="min-w-[85vw] md:min-w-[45vw] snap-start group cursor-pointer">
             <div className="relative overflow-hidden aspect-[3/2] rounded-sm bg-magic-black/5 dark:bg-off-white/5">
@@ -164,11 +167,12 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
             </div>
           </div>
         ))}
-        {/* Spacer für rechtes Ende */}
-        <div className="min-w-[1px] pr-6 md:pr-12"></div>
+        
+        {/* RECHTER SPACER */}
+        <div className="min-w-[24px] md:min-w-[48px] h-full shrink-0"></div>
       </div>
 
-      {/* 3. MODAL */}
+      {/* 3. DAS MODAL */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div 
@@ -177,7 +181,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[9999] bg-off-white dark:bg-magic-dark overflow-hidden flex flex-col"
           >
-            {/* ORANGE BANNER - Füllt immer volle Breite */}
+            {/* ORANGE BANNER */}
             <div className="w-full h-20 md:h-24 bg-[#ff4d00] flex items-center justify-between px-6 md:px-12 z-[10000] shrink-0">
               <div className="flex items-baseline gap-2 text-white">
                 <span className="font-archivo font-bold text-xl md:text-2xl uppercase tracking-tighter">MAGIC POP</span>
@@ -190,14 +194,13 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
               </button>
             </div>
 
-            {/* MODAL CONTENT SCROLLBAR */}
+            {/* MODAL CONTENT */}
             <div className="flex-1 overflow-y-auto overscroll-contain bg-off-white dark:bg-magic-dark">
               <div className="max-w-7xl mx-auto px-6 md:px-12 py-12 md:py-24">
                 <h1 className="font-archivo text-5xl md:text-[11vw] leading-[0.85] md:leading-[0.75] uppercase tracking-tighter mb-12 md:mb-16 text-magic-black dark:text-off-white">
                   {selectedProject.title[lang]}
                 </h1>
                 
-                {/* Zeitungs-Raster */}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 mb-20 md:mb-32">
                   <div className="lg:col-span-7">
                     <p className="font-editorial text-2xl md:text-5xl italic text-magic-black dark:text-off-white mb-10 md:mb-12">
@@ -216,7 +219,6 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                   </div>
                 </div>
 
-                {/* Galerie-Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-16">
                   {selectedProject.gallery.slice(1).map((img, i) => {
                     const spans = ["md:col-span-12", "md:col-span-7", "md:col-span-5", "md:col-span-6", "md:col-span-6", "md:col-span-8 md:col-start-2"];
@@ -229,7 +231,6 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                   })}
                 </div>
 
-                {/* Back Button */}
                 <div className="mt-24 pb-32 flex flex-col items-center">
                   <button onClick={handleCloseProject} className="font-archivo uppercase tracking-widest text-xs text-magic-black/40 dark:text-off-white/40 hover:text-[#ff4d00] transition-colors flex items-center gap-2">
                     <span className="text-lg">←</span> {t.backToProjects}
