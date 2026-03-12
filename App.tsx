@@ -29,7 +29,6 @@ const App: React.FC = () => {
 
   const t = TRANSLATIONS[lang] || TRANSLATIONS.de;
 
-  // Detect Mobile
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
@@ -37,40 +36,33 @@ const App: React.FC = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Update html lang attribute
   useEffect(() => {
     document.documentElement.lang = lang;
   }, [lang]);
 
-  // Mouse & Touch Tracking
   useEffect(() => {
     const handleMove = (e: MouseEvent | TouchEvent) => {
       const x = 'touches' in e ? e.touches[0].clientX : e.clientX;
       const y = 'touches' in e ? e.touches[0].clientY : e.clientY;
       setMousePos({ x, y });
     };
-
     window.addEventListener('mousemove', handleMove);
     window.addEventListener('touchmove', handleMove, { passive: true });
-    
     if (mousePos.x === -500) {
       setMousePos({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
     }
-
     return () => {
       window.removeEventListener('mousemove', handleMove);
       window.removeEventListener('touchmove', handleMove);
     };
   }, [mousePos.x, isMobile]);
 
-  // Smooth Follow Animation for Blobs
   useEffect(() => {
     let time = 0;
     const animate = () => {
       time += 0.01;
       const driftX = Math.sin(time * 0.5) * 20;
       const driftY = Math.cos(time * 0.3) * 20;
-
       setBlob1Pos((prev) => ({
         x: prev.x + (mousePos.x + driftX - prev.x) * 0.06,
         y: prev.y + (mousePos.y + driftY - prev.y) * 0.06,
@@ -104,51 +96,27 @@ const App: React.FC = () => {
       const contact = document.getElementById('contact');
 
       if (contact && scrollPos >= contact.offsetTop) {
-        setHeaderTheme({ 
-          bg: 'bg-magic-pink', 
-          text: 'text-magic-black', 
-          shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,183,213,0.6)]',
-          blobColor: 'bg-magic-pink'
-        });
+        setHeaderTheme({ bg: 'bg-magic-pink', text: 'text-magic-black', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,183,213,0.6)]', blobColor: 'bg-magic-pink' });
       } else if (about && scrollPos >= about.offsetTop) {
-        setHeaderTheme({ 
-          bg: 'bg-magic-blue', 
-          text: 'text-white', 
-          shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(0,56,255,0.6)]',
-          blobColor: 'bg-magic-blue'
-        });
+        setHeaderTheme({ bg: 'bg-magic-blue', text: 'text-white', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(0,56,255,0.6)]', blobColor: 'bg-magic-blue' });
       } else if (services && scrollPos >= services.offsetTop) {
-        setHeaderTheme({ 
-          bg: 'bg-yellow-400', 
-          text: 'text-magic-black', 
-          shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.6)]',
-          blobColor: 'bg-yellow-400'
-        });
+        setHeaderTheme({ bg: 'bg-yellow-400', text: 'text-magic-black', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.6)]', blobColor: 'bg-yellow-400' });
       } else if (projects && scrollPos >= projects.offsetTop) {
-        setHeaderTheme({ 
-          bg: 'bg-magic-orange', 
-          text: 'text-white', 
-          shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,77,0,0.6)]',
-          blobColor: 'bg-magic-orange'
-        });
+        setHeaderTheme({ bg: 'bg-magic-orange', text: 'text-white', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,77,0,0.6)]', blobColor: 'bg-magic-orange' });
       } else {
-        setHeaderTheme({ 
-          bg: 'bg-transparent', 
-          text: 'text-magic-black dark:text-off-white', 
-          shadow: '',
-          blobColor: 'bg-magic-orange'
-        });
+        setHeaderTheme({ bg: 'bg-transparent', text: 'text-magic-black dark:text-off-white', shadow: '', blobColor: 'bg-magic-orange' });
       }
     };
 
-    // Sofort aufrufen für Desktop, nach kurzem Delay für Mobile —
-    // damit das DOM vollständig gerendert ist und offsetTop korrekt gemessen wird
-    handleScroll();
-    const timer = setTimeout(handleScroll, 100);
+    // requestAnimationFrame wartet bis das DOM vollständig gerendert und
+    // gemessen ist — zuverlässiger als setTimeout, auch auf Mobile Safari
+    const raf = requestAnimationFrame(() => {
+      handleScroll();
+    });
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
-      clearTimeout(timer);
+      cancelAnimationFrame(raf);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
@@ -160,7 +128,6 @@ const App: React.FC = () => {
         window.scrollTo(0, 0);
       }
     };
-
     window.addEventListener('hashchange', handleHashChange);
     window.addEventListener('popstate', handleHashChange);
     return () => {
@@ -174,7 +141,6 @@ const App: React.FC = () => {
     setCurrentHash('');
   };
 
-  // Dark Mode Toggle — setzt kurz eine CSS-Klasse für sanfte Transition aller Elemente
   const toggleDarkMode = () => {
     document.documentElement.classList.add('transitioning');
     setIsDarkMode(prev => !prev);
@@ -186,7 +152,6 @@ const App: React.FC = () => {
   return (
     <div className="relative overflow-hidden selection:bg-magic-orange selection:text-white bg-off-white dark:bg-magic-dark transition-colors duration-500 min-h-screen">
       
-      {/* Globales Duo-Blob System im Hintergrund - Safari Optimized */}
       <div className="pointer-events-none fixed inset-0 z-[5] overflow-visible">
         <div 
           className={`absolute w-[95vw] h-[95vw] md:w-[80vw] md:h-[80vw] lg:w-[60vw] lg:h-[60vw] max-w-[900px] max-h-[900px] rounded-full transition-colors duration-500 ease-in-out ${headerTheme.blobColor} ${isMobile ? 'opacity-100' : 'opacity-90'} dark:opacity-95`}
@@ -232,7 +197,6 @@ const App: React.FC = () => {
       
       <main className="relative z-[10]">
         <Hero lang={lang} />
-        
         <ProjectsGrid 
           lang={lang} 
           selectedProject={selectedProject} 
@@ -346,7 +310,6 @@ const App: React.FC = () => {
         </div>
       </footer>
 
-      {/* Legal Overlays */}
       {currentHash === '#impressum' && <Impressum onClose={closeOverlay} />}
       {currentHash === '#datenschutz' && <Datenschutz onClose={closeOverlay} />}
     </div>
