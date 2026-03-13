@@ -178,9 +178,9 @@ export const PROJECTS: Project[] = [
   },
     {
     id: 4,
-    slug: „suitcase“,
-    title: { de: „Suitcase", en: „Suitcase“ },
-    category: { de: „Props“, en: „Props" },
+    slug: "suitcase",
+    title: { de: "Suitcase", en: "Suitcase" },
+    category: { de: "Props", en: "Props" },
     description: {
       de: "Tauche ein in die unheimliche Welt des Musikvideos zu "Suitcase" von Ameli in the Woods./n/nInspiriert von der Ästhetik der späten 90er bis frühen 2000er Jahre, ist dieses Video eine Hommage an den einzigartigen Charme dieser Ära. Zum Leben erweckt von Amores Productions. Spezialeffekte wie Zombie-Make-up, mechanisch schlagende Herzen und projizierte Hintergründe wurden alle analog und ohne CGI hergestellt./n/nDie nostalgische Ästhetik wurde durch ein farbenfroh gestaltetes Beleuchtungskonzept und eine auffälliges Colorgrading noch verstärkt. Das Musikvideo ist eine Reise in die Vergangenheit und fängt die Essenz der MTV-Ära ein. Es wurde mit 17 talentierten Menschen und viel Kreativität umgesetzt./n/nBand: Ameli and the Woods & Produktion: Amores Production“,
       en: "Step into the eerie world of the music video for "Suitcase" by Ameli in the Woods./n/nInspired by the late 90s to early 2000s aesthetic, this video is a homage to that era’s unique charm. Brought to life by Amores Productions. Special effects like zombie makeup, mechanically beating hearts, and projected backgrounds were all crafted analog, without any CGI./n/nThe aesthetic nostalgia is further enhanced by a colourful designed lighting concept and eye-popping color grading. This music video is a journey back in time, capturing the essence of a bygone era with authenticity and artistic precision by 17 talented people./n/nBand: Ameli and the Woods & Production: Amores Production“
