@@ -155,25 +155,24 @@ export const PROJECTS: Project[] = [
     ],
     color: "bg-magic-pink"
   },
-  {
+    {
     id: 3,
     slug: "endspiel",
     title: { de: "ENDSPIEL", en: "ENDSPIEL" },
-    category: { de: "Set Design / Props", en: "Set Design / Props" },
+    category: { de: "Set Design", en: "Set Design" },
     description: {
-      de: "Für den Kurzfilm Endspiel erschuf MagicPOP eine dystopische Welt, die das Publikum tief in den Überlebenskampf des Protagonisten hineinzieht. Das visuelle Design spielt eine zentrale Rolle dabei, die Atmosphäre von Isolation, Verfall und der Suche nach Hoffnung greifbar zu machen.\n\nVon der verlassenen Stadt, in der leere Gebäude und überwucherte Straßen den wirtschaftlichen Niedergang widerspiegeln, bis hin zum dunklen Wald, der zugleich Zuflucht und Bedrohung darstellt – jedes Detail ist so gestaltet, dass die Isolation und Spannung spürbar werden.\n\nBesonderes Augenmerk wurde auf das Szenenbild gelegt: Im verlassenen Haus verschmelzen Staub, Chaos und persönliche Relikte zu einem beklemmenden Setting, das auf längst vergangene Leben hindeutet. Jedes zerbrochene Fenster und jede verlassene Ecke vertieft die unheimliche Atmosphäre.\n\ndirected by Dre Amiro & Anna Mochow",
-      en: "For the short film Endspiel, MagicPOP created a dystopian world that draws the audience deep into the protagonist's struggle for survival. The visual design plays a central role in making the atmosphere of isolation, decay, and the search for hope tangible.\n\nFrom the abandoned city, where empty buildings and overgrown streets reflect the economic downfall, to the dark forest, which serves as both a refuge and a threat—every detail is crafted to make the isolation and tension noticeable.\n\nSpecial attention was given to interior design: In the abandoned house, dust, chaos, and personal relics merge into an oppressive setting that hints at lives long gone. Every broken window and every deserted corner deepens the eerie atmosphere.\n\ndirected by Dre Amiro & Anna Mochow"
+      de: "Für den Kurzfilm Endspiel erschuf MagicPOP eine dystopische Welt, die das Publikum tief in den Überlebenskampf des Protagonisten hineinzieht.\n\nDas visuelle Design spielt eine zentrale Rolle dabei, die Atmosphäre von Isolation, Verfall und der Suche nach Hoffnung greifbar zu machen. Von der verlassenen Stadt, in der leere Gebäude und überwucherte Straßen den wirtschaftlichen Niedergang widerspiegeln, bis hin zum dunklen Wald, der zugleich Zuflucht und Bedrohung darstellt – jedes Detail ist so gestaltet, dass die Isolation und Spannung spürbar werden.\n\nBesonderes Augenmerk wurde auf das Szenenbild gelegt: Im verlassenen Haus verschmelzen Staub, Chaos und persönliche Relikte zu einem beklemmenden Setting, das auf längst vergangene Leben hindeutet. Jedes zerbrochene Fenster und jede verlassene Ecke vertieft die unheimliche Atmosphäre.\n\ndirected by Dre Amiro & Anna Mochow",
+      en: "For the short film Endspiel, MagicPOP created a dystopian world that draws the audience deep into the protagonist's struggle for survival.\n\nThe visual design plays a central role in making the atmosphere of isolation, decay, and the search for hope tangible. From the abandoned city, where empty buildings and overgrown streets reflect the economic downfall, to the dark forest, which serves as both a refuge and a threat—every detail is crafted to make the isolation and tension noticeable.\n\nSpecial attention was given to interior design: In the abandoned house, dust, chaos, and personal relics merge into an oppressive setting that hints at lives long gone. Every broken window and every deserted corner deepens the eerie atmosphere.\n\ndirected by Dre Amiro & Anna Mochow"
     },
     year: "2024",
-    image: "https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&q=80&w=1200",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390417/2024-magic-pop-setdesign-endspiel-hero_h41buh.jpg",
     gallery: [
-      "https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1505833542282-35adbc6fd0a0?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1440404653325-ab127d49abc1?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=1200",
-      "https://images.unsplash.com/photo-1501139083538-0139583c060f?auto=format&fit=crop&q=80&w=1000&h=1000",
-      "https://images.unsplash.com/photo-1516339901600-2e1a62d0c347?auto=format&fit=crop&q=80&w=1200"
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390422/2024-magic-pop-setdesign-endspiel-interior-3_gauhkz.png",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390422/2024-magic-pop-setdesign-endspiel-art-direction_txo5vw.png",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390419/2024-magic-pop-setdesign-endspiel-outdoor_lzri8u.png",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390421/2024-magic-pop-setdesign-endspiel-interior-2_iv6y1h.png",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390421/2024-magic-pop-setdesign-endspiel-interior-2_iv6y1h.png",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390421/2024-magic-pop-setdesign-endspiel-interior_o0htej.png",
     ],
     color: "bg-zinc-900"
   },
