@@ -272,11 +272,11 @@ const App: React.FC = () => {
               <div>
                 <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block mb-4">{t.contact.emailLabel}</span>
                 <a href="mailto:hello@magicpop.berlin" 
-   className="font-archivo text-2xl md:text-5xl uppercase tracking-tighter 
+   className="font-archivo text-2xl md:text-3xl lg:text-5xl uppercase tracking-tighter 
               text-magic-black dark:text-off-white hover:text-magic-orange 
               transition-colors duration-300 underline underline-offset-8 
               decoration-transparent hover:decoration-magic-orange break-words">
-  hello@<wbr />magicpop.berlin
+  hello@magicpop.berlin
 </a>
               </div>
               <div>
