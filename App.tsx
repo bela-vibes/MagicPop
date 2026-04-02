@@ -275,9 +275,8 @@ const App: React.FC = () => {
    className="font-archivo text-2xl md:text-5xl uppercase tracking-tighter 
               text-magic-black dark:text-off-white hover:text-magic-orange 
               transition-colors duration-300 underline underline-offset-8 
-              decoration-transparent hover:decoration-magic-orange break-words"
-   style={{ wordBreak: 'break-all', overflowWrap: 'anywhere' }}>
-  hello@magicpop.<span style={{ whiteSpace: 'nowrap' }}>berlin</span>
+              decoration-transparent hover:decoration-magic-orange break-words">
+  hello@<wbr />magicpop.berlin
 </a>
               </div>
               <div>
