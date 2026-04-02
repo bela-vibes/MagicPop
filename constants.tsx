@@ -6,7 +6,7 @@ export const TRANSLATIONS = {
     nav: {
       whatWeDo: "Was wir tun",
       projects: "Projekte",
-      studio: "Studio",
+      studio: "About",
       contact: "Kontakt",
       inquire: "Anfragen"
     },
@@ -37,7 +37,7 @@ export const TRANSLATIONS = {
       backToProjects: "Zurück zur Übersicht"
     },
     studio: {
-      title: "Das Studio",
+      title: "About Us",
       subtitle: "Ein Spielplatz für neugierige Köpfe.",
       p1: "Dennis und Bela, das Duo hinter Magic Pop, bringen eine einzigartige Mischung aus Kreativität und Fachwissen ein, um Creative Direction und visuelle Umsetzung zu vereinen.",
       p2: "Mit einer gemeinsamen Leidenschaft für Storytelling und einem scharfen Auge für Details haben sie unzählige Konzepte in beeindruckende visuelle Erlebnisse verwandelt. Ihre kombinierten Talente decken ein breites Spektrum an Dienstleistungen ab, darunter Art Direction, Set Design, Interior Creation, Requisitenbau sowie Foto- und Videoproduktion.",
@@ -57,7 +57,7 @@ export const TRANSLATIONS = {
     nav: {
       whatWeDo: "what we do",
       projects: "projects",
-      studio: "studio",
+      studio: "about",
       contact: "contact",
       inquire: "inquire"
     },
@@ -88,7 +88,7 @@ export const TRANSLATIONS = {
       backToProjects: "Back to projects"
     },
     studio: {
-      title: "The Studio",
+      title: "About Us",
       subtitle: "A playground for curious minds.",
       p1: "Dennis and Bela, the duo behind Magic Pop, bring a unique blend of creativity and expertise to combine creative direction and visual execution.",
       p2: "With a shared passion for storytelling and a keen eye for detail, they have transformed countless concepts into stunning visual experiences. Their combined talents span a wide range of services, including art direction, set design, interior creation, prop fabrication, and photo and video production.",
