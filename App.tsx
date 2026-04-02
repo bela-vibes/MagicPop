@@ -271,7 +271,7 @@ const App: React.FC = () => {
             >
               <div>
                 <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block mb-4">{t.contact.emailLabel}</span>
-                <a href="mailto:hello@magicpop.berlin" className="font-archivo text-xl sm:text-2xl md:text-3xl lg:text-5xl uppercase tracking-tighter text-magic-black dark:text-off-white hover:text-magic-orange transition-colors duration-300 underline underline-offset-8 decoration-transparent hover:decoration-magic-orange hyphens-none whitespace-nowrap">hello@magicpop.berlin</a>
+                <a href="mailto:hello@magicpop.berlin" className="font-archivo text-xl sm:text-3xl md:text-4xl lg:text-5xl uppercase tracking-tighter text-magic-black dark:text-off-white hover:text-magic-orange transition-colors duration-300 underline underline-offset-8 decoration-transparent hover:decoration-magic-orange">hello@<wbr />magicpop.berlin</a>
               </div>
               <div>
                 <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block mb-4">{t.contact.followLabel}</span>
