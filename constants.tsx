@@ -203,14 +203,15 @@ export const PROJECTS: Project[] = [
   image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379704/LOQI_Rolex_Shanghai_1_gfmomc.jpg",
   gallery: [
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379798/250807_LOQI_TravelRetail_Banner_dvuadv.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775380120/Weekender_together_wloaor.jpg",
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379704/LOQI_Rolex_Shanghai_1_gfmomc.jpg",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775380120/Weekender_together_wloaor.jpg",
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379766/250807_LOQI_TravelRetail_Katjes2_rohnmt.jpg",
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379932/LOQI-Coffee-Bag-Gif_hpcg8r.gif",
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379984/LOQI_BKR_10_znnouz.jpg",
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379767/250807_LOQI_TravelRetail_Osborne_gebv2b.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379685/LOQI_Rolex_Shanghai_3_mpydts.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775380197/FuturePresent_4x5_new_kexboa.jpg"
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775380197/FuturePresent_4x5_new_kexboa.jpg",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379685/LOQI_Rolex_Shanghai_3_mpydts.jpg"
+    
   ],
   color: "bg-magic-pink"
 },
