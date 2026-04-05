@@ -222,13 +222,28 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
               className="relative overflow-hidden bg-magic-black/5 dark:bg-off-white/5 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.02] group-hover:shadow-[0_40px_80px_-20px_rgba(28,25,23,0.3)] dark:group-hover:shadow-[0_40px_80px_-20px_rgba(255,77,0,0.3)] rounded-sm"
               style={{ aspectRatio: '3/2' }}
             >
-              <div className={`absolute inset-0 z-10 transition-transform duration-700 ease-[cubic-bezier(0.83,0,0.17,1)] translate-y-full group-hover:translate-y-0 ${project.color} opacity-90`}></div>
-              <img
-                src={project.image}
-                alt={project.title[lang]}
-                draggable="false"
-                className="w-full h-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-110"
-              />
+              <div className="relative w-full aspect-video rounded-sm overflow-hidden bg-black">
+  {selectedProject.slug === 'suitcase' ? (
+    <video
+      controls
+      playsInline
+      className="w-full h-full object-cover"
+      // Das ist das "Poster" (dein Interface-Bild)
+      poster="https://res.cloudinary.com/dpe3jvf3e/image/upload/v1775421343/Bildschirmfoto_2026-04-05_um_22.35.29_l9wxuf.png"
+    >
+      <source 
+        src="https://res.cloudinary.com/dpe3jvf3e/video/upload/v1741212883/Suitcase_R_m88p3p.mp4" 
+        type="video/mp4" 
+      />
+      Ihr Browser unterstützt dieses Videoformat nicht.
+    </video>
+  ) : (
+    // Für alle anderen Projekte bleibt alles wie es war (Sicherheitsnetz)
+    <img 
+      src={selectedProject.image} 
+      alt={selectedProject.title[lang]} 
+      className="w-full h-full object-cover"
+    />
               <div className="absolute inset-0 z-20 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-8 text-white text-center">
                 <span className="font-archivo text-xs uppercase tracking-[0.3em] mb-4 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] translate-y-8 group-hover:translate-y-0 group-hover:scale-125">
                   {project.category[lang]}
