@@ -37,69 +37,61 @@
       }
     </script>
     <style>
-      /* LOCAL FONTS (GDPR COMPLIANT) */
+      /* LOCAL FONTS (GDPR COMPLIANT) - ONLY WOFF2 */
       @font-face {
         font-family: 'Archivo Black';
         font-style: normal;
         font-weight: 400;
         font-display: swap;
-        src: url('/fonts/archivo-black.woff2') format('woff2'),
-             url('/fonts/archivo-black.woff') format('woff');
+        src: url('/fonts/archivo-black.woff2') format('woff2');
       }
       @font-face {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 400;
         font-display: swap;
-        src: url('/fonts/inter-regular.woff2') format('woff2'),
-             url('/fonts/inter-regular.woff') format('woff');
+        src: url('/fonts/inter-regular.woff2') format('woff2');
       }
       @font-face {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 500;
         font-display: swap;
-        src: url('/fonts/inter-500.woff2') format('woff2'),
-             url('/fonts/inter-500.woff') format('woff');
+        src: url('/fonts/inter-500.woff2') format('woff2');
       }
       @font-face {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 700;
         font-display: swap;
-        src: url('/fonts/inter-700.woff2') format('woff2'),
-             url('/fonts/inter-700.woff') format('woff');
+        src: url('/fonts/inter-700.woff2') format('woff2');
       }
       @font-face {
         font-family: 'Inter';
         font-style: normal;
         font-weight: 900;
         font-display: swap;
-        src: url('/fonts/inter-900.woff2') format('woff2'),
-             url('/fonts/inter-900.woff') format('woff');
+        src: url('/fonts/inter-900.woff2') format('woff2');
       }
       @font-face {
         font-family: 'Instrument Serif';
         font-style: normal;
         font-weight: 400;
         font-display: swap;
-        src: url('/fonts/instrument-serif-regular.woff2') format('woff2'),
-             url('/fonts/instrument-serif-regular.woff') format('woff');
+        src: url('/fonts/instrument-serif-regular.woff2') format('woff2');
       }
       @font-face {
         font-family: 'Instrument Serif';
         font-style: italic;
         font-weight: 400;
         font-display: swap;
-        src: url('/fonts/instrument-serif-italic.woff2') format('woff2'),
-             url('/fonts/instrument-serif-italic.woff') format('woff');
+        src: url('/fonts/instrument-serif-italic.woff2') format('woff2');
       }
 
       /* RESET */
       * {
         -webkit-tap-highlight-color: transparent !important;
         outline: none !important;
-        /* KEIN transition: all hier — das war die Ursache des Logo-Flackerns */
       }
 
       a, button, input, textarea, select {
@@ -115,7 +107,7 @@
         -moz-osx-font-smoothing: grayscale;
       }
 
-      /* Dark Mode Transition — nur aktiv während des Umschaltens (500ms) */
+      /* Dark Mode Transition */
       html.transitioning *,
       html.transitioning *::before,
       html.transitioning *::after {
