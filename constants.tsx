@@ -190,19 +190,27 @@ export const PROJECTS: Project[] = [
     gallery: ["https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=1200"],
     color: "bg-yellow-400"
   },
-  {
+ {
     id: 5,
-    slug: "soundwave",
-    title: { de: "Klangwelle", en: "Soundwave" },
-    category: { de: "Audio Visuell", en: "Audio Visual" },
+    slug: „loqi“,
+    title: { de: „LOQI“, en: „LOQI“ },
+    category: { de: "Fotoproduktion", en: "Photo Production" },
     description: {
-      de: "Experimentelle Visualisierung von Schallwellen.",
-      en: "Experimental visualization of acoustic resonance."
+     de: "Objects, composed.\n\nFür LOQI entwickeln wir Bildwelten, die sich nicht aufdrängen und genau dadurch wirken. Statt Produkte zu inszenieren, schaffen wir Situationen, in denen sie selbstverständlich erscheinen und eine eigene Präsenz entfalten.\n\nAm Anfang steht für uns nicht das Bild, sondern das Gefühl. Materialität, Farbe und Kontext greifen ineinander und formen Kompositionen, die ruhig sind, aber nie statisch. Reduktion verstehen wir nicht als Verzicht, sondern als Entscheidung für Klarheit.\n\nDie Produktionen für LOQI entstehen vollständig inhouse. Von der Konzeption über Set Design und Props bis zur fotografischen Umsetzung. Als Duo arbeiten wir nah am Objekt, mit einem präzisen Blick für Balance und Details.\n\nSo entstehen Serien, die konsistent bleiben und gleichzeitig Raum für Eigenständigkeit lassen. Jede Tasche wird Teil eines größeren Ganzen und bleibt dennoch ein Objekt für sich.",
+en: "Objects, composed.\n\nFor LOQI, we create visual worlds that do not demand attention — and therefore hold it. Rather than staging products, we build situations in which they appear naturally and develop their own presence.\n\nOur process begins with a feeling, not an image. Materiality, color, and context interact to form compositions that are calm, yet never static. For us, reduction is not about less, but about clarity.\n\nAll productions for LOQI are realized fully inhouse, from concept to set design and props through to photography. Working as a duo allows for a close, precise approach, guided by a shared sensitivity for balance and detail.\n\nThe result is a body of work that remains cohesive while allowing for individuality. Each bag becomes part of a larger whole, yet stands on its own."
     },
-    year: "2023",
-    image: "https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&q=80&w=1200",
-    gallery: ["https://images.unsplash.com/photo-1511379938547-c1f69419868d?auto=format&fit=crop&q=80&w=1200"],
-    color: "bg-purple-500"
+    year: "2025“,
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296846/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_uiplwp.jpg",
+    gallery: [
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296846/HANA_-_Exterior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_dtaliv.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773297077/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-13_vsmruo.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296846/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_uiplwp.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296852/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-19_mikqon.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296849/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-3_mrjnhd.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296849/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-10_zjrcsr.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296848/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-3_zrias3.jpg"
+    ],
+    color: "bg-magic-pink"
   },
   {
     id: 6,
