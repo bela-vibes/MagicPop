@@ -190,7 +190,7 @@ export const PROJECTS: Project[] = [
     gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775420863/Bildschirmfoto_2026-04-05_um_22.26.13_kgvhnw.png",
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775420842/Bildschirmfoto_2026-04-05_um_22.26.41_ay0x3c.png",
               "https://res.cloudinary.com/dpe3jvf3e/video/upload/v1773394785/2023-magic-pop-production-set-design-props-suitcase-ameli-in-the-woods-amores-production_ike2mz.mp4"],
-     videoPosters: {"2023-magic-pop-production-set-design-props-suitcase-ameli-in-the-woods-amores-production_ike2mz.mp4": "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775421343/Bildschirmfoto_2026-04-05_um_22.35.29_l9wxuf.png"}
+     videoPosters: {"2023-magic-pop-production-set-design-props-suitcase-ameli-in-the-woods-amores-production_ike2mz.mp4": "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775421343/Bildschirmfoto_2026-04-05_um_22.35.29_l9wxuf.png"}}
     color: "bg-yellow-400"
   },
  {
