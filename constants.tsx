@@ -186,8 +186,10 @@ export const PROJECTS: Project[] = [
       en: "Step into the eerie world of the music video for \"Suitcase\" by Ameli in the Woods.\n\nInspired by the late 90s to early 2000s aesthetic, this video is a homage to that era’s unique charm. Brought to life by Amores Productions. Special effects like zombie makeup, mechanically beating hearts, and projected backgrounds were all crafted analog, without any CGI.\n\nThe aesthetic nostalgia is further enhanced by a colourful designed lighting concept and eye-popping color grading. This music video is a journey back in time, capturing the essence of a bygone era with authenticity and artistic precision by 17 talented people.\n\nBand: Ameli and the Woods & Production: Amores Production"
     },
     year: "2023",
-    image: "https://res.cloudinary.com/dpe3jvf3e/video/upload/v1773394785/2023-magic-pop-production-set-design-props-suitcase-ameli-in-the-woods-amores-production_ike2mz.mp4",
-    gallery: ["https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&q=80&w=1200"],
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775420840/Bildschirmfoto_2026-04-05_um_22.26.25_oxn9ne.png",
+    gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775420863/Bildschirmfoto_2026-04-05_um_22.26.13_kgvhnw.png",
+              "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775420842/Bildschirmfoto_2026-04-05_um_22.26.41_ay0x3c.png",
+              "https://res.cloudinary.com/dpe3jvf3e/video/upload/v1773394785/2023-magic-pop-production-set-design-props-suitcase-ameli-in-the-woods-amores-production_ike2mz.mp4"],
     color: "bg-yellow-400"
   },
  {
