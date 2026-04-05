@@ -327,16 +327,6 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                             muted
                             className="w-full h-auto rounded-sm"
                           />
-                          <div className="absolute top-4 right-4 opacity-0 group-hover/video:opacity-100 transition-opacity">
-                            <a 
-                              href={selectedProject.videoPosters?.[selectedProject.gallery[0]] || selectedProject.image} 
-                              target="_blank" 
-                              rel="noopener noreferrer"
-                              className="bg-white/90 backdrop-blur-sm text-magic-black px-4 py-2 text-[10px] uppercase tracking-widest font-archivo rounded-full hover:bg-magic-orange hover:text-white transition-all"
-                            >
-                              {lang === 'de' ? 'Poster ansehen' : 'View Poster'}
-                            </a>
-                          </div>
                         </div>
                       ) : (
                         <img src={selectedProject.gallery[0] || selectedProject.image} alt="" draggable="false" className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700" />
@@ -371,16 +361,6 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                               muted
                               className="w-full h-auto rounded-sm"
                             />
-                            <div className="absolute top-4 right-4 opacity-0 group-hover/video:opacity-100 transition-opacity">
-                              <a 
-                                href={selectedProject.videoPosters?.[selectedProject.gallery[1]] || selectedProject.image} 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                className="bg-white/90 backdrop-blur-sm text-magic-black px-4 py-2 text-[10px] uppercase tracking-widest font-archivo rounded-full hover:bg-magic-orange hover:text-white transition-all"
-                              >
-                                {lang === 'de' ? 'Poster ansehen' : 'View Poster'}
-                              </a>
-                            </div>
                           </div>
                         ) : (
                           <img src={selectedProject.gallery[1]} alt="" draggable="false" className="w-full h-auto" />
@@ -451,16 +431,6 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                               muted
                               className="w-full h-auto rounded-sm"
                             />
-                            <div className="absolute top-4 right-4 opacity-0 group-hover/video:opacity-100 transition-opacity">
-                              <a 
-                                href={poster} 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                className="bg-white/90 backdrop-blur-sm text-magic-black px-4 py-2 text-[10px] uppercase tracking-widest font-archivo rounded-full hover:bg-magic-orange hover:text-white transition-all"
-                              >
-                                {lang === 'de' ? 'Poster ansehen' : 'View Poster'}
-                              </a>
-                            </div>
                           </div>
                         ) : (
                           <img 
