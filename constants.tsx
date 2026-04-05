@@ -142,7 +142,7 @@ export const PROJECTS: Project[] = [
       de: "Wir hatten das Vergnügen, mit dem Team hinter HANA Berlin zusammenzuarbeiten, um ihrem Interieur neues Leben einzuhauchen und es an ihr innovatives Restaurantkonzept anzupassen. \n\nInspiriert vom bestehenden Stil des Kunden, der in seinen anderen Locations deutlich wird, haben wir sichergestellt, dass sich das HANA wie eine natürliche Erweiterung seiner Markenidentität anfühlt. Durch die sorgfältige Balance zwischen moderner Ästhetik und einer warmen, einladenden Atmosphäre haben wir einen Raum geschaffen, der die Einzigartigkeit ihrer Speisekarte feiert.\n\nUnser Ansatz konzentrierte sich darauf, das Wesen des Raums zu bewahren und gleichzeitig frische Texturen, Farben und Dekorelemente einzuführen. Wir haben darauf geachtet, die Konsistenz mit dem unverwechselbaren Stil von BellBoy und The Butler zu gewährleisten, damit sich das HANA nahtlos in die Markenfamilie des Kunden einfügt. Jedes Detail, von maßgefertigten Möbeln bis hin zu kuratierten Akzenten, wurde ausgewählt, um das Restauranterlebnis zu verbessern und eine Umgebung zu schaffen, die sich sowohl neu als auch vertraut anfühlt.\n\nFotografiert von Steffen Sinzinger",
       en: "We had the pleasure of collaborating with the team behind HANA Berlin to breathe new life into their interior, aligning it with their innovative restaurant concept.\n\nDrawing inspiration from the client’s existing style, which is evident in their other venues, we ensured that HANA would feel like a natural extension of their brand identity. By carefully balancing modern aesthetics with a warm, inviting atmosphere, we crafted a space that celebrates the uniqueness of their menu.\n\nOur approach centered on preserving the essence of the space while introducing fresh textures, colors, and decor elements. We paid attention to ensure consistency with the distinctive style of BellBoy and The Butler, so that HANA feels cohesive within the client’s family of venues. Every detail, from bespoke furniture to curated accents, was selected to enhance the dining experience and create an environment that feels both new and familiar.\n\nPhotographed by Steffen Sinzinger"
     },
-    year: "2023",
+    year: "2024",
     image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296846/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_uiplwp.jpg",
     gallery: [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296846/HANA_-_Exterior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_dtaliv.jpg",
@@ -190,6 +190,7 @@ export const PROJECTS: Project[] = [
     gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775420863/Bildschirmfoto_2026-04-05_um_22.26.13_kgvhnw.png",
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775420842/Bildschirmfoto_2026-04-05_um_22.26.41_ay0x3c.png",
               "https://res.cloudinary.com/dpe3jvf3e/video/upload/v1773394785/2023-magic-pop-production-set-design-props-suitcase-ameli-in-the-woods-amores-production_ike2mz.mp4"],
+     videoPosters: {"2023-magic-pop-production-set-design-props-suitcase-ameli-in-the-woods-amores-production_ike2mz.mp4": "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775421343/Bildschirmfoto_2026-04-05_um_22.35.29_l9wxuf.png"}
     color: "bg-yellow-400"
   },
  {
