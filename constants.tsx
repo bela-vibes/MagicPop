@@ -200,15 +200,17 @@ export const PROJECTS: Project[] = [
     en: "Objects, composed.\n\nFor LOQI, we create visual worlds that do not demand attention — and therefore hold it. Rather than staging products, we build situations in which they appear naturally and develop their own presence. Our process begins with a feeling, not an image. Materiality, color, and context interact to form compositions that are calm, yet never static. For us, reduction is not about less, but about clarity.\n\nAll productions for LOQI are realized fully inhouse, from concept to set design and props through to photography. Working as a duo allows for a close, precise approach, guided by a shared sensitivity for balance and detail.\n\nThe result is a body of work that remains cohesive while allowing for individuality. Each bag becomes part of a larger whole, yet stands on its own."
   },
   year: "2025", // Gefixt: Gerade Anführungszeichen
-  image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296846/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_uiplwp.jpg",
+  image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379704/LOQI_Rolex_Shanghai_1_gfmomc.jpg",
   gallery: [
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296846/HANA_-_Exterior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_dtaliv.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773297077/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-13_vsmruo.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296846/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_uiplwp.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296852/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-19_mikqon.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296849/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-3_mrjnhd.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296849/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-10_zjrcsr.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296848/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-3_zrias3.jpg"
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379798/250807_LOQI_TravelRetail_Banner_dvuadv.jpg",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775380120/Weekender_together_wloaor.jpg",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379704/LOQI_Rolex_Shanghai_1_gfmomc.jpg",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379766/250807_LOQI_TravelRetail_Katjes2_rohnmt.jpg",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379932/LOQI-Coffee-Bag-Gif_hpcg8r.gif",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379984/LOQI_BKR_10_znnouz.jpg",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379767/250807_LOQI_TravelRetail_Osborne_gebv2b.jpg"
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379685/LOQI_Rolex_Shanghai_3_mpydts.jpg"
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775380197/FuturePresent_4x5_new_kexboa.jpg"
   ],
   color: "bg-magic-pink"
 },
