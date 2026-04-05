@@ -17,15 +17,34 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
   const animationFrameRef = useRef<number | null>(null);
   const t = TRANSLATIONS[lang].projects;
 
+  // Hier fügen wir dein Poster dynamisch zu den Projekten hinzu
+  const allProjects = useMemo(() => {
+    const posterProject: Project = {
+      id: 'poster-2026',
+      slug: 'event-poster',
+      title: { de: 'Event Poster', en: 'Event Poster' },
+      category: { de: 'Design', en: 'Design' },
+      image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775421343/Bildschirmfoto_2026-04-05_um_22.35.29_l9wxuf.png",
+      description: { 
+        de: 'Ein exklusives Poster-Design.\n\nErstellt für das aktuelle Projekt 2026.', 
+        en: 'An exclusive poster design.\n\nCreated for the current 2026 project.' 
+      },
+      year: '2026',
+      color: 'bg-magic-blue', // Oder eine andere Farbe aus deinem Theme
+      gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775421343/Bildschirmfoto_2026-04-05_um_22.35.29_l9wxuf.png"]
+    };
+    return [posterProject, ...PROJECTS];
+  }, []);
+
   const categories = useMemo(() => {
-    const cats = PROJECTS.map(p => p.category[lang]);
+    const cats = allProjects.map(p => p.category[lang]);
     return Array.from(new Set(cats));
-  }, [lang]);
+  }, [lang, allProjects]);
 
   const filteredProjects = useMemo(() => {
-    if (!activeFilter) return PROJECTS;
-    return PROJECTS.filter(p => p.category[lang] === activeFilter);
-  }, [activeFilter, lang]);
+    if (!activeFilter) return allProjects;
+    return allProjects.filter(p => p.category[lang] === activeFilter);
+  }, [activeFilter, lang, allProjects]);
 
   // Edge Scrolling Logic
   useEffect(() => {
@@ -84,7 +103,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '');
-      const project = PROJECTS.find(p => p.slug === hash);
+      const project = allProjects.find(p => p.slug === hash);
       if (project) {
         if (!selectedProject || selectedProject.slug !== hash) {
           setSelectedProject(project);
@@ -100,7 +119,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
       window.removeEventListener('hashchange', handleHashChange);
       window.removeEventListener('popstate', handleHashChange);
     };
-  }, [setSelectedProject, selectedProject]);
+  }, [setSelectedProject, selectedProject, allProjects]);
 
   const handleOpenProject = (project: Project) => {
     window.location.hash = project.slug;
@@ -257,7 +276,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
         ))}
       </motion.div>
 
-      {/* Project Detail Modal — mit cinematischer Slide-up + Fade Transition */}
+      {/* Project Detail Modal */}
       <AnimatePresence mode="wait">
         {selectedProject && (
           <motion.div
@@ -268,7 +287,6 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
             exit={{ opacity: 0, y: '2vh' }}
             transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
           >
-            {/* SCROLLABLE CONTENT */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -276,8 +294,6 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
               className="absolute inset-0 overflow-y-auto overscroll-contain z-[210]"
             >
               <div className="max-w-7xl mx-auto px-6 md:px-12 py-32 md:py-48">
-
-                {/* Editorial Header Section */}
                 <div className="mb-32">
                   <motion.h1
                     initial={{ opacity: 0, y: 60 }}
@@ -325,71 +341,27 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                   </div>
                 </div>
 
-                {/* Interwoven Gallery Grid */}
+                {/* Gallery Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-start">
                   {selectedProject.gallery.slice(2).map((img, i) => {
-                    const spans = [
-                      "md:col-span-12",
-                      "md:col-span-7",
-                      "md:col-span-5",
-                      "md:col-span-6",
-                      "md:col-span-6",
-                      "md:col-span-8 md:col-start-2",
-                      "md:col-span-12"
-                    ];
+                    const spans = ["md:col-span-12", "md:col-span-7", "md:col-span-5", "md:col-span-6", "md:col-span-6", "md:col-span-8 md:col-start-2", "md:col-span-12"];
                     const span = spans[i % spans.length];
-
                     return (
                       <React.Fragment key={i}>
                         {i === 2 && selectedProject.description[lang].split('\n\n')[2] && (
-                          <motion.div
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.8 }}
-                            className="md:col-span-12 py-24 flex justify-center"
-                          >
+                          <motion.div initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="md:col-span-12 py-24 flex justify-center">
                             <p className="font-editorial text-2xl md:text-3xl lg:text-4xl leading-tight text-magic-black/60 dark:text-off-white/60 italic max-w-3xl text-center">
                               {selectedProject.description[lang].split('\n\n')[2]}
                             </p>
                           </motion.div>
                         )}
-                        <motion.div
-                          initial={{ opacity: 0, scale: 0.95 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          viewport={{ once: true }}
-                          transition={{ duration: 0.8 }}
-                          className={`${span} overflow-hidden rounded-sm group`}
-                        >
-                          <img
-                            src={img}
-                            alt=""
-                            draggable="false"
-                            className="w-full h-auto transform group-hover:scale-105 transition-transform duration-1000"
-                          />
+                        <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className={`${span} overflow-hidden rounded-sm group`}>
+                          <img src={img} alt="" draggable="false" className="w-full h-auto transform group-hover:scale-105 transition-transform duration-1000" />
                         </motion.div>
                       </React.Fragment>
                     );
                   })}
                 </div>
-
-                {/* Remaining Description Paragraphs */}
-                {selectedProject.description[lang].split('\n\n').slice(3).length > 0 && (
-                  <div className="mt-24 flex flex-col items-center text-center">
-                    {selectedProject.description[lang].split('\n\n').slice(3).map((para, idx) => (
-                      <motion.p
-                        key={idx}
-                        initial={{ opacity: 0 }}
-                        whileInView={{ opacity: 1 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.5, delay: idx * 0.1 }}
-                        className="font-archivo text-xs md:text-sm uppercase tracking-widest text-magic-black/40 dark:text-off-white/40 mb-4"
-                      >
-                        {para}
-                      </motion.p>
-                    ))}
-                  </div>
-                )}
 
                 <div className="mt-32 pb-12 flex flex-col items-center">
                   <div className="w-px h-24 bg-magic-black/20 dark:bg-off-white/20 mb-12"></div>
