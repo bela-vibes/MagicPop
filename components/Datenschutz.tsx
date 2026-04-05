@@ -35,25 +35,30 @@ const Datenschutz: React.FC<DatenschutzProps> = ({ onClose }) => {
               </div>
             </section>
 
-            <section>
-              <h2 className="font-archivo text-2xl md:text-3xl uppercase tracking-tight mb-6">2. Hosting & Content Delivery Networks</h2>
-              <div className="opacity-80 text-lg leading-relaxed space-y-6">
-                <div>
-                  <h3 className="font-bold mb-2 text-xl">Vercel</h3>
-                  <p>Wir hosten unsere Website bei Vercel. Anbieter ist die Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA.</p>
-                  <p>Wenn Sie unsere Website besuchen, erfasst Vercel verschiedene Logfiles inklusive Ihrer IP-Adresse. Die Verwendung von Vercel erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Wir haben ein berechtigtes Interesse an einer möglichst zuverlässigen Darstellung unserer Website.</p>
-                  <p className="mt-2">Details: <a href="https://vercel.com/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-magic-blue transition-colors underline underline-offset-4">https://vercel.com/privacy</a></p>
-                </div>
-                
-                <div>
-                  <h3 className="font-bold mb-2 text-xl">Cloudinary</h3>
-                  <p>Zur Optimierung und Auslieferung von Bildern nutzen wir Cloudinary. Anbieter ist die Cloudinary Ltd., 3400 Central Expressway, Suite 110, Santa Clara, CA 95051, USA.</p>
-                  <p>Bilder werden direkt von den Cloudinary-Servern geladen, wobei Ihre IP-Adresse übertragen wird. Dies dient der schnellen und optimierten Darstellung unserer Projekte gemäß Art. 6 Abs. 1 lit. f DSGVO.</p>
-                  <p className="mt-2">Details: <a href="https://cloudinary.com/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-magic-blue transition-colors underline underline-offset-4">https://cloudinary.com/privacy</a></p>
-                </div>
+           <section>
+            <h2 className="font-archivo text-2xl md:text-3xl uppercase tracking-tight mb-6">2. Hosting & Content Delivery Networks</h2>
+            <div className="opacity-80 text-lg leading-relaxed space-y-8">
+              <div>
+                <h3 className="font-bold mb-2 text-xl">Vercel</h3>
+                <p>Wir hosten unsere Website bei Vercel. Anbieter ist die Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA.</p>
+                <p>Wenn Sie unsere Website besuchen, erfasst Vercel verschiedene Logfiles inklusive Ihrer IP-Adresse. Die Verwendung von Vercel erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (Berechtigtes Interesse an einer technisch fehlerfreien Darstellung und Optimierung unserer Website).</p>
+                <p className="mt-2">Details: <a href="https://vercel.com/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-magic-blue transition-colors underline underline-offset-4">https://vercel.com/privacy</a></p>
               </div>
-            </section>
+    
+              <div>
+                <h3 className="font-bold mb-2 text-xl">Cloudinary</h3>
+                <p>Zur Optimierung und Auslieferung von Bildern sowie Video-Inhalten nutzen wir Cloudinary. Anbieter ist die Cloudinary Ltd., 3400 Central Expressway, Suite 110, Santa Clara, CA 95051, USA.</p>
+                <p>Inhalte werden direkt von den Cloudinary-Servern geladen, wobei Ihre IP-Adresse an Cloudinary übertragen wird. Dies dient der schnellen, stabilen und optimierten Darstellung unserer Projekte gemäß Art. 6 Abs. 1 lit. f DSGVO.</p>
+                <p className="mt-2">Details: <a href="https://cloudinary.com/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-magic-blue transition-colors underline underline-offset-4">https://cloudinary.com/privacy</a></p>
+              </div>
 
+               <div className="pt-4 border-t border-magic-black/10 dark:border-off-white/10">
+                <p className="text-sm italic">
+                  Hinweis zur Datenübertragung in Drittstaaten: Die oben genannten Anbieter haben ihren Hauptsitz in den USA. Die Datenübertragung erfolgt auf Grundlage von Standardvertragsklauseln der EU-Kommission sowie (sofern vorhanden) dem Data Privacy Framework. Wir haben mit diesen Anbietern Verträge über Auftragsverarbeitung (AVV) gemäß Art. 28 DSGVO abgeschlossen, um den Schutz Ihrer Daten zu gewährleisten.
+                </p>
+              </div>
+            </div>
+          </section>
             <section>
               <h2 className="font-archivo text-2xl md:text-3xl uppercase tracking-tight mb-6">3. Verantwortliche Stelle</h2>
               <div className="space-y-8 opacity-80 text-lg leading-relaxed">
