@@ -210,7 +210,8 @@ export const PROJECTS: Project[] = [
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379984/LOQI_BKR_10_znnouz.jpg",
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379767/250807_LOQI_TravelRetail_Osborne_gebv2b.jpg",
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775380197/FuturePresent_4x5_new_kexboa.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379685/LOQI_Rolex_Shanghai_3_mpydts.jpg"
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379685/LOQI_Rolex_Shanghai_3_mpydts.jpg",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1775380316/LOQI_BKR_1_Kopie_small_srtze4.jpg"
     
   ],
   color: "bg-magic-pink"
