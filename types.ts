@@ -16,5 +16,6 @@ export interface Project {
   year: string;
   image: string;
   gallery: string[];
+  videoPosters?: { [videoUrl: string]: string };
   color: string;
 }
