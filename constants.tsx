@@ -156,6 +156,23 @@ export const PROJECTS: Project[] = [
   ],
   color: "bg-magic-pink"
 },
+{
+    id: 8,
+    slug: "momox",
+    title: { de: "Momox", en: "Momox" },
+    category: { de: "Videoproduktion", en: "Video Production" },
+    description: {
+    de: "Monochrome Klarheit, die sich Schicht für Schicht entfaltet.\n\nFür den visuellen Auftritt von Momox haben wir eine Bildwelt entwickelt, die sich radikal auf ein Prinzip konzentriert: Farbe als System. Ausgangspunkt war das neue Momox-Blau — reduziert, präzise und als visuelle Klammer über alle Elemente hinweg gedacht. Unser Ansatz war es, dieses Prinzip räumlich und fotografisch konsequent zu übersetzen. Statt Vielfalt zu zeigen, haben wir Tiefe innerhalb einer einzigen Farbwelt aufgebaut. Monochromie wurde dabei nicht als Einschränkung verstanden, sondern als Werkzeug für Klarheit, Fokus und Wiedererkennbarkeit.\n\nWir verantworteten die gesamte Produktion — von der Auswahl und Besetzung der Models über Location Scouting bis hin zum Aufbau des kompletten Teams, Kamera und Catering. Parallel dazu entwickelten wir das Set Design, in dem jedes Objekt, jede Oberfläche und jedes Detail in Beziehung zum Momox-Blau steht. Props wurden gezielt ausgewählt und kombiniert, um innerhalb der monochromen Logik Spannung zu erzeugen. Materialien, Formen und Nuancen greifen ineinander, ohne die visuelle Ruhe zu stören. So entsteht eine Bildwelt, die reduziert wirkt und gleichzeitig eine hohe Präzision und Dichte besitzt.\n\nAgentur: I LIKE VISUALS",
+    en: "Monochrome clarity, built in layers.\n\nFor Momox, we developed a visual language built around a single principle: color as a system. The starting point was the new Momox blue — reduced, precise, and designed to function as a unifying element across all visuals. Our approach was to translate this idea consistently into both space and image. Rather than creating variety, we built depth within a single color world. Monochrome was not treated as a limitation, but as a tool for clarity, focus, and recognition.\n\nWe handled the full production, from casting models and scouting locations to assembling the entire team, including camera and catering. At the same time, we developed the set design, ensuring that every object, surface, and detail relates back to the Momox blue. Props were carefully selected and combined to create tension within the monochromatic system. Materials, shapes, and tonal variations interact without disrupting the visual calm. The result is a body of work that feels reduced, yet highly controlled and precise.\n\nAgency: I LIKE VISUALS"
+    },
+    year: "2025",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775472378/250120_FL_Alle_Momox_ILV_3_i4phy8.jpg",
+    gallery: [
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775472374/250120_4Arms_Momox_ILV_anpivr.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775472375/250120_DVD_Momox_ILV_qayaha.jpg"
+    ],
+    color: "bg-orange-500"
+  },
   {
     id: 3,
     slug: "nachtzimmer",
