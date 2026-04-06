@@ -107,94 +107,31 @@ export const TRANSLATIONS = {
 };
 
 export const PROJECTS: Project[] = [
-  {
+    {
     id: 1,
-    slug: "nachtzimmer",
-    title: { de: "Nacht\u00ADzimmer", en: "Nacht\u00ADzimmer" },
-    category: { de: "Fotoproduktion", en: "Photo Production" },
-    description: {
-      de: "Ein Raum erzählt seine Geschichten. Wir präsentieren „Nachtzimmer“, eine als eigenständiges Projekt entstandene Fotoserie.\n\nDiese Bilder entführen Sie in eine filmische Welt, inspiriert von der Ästhetik der Americana. Sie fangen einzelne Momente in einem Hotelzimmer ein, die den Betrachter über die Geschichte davor und danach rätseln lassen. Jede Fotografie erschafft eine einzigartige Szene, inspiriert vom zeitlosen Charme des alten Hollywood-Glamours, surrealem Licht und fantastischen Charakteren. Es entstanden 25 einzigartige Motive, von denen jedes eine komplexe Geschichte mit visueller Handwerkskunst und professioneller Ausführung erzählt.\n\nFür jede Geschichte haben wir lebendige Farbschemata, detaillierte Kostüme sowie charakteristisches Haar- und Make-up entworfen. Für jede Aufnahme bauten wir reale Kulissen, setzten atmosphärische Beleuchtung ein und erstellten maßgeschneiderte Requisiten, darunter lebensechte Tier-Repliken. Die Postproduktion verlieh den letzten Schliff und wahrte die visuelle Kohärenz sowie die narrative Wirkung.",
-      en: "A room tells its stories. Introducing “Nachtzimmer,” a photo series created as an independent project.\n\nThese images transport you to a cinematic world inspired by Americana aesthetics, capturing individual moments in a hotel room that leave you wondering about the story before and after. Each photograph creates a unique scene, inspired by the timeless allure of old Hollywood glamour, surreal lighting, and fantastic characters. 25 unique motifs were created, each telling a complex story with visual craftsmanship and professional execution.\n\nFor every story, we crafted vibrant color schemes, detailed costumes, and characteristic hair and makeup. For each shot, we built real settings, employed atmospheric lighting, and created custom props, including lifelike animal replicas. The postproduction work added the final touches, maintaining visual coherence and narrative impact."
-    },
-    year: "2017",
-    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247550/02_-_Fisch_q9rvsk.jpg",
-    gallery: [
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773294351/Nachtzimmer0_MagicPop2024.jpg_ylyg9j.webp",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773261659/08---Mermaid_bk4obw.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247550/02_-_Fisch_q9rvsk.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247550/11_-_Kedi_sienok.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773293311/07_-_Koffer_mvfu6e.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247551/14_-_Circus_slbpcz.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247468/benny_3_Kopie_ufsdlm.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247509/mariamagdalena_Kopie_taojlr.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247510/spies_Kopie_lttwm9.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247515/lowe_2_Kopie_xqmf6g.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247514/hexenfinal_Kopie_gn2dvb.jpg"
-    ],
-    color: "bg-orange-500"
-  },
-  {
-    id: 2,
-    slug: "hana",
-    title: { de: "HANA", en: "HANA" },
+    slug: "suite-1973",
+    title: { de: "Suite 1973", en: "Suite 1973" },
     category: { de: "Innenarchitektur", en: "Interior Design" },
     description: {
-      de: "Wir hatten das Vergnügen, mit dem Team hinter HANA Berlin zusammenzuarbeiten, um ihrem Interieur neues Leben einzuhauchen und es an ihr innovatives Restaurantkonzept anzupassen. \n\nInspiriert vom bestehenden Stil des Kunden, der in seinen anderen Locations deutlich wird, haben wir sichergestellt, dass sich das HANA wie eine natürliche Erweiterung seiner Markenidentität anfühlt. Durch die sorgfältige Balance zwischen moderner Ästhetik und einer warmen, einladenden Atmosphäre haben wir einen Raum geschaffen, der die Einzigartigkeit ihrer Speisekarte feiert.\n\nUnser Ansatz konzentrierte sich darauf, das Wesen des Raums zu bewahren und gleichzeitig frische Texturen, Farben und Dekorelemente einzuführen. Wir haben darauf geachtet, die Konsistenz mit dem unverwechselbaren Stil von BellBoy und The Butler zu gewährleisten, damit sich das HANA nahtlos in die Markenfamilie des Kunden einfügt. Jedes Detail, von maßgefertigten Möbeln bis hin zu kuratierten Akzenten, wurde ausgewählt, um das Restauranterlebnis zu verbessern und eine Umgebung zu schaffen, die sich sowohl neu als auch vertraut anfühlt.\n\nFotografiert von Steffen Sinzinger",
-      en: "We had the pleasure of collaborating with the team behind HANA Berlin to breathe new life into their interior, aligning it with their innovative restaurant concept.\n\nDrawing inspiration from the client’s existing style, which is evident in their other venues, we ensured that HANA would feel like a natural extension of their brand identity. By carefully balancing modern aesthetics with a warm, inviting atmosphere, we crafted a space that celebrates the uniqueness of their menu.\n\nOur approach centered on preserving the essence of the space while introducing fresh textures, colors, and decor elements. We paid attention to ensure consistency with the distinctive style of BellBoy and The Butler, so that HANA feels cohesive within the client’s family of venues. Every detail, from bespoke furniture to curated accents, was selected to enhance the dining experience and create an environment that feels both new and familiar.\n\nPhotographed by Steffen Sinzinger"
+      de: "Eine Wohnung als Zeitkapsel — zwischen DDR-Alltag und Space Age Vision.\n\nAusgangspunkt war eine neutrale, weiße Wohnung. Der Wunsch des Kunden war klar: kein Zitat, sondern ein vollständiges Eintauchen in die 70er Jahre. Wir haben den Raum nicht dekoriert, sondern transformiert. Materialität wurde zum Fundament. Wände wurden mit Holz und Stein verkleidet, um eine physische Tiefe zu schaffen, die über Oberfläche hinausgeht. Parallel dazu entwickelten wir ein strenges Farbsystem, das sich konsequent durch alle Räume zieht — von Orange über Grün und Braun bis hin zu Gelb und Rot. Nichts ist zufällig, alles ist aufeinander abgestimmt.\n\nGemeinsam mit dem Kunden haben wir authentische 70er Jahre Möbel und Objekte recherchiert und beschafft, ergänzt durch gezielte Eingriffe dort, wo das Original fehlte. Maßgefertigte Einbauten wie Bett und Badezimmerschränke wurden durch Schreiner umgesetzt, während speziell entwickelte Bilderrahmen im Stil der Zeit mittels 3D-Druck neu entstanden. Kunstpalmen im Innenraum und auf dem Balkon setzen bewusste Akzente zwischen Inszenierung und Realität. So entsteht ein Ort, der nicht nostalgisch wirkt, sondern eigenständig — eine in sich geschlossene Welt, die Vergangenheit nicht kopiert, sondern neu interpretiert.",
+      en: "An apartment as a time capsule — suspended between everyday GDR life and space age imagination.\n\nThe starting point was a neutral white apartment. The client’s intention was clear: not a reference, but full immersion into the 1970s. Rather than decorating the space, we transformed it. Materiality became the foundation. Walls were clad in wood and stone to introduce a physical depth beyond surface. At the same time, we established a strict color system running consistently throughout the space — from orange to green to brown, yellow, and red. Nothing is accidental, everything is deliberate.\n\nIn close collaboration with the client, we sourced authentic 1970s furniture and objects, complemented by precise interventions where originals were missing. Custom-built elements such as the bed and bathroom cabinetry were crafted by carpenters, while bespoke picture frames in a 70s aesthetic were developed through 3D printing. Artificial palm trees, placed both indoors and on the balcony, act as deliberate markers between staging and reality. The result is a space that feels self-contained rather than nostalgic — a world that does not replicate the past, but reinterprets it."
     },
-    year: "2024",
-    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296846/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_uiplwp.jpg",
-    gallery: [
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296846/HANA_-_Exterior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_dtaliv.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773297077/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-13_vsmruo.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296846/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_uiplwp.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296852/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-19_mikqon.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296849/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-3_mrjnhd.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296849/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-10_zjrcsr.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296848/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-3_zrias3.jpg"
-    ],
-    color: "bg-magic-pink"
+    year: "2025",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775468820/060625_SonyMusic-0005_144dpi_SCREEN_onbmjr.jpg",
+    gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775468829/060625_SonyMusic-0112_144dpi_SCREEN_ug76wg.jpg",
+              "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775468822/060625_SonyMusic-0282_144dpi_SCREEN_b00p4h.jpg",
+              "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775468824/060625_SonyMusic-0559_144dpi_SCREEN_ycg5r1.jpg",
+              "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775468828/250606_SonyMusic_0830_144dpi_SCREEN_qz2sno.jpg",
+              "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775468823/060625_SonyMusic-0541_144dpi_SCREEN_ozg3xe.jpg",
+              "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775468826/060625_SonyMusic-0623_144dpi_SCREEN_mwepyt.jpg",
+              "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775468826/060625_SonyMusic-0684_144dpi_SCREEN_fzxc4j.jpg",
+              "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775468827/060625_SonyMusic-0768_144dpi_SCREEN_cftfy0.jpg",
+              "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775468820/060625_SonyMusic-0005_144dpi_SCREEN_onbmjr.jpg"
+              ],
+    color: "bg-red-600"
   },
-    {
-    id: 3,
-    slug: "endspiel",
-    title: { de: "ENDSPIEL", en: "ENDSPIEL" },
-    category: { de: "Set Design", en: "Set Design" },
-    description: {
-      de: "Für den Kurzfilm Endspiel erschuf MagicPOP eine dystopische Welt, die das Publikum tief in den Überlebenskampf des Protagonisten hineinzieht.\n\nDas visuelle Design spielt eine zentrale Rolle dabei, die Atmosphäre von Isolation, Verfall und der Suche nach Hoffnung greifbar zu machen. Von der verlassenen Stadt, in der leere Gebäude und überwucherte Straßen den wirtschaftlichen Niedergang widerspiegeln, bis hin zum dunklen Wald, der zugleich Zuflucht und Bedrohung darstellt – jedes Detail ist so gestaltet, dass die Isolation und Spannung spürbar werden.\n\nBesonderes Augenmerk wurde auf das Szenenbild gelegt: Im verlassenen Haus verschmelzen Staub, Chaos und persönliche Relikte zu einem beklemmenden Setting, das auf längst vergangene Leben hindeutet. Jedes zerbrochene Fenster und jede verlassene Ecke vertieft die unheimliche Atmosphäre.\n\ndirected by Dre Amiro & Anna Mochow",
-      en: "For the short film Endspiel, MagicPOP created a dystopian world that draws the audience deep into the protagonist's struggle for survival.\n\nThe visual design plays a central role in making the atmosphere of isolation, decay, and the search for hope tangible. From the abandoned city, where empty buildings and overgrown streets reflect the economic downfall, to the dark forest, which serves as both a refuge and a threat—every detail is crafted to make the isolation and tension noticeable.\n\nSpecial attention was given to interior design: In the abandoned house, dust, chaos, and personal relics merge into an oppressive setting that hints at lives long gone. Every broken window and every deserted corner deepens the eerie atmosphere.\n\ndirected by Dre Amiro & Anna Mochow"
-    },
-    year: "2024",
-    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390417/2024-magic-pop-setdesign-endspiel-hero_h41buh.jpg",
-    gallery: [
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390422/2024-magic-pop-setdesign-endspiel-interior-3_gauhkz.png",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390419/2024-magic-pop-setdesign-endspiel-outdoor_lzri8u.png",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390422/2024-magic-pop-setdesign-endspiel-art-direction_txo5vw.png",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390421/2024-magic-pop-setdesign-endspiel-interior-2_iv6y1h.png",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390418/2024-magic-pop-setdesign-endspiel-interior-4_gfeidc.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390421/2024-magic-pop-setdesign-endspiel-interior_o0htej.png",
-    ],
-    color: "bg-zinc-900"
-  },
-   {
-    id: 4,
-    slug: "suitcase",
-    title: { de: "Suitcase", en: "Suitcase" },
-    category: { de: "Set Design", en: "Set Design" }, // Ich habe "Props" zu "Set Design" geändert (strategischer)
-    description: {
-      de: "Tauche ein in die unheimliche Welt des Musikvideos zu \"Suitcase\" von Ameli in the Woods.\n\nInspiriert von der Ästhetik der späten 90er bis frühen 2000er Jahre, ist dieses Video eine Hommage an den einzigartigen Charme dieser Ära. Zum Leben erweckt von Amores Productions. Spezialeffekte wie Zombie-Make-up, mechanisch schlagende Herzen und projizierte Hintergründe wurden alle analog und ohne CGI hergestellt.\n\nDie nostalgische Ästhetik wurde durch ein farbenfroh gestaltetes Beleuchtungskonzept und eine auffälliges Colorgrading noch verstärkt. Das Musikvideo ist eine Reise in die Vergangenheit und fängt die Essenz der MTV-Ära ein. Es wurde mit 17 talentierten Menschen und viel Kreativität umgesetzt.\n\nBand: Ameli and the Woods & Produktion: Amores Production",
-      en: "Step into the eerie world of the music video for \"Suitcase\" by Ameli in the Woods.\n\nInspired by the late 90s to early 2000s aesthetic, this video is a homage to that era’s unique charm. Brought to life by Amores Productions. Special effects like zombie makeup, mechanically beating hearts, and projected backgrounds were all crafted analog, without any CGI.\n\nThe aesthetic nostalgia is further enhanced by a colourful designed lighting concept and eye-popping color grading. This music video is a journey back in time, capturing the essence of a bygone era with authenticity and artistic precision by 17 talented people.\n\nBand: Ameli and the Woods & Production: Amores Production"
-    },
-    year: "2023",
-    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775420840/Bildschirmfoto_2026-04-05_um_22.26.25_oxn9ne.png",
-    gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775420863/Bildschirmfoto_2026-04-05_um_22.26.13_kgvhnw.png",
-              "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1775457660/ezgif-1bdb65971b5e9ce5_xb4jej.gif",
-              "https://res.cloudinary.com/dpe3jvf3e/video/upload/v1773394785/2023-magic-pop-production-set-design-props-suitcase-ameli-in-the-woods-amores-production_ike2mz.mp4"],
-     videoPosters: {"https://res.cloudinary.com/dpe3jvf3e/video/upload/v1773394785/2023-magic-pop-production-set-design-props-suitcase-ameli-in-the-woods-amores-production_ike2mz.mp4": "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775421343/Bildschirmfoto_2026-04-05_um_22.35.29_l9wxuf.png"},
-    color: "bg-yellow-400"
-  },
- {
-  id: 5,
+  {
+  id: 2,
   slug: "loqi", // Gefixt: Gerade Anführungszeichen
   title: { de: "LOQI", en: "LOQI" },
   category: { de: "Fotoproduktion", en: "Photo Production" },
@@ -220,6 +157,73 @@ export const PROJECTS: Project[] = [
   color: "bg-magic-pink"
 },
   {
+    id: 3,
+    slug: "nachtzimmer",
+    title: { de: "Nacht\u00ADzimmer", en: "Nacht\u00ADzimmer" },
+    category: { de: "Fotoproduktion", en: "Photo Production" },
+    description: {
+      de: "Ein Raum erzählt seine Geschichten. Wir präsentieren „Nachtzimmer“, eine als eigenständiges Projekt entstandene Fotoserie.\n\nDiese Bilder entführen Sie in eine filmische Welt, inspiriert von der Ästhetik der Americana. Sie fangen einzelne Momente in einem Hotelzimmer ein, die den Betrachter über die Geschichte davor und danach rätseln lassen. Jede Fotografie erschafft eine einzigartige Szene, inspiriert vom zeitlosen Charme des alten Hollywood-Glamours, surrealem Licht und fantastischen Charakteren. Es entstanden 25 einzigartige Motive, von denen jedes eine komplexe Geschichte mit visueller Handwerkskunst und professioneller Ausführung erzählt.\n\nFür jede Geschichte haben wir lebendige Farbschemata, detaillierte Kostüme sowie charakteristisches Haar- und Make-up entworfen. Für jede Aufnahme bauten wir reale Kulissen, setzten atmosphärische Beleuchtung ein und erstellten maßgeschneiderte Requisiten, darunter lebensechte Tier-Repliken. Die Postproduktion verlieh den letzten Schliff und wahrte die visuelle Kohärenz sowie die narrative Wirkung.",
+      en: "A room tells its stories. Introducing “Nachtzimmer,” a photo series created as an independent project.\n\nThese images transport you to a cinematic world inspired by Americana aesthetics, capturing individual moments in a hotel room that leave you wondering about the story before and after. Each photograph creates a unique scene, inspired by the timeless allure of old Hollywood glamour, surreal lighting, and fantastic characters. 25 unique motifs were created, each telling a complex story with visual craftsmanship and professional execution.\n\nFor every story, we crafted vibrant color schemes, detailed costumes, and characteristic hair and makeup. For each shot, we built real settings, employed atmospheric lighting, and created custom props, including lifelike animal replicas. The postproduction work added the final touches, maintaining visual coherence and narrative impact."
+    },
+    year: "2017",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247550/02_-_Fisch_q9rvsk.jpg",
+    gallery: [
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773294351/Nachtzimmer0_MagicPop2024.jpg_ylyg9j.webp",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773261659/08---Mermaid_bk4obw.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247550/02_-_Fisch_q9rvsk.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247550/11_-_Kedi_sienok.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773293311/07_-_Koffer_mvfu6e.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247551/14_-_Circus_slbpcz.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247468/benny_3_Kopie_ufsdlm.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247509/mariamagdalena_Kopie_taojlr.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247510/spies_Kopie_lttwm9.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247515/lowe_2_Kopie_xqmf6g.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247514/hexenfinal_Kopie_gn2dvb.jpg"
+    ],
+    color: "bg-orange-500"
+  },
+  {
+    id: 4,
+    slug: "hana",
+    title: { de: "HANA", en: "HANA" },
+    category: { de: "Innenarchitektur", en: "Interior Design" },
+    description: {
+      de: "Wir hatten das Vergnügen, mit dem Team hinter HANA Berlin zusammenzuarbeiten, um ihrem Interieur neues Leben einzuhauchen und es an ihr innovatives Restaurantkonzept anzupassen. \n\nInspiriert vom bestehenden Stil des Kunden, der in seinen anderen Locations deutlich wird, haben wir sichergestellt, dass sich das HANA wie eine natürliche Erweiterung seiner Markenidentität anfühlt. Durch die sorgfältige Balance zwischen moderner Ästhetik und einer warmen, einladenden Atmosphäre haben wir einen Raum geschaffen, der die Einzigartigkeit ihrer Speisekarte feiert.\n\nUnser Ansatz konzentrierte sich darauf, das Wesen des Raums zu bewahren und gleichzeitig frische Texturen, Farben und Dekorelemente einzuführen. Wir haben darauf geachtet, die Konsistenz mit dem unverwechselbaren Stil von BellBoy und The Butler zu gewährleisten, damit sich das HANA nahtlos in die Markenfamilie des Kunden einfügt. Jedes Detail, von maßgefertigten Möbeln bis hin zu kuratierten Akzenten, wurde ausgewählt, um das Restauranterlebnis zu verbessern und eine Umgebung zu schaffen, die sich sowohl neu als auch vertraut anfühlt.\n\nFotografiert von Steffen Sinzinger",
+      en: "We had the pleasure of collaborating with the team behind HANA Berlin to breathe new life into their interior, aligning it with their innovative restaurant concept.\n\nDrawing inspiration from the client’s existing style, which is evident in their other venues, we ensured that HANA would feel like a natural extension of their brand identity. By carefully balancing modern aesthetics with a warm, inviting atmosphere, we crafted a space that celebrates the uniqueness of their menu.\n\nOur approach centered on preserving the essence of the space while introducing fresh textures, colors, and decor elements. We paid attention to ensure consistency with the distinctive style of BellBoy and The Butler, so that HANA feels cohesive within the client’s family of venues. Every detail, from bespoke furniture to curated accents, was selected to enhance the dining experience and create an environment that feels both new and familiar.\n\nPhotographed by Steffen Sinzinger"
+    },
+    year: "2024",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296846/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_uiplwp.jpg",
+    gallery: [
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296846/HANA_-_Exterior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_dtaliv.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773297077/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-13_vsmruo.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296846/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_uiplwp.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296852/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-19_mikqon.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296849/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-3_mrjnhd.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296849/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-10_zjrcsr.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296848/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-3_zrias3.jpg"
+    ],
+    color: "bg-magic-pink"
+  },
+
+   {
+    id: 5,
+    slug: "suitcase",
+    title: { de: "Suitcase", en: "Suitcase" },
+    category: { de: "Set Design", en: "Set Design" }, // Ich habe "Props" zu "Set Design" geändert (strategischer)
+    description: {
+      de: "Tauche ein in die unheimliche Welt des Musikvideos zu \"Suitcase\" von Ameli in the Woods.\n\nInspiriert von der Ästhetik der späten 90er bis frühen 2000er Jahre, ist dieses Video eine Hommage an den einzigartigen Charme dieser Ära. Zum Leben erweckt von Amores Productions. Spezialeffekte wie Zombie-Make-up, mechanisch schlagende Herzen und projizierte Hintergründe wurden alle analog und ohne CGI hergestellt.\n\nDie nostalgische Ästhetik wurde durch ein farbenfroh gestaltetes Beleuchtungskonzept und eine auffälliges Colorgrading noch verstärkt. Das Musikvideo ist eine Reise in die Vergangenheit und fängt die Essenz der MTV-Ära ein. Es wurde mit 17 talentierten Menschen und viel Kreativität umgesetzt.\n\nBand: Ameli and the Woods & Produktion: Amores Production",
+      en: "Step into the eerie world of the music video for \"Suitcase\" by Ameli in the Woods.\n\nInspired by the late 90s to early 2000s aesthetic, this video is a homage to that era’s unique charm. Brought to life by Amores Productions. Special effects like zombie makeup, mechanically beating hearts, and projected backgrounds were all crafted analog, without any CGI.\n\nThe aesthetic nostalgia is further enhanced by a colourful designed lighting concept and eye-popping color grading. This music video is a journey back in time, capturing the essence of a bygone era with authenticity and artistic precision by 17 talented people.\n\nBand: Ameli and the Woods & Production: Amores Production"
+    },
+    year: "2023",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775420840/Bildschirmfoto_2026-04-05_um_22.26.25_oxn9ne.png",
+    gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775420863/Bildschirmfoto_2026-04-05_um_22.26.13_kgvhnw.png",
+              "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1775457660/ezgif-1bdb65971b5e9ce5_xb4jej.gif",
+              "https://res.cloudinary.com/dpe3jvf3e/video/upload/v1773394785/2023-magic-pop-production-set-design-props-suitcase-ameli-in-the-woods-amores-production_ike2mz.mp4"],
+     videoPosters: {"https://res.cloudinary.com/dpe3jvf3e/video/upload/v1773394785/2023-magic-pop-production-set-design-props-suitcase-ameli-in-the-woods-amores-production_ike2mz.mp4": "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775421343/Bildschirmfoto_2026-04-05_um_22.35.29_l9wxuf.png"},
+    color: "bg-yellow-400"
+  },
+ 
+  {
     id: 6,
     slug: "bite-away",
     title: { de: "Bite Away", en: "Bite Away" },
@@ -237,18 +241,26 @@ export const PROJECTS: Project[] = [
     videoPosters: {"https://res.cloudinary.com/dpe3jvf3e/video/upload/v1775458767/YTDown.com_YouTube_bite-away-Insektenstich-Juckt-mich-nicht_Media_1s06Wkf_Q6U_001_1080p_g96cmk.mp4": "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775457438/Bildschirmfoto_2024-04-29_um_09.46.40.png_oggl6i.webp"},
     color: "bg-cyan-400"
   },
-  {
+   {
     id: 7,
-    slug: "raw-iron",
-    title: { de: "Rohes Eisen", en: "Raw Iron" },
-    category: { de: "Möbeldesign", en: "Furniture" },
+    slug: "endspiel",
+    title: { de: "ENDSPIEL", en: "ENDSPIEL" },
+    category: { de: "Set Design", en: "Set Design" },
     description: {
-      de: "Brutalistisches Möbeldesign aus recyceltem Stahl.",
-      en: "Brutalist furniture design using recycled industrial steel."
+      de: "Für den Kurzfilm Endspiel erschuf MagicPOP eine dystopische Welt, die das Publikum tief in den Überlebenskampf des Protagonisten hineinzieht.\n\nDas visuelle Design spielt eine zentrale Rolle dabei, die Atmosphäre von Isolation, Verfall und der Suche nach Hoffnung greifbar zu machen. Von der verlassenen Stadt, in der leere Gebäude und überwucherte Straßen den wirtschaftlichen Niedergang widerspiegeln, bis hin zum dunklen Wald, der zugleich Zuflucht und Bedrohung darstellt – jedes Detail ist so gestaltet, dass die Isolation und Spannung spürbar werden.\n\nBesonderes Augenmerk wurde auf das Szenenbild gelegt: Im verlassenen Haus verschmelzen Staub, Chaos und persönliche Relikte zu einem beklemmenden Setting, das auf längst vergangene Leben hindeutet. Jedes zerbrochene Fenster und jede verlassene Ecke vertieft die unheimliche Atmosphäre.\n\ndirected by Dre Amiro & Anna Mochow",
+      en: "For the short film Endspiel, MagicPOP created a dystopian world that draws the audience deep into the protagonist's struggle for survival.\n\nThe visual design plays a central role in making the atmosphere of isolation, decay, and the search for hope tangible. From the abandoned city, where empty buildings and overgrown streets reflect the economic downfall, to the dark forest, which serves as both a refuge and a threat—every detail is crafted to make the isolation and tension noticeable.\n\nSpecial attention was given to interior design: In the abandoned house, dust, chaos, and personal relics merge into an oppressive setting that hints at lives long gone. Every broken window and every deserted corner deepens the eerie atmosphere.\n\ndirected by Dre Amiro & Anna Mochow"
     },
-    year: "2021",
-    image: "https://images.unsplash.com/photo-1581783898377-1c85bf937427?auto=format&fit=crop&q=80&w=1200",
-    gallery: ["https://images.unsplash.com/photo-1554412933-514a83d2f3c8?auto=format&fit=crop&q=80&w=1200"],
-    color: "bg-red-600"
+    year: "2024",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390417/2024-magic-pop-setdesign-endspiel-hero_h41buh.jpg",
+    gallery: [
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390422/2024-magic-pop-setdesign-endspiel-interior-3_gauhkz.png",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390419/2024-magic-pop-setdesign-endspiel-outdoor_lzri8u.png",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390422/2024-magic-pop-setdesign-endspiel-art-direction_txo5vw.png",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390421/2024-magic-pop-setdesign-endspiel-interior-2_iv6y1h.png",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390418/2024-magic-pop-setdesign-endspiel-interior-4_gfeidc.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390421/2024-magic-pop-setdesign-endspiel-interior_o0htej.png",
+    ],
+    color: "bg-zinc-900"
   }
+
 ];
