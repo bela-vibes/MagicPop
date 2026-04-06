@@ -108,15 +108,16 @@
       }
 
       /* Dark Mode Transition */
+      html.transitioning,
       html.transitioning *,
       html.transitioning *::before,
       html.transitioning *::after {
         transition:
-          background-color 0.5s ease-in-out,
-          color 0.5s ease-in-out,
-          border-color 0.5s ease-in-out,
-          fill 0.5s ease-in-out,
-          stroke 0.5s ease-in-out;
+          background-color 0.5s ease-in-out !important,
+          color 0.5s ease-in-out !important,
+          border-color 0.5s ease-in-out !important,
+          fill 0.5s ease-in-out !important,
+          stroke 0.5s ease-in-out !important;
       }
 
       /* Transitions */
