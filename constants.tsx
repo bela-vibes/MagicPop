@@ -232,8 +232,8 @@ export const PROJECTS: Project[] = [
     image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775457438/Bildschirmfoto_2024-04-29_um_09.46.40.png_oggl6i.webp",
     gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775457439/Bildschirmfoto_2024-04-29_um_09.47.07.png_o0xgqk.webp",
              "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775457437/Bildschirmfoto_2024-04-29_um_09.46.10.png_ql21ep.webp",
-             "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775457440/Bildschirmfoto_2024-04-29_um_09.46.26.png_fcivma.webp",
-             "https://res.cloudinary.com/dpe3jvf3e/video/upload/v1775458767/YTDown.com_YouTube_bite-away-Insektenstich-Juckt-mich-nicht_Media_1s06Wkf_Q6U_001_1080p_g96cmk.mp4"],
+             "https://res.cloudinary.com/dpe3jvf3e/video/upload/v1775458767/YTDown.com_YouTube_bite-away-Insektenstich-Juckt-mich-nicht_Media_1s06Wkf_Q6U_001_1080p_g96cmk.mp4",
+             "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775457440/Bildschirmfoto_2024-04-29_um_09.46.26.png_fcivma.webp"],
     videoPosters: {"https://res.cloudinary.com/dpe3jvf3e/video/upload/v1775458767/YTDown.com_YouTube_bite-away-Insektenstich-Juckt-mich-nicht_Media_1s06Wkf_Q6U_001_1080p_g96cmk.mp4": "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775457438/Bildschirmfoto_2024-04-29_um_09.46.40.png_oggl6i.webp"},
     color: "bg-cyan-400"
   },
