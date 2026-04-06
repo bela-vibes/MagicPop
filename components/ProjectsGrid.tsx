@@ -158,34 +158,50 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
         transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
         className="px-6 md:px-12 mb-16 flex flex-col md:flex-row justify-between items-end gap-12 relative z-10"
       >
-        <div className="max-w-2xl">
+        <div className="max-w-4xl w-full">
           <h2 className="font-archivo text-6xl md:text-8xl uppercase tracking-tighter mb-6 text-magic-black dark:text-off-white">{t.title}</h2>
-          <p className="font-medium text-magic-black/60 dark:text-off-white/60 text-lg leading-relaxed mb-10">{t.description}</p>
+          <p className="font-medium text-magic-black/60 dark:text-off-white/60 text-lg leading-relaxed mb-10 max-w-2xl">{t.description}</p>
           
           {/* Filter Bar */}
-          <div className="flex flex-wrap gap-x-8 gap-y-4">
+          <div className="flex flex-wrap gap-x-6 md:gap-x-10 gap-y-4">
             <button 
               onClick={() => setActiveFilter(null)}
-              className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 ${!activeFilter ? 'text-magic-black dark:text-off-white' : 'text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white'}`}
+              className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 whitespace-nowrap flex-shrink-0 ${!activeFilter ? 'text-magic-black dark:text-off-white' : 'text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white'}`}
             >
               {t.featured || (lang === 'de' ? 'Alle' : 'All')}
               {!activeFilter && <span className="absolute bottom-0 left-0 w-full h-[3px] bg-magic-blue"></span>}
             </button>
-            {categories.map((cat) => (
+            
+            {/* First part of categories */}
+            {categories.slice(0, categories.length - 2).map((cat) => (
               <button 
                 key={cat}
                 onClick={() => setActiveFilter(cat)}
-                className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 ${activeFilter === cat ? 'text-magic-black dark:text-off-white' : 'text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white'}`}
+                className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 whitespace-nowrap flex-shrink-0 ${activeFilter === cat ? 'text-magic-black dark:text-off-white' : 'text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white'}`}
               >
                 {cat}
                 {activeFilter === cat && <span className="absolute bottom-0 left-0 w-full h-[3px] bg-magic-blue"></span>}
               </button>
             ))}
+
+            {/* Last two categories grouped to wrap together */}
+            <div className="flex gap-x-6 md:gap-x-10">
+              {categories.slice(-2).map((cat) => (
+                <button 
+                  key={cat}
+                  onClick={() => setActiveFilter(cat)}
+                  className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 whitespace-nowrap flex-shrink-0 ${activeFilter === cat ? 'text-magic-black dark:text-off-white' : 'text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white'}`}
+                >
+                  {cat}
+                  {activeFilter === cat && <span className="absolute bottom-0 left-0 w-full h-[3px] bg-magic-blue"></span>}
+                </button>
+              ))}
+            </div>
           </div>
         </div>
         
         {/* Navigation Buttons */}
-        <div className="hidden md:flex gap-4 mb-2">
+        <div className="hidden md:flex gap-4 mb-2 flex-shrink-0">
           <button 
             onClick={() => scroll('left')}
             className="w-16 h-16 rounded-full bg-magic-black/5 dark:bg-off-white/5 flex items-center justify-center text-magic-black dark:text-off-white hover:bg-magic-black hover:text-white dark:hover:bg-off-white dark:hover:text-magic-black transition-all duration-300"
