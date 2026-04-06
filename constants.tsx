@@ -221,16 +221,20 @@ export const PROJECTS: Project[] = [
 },
   {
     id: 6,
-    slug: "neon-nights",
-    title: { de: "Neon Nächte", en: "Neon Nights" },
-    category: { de: "Fotografie", en: "Photography" },
+    slug: "bite-away",
+    title: { de: "Bite Away", en: "Bite Away" },
+    category: { de: "Set Design", en: "Set Design" },
     description: {
-      de: "Die nächtliche Ästhetik des modernen Tokios.",
-      en: "The nocturnal aesthetics of modern Tokyo."
+      de: "Don't bother me!\n\nFür Dermapharms „Don't bother me!"-Kampagne entwarfen und bauten wir sechs eigenständige Sets, die gemeinsam eine in sich geschlossene Welt erzählen: eine Familie, so besessen von Mückenschutz, dass ihre häusliche Realität längst in absurde Schutzrituale gekippt ist. Die Herausforderung lag darin, dieser Übertreibung eine visuelle Logik zu geben. Räume, die komisch wirken, aber niemals beliebig.\n\nInnerhalb von zwei Drehtagen entstand ein aufeinander abgestimmtes System aus Sets, Kostümen und Requisiten, das den 65-sekündigen Spot trägt. Jedes Set wurde als eigenständiger Charakter behandelt, mit eigener Farbsprache und eigenem Grad an inszenierter Paranoia. Kostüme und Props wurden nicht koordiniert, um zu matchen, sondern um gemeinsam eine Welt zu behaupten, die ihre eigene absurde Innenperspektive hat.\n\nAgentur: I LIKE VISUALS",
+      en: "Don't bother me!\n\nFor Dermapharm's "Don't bother me!" campaign, we designed and built six individual sets that together form a self-contained world: a family so consumed by their fear of mosquitoes that domestic life has long since tipped into absurd ritual. The challenge was giving that exaggeration a visual logic, rooms that read as comic without ever feeling arbitrary.\n\nOver two days of shooting, we developed a cohesive system of sets, costumes, and props that carries the 65-second spot. Each set was treated as a character in its own right, with its own color language and its own degree of staged paranoia. Costumes and props were not coordinated to match but to collectively assert a world with its own internal, quietly unhinged perspective.\n\nAgency: I LIKE VISUALS"
     },
     year: "2024",
-    image: "https://images.unsplash.com/photo-1542241647-9cbbada2b309?auto=format&fit=crop&q=80&w=1200",
-    gallery: ["https://images.unsplash.com/photo-1503891450247-ee5f8ec36bd6?auto=format&fit=crop&q=80&w=1200"],
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775457438/Bildschirmfoto_2024-04-29_um_09.46.40.png_oggl6i.webp",
+    gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775457439/Bildschirmfoto_2024-04-29_um_09.47.07.png_o0xgqk.webp",
+             "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775457437/Bildschirmfoto_2024-04-29_um_09.46.10.png_ql21ep.webp",
+             "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775457440/Bildschirmfoto_2024-04-29_um_09.46.26.png_fcivma.webp"
+             "https://res.cloudinary.com/dpe3jvf3e/video/upload/v1775458767/YTDown.com_YouTube_bite-away-Insektenstich-Juckt-mich-nicht_Media_1s06Wkf_Q6U_001_1080p_g96cmk.mp4"],
+    videoPosters: {"https://res.cloudinary.com/dpe3jvf3e/video/upload/v1775458767/YTDown.com_YouTube_bite-away-Insektenstich-Juckt-mich-nicht_Media_1s06Wkf_Q6U_001_1080p_g96cmk.mp4": "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775457438/Bildschirmfoto_2024-04-29_um_09.46.40.png_oggl6i.webp"},
     color: "bg-cyan-400"
   },
   {
