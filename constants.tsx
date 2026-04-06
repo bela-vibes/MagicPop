@@ -142,16 +142,16 @@ export const PROJECTS: Project[] = [
   year: "2025", // Gefixt: Gerade Anführungszeichen
   image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379704/LOQI_Rolex_Shanghai_1_gfmomc.jpg",
   gallery: [
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379704/LOQI_Rolex_Shanghai_1_gfmomc.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379798/250807_LOQI_TravelRetail_Banner_dvuadv.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775380120/Weekender_together_wloaor.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379766/250807_LOQI_TravelRetail_Katjes2_rohnmt.jpg",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775379704/LOQI_Rolex_Shanghai_1_gfmomc.jpg",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775379798/250807_LOQI_TravelRetail_Banner_dvuadv.jpg",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775380120/Weekender_together_wloaor.jpg",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775379766/250807_LOQI_TravelRetail_Katjes2_rohnmt.jpg",
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1775379932/LOQI-Coffee-Bag-Gif_hpcg8r.gif",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379984/LOQI_BKR_10_znnouz.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379767/250807_LOQI_TravelRetail_Osborne_gebv2b.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775380197/FuturePresent_4x5_new_kexboa.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379685/LOQI_Rolex_Shanghai_3_mpydts.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1775380316/LOQI_BKR_1_Kopie_small_srtze4.jpg"
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775379984/LOQI_BKR_10_znnouz.jpg",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775379767/250807_LOQI_TravelRetail_Osborne_gebv2b.jpg",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775380197/FuturePresent_4x5_new_kexboa.jpg",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775379685/LOQI_Rolex_Shanghai_3_mpydts.jpg",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775380316/LOQI_BKR_1_Kopie_small_srtze4.jpg"
     
   ],
   color: "bg-magic-pink"
@@ -185,17 +185,17 @@ export const PROJECTS: Project[] = [
     year: "2017",
     image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247550/02_-_Fisch_q9rvsk.jpg",
     gallery: [
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773294351/Nachtzimmer0_MagicPop2024.jpg_ylyg9j.webp",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773261659/08---Mermaid_bk4obw.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247550/02_-_Fisch_q9rvsk.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247550/11_-_Kedi_sienok.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773293311/07_-_Koffer_mvfu6e.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247551/14_-_Circus_slbpcz.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247468/benny_3_Kopie_ufsdlm.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247509/mariamagdalena_Kopie_taojlr.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247510/spies_Kopie_lttwm9.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247515/lowe_2_Kopie_xqmf6g.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247514/hexenfinal_Kopie_gn2dvb.jpg"
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773294351/Nachtzimmer0_MagicPop2024.jpg_ylyg9j.webp",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773261659/08---Mermaid_bk4obw.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773247550/02_-_Fisch_q9rvsk.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773247550/11_-_Kedi_sienok.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773293311/07_-_Koffer_mvfu6e.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773247551/14_-_Circus_slbpcz.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773247468/benny_3_Kopie_ufsdlm.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773247509/mariamagdalena_Kopie_taojlr.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773247510/spies_Kopie_lttwm9.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773247515/lowe_2_Kopie_xqmf6g.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773247514/hexenfinal_Kopie_gn2dvb.jpg"
     ],
     color: "bg-orange-500"
   },
@@ -211,13 +211,13 @@ export const PROJECTS: Project[] = [
     year: "2024",
     image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296846/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_uiplwp.jpg",
     gallery: [
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296846/HANA_-_Exterior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_dtaliv.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773297077/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-13_vsmruo.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296846/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_uiplwp.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296852/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-19_mikqon.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296849/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-3_mrjnhd.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296849/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-10_zjrcsr.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296848/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-3_zrias3.jpg"
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773296846/HANA_-_Exterior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_dtaliv.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773297077/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-13_vsmruo.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773296846/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_uiplwp.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773296852/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-19_mikqon.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773296849/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-3_mrjnhd.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773296849/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-10_zjrcsr.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773296848/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-3_zrias3.jpg"
     ],
     color: "bg-magic-pink"
   },
@@ -270,12 +270,12 @@ export const PROJECTS: Project[] = [
     year: "2024",
     image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390417/2024-magic-pop-setdesign-endspiel-hero_h41buh.jpg",
     gallery: [
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390422/2024-magic-pop-setdesign-endspiel-interior-3_gauhkz.png",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390419/2024-magic-pop-setdesign-endspiel-outdoor_lzri8u.png",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390422/2024-magic-pop-setdesign-endspiel-art-direction_txo5vw.png",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390421/2024-magic-pop-setdesign-endspiel-interior-2_iv6y1h.png",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390418/2024-magic-pop-setdesign-endspiel-interior-4_gfeidc.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390421/2024-magic-pop-setdesign-endspiel-interior_o0htej.png",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773390422/2024-magic-pop-setdesign-endspiel-interior-3_gauhkz.png",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773390419/2024-magic-pop-setdesign-endspiel-outdoor_lzri8u.png",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773390422/2024-magic-pop-setdesign-endspiel-art-direction_txo5vw.png",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773390421/2024-magic-pop-setdesign-endspiel-interior-2_iv6y1h.png",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773390418/2024-magic-pop-setdesign-endspiel-interior-4_gfeidc.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773390421/2024-magic-pop-setdesign-endspiel-interior_o0htej.png",
     ],
     color: "bg-zinc-900"
   }
