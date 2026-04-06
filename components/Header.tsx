@@ -55,10 +55,13 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
           <a 
             href="#hero" 
             onClick={(e) => handleNavItemClick(e, '#hero')} 
-            className="hover:opacity-60 flex items-baseline"
+            className="hover:opacity-60 flex flex-wrap items-baseline"
           >
-            <span className={`${textColor} transition-colors duration-500 ease-in-out`}>Magic Pop</span>
-            <span className={`font-editorial lowercase text-xl md:text-2xl ml-1 ${textColor} transition-colors duration-500 ease-in-out`}>studio</span>
+            <span className={`${textColor} transition-colors duration-500 ease-in-out mr-1.5`}>Magic</span>
+            <div className="flex items-baseline">
+              <span className={`${textColor} transition-colors duration-500 ease-in-out`}>Pop</span>
+              <span className={`font-editorial lowercase text-xl md:text-2xl ml-1 ${textColor} transition-colors duration-500 ease-in-out`}>studio</span>
+            </div>
           </a>
         </div>
         
