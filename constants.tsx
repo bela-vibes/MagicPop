@@ -41,7 +41,7 @@ export const TRANSLATIONS = {
       subtitle: "Analoge Handarbeit trifft auf digitale Neugier.",
       p1: "Dennis und Bela, das Duo hinter Magic Pop, bringen eine einzigartige Mischung aus Kreativität und Fachwissen ein, um Creative Direction und visuelle Umsetzung zu vereinen.",
       p2: "Mit einer gemeinsamen Leidenschaft für Storytelling und einem scharfen Auge für Details haben sie unzählige Konzepte in beeindruckende visuelle Erlebnisse verwandelt. Ihre kombinierten Talente decken ein breites Spektrum an Dienstleistungen ab, darunter Art Direction, Set Design, Interior Creation, Requisitenbau sowie Foto- und Videoproduktion.",
-      startProject: "Kontakt aufnehmen"
+      startProject: "Melde Dich"
     },
     contact: {
       title: "Lass es poppen",
