@@ -373,6 +373,20 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
               
               {/* Interwoven Gallery Grid */}
               <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-start">
+                {/* Fallback for 3rd paragraph if gallery is too short (shows after 2nd image) */}
+                {selectedProject.gallery.length < 5 && selectedProject.description[lang].split('\n\n')[2] && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="md:col-span-12 py-24 flex justify-center"
+                  >
+                    <p className="font-editorial text-2xl md:text-3xl lg:text-4xl leading-tight text-magic-black/60 dark:text-off-white/60 italic max-w-3xl text-center">
+                      {selectedProject.description[lang].split('\n\n')[2]}
+                    </p>
+                  </motion.div>
+                )}
                 {selectedProject.gallery.slice(2).map((img, i) => {
                   // Create an editorial rhythm that adapts to content
                   const spans = [
