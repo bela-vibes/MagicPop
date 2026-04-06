@@ -142,8 +142,14 @@ const App: React.FC = () => {
   };
 
   const toggleDarkMode = () => {
+    const newDarkMode = !isDarkMode;
     document.documentElement.classList.add('transitioning');
-    setIsDarkMode(prev => !prev);
+    if (newDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+    setIsDarkMode(newDarkMode);
     setTimeout(() => {
       document.documentElement.classList.remove('transitioning');
     }, 500);
