@@ -18,34 +18,15 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
   const animationFrameRef = useRef<number | null>(null);
   const t = TRANSLATIONS[lang].projects;
 
-  // Hier fügen wir dein Poster dynamisch zu den Projekten hinzu
-  const allProjects = useMemo(() => {
-    const posterProject: Project = {
-      id: 2026,
-      slug: 'event-poster',
-      title: { de: 'Event Poster', en: 'Event Poster' },
-      category: { de: 'Design', en: 'Design' },
-      image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775421343/Bildschirmfoto_2026-04-05_um_22.35.29_l9wxuf.png",
-      description: { 
-        de: 'Ein exklusives Poster-Design.\n\nErstellt für das aktuelle Projekt 2026.', 
-        en: 'An exclusive poster design.\n\nCreated for the current 2026 project.' 
-      },
-      year: '2026',
-      color: 'bg-magic-blue', // Oder eine andere Farbe aus deinem Theme
-      gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775421343/Bildschirmfoto_2026-04-05_um_22.35.29_l9wxuf.png"]
-    };
-    return [posterProject, ...PROJECTS];
-  }, []);
-
   const categories = useMemo(() => {
-    const cats = allProjects.map(p => p.category[lang]);
+    const cats = PROJECTS.map(p => p.category[lang]);
     return Array.from(new Set(cats));
-  }, [lang, allProjects]);
+  }, [lang]);
 
   const filteredProjects = useMemo(() => {
-    if (!activeFilter) return allProjects;
-    return allProjects.filter(p => p.category[lang] === activeFilter);
-  }, [activeFilter, lang, allProjects]);
+    if (!activeFilter) return PROJECTS;
+    return PROJECTS.filter(p => p.category[lang] === activeFilter);
+  }, [activeFilter, lang]);
 
   // Edge Scrolling Logic
   useEffect(() => {
@@ -112,7 +93,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '');
-      const project = allProjects.find(p => p.slug === hash);
+      const project = PROJECTS.find(p => p.slug === hash);
       
       if (project) {
         if (!selectedProject || selectedProject.slug !== hash) {
