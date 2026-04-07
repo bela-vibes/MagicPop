@@ -270,7 +270,7 @@ const App: React.FC = () => {
                   alt="Studio" 
                   draggable="false" 
                   loading="lazy"
-                  className="w-full grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100 aspect-video md:aspect-auto object-cover" 
+                  className="w-full grayscale group-hover:grayscale-0 active:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100 aspect-video md:aspect-auto object-cover" 
                 />
                 <div className="absolute inset-0 bg-magic-blue/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               </div>
