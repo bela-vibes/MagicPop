@@ -264,16 +264,34 @@ const App: React.FC = () => {
               transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
               className="w-full lg:w-1/2"
             >
-              <div className="relative group overflow-hidden rounded-sm">
-                <img 
+              <motion.div 
+                whileHover="hover"
+                className="relative group overflow-hidden rounded-sm"
+              >
+                <motion.img 
                   src="https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773295288/Dennis_Ruf_und_Be%CC%81la_Lehrnickel_Magic_Pop_Creative_Studio_tm4vyk.webp" 
                   alt="Studio" 
                   draggable="false" 
                   loading="lazy"
-                  className="w-full grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100 aspect-video md:aspect-auto object-cover" 
+                  variants={{
+                    initial: { filter: "grayscale(100%)", scale: 1.05 },
+                    hover: { filter: "grayscale(0%)", scale: 1 }
+                  }}
+                  initial="initial"
+                  animate="initial"
+                  whileHover="hover"
+                  transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
+                  className="w-full aspect-video md:aspect-auto object-cover" 
                 />
-                <div className="absolute inset-0 bg-magic-blue/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
-              </div>
+                <motion.div 
+                  variants={{
+                    initial: { opacity: 0 },
+                    hover: { opacity: 1 }
+                  }}
+                  transition={{ duration: 0.7 }}
+                  className="absolute inset-0 bg-magic-blue/10 pointer-events-none"
+                />
+              </motion.div>
             </motion.div>
             <motion.div 
               initial={{ opacity: 0, x: 50 }}
