@@ -215,7 +215,7 @@ export const PROJECTS: Project[] = [
       en: "We had the pleasure of collaborating with the team behind HANA Berlin to breathe new life into their interior, aligning it with their innovative restaurant concept.\n\nDrawing inspiration from the client’s existing style, which is evident in their other venues, we ensured that HANA would feel like a natural extension of their brand identity. By carefully balancing modern aesthetics with a warm, inviting atmosphere, we crafted a space that celebrates the uniqueness of their menu.\n\nOur approach centered on preserving the essence of the space while introducing fresh textures, colors, and decor elements. We paid attention to ensure consistency with the distinctive style of BellBoy and The Butler, so that HANA feels cohesive within the client’s family of venues. Every detail, from bespoke furniture to curated accents, was selected to enhance the dining experience and create an environment that feels both new and familiar.\n\nPhotographed by Steffen Sinzinger"
     },
     year: "2024",
-    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773296846/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_uiplwp.jpg",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773296846/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_uiplwp.jpg",
     gallery: [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773296846/HANA_-_Exterior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_dtaliv.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773297077/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-13_vsmruo.jpg",
