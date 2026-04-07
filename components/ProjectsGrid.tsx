@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef, useMemo } from 'react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { PROJECTS, TRANSLATIONS } from '../constants';
 import { Project, Language } from '../types';
 
@@ -18,15 +18,34 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
   const animationFrameRef = useRef<number | null>(null);
   const t = TRANSLATIONS[lang].projects;
 
+  // Hier fügen wir dein Poster dynamisch zu den Projekten hinzu
+  const allProjects = useMemo(() => {
+    const posterProject: Project = {
+      id: 2026,
+      slug: 'event-poster',
+      title: { de: 'Event Poster', en: 'Event Poster' },
+      category: { de: 'Design', en: 'Design' },
+      image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775421343/Bildschirmfoto_2026-04-05_um_22.35.29_l9wxuf.png",
+      description: { 
+        de: 'Ein exklusives Poster-Design.\n\nErstellt für das aktuelle Projekt 2026.', 
+        en: 'An exclusive poster design.\n\nCreated for the current 2026 project.' 
+      },
+      year: '2026',
+      color: 'bg-magic-blue', // Oder eine andere Farbe aus deinem Theme
+      gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775421343/Bildschirmfoto_2026-04-05_um_22.35.29_l9wxuf.png"]
+    };
+    return [posterProject, ...PROJECTS];
+  }, []);
+
   const categories = useMemo(() => {
-    const cats = PROJECTS.map(p => p.category[lang]);
+    const cats = allProjects.map(p => p.category[lang]);
     return Array.from(new Set(cats));
-  }, [lang]);
+  }, [lang, allProjects]);
 
   const filteredProjects = useMemo(() => {
-    if (!activeFilter) return PROJECTS;
-    return PROJECTS.filter(p => p.category[lang] === activeFilter);
-  }, [activeFilter, lang]);
+    if (!activeFilter) return allProjects;
+    return allProjects.filter(p => p.category[lang] === activeFilter);
+  }, [activeFilter, lang, allProjects]);
 
   // Edge Scrolling Logic
   useEffect(() => {
@@ -93,7 +112,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace('#', '');
-      const project = PROJECTS.find(p => p.slug === hash);
+      const project = allProjects.find(p => p.slug === hash);
       
       if (project) {
         if (!selectedProject || selectedProject.slug !== hash) {
@@ -158,12 +177,12 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
         transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
         className="px-6 md:px-12 mb-16 flex flex-col md:flex-row justify-between items-end gap-12 relative z-10"
       >
-        <div className="max-w-4xl w-full">
+        <div className="max-w-2xl">
           <h2 className="font-archivo text-6xl md:text-8xl uppercase tracking-tighter mb-6 text-magic-black dark:text-off-white">{t.title}</h2>
-          <p className="font-medium text-magic-black/60 dark:text-off-white/60 text-lg leading-relaxed mb-10 max-w-2xl">{t.description}</p>
+          <p className="font-medium text-magic-black/60 dark:text-off-white/60 text-lg leading-relaxed mb-10">{t.description}</p>
           
           {/* Filter Bar */}
-          <div className="flex flex-wrap gap-x-6 md:gap-x-10 gap-y-4">
+          <div className="flex flex-wrap gap-x-8 gap-y-4">
             <button 
               onClick={() => setActiveFilter(null)}
               className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 whitespace-nowrap flex-shrink-0 ${!activeFilter ? 'text-magic-black dark:text-off-white' : 'text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white'}`}
@@ -172,8 +191,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
               {!activeFilter && <span className="absolute bottom-0 left-0 w-full h-[3px] bg-magic-blue"></span>}
             </button>
             
-            {/* First part of categories */}
-            {categories.slice(0, categories.length - 2).map((cat) => (
+            {categories.map((cat) => (
               <button 
                 key={cat}
                 onClick={() => setActiveFilter(cat)}
@@ -183,20 +201,6 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                 {activeFilter === cat && <span className="absolute bottom-0 left-0 w-full h-[3px] bg-magic-blue"></span>}
               </button>
             ))}
-
-            {/* Last two categories grouped to wrap together */}
-            <div className="flex gap-x-6 md:gap-x-10">
-              {categories.slice(-2).map((cat) => (
-                <button 
-                  key={cat}
-                  onClick={() => setActiveFilter(cat)}
-                  className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 whitespace-nowrap flex-shrink-0 ${activeFilter === cat ? 'text-magic-black dark:text-off-white' : 'text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white'}`}
-                >
-                  {cat}
-                  {activeFilter === cat && <span className="absolute bottom-0 left-0 w-full h-[3px] bg-magic-blue"></span>}
-                </button>
-              ))}
-            </div>
           </div>
         </div>
         
@@ -299,106 +303,113 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
       </motion.div>
 
       {/* Project Detail Modal */}
-      {selectedProject && (
-        <div className="fixed inset-0 z-[200] bg-off-white dark:bg-magic-dark overflow-hidden">
-          
-          {/* SCROLLABLE CONTENT - Animated separately */}
+      <AnimatePresence mode="wait">
+        {selectedProject && (
           <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="absolute inset-0 overflow-y-auto overscroll-contain z-[210]"
+            key={selectedProject.slug}
+            className="fixed inset-0 z-[200] bg-off-white dark:bg-magic-dark overflow-hidden"
+            initial={{ opacity: 0, y: '4vh' }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: '2vh' }}
+            transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
           >
-            <div className="max-w-7xl mx-auto px-6 md:px-12 py-32 md:py-48">
-              {/* Editorial Header Section */}
-              <div className="mb-32"> 
-                <motion.h1 
-                  initial={{ opacity: 0, y: 100 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
-                  className="font-archivo text-5xl md:text-[11vw] leading-[0.75] uppercase tracking-tighter mb-16 text-magic-black dark:text-off-white pr-4 md:pr-12 break-normal hyphens-auto"
-                >
-                  {selectedProject.title[lang]}
-                </motion.h1>
-                
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
-                  <motion.div 
-                    initial={{ opacity: 0, y: 50 }}
+            {/* SCROLLABLE CONTENT - Animated separately */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.4, delay: 0.15 }}
+              className="absolute inset-0 overflow-y-auto overscroll-contain z-[210]"
+            >
+              <div className="max-w-7xl mx-auto px-6 md:px-12 py-32 md:py-48">
+                {/* Editorial Header Section */}
+                <div className="mb-32"> 
+                  <motion.h1 
+                    initial={{ opacity: 0, y: 60 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
-                    className="lg:col-span-7"
+                    className="font-archivo text-5xl md:text-[11vw] leading-[0.75] uppercase tracking-tighter mb-16 text-magic-black dark:text-off-white pr-4 md:pr-12 break-normal hyphens-auto"
                   >
-                    <p className="font-editorial text-2xl md:text-4xl lg:text-5xl leading-[1.1] text-magic-black dark:text-off-white italic whitespace-pre-line mb-12">
-                      {selectedProject.description[lang].split('\n\n')[0]}
-                    </p>
-                    <div 
-                      className="w-full overflow-hidden rounded-sm mb-12 group/first"
-                    >
-                      {selectedProject.gallery[0]?.toLowerCase().endsWith('.mp4') ? (
-                        <div className="relative">
-                          <video 
-                            src={selectedProject.gallery[0]} 
-                            poster={selectedProject.videoPosters?.[selectedProject.gallery[0]] || selectedProject.image}
-                            controls
-                            playsInline
-                            muted
-                            className="w-full h-auto rounded-sm grayscale group-hover/first:grayscale-0 transition-all duration-700"
-                          />
-                        </div>
-                      ) : (
-                        <img 
-                          src={selectedProject.gallery[0] || selectedProject.image} 
-                          alt="" 
-                          draggable="false" 
-                          loading="lazy" 
-                          className="w-full h-auto grayscale group-hover/first:grayscale-0 transition-all duration-700" 
-                        />
-                      )}
-                    </div>
-                  </motion.div>
+                    {selectedProject.title[lang]}
+                  </motion.h1>
                   
-                  <motion.div 
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 0.4, ease: [0.19, 1, 0.22, 1] }}
-                    className="lg:col-span-5 lg:pt-24"
-                  >
-                    <div className="text-magic-black/40 dark:text-off-white/40 font-archivo text-[10px] uppercase tracking-widest mb-8 flex justify-between border-b border-magic-black/10 dark:border-off-white/10 pb-4">
-                      <span>{selectedProject.category[lang]}</span>
-                      <span>{selectedProject.year}</span>
-                    </div>
-                    <p className="font-archivo text-sm md:text-base leading-relaxed text-magic-black/70 dark:text-off-white/70 mb-12">
-                      {selectedProject.description[lang].split('\n\n')[1]}
-                    </p>
-                    {selectedProject.gallery[1] && (
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
+                    <motion.div 
+                      initial={{ opacity: 0, y: 50 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1, delay: 0.35, ease: [0.19, 1, 0.22, 1] }}
+                      className="lg:col-span-7"
+                    >
+                      <p className="font-editorial text-2xl md:text-4xl lg:text-5xl leading-[1.1] text-magic-black dark:text-off-white italic whitespace-pre-line mb-12">
+                        {selectedProject.description[lang].split('\n\n')[0]}
+                      </p>
                       <div 
-                        className="w-full overflow-hidden rounded-sm"
+                        className="w-full overflow-hidden rounded-sm mb-12"
                       >
-                        {selectedProject.gallery[1].toLowerCase().endsWith('.mp4') ? (
-                          <div className="relative group/video">
+                        {selectedProject.gallery[0]?.toLowerCase().endsWith('.mp4') ? (
+                          <div className="relative">
                             <video 
-                              src={selectedProject.gallery[1]} 
-                              poster={selectedProject.videoPosters?.[selectedProject.gallery[1]] || selectedProject.image}
+                              src={selectedProject.gallery[0]} 
+                              poster={selectedProject.videoPosters?.[selectedProject.gallery[0]] || selectedProject.image}
                               controls
                               playsInline
                               muted
-                              className="w-full h-auto rounded-sm"
+                              className="w-full h-auto rounded-sm grayscale hover:grayscale-0 transition-all duration-700"
                             />
                           </div>
                         ) : (
                           <img 
-                            src={selectedProject.gallery[1]} 
+                            src={selectedProject.gallery[0] || selectedProject.image} 
                             alt="" 
                             draggable="false" 
                             loading="lazy" 
-                            className="w-full h-auto" 
+                            className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700" 
                           />
                         )}
                       </div>
-                    )}
-                  </motion.div>
+                    </motion.div>
+                    
+                    <motion.div 
+                      initial={{ opacity: 0, y: 50 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 1, delay: 0.45, ease: [0.19, 1, 0.22, 1] }}
+                      className="lg:col-span-5 lg:pt-24"
+                    >
+                      <div className="text-magic-black/40 dark:text-off-white/40 font-archivo text-[10px] uppercase tracking-widest mb-8 flex justify-between border-b border-magic-black/10 dark:border-off-white/10 pb-4">
+                        <span>{selectedProject.category[lang]}</span>
+                        <span>{selectedProject.year}</span>
+                      </div>
+                      <p className="font-archivo text-sm md:text-base leading-relaxed text-magic-black/70 dark:text-off-white/70 mb-12">
+                        {selectedProject.description[lang].split('\n\n')[1]}
+                      </p>
+                      {selectedProject.gallery[1] && (
+                        <div 
+                          className="w-full overflow-hidden rounded-sm"
+                        >
+                          {selectedProject.gallery[1].toLowerCase().endsWith('.mp4') ? (
+                            <div className="relative">
+                              <video 
+                                src={selectedProject.gallery[1]} 
+                                poster={selectedProject.videoPosters?.[selectedProject.gallery[1]] || selectedProject.image}
+                                controls
+                                playsInline
+                                muted
+                                className="w-full h-auto rounded-sm"
+                              />
+                            </div>
+                          ) : (
+                            <img 
+                              src={selectedProject.gallery[1]} 
+                              alt="" 
+                              draggable="false" 
+                              loading="lazy" 
+                              className="w-full h-auto" 
+                            />
+                          )}
+                        </div>
+                      )}
+                    </motion.div>
+                  </div>
                 </div>
-              </div>
               
               {/* Interwoven Gallery Grid */}
               <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-start">
@@ -522,8 +533,9 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
               </div>
             </div>
           </motion.div>
-        </div>
+        </motion.div>
       )}
+      </AnimatePresence>
     </section>
   );
 };
