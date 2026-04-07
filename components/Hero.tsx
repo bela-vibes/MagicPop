@@ -46,7 +46,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
           transition={{ duration: 1, delay: 0.4, ease: [0.19, 1, 0.22, 1] }}
           className="mt-auto md:mt-4 mb-12 md:mb-8 max-w-4xl relative z-20"
         >
-          <p className="font-editorial text-3xl md:text-6xl leading-[1.1] text-magic-black dark:text-off-white italic drop-shadow-sm">
+          <p className="font-editorial text-3xl md:text-6xl leading-[1.1] text-magic-black dark:text-off-white italic">
             {t.subline} <br />
             <span className="font-archivo not-italic text-2xl md:text-5xl uppercase tracking-tight text-magic-orange">
               {t.sublineBold}
@@ -81,16 +81,6 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
           </svg>
         </div>
       </motion.div>
-
-      <style>{`
-        @keyframes bounce {
-          0%, 100% { transform: translateY(-5%); animation-timing-function: cubic-bezier(0.8, 0, 1, 1); }
-          50% { transform: translateY(0); animation-timing-function: cubic-bezier(0, 0, 0.2, 1); }
-        }
-        .animate-bounce {
-          animation: bounce 2s infinite;
-        }
-      `}</style>
     </section>
   );
 };
