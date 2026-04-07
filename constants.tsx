@@ -128,7 +128,7 @@ export const PROJECTS: Project[] = [
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775468827/060625_SonyMusic-0768_144dpi_SCREEN_cftfy0.jpg",
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775468820/060625_SonyMusic-0005_144dpi_SCREEN_onbmjr.jpg"
               ],
-    color: "bg-red-600"
+    color: "color-magic-blue"
   },
   {
   id: 2,
@@ -154,7 +154,7 @@ export const PROJECTS: Project[] = [
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775380316/LOQI_BKR_1_Kopie_small_srtze4.jpg"
     
   ],
-  color: "bg-magic-pink"
+  color: "color-magic-blue"
 },
 {
     id: 8,
@@ -171,7 +171,7 @@ export const PROJECTS: Project[] = [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775472374/250120_4Arms_Momox_ILV_anpivr.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775472375/250120_DVD_Momox_ILV_qayaha.jpg"
     ],
-    color: "bg-orange-500"
+    color: "color-magic-blue"
   },
   {
     id: 3,
