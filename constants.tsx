@@ -128,7 +128,7 @@ export const PROJECTS: Project[] = [
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775468827/060625_SonyMusic-0768_144dpi_SCREEN_cftfy0.jpg",
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775468820/060625_SonyMusic-0005_144dpi_SCREEN_onbmjr.jpg"
               ],
-    color: "bg-linear-to-r from-yellow-200 via-amber-400 to-orange-600"
+    color: "bg-orange-500"
   },
   {
   id: 2,
@@ -154,7 +154,7 @@ export const PROJECTS: Project[] = [
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775380316/LOQI_BKR_1_Kopie_small_srtze4.jpg"
     
   ],
-  color: "bg-linear-to-r from-lime-200 via-green-400 to-emerald-600"
+  color: "bg-yellow-400"
 },
 {
     id: 8,
@@ -171,7 +171,7 @@ export const PROJECTS: Project[] = [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775472374/250120_4Arms_Momox_ILV_anpivr.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775472375/250120_DVD_Momox_ILV_qayaha.jpg"
     ],
-    color: "bg-magic-blue"
+    color: "bg-orange-500"
   },
   {
     id: 3,
@@ -197,7 +197,7 @@ export const PROJECTS: Project[] = [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773247515/lowe_2_Kopie_xqmf6g.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773247514/hexenfinal_Kopie_gn2dvb.jpg"
     ],
-    color: "bg-magic-blue"
+    color: "bg-red-600"
   },
   {
     id: 4,
@@ -219,7 +219,7 @@ export const PROJECTS: Project[] = [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773296849/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-10_zjrcsr.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773296848/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-3_zrias3.jpg"
     ],
-    color: "bg-magic-blue"
+    color: "bg-magic-pink"
   },
 
    {
@@ -237,7 +237,7 @@ export const PROJECTS: Project[] = [
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1775457660/ezgif-1bdb65971b5e9ce5_xb4jej.gif",
               "https://res.cloudinary.com/dpe3jvf3e/video/upload/v1773394785/2023-magic-pop-production-set-design-props-suitcase-ameli-in-the-woods-amores-production_ike2mz.mp4"],
      videoPosters: {"https://res.cloudinary.com/dpe3jvf3e/video/upload/v1773394785/2023-magic-pop-production-set-design-props-suitcase-ameli-in-the-woods-amores-production_ike2mz.mp4": "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775421343/Bildschirmfoto_2026-04-05_um_22.35.29_l9wxuf.png"},
-    color: "bg-yellow-400"
+    color: "bg-magic-blue"
   },
  
   {
@@ -256,7 +256,7 @@ export const PROJECTS: Project[] = [
              "https://res.cloudinary.com/dpe3jvf3e/video/upload/v1775458767/YTDown.com_YouTube_bite-away-Insektenstich-Juckt-mich-nicht_Media_1s06Wkf_Q6U_001_1080p_g96cmk.mp4",
              "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775457440/Bildschirmfoto_2024-04-29_um_09.46.26.png_fcivma.webp"],
     videoPosters: {"https://res.cloudinary.com/dpe3jvf3e/video/upload/v1775458767/YTDown.com_YouTube_bite-away-Insektenstich-Juckt-mich-nicht_Media_1s06Wkf_Q6U_001_1080p_g96cmk.mp4": "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775457438/Bildschirmfoto_2024-04-29_um_09.46.40.png_oggl6i.webp"},
-    color: "bg-cyan-400"
+    color: "bg-yellow-400"
   },
    {
     id: 7,
