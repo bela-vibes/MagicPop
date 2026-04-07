@@ -146,7 +146,7 @@ export const PROJECTS: Project[] = [
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775379798/250807_LOQI_TravelRetail_Banner_dvuadv.jpg",
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775380120/Weekender_together_wloaor.jpg",
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775379766/250807_LOQI_TravelRetail_Katjes2_rohnmt.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1775379932/w_1400/LOQI-Coffee-Bag-Gif_hpcg8r.gif",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775379932/LOQI-Coffee-Bag-Gif_hpcg8r.gif",
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775379984/LOQI_BKR_10_znnouz.jpg",
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775379767/250807_LOQI_TravelRetail_Osborne_gebv2b.jpg",
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775380197/FuturePresent_4x5_new_kexboa.jpg",
