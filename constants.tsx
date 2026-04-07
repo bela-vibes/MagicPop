@@ -169,7 +169,12 @@ export const PROJECTS: Project[] = [
     image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775472378/250120_FL_Alle_Momox_ILV_3_i4phy8.jpg",
     gallery: [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775472374/250120_4Arms_Momox_ILV_anpivr.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775472375/250120_DVD_Momox_ILV_qayaha.jpg"
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775472375/250120_DVD_Momox_ILV_qayaha.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/video/upload/q_auto/f_auto/v1775552395/YTDown.com_YouTube_Media_H4JC6hoojk4_001_1080p_makei5.mp4",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775552774/250120_buch_Momox_ILV_occ6il.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775552774/250120_vinyl_Momox_ILV_sbkdil.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775552774/250120_game_Momox_ILV_pspj2v.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775472378/250120_FL_Alle_Momox_ILV_3_i4phy8.jpg"
     ],
     color: "bg-orange-500"
   },
