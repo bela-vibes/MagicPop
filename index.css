@@ -135,3 +135,15 @@ img {
   -webkit-user-select: none;
   -ms-user-select: none;
 }
+
+/* Safari Performance Optimizations */
+.safari-contain {
+  contain: paint;
+}
+
+/* Optimize backdrop-filter for Safari */
+@supports (-webkit-backdrop-filter: blur(1px)) {
+  .backdrop-blur-md {
+    -webkit-backdrop-filter: blur(8px); /* Slightly lower blur for Safari */
+  }
+}
