@@ -19,6 +19,7 @@ const App: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [currentHash, setCurrentHash] = useState(window.location.hash);
   const requestRef = useRef<number>(null);
+  const sectionOffsets = useRef<{ [key: string]: number }>({});
   
   const [scrollTheme, setScrollTheme] = useState({
     bg: 'bg-transparent',
@@ -35,10 +36,36 @@ const App: React.FC = () => {
   const t = TRANSLATIONS[lang] || TRANSLATIONS.de;
 
   useEffect(() => {
+    const updateOffsets = () => {
+      const ids = ['services', 'projects', 'about', 'contact'];
+      const offsets: { [key: string]: number } = {};
+      ids.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) offsets[id] = el.offsetTop;
+      });
+      sectionOffsets.current = offsets;
+    };
+
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    
+    updateOffsets();
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    
+    window.addEventListener('resize', () => {
+      updateOffsets();
+      checkMobile();
+    });
+    
+    // Initial delay to ensure fonts/layout are ready
+    const timer = setTimeout(updateOffsets, 1000);
+    
+    return () => {
+      window.removeEventListener('resize', () => {
+        updateOffsets();
+        checkMobile();
+      });
+      clearTimeout(timer);
+    };
   }, []);
 
   useEffect(() => {
@@ -95,28 +122,23 @@ const App: React.FC = () => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPos = window.scrollY + 120;
-      const services = document.getElementById('services');
-      const projects = document.getElementById('projects');
-      const about = document.getElementById('about');
-      const contact = document.getElementById('contact');
+      const offsets = sectionOffsets.current;
 
-      if (contact && scrollPos >= contact.offsetTop) {
-        setScrollTheme({ bg: 'bg-magic-pink', text: 'text-magic-black', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,183,213,0.6)]', blobColor: 'bg-magic-pink' });
-      } else if (about && scrollPos >= about.offsetTop) {
-        setScrollTheme({ bg: 'bg-magic-blue', text: 'text-white', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(0,56,255,0.6)]', blobColor: 'bg-magic-blue' });
-      } else if (services && scrollPos >= services.offsetTop) {
-        setScrollTheme({ bg: 'bg-yellow-400', text: 'text-magic-black', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.6)]', blobColor: 'bg-yellow-400' });
-      } else if (projects && scrollPos >= projects.offsetTop) {
-        setScrollTheme({ bg: 'bg-magic-orange', text: 'text-white', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,77,0,0.6)]', blobColor: 'bg-magic-orange' });
+      if (offsets.contact && scrollPos >= offsets.contact) {
+        setScrollTheme(prev => prev.bg === 'bg-magic-pink' ? prev : { bg: 'bg-magic-pink', text: 'text-magic-black', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,183,213,0.6)]', blobColor: 'bg-magic-pink' });
+      } else if (offsets.about && scrollPos >= offsets.about) {
+        setScrollTheme(prev => prev.bg === 'bg-magic-blue' ? prev : { bg: 'bg-magic-blue', text: 'text-white', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(0,56,255,0.6)]', blobColor: 'bg-magic-blue' });
+      } else if (offsets.services && scrollPos >= offsets.services) {
+        setScrollTheme(prev => prev.bg === 'bg-yellow-400' ? prev : { bg: 'bg-yellow-400', text: 'text-magic-black', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.6)]', blobColor: 'bg-yellow-400' });
+      } else if (offsets.projects && scrollPos >= offsets.projects) {
+        setScrollTheme(prev => prev.bg === 'bg-magic-orange' ? prev : { bg: 'bg-magic-orange', text: 'text-white', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,77,0,0.6)]', blobColor: 'bg-magic-orange' });
       } else {
-        setScrollTheme({ bg: 'bg-transparent', text: 'text-magic-black dark:text-off-white', shadow: '', blobColor: 'bg-magic-orange' });
+        setScrollTheme(prev => prev.bg === 'bg-transparent' ? prev : { bg: 'bg-transparent', text: 'text-magic-black dark:text-off-white', shadow: '', blobColor: 'bg-magic-orange' });
       }
     };
 
-    const raf = requestAnimationFrame(() => handleScroll());
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => {
-      cancelAnimationFrame(raf);
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
