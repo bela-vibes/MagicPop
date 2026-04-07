@@ -18,6 +18,11 @@ const App: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [currentHash, setCurrentHash] = useState(window.location.hash);
+  
+  const blob1Ref = useRef<HTMLDivElement>(null);
+  const blob2Ref = useRef<HTMLDivElement>(null);
+  const mousePosRef = useRef({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
+  const sectionOffsets = useRef<{ [key: string]: number }>({});
   const requestRef = useRef<number>(null);
   
   const [scrollTheme, setScrollTheme] = useState({
@@ -35,10 +40,36 @@ const App: React.FC = () => {
   const t = TRANSLATIONS[lang] || TRANSLATIONS.de;
 
   useEffect(() => {
+    const updateOffsets = () => {
+      const ids = ['services', 'projects', 'about', 'contact'];
+      const offsets: { [key: string]: number } = {};
+      ids.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) offsets[id] = el.offsetTop;
+      });
+      sectionOffsets.current = offsets;
+    };
+
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    
+    updateOffsets();
     checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    
+    window.addEventListener('resize', () => {
+      updateOffsets();
+      checkMobile();
+    });
+    
+    // Initial delay to ensure fonts/layout are ready
+    const timer = setTimeout(updateOffsets, 1000);
+    
+    return () => {
+      window.removeEventListener('resize', () => {
+        updateOffsets();
+        checkMobile();
+      });
+      clearTimeout(timer);
+    };
   }, []);
 
   useEffect(() => {
@@ -47,42 +78,51 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const handleMove = (e: MouseEvent | TouchEvent) => {
-      const x = 'touches' in e ? e.touches[0].clientX : e.clientX;
-      const y = 'touches' in e ? e.touches[0].clientY : e.clientY;
-      setMousePos({ x, y });
+      const x = 'touches' in e ? e.touches[0].clientX : (e as MouseEvent).clientX;
+      const y = 'touches' in e ? e.touches[0].clientY : (e as MouseEvent).clientY;
+      mousePosRef.current = { x, y };
     };
     window.addEventListener('mousemove', handleMove);
     window.addEventListener('touchmove', handleMove, { passive: true });
-    if (mousePos.x === -500) {
-      setMousePos({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
-    }
     return () => {
       window.removeEventListener('mousemove', handleMove);
       window.removeEventListener('touchmove', handleMove);
     };
-  }, [mousePos.x, isMobile]);
+  }, []);
 
   useEffect(() => {
     let time = 0;
+    let b1 = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    let b2 = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+
     const animate = () => {
       time += 0.01;
       const driftX = Math.sin(time * 0.5) * 20;
       const driftY = Math.cos(time * 0.3) * 20;
-      setBlob1Pos((prev) => ({
-        x: prev.x + (mousePos.x + driftX - prev.x) * 0.06,
-        y: prev.y + (mousePos.y + driftY - prev.y) * 0.06,
-      }));
-      setBlob2Pos((prev) => ({
-        x: prev.x + (mousePos.x - driftX - prev.x) * 0.03,
-        y: prev.y + (mousePos.y - driftY - prev.y) * 0.03,
-      }));
+      
+      const targetX = mousePosRef.current.x;
+      const targetY = mousePosRef.current.y;
+
+      b1.x += (targetX + driftX - b1.x) * 0.06;
+      b1.y += (targetY + driftY - b1.y) * 0.06;
+      
+      b2.x += (targetX - driftX - b2.x) * 0.03;
+      b2.y += (targetY - driftY - b2.y) * 0.03;
+
+      if (blob1Ref.current) {
+        blob1Ref.current.style.transform = `translate3d(${b1.x}px, ${b1.y}px, 0) translate(-50%, -50%)`;
+      }
+      if (blob2Ref.current) {
+        blob2Ref.current.style.transform = `translate3d(${b2.x}px, ${b2.y}px, 0) translate(-50%, -50%)`;
+      }
+      
       requestRef.current = requestAnimationFrame(animate);
     };
     requestRef.current = requestAnimationFrame(animate);
     return () => {
       if (requestRef.current) cancelAnimationFrame(requestRef.current);
     };
-  }, [mousePos, isMobile]);
+  }, []);
 
   useEffect(() => {
     if (isDarkMode) {
@@ -93,31 +133,37 @@ const App: React.FC = () => {
   }, [isDarkMode]);
 
   useEffect(() => {
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+
     const handleScroll = () => {
       const scrollPos = window.scrollY + 120;
-      const services = document.getElementById('services');
-      const projects = document.getElementById('projects');
-      const about = document.getElementById('about');
-      const contact = document.getElementById('contact');
+      const offsets = sectionOffsets.current;
 
-      if (contact && scrollPos >= contact.offsetTop) {
-        setScrollTheme({ bg: 'bg-magic-pink', text: 'text-magic-black', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,183,213,0.6)]', blobColor: 'bg-magic-pink' });
-      } else if (about && scrollPos >= about.offsetTop) {
-        setScrollTheme({ bg: 'bg-magic-blue', text: 'text-white', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(0,56,255,0.6)]', blobColor: 'bg-magic-blue' });
-      } else if (services && scrollPos >= services.offsetTop) {
-        setScrollTheme({ bg: 'bg-yellow-400', text: 'text-magic-black', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.6)]', blobColor: 'bg-yellow-400' });
-      } else if (projects && scrollPos >= projects.offsetTop) {
-        setScrollTheme({ bg: 'bg-magic-orange', text: 'text-white', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,77,0,0.6)]', blobColor: 'bg-magic-orange' });
+      if (offsets.contact && scrollPos >= offsets.contact) {
+        setScrollTheme(prev => prev.bg === 'bg-magic-pink' ? prev : { bg: 'bg-magic-pink', text: 'text-magic-black', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,183,213,0.6)]', blobColor: 'bg-magic-pink' });
+      } else if (offsets.about && scrollPos >= offsets.about) {
+        setScrollTheme(prev => prev.bg === 'bg-magic-blue' ? prev : { bg: 'bg-magic-blue', text: 'text-white', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(0,56,255,0.6)]', blobColor: 'bg-magic-blue' });
+      } else if (offsets.services && scrollPos >= offsets.services) {
+        setScrollTheme(prev => prev.bg === 'bg-yellow-400' ? prev : { bg: 'bg-yellow-400', text: 'text-magic-black', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.6)]', blobColor: 'bg-yellow-400' });
+      } else if (offsets.projects && scrollPos >= offsets.projects) {
+        setScrollTheme(prev => prev.bg === 'bg-magic-orange' ? prev : { bg: 'bg-magic-orange', text: 'text-white', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,77,0,0.6)]', blobColor: 'bg-magic-orange' });
       } else {
-        setScrollTheme({ bg: 'bg-transparent', text: 'text-magic-black dark:text-off-white', shadow: '', blobColor: 'bg-magic-orange' });
+        setScrollTheme(prev => prev.bg === 'bg-transparent' ? prev : { bg: 'bg-transparent', text: 'text-magic-black dark:text-off-white', shadow: '', blobColor: 'bg-magic-orange' });
+      }
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(handleScroll);
+        ticking = true;
       }
     };
 
-    const raf = requestAnimationFrame(() => handleScroll());
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
     return () => {
-      cancelAnimationFrame(raf);
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', onScroll);
     };
   }, []);
 
@@ -160,29 +206,29 @@ const App: React.FC = () => {
       
       <div className="pointer-events-none fixed inset-0 z-[5] overflow-visible">
         <div 
+          ref={blob1Ref}
           className={`absolute w-[95vw] h-[95vw] md:w-[80vw] md:h-[80vw] lg:w-[60vw] lg:h-[60vw] max-w-[900px] max-h-[900px] rounded-full transition-colors duration-500 ease-in-out ${headerTheme.blobColor} ${isMobile ? 'opacity-100' : 'opacity-90'} dark:opacity-95`}
           style={{
-            transform: `translate3d(${blob1Pos.x}px, ${blob1Pos.y}px, 0) translate(-50%, -50%)`,
-            willChange: 'transform, filter',
+            willChange: 'transform',
             WebkitBackfaceVisibility: 'hidden',
             backfaceVisibility: 'hidden',
             WebkitPerspective: '1000px',
             perspective: '1000px',
-            WebkitFilter: isMobile ? 'blur(80px)' : 'blur(140px)',
-            filter: isMobile ? 'blur(80px)' : 'blur(140px)',
+            WebkitFilter: isMobile ? 'blur(60px)' : 'blur(100px)',
+            filter: isMobile ? 'blur(60px)' : 'blur(100px)',
           }}
         />
         <div 
+          ref={blob2Ref}
           className={`absolute w-[85vw] h-[85vw] md:w-[70vw] md:h-[70vw] lg:w-[50vw] lg:h-[50vw] max-w-[800px] max-h-[800px] rounded-full transition-colors duration-500 ease-in-out ${headerTheme.blobColor} ${isMobile ? 'opacity-85' : 'opacity-75'} dark:opacity-80`}
           style={{
-            transform: `translate3d(${blob2Pos.x}px, ${blob2Pos.y}px, 0) translate(-50%, -50%)`,
-            willChange: 'transform, filter',
+            willChange: 'transform',
             WebkitBackfaceVisibility: 'hidden',
             backfaceVisibility: 'hidden',
             WebkitPerspective: '1000px',
             perspective: '1000px',
-            WebkitFilter: isMobile ? 'blur(100px)' : 'blur(160px)',
-            filter: isMobile ? 'blur(100px)' : 'blur(160px)',
+            WebkitFilter: isMobile ? 'blur(80px)' : 'blur(120px)',
+            filter: isMobile ? 'blur(80px)' : 'blur(120px)',
           }}
         />
       </div>
