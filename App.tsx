@@ -244,7 +244,7 @@ const App: React.FC = () => {
             >
               <div className="relative group overflow-hidden rounded-sm">
                 <img 
-                  src="https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773295288/Dennis_Ruf_und_Be%CC%81la_Lehrnickel_Magic_Pop_Creative_Studio_tm4vyk.webp" 
+                  src="https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775554744/Dennis_Ruf_und_Be%CC%81la_Lehrnickel_Magic_Pop_Creative_Studio_tm4vyk.webp" 
                   alt="Studio" 
                   draggable="false" 
                   loading="lazy"
