@@ -142,16 +142,16 @@ export const PROJECTS: Project[] = [
   year: "2025", // Gefixt: Gerade Anführungszeichen
   image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1775379704/LOQI_Rolex_Shanghai_1_gfmomc.jpg",
   gallery: [
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775379704/LOQI_Rolex_Shanghai_1_gfmomc.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775379798/250807_LOQI_TravelRetail_Banner_dvuadv.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775380120/Weekender_together_wloaor.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775379766/250807_LOQI_TravelRetail_Katjes2_rohnmt.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1775379932/LOQI-Coffee-Bag-Gif_hpcg8r.gif",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775379984/LOQI_BKR_10_znnouz.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775379767/250807_LOQI_TravelRetail_Osborne_gebv2b.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775380197/FuturePresent_4x5_new_kexboa.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775379685/LOQI_Rolex_Shanghai_3_mpydts.jpg",
-    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775380316/LOQI_BKR_1_Kopie_small_srtze4.jpg"
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775379704/LOQI_Rolex_Shanghai_1_gfmomc.jpg",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775379798/250807_LOQI_TravelRetail_Banner_dvuadv.jpg",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775380120/Weekender_together_wloaor.jpg",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775379766/250807_LOQI_TravelRetail_Katjes2_rohnmt.jpg",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1775379932/w_1400/LOQI-Coffee-Bag-Gif_hpcg8r.gif",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775379984/LOQI_BKR_10_znnouz.jpg",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775379767/250807_LOQI_TravelRetail_Osborne_gebv2b.jpg",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775380197/FuturePresent_4x5_new_kexboa.jpg",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775379685/LOQI_Rolex_Shanghai_3_mpydts.jpg",
+    "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775380316/LOQI_BKR_1_Kopie_small_srtze4.jpg"
     
   ],
   color: "bg-yellow-400"
@@ -168,13 +168,13 @@ export const PROJECTS: Project[] = [
     year: "2025",
     image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775553750/250120_FL_Alle_Momox_ILV_3_i4phy8.jpg",
     gallery: [
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775472374/250120_4Arms_Momox_ILV_anpivr.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775472375/250120_DVD_Momox_ILV_qayaha.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775472374/250120_4Arms_Momox_ILV_anpivr.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775472375/250120_DVD_Momox_ILV_qayaha.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/video/upload/q_auto/f_auto/v1775552395/YTDown.com_YouTube_Media_H4JC6hoojk4_001_1080p_makei5.mp4",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775552774/250120_buch_Momox_ILV_occ6il.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775552774/250120_vinyl_Momox_ILV_sbkdil.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775553750/250120_FL_Alle_Momox_ILV_3_i4phy8.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775552774/250120_game_Momox_ILV_pspj2v.jpg"
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775552774/250120_buch_Momox_ILV_occ6il.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775552774/250120_vinyl_Momox_ILV_sbkdil.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775553750/250120_FL_Alle_Momox_ILV_3_i4phy8.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775552774/250120_game_Momox_ILV_pspj2v.jpg"
       
     ],
     color: "bg-orange-500"
@@ -191,17 +191,17 @@ export const PROJECTS: Project[] = [
     year: "2017",
     image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1600/v1773247550/02_-_Fisch_q9rvsk.jpg",
     gallery: [
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773294351/Nachtzimmer0_MagicPop2024.jpg_ylyg9j.webp",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773261659/08---Mermaid_bk4obw.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773247550/02_-_Fisch_q9rvsk.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773247550/11_-_Kedi_sienok.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773293311/07_-_Koffer_mvfu6e.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773247551/14_-_Circus_slbpcz.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773247468/benny_3_Kopie_ufsdlm.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773247509/mariamagdalena_Kopie_taojlr.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773247510/spies_Kopie_lttwm9.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773247515/lowe_2_Kopie_xqmf6g.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773247514/hexenfinal_Kopie_gn2dvb.jpg"
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773294351/Nachtzimmer0_MagicPop2024.jpg_ylyg9j.webp",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773261659/08---Mermaid_bk4obw.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773247550/02_-_Fisch_q9rvsk.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773247550/11_-_Kedi_sienok.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773293311/07_-_Koffer_mvfu6e.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773247551/14_-_Circus_slbpcz.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773247468/benny_3_Kopie_ufsdlm.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773247509/mariamagdalena_Kopie_taojlr.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773247510/spies_Kopie_lttwm9.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773247515/lowe_2_Kopie_xqmf6g.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773247514/hexenfinal_Kopie_gn2dvb.jpg"
     ],
     color: "bg-red-600"
   },
@@ -215,15 +215,15 @@ export const PROJECTS: Project[] = [
       en: "We had the pleasure of collaborating with the team behind HANA Berlin to breathe new life into their interior, aligning it with their innovative restaurant concept.\n\nDrawing inspiration from the client’s existing style, which is evident in their other venues, we ensured that HANA would feel like a natural extension of their brand identity. By carefully balancing modern aesthetics with a warm, inviting atmosphere, we crafted a space that celebrates the uniqueness of their menu.\n\nOur approach centered on preserving the essence of the space while introducing fresh textures, colors, and decor elements. We paid attention to ensure consistency with the distinctive style of BellBoy and The Butler, so that HANA feels cohesive within the client’s family of venues. Every detail, from bespoke furniture to curated accents, was selected to enhance the dining experience and create an environment that feels both new and familiar.\n\nPhotographed by Steffen Sinzinger"
     },
     year: "2024",
-    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773296846/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_uiplwp.jpg",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773296846/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_uiplwp.jpg",
     gallery: [
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773296846/HANA_-_Exterior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_dtaliv.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773297077/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-13_vsmruo.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773296846/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_uiplwp.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773296852/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-19_mikqon.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773296849/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-3_mrjnhd.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773296849/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-10_zjrcsr.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773296848/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-3_zrias3.jpg"
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773296846/HANA_-_Exterior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_dtaliv.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773297077/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-13_vsmruo.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773296846/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_uiplwp.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773296852/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-19_mikqon.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773296849/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-3_mrjnhd.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773296849/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-10_zjrcsr.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773296848/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-3_zrias3.jpg"
     ],
     color: "bg-pink-400"
   },
@@ -238,11 +238,11 @@ export const PROJECTS: Project[] = [
       en: "Step into the eerie world of the music video for \"Suitcase\" by Ameli in the Woods.\n\nInspired by the late 90s to early 2000s aesthetic, this video is a homage to that era’s unique charm. Brought to life by Amores Productions. Special effects like zombie makeup, mechanically beating hearts, and projected backgrounds were all crafted analog, without any CGI.\n\nThe aesthetic nostalgia is further enhanced by a colourful designed lighting concept and eye-popping color grading. This music video is a journey back in time, capturing the essence of a bygone era with authenticity and artistic precision by 17 talented people.\n\nBand: Ameli and the Woods & Production: Amores Production"
     },
     year: "2023",
-    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775420840/Bildschirmfoto_2026-04-05_um_22.26.25_oxn9ne.png",
-    gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775420863/Bildschirmfoto_2026-04-05_um_22.26.13_kgvhnw.png",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775420840/Bildschirmfoto_2026-04-05_um_22.26.25_oxn9ne.png",
+    gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775420863/Bildschirmfoto_2026-04-05_um_22.26.13_kgvhnw.png",
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1775457660/ezgif-1bdb65971b5e9ce5_xb4jej.gif",
               "https://res.cloudinary.com/dpe3jvf3e/video/upload/v1773394785/2023-magic-pop-production-set-design-props-suitcase-ameli-in-the-woods-amores-production_ike2mz.mp4"],
-     videoPosters: {"https://res.cloudinary.com/dpe3jvf3e/video/upload/v1773394785/2023-magic-pop-production-set-design-props-suitcase-ameli-in-the-woods-amores-production_ike2mz.mp4": "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775421343/Bildschirmfoto_2026-04-05_um_22.35.29_l9wxuf.png"},
+     videoPosters: {"https://res.cloudinary.com/dpe3jvf3e/video/upload/v1773394785/2023-magic-pop-production-set-design-props-suitcase-ameli-in-the-woods-amores-production_ike2mz.mp4": "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775421343/Bildschirmfoto_2026-04-05_um_22.35.29_l9wxuf.png"},
     color: "bg-magic-blue"
   },
  
@@ -257,10 +257,10 @@ export const PROJECTS: Project[] = [
     },
     year: "2024",
     image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775457438/Bildschirmfoto_2024-04-29_um_09.46.40.png_oggl6i.webp",
-    gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775457439/Bildschirmfoto_2024-04-29_um_09.47.07.png_o0xgqk.webp",
-             "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775457437/Bildschirmfoto_2024-04-29_um_09.46.10.png_ql21ep.webp",
+    gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775457439/Bildschirmfoto_2024-04-29_um_09.47.07.png_o0xgqk.webp",
+             "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775457437/Bildschirmfoto_2024-04-29_um_09.46.10.png_ql21ep.webp",
              "https://res.cloudinary.com/dpe3jvf3e/video/upload/v1775458767/YTDown.com_YouTube_bite-away-Insektenstich-Juckt-mich-nicht_Media_1s06Wkf_Q6U_001_1080p_g96cmk.mp4",
-             "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775457440/Bildschirmfoto_2024-04-29_um_09.46.26.png_fcivma.webp"],
+             "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775457440/Bildschirmfoto_2024-04-29_um_09.46.26.png_fcivma.webp"],
     videoPosters: {"https://res.cloudinary.com/dpe3jvf3e/video/upload/v1775458767/YTDown.com_YouTube_bite-away-Insektenstich-Juckt-mich-nicht_Media_1s06Wkf_Q6U_001_1080p_g96cmk.mp4": "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775457438/Bildschirmfoto_2024-04-29_um_09.46.40.png_oggl6i.webp"},
     color: "bg-yellow-400"
   },
@@ -276,12 +276,12 @@ export const PROJECTS: Project[] = [
     year: "2024",
     image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773390417/2024-magic-pop-setdesign-endspiel-hero_h41buh.jpg",
     gallery: [
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773390422/2024-magic-pop-setdesign-endspiel-interior-3_gauhkz.png",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773390419/2024-magic-pop-setdesign-endspiel-outdoor_lzri8u.png",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773390422/2024-magic-pop-setdesign-endspiel-art-direction_txo5vw.png",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773390421/2024-magic-pop-setdesign-endspiel-interior-2_iv6y1h.png",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773390418/2024-magic-pop-setdesign-endspiel-interior-4_gfeidc.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773390421/2024-magic-pop-setdesign-endspiel-interior_o0htej.png",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773390422/2024-magic-pop-setdesign-endspiel-interior-3_gauhkz.png",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773390419/2024-magic-pop-setdesign-endspiel-outdoor_lzri8u.png",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773390422/2024-magic-pop-setdesign-endspiel-art-direction_txo5vw.png",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773390421/2024-magic-pop-setdesign-endspiel-interior-2_iv6y1h.png",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773390418/2024-magic-pop-setdesign-endspiel-interior-4_gfeidc.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773390421/2024-magic-pop-setdesign-endspiel-interior_o0htej.png",
     ],
     color: "bg-zinc-900"
   }
