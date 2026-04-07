@@ -236,11 +236,11 @@ const App: React.FC = () => {
             {t.whatWeDo.services.map((service, i) => (
               <motion.div 
                 key={i} 
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.2 }}
                 transition={{ duration: 0.6, delay: i * 0.1, ease: [0.19, 1, 0.22, 1] }}
-                className="group pt-0 md:pt-4 transition-all duration-500"
+                className="group pt-0 md:pt-4"
               >
                 <span className="font-archivo text-xs md:text-sm uppercase tracking-widest mb-4 block text-magic-black/30 dark:text-off-white/30">0{i+1}</span>
                 <h3 className="font-archivo text-2xl md:text-3xl uppercase tracking-tighter mb-4 md:mb-6 text-magic-black dark:text-off-white group-hover:translate-x-2 transition-transform duration-300">{service.title}</h3>
