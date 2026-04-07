@@ -346,7 +346,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                           />
                         </div>
                       ) : (
-                        <img src={selectedProject.gallery[0] || selectedProject.image} alt="" draggable="false" loading="lazy" className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700" />
+                        <img src={selectedProject.gallery[0] || selectedProject.image} alt="" draggable="false" loading="lazy" className="w-full h-auto grayscale hover:grayscale-0 active:grayscale-0 transition-all duration-700" />
                       )}
                     </div>
                   </motion.div>
