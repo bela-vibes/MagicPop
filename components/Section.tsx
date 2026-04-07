@@ -12,7 +12,7 @@ interface SectionProps {
 
 const Section: React.FC<SectionProps> = ({ id, title, subtitle, children, className = "" }) => {
   return (
-    <section id={id} className={`py-16 md:py-24 px-6 md:px-12 min-h-screen flex flex-col justify-center safari-contain ${className}`}>
+    <section id={id} className={`py-16 md:py-24 px-6 md:px-12 min-h-screen flex flex-col justify-center ${className}`}>
       <motion.div 
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
