@@ -168,8 +168,8 @@ const App: React.FC = () => {
             backfaceVisibility: 'hidden',
             WebkitPerspective: '1000px',
             perspective: '1000px',
-            WebkitFilter: isMobile ? 'blur(80px)' : 'blur(140px)',
-            filter: isMobile ? 'blur(80px)' : 'blur(140px)',
+            WebkitFilter: isMobile ? 'blur(40px)' : 'blur(140px)',
+            filter: isMobile ? 'blur(40px)' : 'blur(140px)',
           }}
         />
         <div 
@@ -181,8 +181,8 @@ const App: React.FC = () => {
             backfaceVisibility: 'hidden',
             WebkitPerspective: '1000px',
             perspective: '1000px',
-            WebkitFilter: isMobile ? 'blur(100px)' : 'blur(160px)',
-            filter: isMobile ? 'blur(100px)' : 'blur(160px)',
+            WebkitFilter: isMobile ? 'blur(50px)' : 'blur(160px)',
+            filter: isMobile ? 'blur(50px)' : 'blur(160px)',
           }}
         />
       </div>
@@ -243,7 +243,13 @@ const App: React.FC = () => {
               className="w-full lg:w-1/2"
             >
               <div className="relative group overflow-hidden rounded-sm">
-                <img src="https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773295288/Dennis_Ruf_und_Be%CC%81la_Lehrnickel_Magic_Pop_Creative_Studio_tm4vyk.webp" alt="Studio" draggable="false" className="w-full grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100 aspect-video md:aspect-auto object-cover" />
+                <img 
+                  src="https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773295288/Dennis_Ruf_und_Be%CC%81la_Lehrnickel_Magic_Pop_Creative_Studio_tm4vyk.webp" 
+                  alt="Studio" 
+                  draggable="false" 
+                  loading="lazy"
+                  className="w-full grayscale group-hover:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100 aspect-video md:aspect-auto object-cover" 
+                />
                 <div className="absolute inset-0 bg-magic-blue/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               </div>
             </motion.div>
