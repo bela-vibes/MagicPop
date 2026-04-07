@@ -328,22 +328,30 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                       >
                         {selectedProject.gallery[0]?.toLowerCase().endsWith('.mp4') ? (
                           <div className="relative">
-                            <video 
+                            <motion.video 
                               src={selectedProject.gallery[0]} 
                               poster={selectedProject.videoPosters?.[selectedProject.gallery[0]] || selectedProject.image}
                               controls
                               playsInline
                               muted
-                              className="w-full h-auto rounded-sm grayscale hover:grayscale-0 transition-all duration-700"
+                              whileHover={{ filter: "grayscale(0%)" }}
+                              initial={{ filter: "grayscale(100%)" }}
+                              animate={{ filter: "grayscale(100%)" }}
+                              transition={{ duration: 0.7 }}
+                              className="w-full h-auto rounded-sm"
                             />
                           </div>
                         ) : (
-                          <img 
+                          <motion.img 
                             src={selectedProject.gallery[0] || selectedProject.image} 
                             alt="" 
                             draggable="false" 
                             loading="lazy" 
-                            className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700" 
+                            whileHover={{ filter: "grayscale(0%)" }}
+                            initial={{ filter: "grayscale(100%)" }}
+                            animate={{ filter: "grayscale(100%)" }}
+                            transition={{ duration: 0.7 }}
+                            className="w-full h-auto" 
                           />
                         )}
                       </div>
