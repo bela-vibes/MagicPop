@@ -166,14 +166,14 @@ export const PROJECTS: Project[] = [
     en: "Monochrome clarity, built in layers.\n\nFor Momox, we developed a visual language built around a single principle: color as a system. The starting point was the new Momox blue — reduced, precise, and designed to function as a unifying element across all visuals. Our approach was to translate this idea consistently into both space and image. Rather than creating variety, we built depth within a single color world. Monochrome was not treated as a limitation, but as a tool for clarity, focus, and recognition.\n\nWe handled the full production, from casting models and scouting locations to assembling the entire team, including camera and catering. At the same time, we developed the set design, ensuring that every object, surface, and detail relates back to the Momox blue. Props were carefully selected and combined to create tension within the monochromatic system. Materials, shapes, and tonal variations interact without disrupting the visual calm. The result is a body of work that feels reduced, yet highly controlled and precise.\n\nAgency: I LIKE VISUALS"
     },
     year: "2025",
-    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775472378/250120_FL_Alle_Momox_ILV_3_i4phy8.jpg",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775553750/250120_FL_Alle_Momox_ILV_3_i4phy8.jpg",
     gallery: [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775472374/250120_4Arms_Momox_ILV_anpivr.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775472375/250120_DVD_Momox_ILV_qayaha.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/video/upload/q_auto/f_auto/v1775552395/YTDown.com_YouTube_Media_H4JC6hoojk4_001_1080p_makei5.mp4",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775552774/250120_buch_Momox_ILV_occ6il.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775552774/250120_vinyl_Momox_ILV_sbkdil.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775472378/250120_FL_Alle_Momox_ILV_3_i4phy8.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775553750/250120_FL_Alle_Momox_ILV_3_i4phy8.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775552774/250120_game_Momox_ILV_pspj2v.jpg"
       
     ],
