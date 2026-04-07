@@ -13,11 +13,6 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
   
   return (
     <section id="hero" className="relative min-h-screen flex flex-col px-6 md:px-12 pt-28 pb-12 overflow-hidden bg-transparent">
-      {/* Background Graphic Elements - subtle grid */}
-      <div className="absolute inset-0 z-0 opacity-[0.03] dark:opacity-0 pointer-events-none">
-        <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, currentColor 1px, transparent 0)', backgroundSize: '40px 40px' }}></div>
-      </div>
-
       <div className="relative z-10 w-full flex-1 flex flex-col">
         <div className="flex-1 flex flex-col justify-start pt-12 md:pt-0">
           <h1 className="font-archivo text-[20vw] md:text-[18vw] leading-[0.8] uppercase tracking-tighter text-magic-black dark:text-off-white flex flex-col select-none pointer-events-none transition-colors duration-500">
