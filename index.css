@@ -139,6 +139,11 @@ img {
 /* Safari Performance Optimizations */
 .safari-contain {
   contain: paint;
+  /* Force GPU layer on Desktop Safari */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Optimize backdrop-filter for Safari */
@@ -146,4 +151,9 @@ img {
   .backdrop-blur-md {
     -webkit-backdrop-filter: blur(8px); /* Slightly lower blur for Safari */
   }
+}
+
+/* Smooth scroll performance for Safari Desktop */
+main {
+  will-change: transform;
 }
