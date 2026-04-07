@@ -85,6 +85,13 @@
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Prevent font stuttering/jittering in Safari during animations */
+  h1, h2, h3, h4, p, span, a, button {
+    -webkit-font-smoothing: antialiased;
+    -webkit-transform: translateZ(0); /* Helps Safari keep text on a clean subpixel grid */
   }
 }
 
