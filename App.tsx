@@ -265,12 +265,16 @@ const App: React.FC = () => {
               className="w-full lg:w-1/2"
             >
               <div className="relative group overflow-hidden rounded-sm">
-                <img 
+                <motion.img 
                   src="https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773295288/Dennis_Ruf_und_Be%CC%81la_Lehrnickel_Magic_Pop_Creative_Studio_tm4vyk.webp" 
                   alt="Studio" 
                   draggable="false" 
                   loading="lazy"
-                  className="w-full grayscale group-hover:grayscale-0 active:grayscale-0 transition-all duration-700 scale-105 group-hover:scale-100 aspect-video md:aspect-auto object-cover" 
+                  initial={{ filter: 'grayscale(100%)' }}
+                  whileInView={{ filter: 'grayscale(0%)' }}
+                  viewport={{ amount: 0.3 }}
+                  transition={{ duration: 1.2, ease: [0.19, 1, 0.22, 1] }}
+                  className="w-full transition-transform duration-700 scale-105 group-hover:scale-100 aspect-video md:aspect-auto object-cover" 
                 />
                 <div className="absolute inset-0 bg-magic-blue/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
               </div>
