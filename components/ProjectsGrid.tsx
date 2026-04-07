@@ -265,6 +265,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                   src={project.image} 
                   alt={project.title[lang]} 
                   draggable="false"
+                  loading="lazy"
                   className="w-full h-full object-cover transition-transform duration-[1.2s] ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-110" 
                 />
               )}
@@ -345,7 +346,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                           />
                         </div>
                       ) : (
-                        <img src={selectedProject.gallery[0] || selectedProject.image} alt="" draggable="false" className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700" />
+                        <img src={selectedProject.gallery[0] || selectedProject.image} alt="" draggable="false" loading="lazy" className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-700" />
                       )}
                     </div>
                   </motion.div>
@@ -379,7 +380,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                             />
                           </div>
                         ) : (
-                          <img src={selectedProject.gallery[1]} alt="" draggable="false" className="w-full h-auto" />
+                          <img src={selectedProject.gallery[1]} alt="" draggable="false" loading="lazy" className="w-full h-auto" />
                         )}
                       </div>
                     )}
@@ -467,6 +468,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                             src={img} 
                             alt="" 
                             draggable="false"
+                            loading="lazy"
                             className="w-full h-auto transform group-hover:scale-105 transition-transform duration-1000" 
                           />
                         )}
