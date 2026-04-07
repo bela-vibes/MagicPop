@@ -128,7 +128,7 @@ export const PROJECTS: Project[] = [
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775468827/060625_SonyMusic-0768_144dpi_SCREEN_cftfy0.jpg",
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775468820/060625_SonyMusic-0005_144dpi_SCREEN_onbmjr.jpg"
               ],
-    color: "#0038FF"
+    color: "bg-magic-blue"
   },
   {
   id: 2,
@@ -154,7 +154,7 @@ export const PROJECTS: Project[] = [
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775380316/LOQI_BKR_1_Kopie_small_srtze4.jpg"
     
   ],
-  color: "#0038FF"
+  color: "bg-magic-blue"
 },
 {
     id: 8,
@@ -171,7 +171,7 @@ export const PROJECTS: Project[] = [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775472374/250120_4Arms_Momox_ILV_anpivr.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775472375/250120_DVD_Momox_ILV_qayaha.jpg"
     ],
-    color: "#0038FF"
+    color: "bg-magic-blue"
   },
   {
     id: 3,
@@ -197,7 +197,7 @@ export const PROJECTS: Project[] = [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773247515/lowe_2_Kopie_xqmf6g.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773247514/hexenfinal_Kopie_gn2dvb.jpg"
     ],
-    color: "bg-orange-500"
+    color: "bg-magic-blue"
   },
   {
     id: 4,
@@ -219,7 +219,7 @@ export const PROJECTS: Project[] = [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773296849/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-10_zjrcsr.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1773296848/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-3_zrias3.jpg"
     ],
-    color: "bg-magic-pink"
+    color: "bg-magic-blue"
   },
 
    {
