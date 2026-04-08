@@ -110,7 +110,7 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
           </div>
 
           <button 
-            className={`lg:hidden p-2 relative z-[110] transition-colors duration-300 ${isMenuOpen ? 'text-off-white' : ''}`}
+            className={`lg:hidden p-2 relative z-[110] transition-colors duration-500 ease-in-out ${isMenuOpen ? 'text-off-white' : textColor}`}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? (
