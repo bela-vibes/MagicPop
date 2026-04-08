@@ -119,7 +119,7 @@ export const PROJECTS: Project[] = [
     year: "2025",
     image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775468820/060625_SonyMusic-0005_144dpi_SCREEN_onbmjr.jpg",
     gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775468829/060625_SonyMusic-0112_144dpi_SCREEN_ug76wg.jpg",
-              "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775468822/060625_SonyMusic-0282_144dpi_SCREEN_b00p4h.jpg",
+              "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775653742/060625_SonyMusic-0324_144dpi_SCREEN_uk7ozb.jpg",
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775468820/060625_SonyMusic-0005_144dpi_SCREEN_onbmjr.jpg",
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775468828/250606_SonyMusic_0830_144dpi_SCREEN_qz2sno.jpg",
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775468823/060625_SonyMusic-0541_144dpi_SCREEN_ozg3xe.jpg",
