@@ -3,14 +3,16 @@ import React, { useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { PROJECTS, TRANSLATIONS } from '../constants';
 import { Project, Language } from '../types';
+import ProximityImage from './ProximityImage';
 
 interface ProjectsGridProps {
   lang: Language;
   selectedProject: Project | null;
   setSelectedProject: (project: Project | null) => void;
+  mousePos: { x: number; y: number };
 }
 
-const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setSelectedProject }) => {
+const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setSelectedProject, mousePos }) => {
   const [activeFilter, setActiveFilter] = React.useState<string | null>(null);
   const [isEdgeScrolling, setIsEdgeScrolling] = React.useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -323,73 +325,29 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                       <p className="font-editorial text-2xl md:text-4xl lg:text-5xl leading-[1.1] text-magic-black dark:text-off-white italic whitespace-pre-line mb-12">
                         {selectedProject.description[lang].split('\n\n')[0]}
                       </p>
-                      <motion.div 
-                        whileHover="hover"
-                        className="w-full overflow-hidden rounded-sm mb-12 relative group"
+                      <div 
+                        className="w-full overflow-hidden rounded-sm mb-12"
                       >
                         {selectedProject.gallery[0]?.toLowerCase().endsWith('.mp4') ? (
-                          <>
-                            {/* Bottom Layer: Grayscale Poster (Static) */}
-                            <img 
-                              src={selectedProject.videoPosters?.[selectedProject.gallery[0]] || selectedProject.image}
-                              alt=""
-                              className="w-full h-auto grayscale"
+                          <div className="relative">
+                            <video 
+                              src={selectedProject.gallery[0]} 
+                              poster={selectedProject.videoPosters?.[selectedProject.gallery[0]] || selectedProject.image}
+                              controls
+                              playsInline
+                              muted
+                              className="w-full h-auto rounded-sm"
                             />
-                            {/* Top Layer: Color Video (Animated Opacity) */}
-                            <motion.div
-                              variants={{
-                                initial: { opacity: 0 },
-                                hover: { opacity: 1 }
-                              }}
-                              initial="initial"
-                              animate="initial"
-                              whileHover="hover"
-                              transition={{ duration: 0.7 }}
-                              className="absolute inset-0 z-10"
-                            >
-                              <video 
-                                src={selectedProject.gallery[0]} 
-                                poster={selectedProject.videoPosters?.[selectedProject.gallery[0]] || selectedProject.image}
-                                controls
-                                playsInline
-                                muted
-                                className="w-full h-full object-cover"
-                              />
-                            </motion.div>
-                          </>
+                          </div>
                         ) : (
-                          <>
-                            {/* Bottom Layer: Grayscale Image (Static) */}
-                            <img 
-                              src={selectedProject.gallery[0] || selectedProject.image} 
-                              alt="" 
-                              draggable="false" 
-                              loading="lazy" 
-                              className="w-full h-auto grayscale" 
-                            />
-                            {/* Top Layer: Color Image (Animated Opacity) */}
-                            <motion.div
-                              variants={{
-                                initial: { opacity: 0 },
-                                hover: { opacity: 1 }
-                              }}
-                              initial="initial"
-                              animate="initial"
-                              whileHover="hover"
-                              transition={{ duration: 0.7 }}
-                              className="absolute inset-0 z-10"
-                            >
-                              <img 
-                                src={selectedProject.gallery[0] || selectedProject.image} 
-                                alt="" 
-                                draggable="false" 
-                                loading="lazy" 
-                                className="w-full h-auto" 
-                              />
-                            </motion.div>
-                          </>
+                          <ProximityImage 
+                            src={selectedProject.gallery[0] || selectedProject.image} 
+                            alt="" 
+                            mousePos={mousePos}
+                            className="w-full h-auto"
+                          />
                         )}
-                      </motion.div>
+                      </div>
                     </motion.div>
                     
                     <motion.div 
