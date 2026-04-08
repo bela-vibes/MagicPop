@@ -22,9 +22,9 @@ const ProximityImage: React.FC<ProximityImageProps> = ({ src, alt, mousePos, cla
 
       const rect = containerRef.current.getBoundingClientRect();
       
-      // Hotspot padding: 25% of the image size
-      const paddingX = rect.width * 0.25;
-      const paddingY = rect.height * 0.25;
+      // Hotspot padding: 10% of the image size
+      const paddingX = rect.width * 0.10;
+      const paddingY = rect.height * 0.10;
 
       const isInsideHotspot = 
         mousePos.x >= rect.left - paddingX &&
