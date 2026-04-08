@@ -279,9 +279,9 @@ export const PROJECTS: Project[] = [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773390422/2024-magic-pop-setdesign-endspiel-interior-3_gauhkz.png",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773390419/2024-magic-pop-setdesign-endspiel-outdoor_lzri8u.png",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773390422/2024-magic-pop-setdesign-endspiel-art-direction_txo5vw.png",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773390421/2024-magic-pop-setdesign-endspiel-interior-2_iv6y1h.png",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773390418/2024-magic-pop-setdesign-endspiel-interior-4_gfeidc.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773390421/2024-magic-pop-setdesign-endspiel-interior_o0htej.png",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773390418/2024-magic-pop-setdesign-endspiel-interior-4_gfeidc.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773390421/2024-magic-pop-setdesign-endspiel-interior-2_iv6y1h.png"
     ],
     color: "bg-zinc-900"
   }
