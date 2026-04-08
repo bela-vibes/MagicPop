@@ -323,38 +323,73 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                       <p className="font-editorial text-2xl md:text-4xl lg:text-5xl leading-[1.1] text-magic-black dark:text-off-white italic whitespace-pre-line mb-12">
                         {selectedProject.description[lang].split('\n\n')[0]}
                       </p>
-                      <div 
-                        className="w-full overflow-hidden rounded-sm mb-12"
+                      <motion.div 
+                        whileHover="hover"
+                        className="w-full overflow-hidden rounded-sm mb-12 relative group"
                       >
                         {selectedProject.gallery[0]?.toLowerCase().endsWith('.mp4') ? (
-                          <div className="relative">
-                            <motion.video 
-                              src={selectedProject.gallery[0]} 
-                              poster={selectedProject.videoPosters?.[selectedProject.gallery[0]] || selectedProject.image}
-                              controls
-                              playsInline
-                              muted
-                              whileHover={{ filter: "grayscale(0%)" }}
-                              initial={{ filter: "grayscale(100%)" }}
-                              animate={{ filter: "grayscale(100%)" }}
-                              transition={{ duration: 0.7 }}
-                              className="w-full h-auto rounded-sm"
+                          <>
+                            {/* Bottom Layer: Grayscale Poster (Static) */}
+                            <img 
+                              src={selectedProject.videoPosters?.[selectedProject.gallery[0]] || selectedProject.image}
+                              alt=""
+                              className="w-full h-auto grayscale"
                             />
-                          </div>
+                            {/* Top Layer: Color Video (Animated Opacity) */}
+                            <motion.div
+                              variants={{
+                                initial: { opacity: 0 },
+                                hover: { opacity: 1 }
+                              }}
+                              initial="initial"
+                              animate="initial"
+                              whileHover="hover"
+                              transition={{ duration: 0.7 }}
+                              className="absolute inset-0 z-10"
+                            >
+                              <video 
+                                src={selectedProject.gallery[0]} 
+                                poster={selectedProject.videoPosters?.[selectedProject.gallery[0]] || selectedProject.image}
+                                controls
+                                playsInline
+                                muted
+                                className="w-full h-full object-cover"
+                              />
+                            </motion.div>
+                          </>
                         ) : (
-                          <motion.img 
-                            src={selectedProject.gallery[0] || selectedProject.image} 
-                            alt="" 
-                            draggable="false" 
-                            loading="lazy" 
-                            whileHover={{ filter: "grayscale(0%)" }}
-                            initial={{ filter: "grayscale(100%)" }}
-                            animate={{ filter: "grayscale(100%)" }}
-                            transition={{ duration: 0.7 }}
-                            className="w-full h-auto" 
-                          />
+                          <>
+                            {/* Bottom Layer: Grayscale Image (Static) */}
+                            <img 
+                              src={selectedProject.gallery[0] || selectedProject.image} 
+                              alt="" 
+                              draggable="false" 
+                              loading="lazy" 
+                              className="w-full h-auto grayscale" 
+                            />
+                            {/* Top Layer: Color Image (Animated Opacity) */}
+                            <motion.div
+                              variants={{
+                                initial: { opacity: 0 },
+                                hover: { opacity: 1 }
+                              }}
+                              initial="initial"
+                              animate="initial"
+                              whileHover="hover"
+                              transition={{ duration: 0.7 }}
+                              className="absolute inset-0 z-10"
+                            >
+                              <img 
+                                src={selectedProject.gallery[0] || selectedProject.image} 
+                                alt="" 
+                                draggable="false" 
+                                loading="lazy" 
+                                className="w-full h-auto" 
+                              />
+                            </motion.div>
+                          </>
                         )}
-                      </div>
+                      </motion.div>
                     </motion.div>
                     
                     <motion.div 
