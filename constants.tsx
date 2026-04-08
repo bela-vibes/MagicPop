@@ -156,30 +156,7 @@ export const PROJECTS: Project[] = [
   ],
   color: "bg-yellow-400"
 },
-{
-    id: 8,
-    slug: "momox",
-    title: { de: "Momox", en: "Momox" },
-    category: { de: "Videoproduktion", en: "Video Production" },
-    description: {
-    de: "Monochrome Klarheit, die sich Schicht für Schicht entfaltet.\n\nFür den visuellen Auftritt von Momox haben wir eine Bildwelt entwickelt, die sich radikal auf ein Prinzip konzentriert: Farbe als System. Ausgangspunkt war das neue Momox-Blau — reduziert, präzise und als visuelle Klammer über alle Elemente hinweg gedacht. Unser Ansatz war es, dieses Prinzip räumlich und fotografisch konsequent zu übersetzen. Statt Vielfalt zu zeigen, haben wir Tiefe innerhalb einer einzigen Farbwelt aufgebaut. Monochromie wurde dabei nicht als Einschränkung verstanden, sondern als Werkzeug für Klarheit, Fokus und Wiedererkennbarkeit.\n\nWir verantworteten die gesamte Produktion — von der Auswahl und Besetzung der Models über Location Scouting bis hin zum Aufbau des kompletten Teams, Kamera und Catering. Parallel dazu entwickelten wir das Set Design, in dem jedes Objekt, jede Oberfläche und jedes Detail in Beziehung zum Momox-Blau steht. Props wurden gezielt ausgewählt und kombiniert, um innerhalb der monochromen Logik Spannung zu erzeugen. Materialien, Formen und Nuancen greifen ineinander, ohne die visuelle Ruhe zu stören. So entsteht eine Bildwelt, die reduziert wirkt und gleichzeitig eine hohe Präzision und Dichte besitzt.\n\nAgentur: I LIKE VISUALS",
-    en: "Monochrome clarity, built in layers.\n\nFor Momox, we developed a visual language built around a single principle: color as a system. The starting point was the new Momox blue — reduced, precise, and designed to function as a unifying element across all visuals. Our approach was to translate this idea consistently into both space and image. Rather than creating variety, we built depth within a single color world. Monochrome was not treated as a limitation, but as a tool for clarity, focus, and recognition.\n\nWe handled the full production, from casting models and scouting locations to assembling the entire team, including camera and catering. At the same time, we developed the set design, ensuring that every object, surface, and detail relates back to the Momox blue. Props were carefully selected and combined to create tension within the monochromatic system. Materials, shapes, and tonal variations interact without disrupting the visual calm. The result is a body of work that feels reduced, yet highly controlled and precise.\n\nAgency: I LIKE VISUALS"
-    },
-    year: "2025",
-    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775553750/250120_FL_Alle_Momox_ILV_3_i4phy8.jpg",
-    gallery: [
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775472374/250120_4Arms_Momox_ILV_anpivr.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775472375/250120_DVD_Momox_ILV_qayaha.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/video/upload/q_auto/f_auto/v1775552395/YTDown.com_YouTube_Media_H4JC6hoojk4_001_1080p_makei5.mp4",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775552774/250120_buch_Momox_ILV_occ6il.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775552774/250120_vinyl_Momox_ILV_sbkdil.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775553750/250120_FL_Alle_Momox_ILV_3_i4phy8.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775552774/250120_game_Momox_ILV_pspj2v.jpg"
-      
-    ],
-    color: "bg-orange-500"
-  },
-  {
+   {
     id: 3,
     slug: "nachtzimmer",
     title: { de: "Nacht\u00ADzimmer", en: "Nacht\u00ADzimmer" },
@@ -205,6 +182,66 @@ export const PROJECTS: Project[] = [
     ],
     color: "bg-red-600"
   },
+{
+    id: 8,
+    slug: "momox",
+    title: { de: "Momox", en: "Momox" },
+    category: { de: "Videoproduktion", en: "Video Production" },
+    description: {
+    de: "Monochrome Klarheit, die sich Schicht für Schicht entfaltet.\n\nFür den visuellen Auftritt von Momox haben wir eine Bildwelt entwickelt, die sich radikal auf ein Prinzip konzentriert: Farbe als System. Ausgangspunkt war das neue Momox-Blau — reduziert, präzise und als visuelle Klammer über alle Elemente hinweg gedacht. Unser Ansatz war es, dieses Prinzip räumlich und fotografisch konsequent zu übersetzen. Statt Vielfalt zu zeigen, haben wir Tiefe innerhalb einer einzigen Farbwelt aufgebaut. Monochromie wurde dabei nicht als Einschränkung verstanden, sondern als Werkzeug für Klarheit, Fokus und Wiedererkennbarkeit.\n\nWir verantworteten die gesamte Produktion — von der Auswahl und Besetzung der Models über Location Scouting bis hin zum Aufbau des kompletten Teams, Kamera und Catering. Parallel dazu entwickelten wir das Set Design, in dem jedes Objekt, jede Oberfläche und jedes Detail in Beziehung zum Momox-Blau steht. Props wurden gezielt ausgewählt und kombiniert, um innerhalb der monochromen Logik Spannung zu erzeugen. Materialien, Formen und Nuancen greifen ineinander, ohne die visuelle Ruhe zu stören. So entsteht eine Bildwelt, die reduziert wirkt und gleichzeitig eine hohe Präzision und Dichte besitzt.\n\nAgentur: I LIKE VISUALS",
+    en: "Monochrome clarity, built in layers.\n\nFor Momox, we developed a visual language built around a single principle: color as a system. The starting point was the new Momox blue — reduced, precise, and designed to function as a unifying element across all visuals. Our approach was to translate this idea consistently into both space and image. Rather than creating variety, we built depth within a single color world. Monochrome was not treated as a limitation, but as a tool for clarity, focus, and recognition.\n\nWe handled the full production, from casting models and scouting locations to assembling the entire team, including camera and catering. At the same time, we developed the set design, ensuring that every object, surface, and detail relates back to the Momox blue. Props were carefully selected and combined to create tension within the monochromatic system. Materials, shapes, and tonal variations interact without disrupting the visual calm. The result is a body of work that feels reduced, yet highly controlled and precise.\n\nAgency: I LIKE VISUALS"
+    },
+    year: "2025",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775553750/250120_FL_Alle_Momox_ILV_3_i4phy8.jpg",
+    gallery: [
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775472374/250120_4Arms_Momox_ILV_anpivr.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775472375/250120_DVD_Momox_ILV_qayaha.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/video/upload/q_auto/f_auto/v1775552395/YTDown.com_YouTube_Media_H4JC6hoojk4_001_1080p_makei5.mp4",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775552774/250120_buch_Momox_ILV_occ6il.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775552774/250120_vinyl_Momox_ILV_sbkdil.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775553750/250120_FL_Alle_Momox_ILV_3_i4phy8.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775552774/250120_game_Momox_ILV_pspj2v.jpg"
+      
+    ],
+    color: "bg-orange-500"
+  },
+ 
+ 
+  {
+    id: 6,
+    slug: "bite-away",
+    title: { de: "Bite Away", en: "Bite Away" },
+    category: { de: "Set Design", en: "Set Design" },
+    description: {
+      de: "Don't bother me!\n\nFür Dermapharms \"Don't bother me!\"-Kampagne entwarfen und bauten wir sechs eigenständige Sets, die gemeinsam eine in sich geschlossene Welt erzählen: eine Familie, so besessen von Mückenschutz, dass ihre häusliche Realität längst in absurde Schutzrituale gekippt ist. Die Herausforderung lag darin, dieser Übertreibung eine visuelle Logik zu geben. Räume, die komisch wirken, aber niemals beliebig.\n\nInnerhalb von zwei Drehtagen entstand ein aufeinander abgestimmtes System aus Sets, Kostümen und Requisiten, das den 65-sekündigen Spot trägt. Jedes Set wurde als eigenständiger Charakter behandelt, mit eigener Farbsprache und eigenem Grad an inszenierter Paranoia. Kostüme und Props wurden nicht koordiniert, um zu matchen, sondern um gemeinsam eine Welt zu behaupten, die ihre eigene absurde Innenperspektive hat.\n\nAgentur: I LIKE VISUALS",
+      en: "Don't bother me!\n\nFor Dermapharm's \"Don't bother me!\" campaign, we designed and built six individual sets that together form a self-contained world: a family so consumed by their fear of mosquitoes that domestic life has long since tipped into absurd ritual. The challenge was giving that exaggeration a visual logic, rooms that read as comic without ever feeling arbitrary.\n\nOver two days of shooting, we developed a cohesive system of sets, costumes, and props that carries the 65-second spot. Each set was treated as a character in its own right, with its own color language and its own degree of staged paranoia. Costumes and props were not coordinated to match but to collectively assert a world with its own internal, quietly unhinged perspective.\n\nAgency: I LIKE VISUALS"
+    },
+    year: "2024",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775457438/Bildschirmfoto_2024-04-29_um_09.46.40.png_oggl6i.webp",
+    gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775457439/Bildschirmfoto_2024-04-29_um_09.47.07.png_o0xgqk.webp",
+             "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775457437/Bildschirmfoto_2024-04-29_um_09.46.10.png_ql21ep.webp",
+             "https://res.cloudinary.com/dpe3jvf3e/video/upload/v1775458767/YTDown.com_YouTube_bite-away-Insektenstich-Juckt-mich-nicht_Media_1s06Wkf_Q6U_001_1080p_g96cmk.mp4",
+             "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775457440/Bildschirmfoto_2024-04-29_um_09.46.26.png_fcivma.webp"],
+    videoPosters: {"https://res.cloudinary.com/dpe3jvf3e/video/upload/v1775458767/YTDown.com_YouTube_bite-away-Insektenstich-Juckt-mich-nicht_Media_1s06Wkf_Q6U_001_1080p_g96cmk.mp4": "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775457438/Bildschirmfoto_2024-04-29_um_09.46.40.png_oggl6i.webp"},
+    color: "bg-yellow-400"
+  },
+     {
+    id: 5,
+    slug: "suitcase",
+    title: { de: "Suitcase", en: "Suitcase" },
+    category: { de: "Set Design", en: "Set Design" }, // Ich habe "Props" zu "Set Design" geändert (strategischer)
+    description: {
+      de: "Tauche ein in die unheimliche Welt des Musikvideos zu \"Suitcase\" von Ameli in the Woods.\n\nInspiriert von der Ästhetik der späten 90er bis frühen 2000er Jahre, ist dieses Video eine Hommage an den einzigartigen Charme dieser Ära. Zum Leben erweckt von Amores Productions. Spezialeffekte wie Zombie-Make-up, mechanisch schlagende Herzen und projizierte Hintergründe wurden alle analog und ohne CGI hergestellt.\n\nDie nostalgische Ästhetik wurde durch ein farbenfroh gestaltetes Beleuchtungskonzept und eine auffälliges Colorgrading noch verstärkt. Das Musikvideo ist eine Reise in die Vergangenheit und fängt die Essenz der MTV-Ära ein. Es wurde mit 17 talentierten Menschen und viel Kreativität umgesetzt.\n\nBand: Ameli and the Woods & Produktion: Amores Production",
+      en: "Step into the eerie world of the music video for \"Suitcase\" by Ameli in the Woods.\n\nInspired by the late 90s to early 2000s aesthetic, this video is a homage to that era’s unique charm. Brought to life by Amores Productions. Special effects like zombie makeup, mechanically beating hearts, and projected backgrounds were all crafted analog, without any CGI.\n\nThe aesthetic nostalgia is further enhanced by a colourful designed lighting concept and eye-popping color grading. This music video is a journey back in time, capturing the essence of a bygone era with authenticity and artistic precision by 17 talented people.\n\nBand: Ameli and the Woods & Production: Amores Production"
+    },
+    year: "2023",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775420840/Bildschirmfoto_2026-04-05_um_22.26.25_oxn9ne.png",
+    gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775420863/Bildschirmfoto_2026-04-05_um_22.26.13_kgvhnw.png",
+              "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1775457660/ezgif-1bdb65971b5e9ce5_xb4jej.gif",
+              "https://res.cloudinary.com/dpe3jvf3e/video/upload/v1773394785/2023-magic-pop-production-set-design-props-suitcase-ameli-in-the-woods-amores-production_ike2mz.mp4"],
+     videoPosters: {"https://res.cloudinary.com/dpe3jvf3e/video/upload/v1773394785/2023-magic-pop-production-set-design-props-suitcase-ameli-in-the-woods-amores-production_ike2mz.mp4": "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775421343/Bildschirmfoto_2026-04-05_um_22.35.29_l9wxuf.png"},
+    color: "bg-magic-blue"
+  },
   {
     id: 4,
     slug: "hana",
@@ -226,43 +263,6 @@ export const PROJECTS: Project[] = [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773296848/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-3_zrias3.jpg"
     ],
     color: "bg-pink-400"
-  },
-
-   {
-    id: 5,
-    slug: "suitcase",
-    title: { de: "Suitcase", en: "Suitcase" },
-    category: { de: "Set Design", en: "Set Design" }, // Ich habe "Props" zu "Set Design" geändert (strategischer)
-    description: {
-      de: "Tauche ein in die unheimliche Welt des Musikvideos zu \"Suitcase\" von Ameli in the Woods.\n\nInspiriert von der Ästhetik der späten 90er bis frühen 2000er Jahre, ist dieses Video eine Hommage an den einzigartigen Charme dieser Ära. Zum Leben erweckt von Amores Productions. Spezialeffekte wie Zombie-Make-up, mechanisch schlagende Herzen und projizierte Hintergründe wurden alle analog und ohne CGI hergestellt.\n\nDie nostalgische Ästhetik wurde durch ein farbenfroh gestaltetes Beleuchtungskonzept und eine auffälliges Colorgrading noch verstärkt. Das Musikvideo ist eine Reise in die Vergangenheit und fängt die Essenz der MTV-Ära ein. Es wurde mit 17 talentierten Menschen und viel Kreativität umgesetzt.\n\nBand: Ameli and the Woods & Produktion: Amores Production",
-      en: "Step into the eerie world of the music video for \"Suitcase\" by Ameli in the Woods.\n\nInspired by the late 90s to early 2000s aesthetic, this video is a homage to that era’s unique charm. Brought to life by Amores Productions. Special effects like zombie makeup, mechanically beating hearts, and projected backgrounds were all crafted analog, without any CGI.\n\nThe aesthetic nostalgia is further enhanced by a colourful designed lighting concept and eye-popping color grading. This music video is a journey back in time, capturing the essence of a bygone era with authenticity and artistic precision by 17 talented people.\n\nBand: Ameli and the Woods & Production: Amores Production"
-    },
-    year: "2023",
-    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775420840/Bildschirmfoto_2026-04-05_um_22.26.25_oxn9ne.png",
-    gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775420863/Bildschirmfoto_2026-04-05_um_22.26.13_kgvhnw.png",
-              "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1775457660/ezgif-1bdb65971b5e9ce5_xb4jej.gif",
-              "https://res.cloudinary.com/dpe3jvf3e/video/upload/v1773394785/2023-magic-pop-production-set-design-props-suitcase-ameli-in-the-woods-amores-production_ike2mz.mp4"],
-     videoPosters: {"https://res.cloudinary.com/dpe3jvf3e/video/upload/v1773394785/2023-magic-pop-production-set-design-props-suitcase-ameli-in-the-woods-amores-production_ike2mz.mp4": "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775421343/Bildschirmfoto_2026-04-05_um_22.35.29_l9wxuf.png"},
-    color: "bg-magic-blue"
-  },
- 
-  {
-    id: 6,
-    slug: "bite-away",
-    title: { de: "Bite Away", en: "Bite Away" },
-    category: { de: "Set Design", en: "Set Design" },
-    description: {
-      de: "Don't bother me!\n\nFür Dermapharms \"Don't bother me!\"-Kampagne entwarfen und bauten wir sechs eigenständige Sets, die gemeinsam eine in sich geschlossene Welt erzählen: eine Familie, so besessen von Mückenschutz, dass ihre häusliche Realität längst in absurde Schutzrituale gekippt ist. Die Herausforderung lag darin, dieser Übertreibung eine visuelle Logik zu geben. Räume, die komisch wirken, aber niemals beliebig.\n\nInnerhalb von zwei Drehtagen entstand ein aufeinander abgestimmtes System aus Sets, Kostümen und Requisiten, das den 65-sekündigen Spot trägt. Jedes Set wurde als eigenständiger Charakter behandelt, mit eigener Farbsprache und eigenem Grad an inszenierter Paranoia. Kostüme und Props wurden nicht koordiniert, um zu matchen, sondern um gemeinsam eine Welt zu behaupten, die ihre eigene absurde Innenperspektive hat.\n\nAgentur: I LIKE VISUALS",
-      en: "Don't bother me!\n\nFor Dermapharm's \"Don't bother me!\" campaign, we designed and built six individual sets that together form a self-contained world: a family so consumed by their fear of mosquitoes that domestic life has long since tipped into absurd ritual. The challenge was giving that exaggeration a visual logic, rooms that read as comic without ever feeling arbitrary.\n\nOver two days of shooting, we developed a cohesive system of sets, costumes, and props that carries the 65-second spot. Each set was treated as a character in its own right, with its own color language and its own degree of staged paranoia. Costumes and props were not coordinated to match but to collectively assert a world with its own internal, quietly unhinged perspective.\n\nAgency: I LIKE VISUALS"
-    },
-    year: "2024",
-    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775457438/Bildschirmfoto_2024-04-29_um_09.46.40.png_oggl6i.webp",
-    gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775457439/Bildschirmfoto_2024-04-29_um_09.47.07.png_o0xgqk.webp",
-             "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775457437/Bildschirmfoto_2024-04-29_um_09.46.10.png_ql21ep.webp",
-             "https://res.cloudinary.com/dpe3jvf3e/video/upload/v1775458767/YTDown.com_YouTube_bite-away-Insektenstich-Juckt-mich-nicht_Media_1s06Wkf_Q6U_001_1080p_g96cmk.mp4",
-             "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775457440/Bildschirmfoto_2024-04-29_um_09.46.26.png_fcivma.webp"],
-    videoPosters: {"https://res.cloudinary.com/dpe3jvf3e/video/upload/v1775458767/YTDown.com_YouTube_bite-away-Insektenstich-Juckt-mich-nicht_Media_1s06Wkf_Q6U_001_1080p_g96cmk.mp4": "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775457438/Bildschirmfoto_2024-04-29_um_09.46.40.png_oggl6i.webp"},
-    color: "bg-yellow-400"
   },
    {
     id: 7,
