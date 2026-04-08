@@ -174,7 +174,8 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
               {!activeFilter && <span className="absolute bottom-0 left-0 w-full h-[3px] bg-magic-blue"></span>}
             </button>
             
-            {categories.map((cat) => (
+            {/* First part of categories (wrap individually) */}
+            {categories.slice(0, categories.length > 2 ? categories.length - 2 : categories.length).map((cat) => (
               <button 
                 key={cat}
                 onClick={() => setActiveFilter(cat)}
@@ -184,6 +185,22 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                 {activeFilter === cat && <span className="absolute bottom-0 left-0 w-full h-[3px] bg-magic-blue"></span>}
               </button>
             ))}
+
+            {/* Last two categories (wrap together as a block) */}
+            {categories.length > 2 && (
+              <div className="flex gap-x-8 flex-shrink-0">
+                {categories.slice(-2).map((cat) => (
+                  <button 
+                    key={cat}
+                    onClick={() => setActiveFilter(cat)}
+                    className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 whitespace-nowrap flex-shrink-0 ${activeFilter === cat ? 'text-magic-black dark:text-off-white' : 'text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white'}`}
+                  >
+                    {cat}
+                    {activeFilter === cat && <span className="absolute bottom-0 left-0 w-full h-[3px] bg-magic-blue"></span>}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
         
