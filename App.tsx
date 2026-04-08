@@ -265,32 +265,48 @@ const App: React.FC = () => {
               className="w-full lg:w-1/2"
             >
               <motion.div 
+                initial="initial"
                 whileHover="hover"
-                className="relative group overflow-hidden rounded-sm"
+                animate="initial"
+                className="relative group overflow-hidden rounded-sm aspect-video md:aspect-auto"
               >
-                <motion.img 
-                  src="https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775554744/Dennis_Ruf_und_Be%CC%81la_Lehrnickel_Magic_Pop_Creative_Studio_tm4vyk.webp" 
-                  alt="Studio" 
-                  draggable="false" 
-                  loading="lazy"
+                <motion.div
                   variants={{
-                    initial: { filter: "grayscale(100%)", scale: 1.05 },
-                    hover: { filter: "grayscale(0%)", scale: 1 }
+                    initial: { scale: 1.05 },
+                    hover: { scale: 1 }
                   }}
-                  initial="initial"
-                  animate="initial"
-                  whileHover="hover"
                   transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
-                  className="w-full aspect-video md:aspect-auto object-cover" 
-                />
-                <motion.div 
-                  variants={{
-                    initial: { opacity: 0 },
-                    hover: { opacity: 1 }
-                  }}
-                  transition={{ duration: 0.7 }}
-                  className="absolute inset-0 bg-magic-blue/10 pointer-events-none"
-                />
+                  className="w-full h-full"
+                >
+                  {/* Bottom Layer: Grayscale (Static) */}
+                  <img 
+                    src="https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773295288/Dennis_Ruf_und_Be%CC%81la_Lehrnickel_Magic_Pop_Creative_Studio_tm4vyk.webp" 
+                    alt="Studio Grayscale" 
+                    draggable="false" 
+                    loading="lazy"
+                    className="w-full h-full object-cover grayscale" 
+                  />
+                  
+                  {/* Top Layer: Color (Animated Opacity) */}
+                  <motion.div
+                    variants={{
+                      initial: { opacity: 0 },
+                      hover: { opacity: 1 }
+                    }}
+                    transition={{ duration: 0.7, ease: [0.19, 1, 0.22, 1] }}
+                    className="absolute inset-0 z-10"
+                  >
+                    <img 
+                      src="https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773295288/Dennis_Ruf_und_Be%CC%81la_Lehrnickel_Magic_Pop_Creative_Studio_tm4vyk.webp" 
+                      alt="Studio Color" 
+                      draggable="false" 
+                      loading="lazy"
+                      className="w-full h-full object-cover" 
+                    />
+                    {/* Subtle Blue Overlay */}
+                    <div className="absolute inset-0 bg-magic-blue/10 pointer-events-none" />
+                  </motion.div>
+                </motion.div>
               </motion.div>
             </motion.div>
             <motion.div 
