@@ -117,7 +117,7 @@ export const PROJECTS: Project[] = [
       en: "An apartment as a time capsule — suspended between everyday GDR life and space age imagination.\n\nThe starting point was a neutral white apartment. The client’s intention was clear: not a reference, but full immersion into the 1970s. Rather than decorating the space, we transformed it. Materiality became the foundation. Walls were clad in wood and stone to introduce a physical depth beyond surface. At the same time, we established a strict color system running consistently throughout the space — from orange to green to brown, yellow, and red. Nothing is accidental, everything is deliberate.\n\nIn close collaboration with the client, we sourced authentic 1970s furniture and objects, complemented by precise interventions where originals were missing. Custom-built elements such as the bed and bathroom cabinetry were crafted by carpenters, while bespoke picture frames in a 70s aesthetic were developed through 3D printing. Artificial palm trees, placed both indoors and on the balcony, act as deliberate markers between staging and reality. The result is a space that feels self-contained rather than nostalgic — a world that does not replicate the past, but reinterprets it.\n\nPhotography: Maike Piorr"
     },
     year: "2025",
-    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775468820/060625_SonyMusic-0005_144dpi_SCREEN_onbmjr.jpg",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775468820/060625_SonyMusic-0005_144dpi_SCREEN_onbmjr.jpg",
     gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775468829/060625_SonyMusic-0112_144dpi_SCREEN_ug76wg.jpg",
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775653742/060625_SonyMusic-0324_144dpi_SCREEN_uk7ozb.jpg",
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775468820/060625_SonyMusic-0005_144dpi_SCREEN_onbmjr.jpg",
@@ -126,7 +126,8 @@ export const PROJECTS: Project[] = [
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775468826/060625_SonyMusic-0623_144dpi_SCREEN_mwepyt.jpg",
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775468826/060625_SonyMusic-0684_144dpi_SCREEN_fzxc4j.jpg",
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775653597/060625_SonyMusic-0312_144dpi_SCREEN_zj5gqc.jpg",
-              "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775468824/060625_SonyMusic-0559_144dpi_SCREEN_ycg5r1.jpg"
+              "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775468824/060625_SonyMusic-0559_144dpi_SCREEN_ycg5r1.jpg",
+              "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775719332/060625_SonyMusic-0714_144dpi_SCREEN_fkwwv1.jpg"
               ],
     color: "bg-orange-500"
   },
