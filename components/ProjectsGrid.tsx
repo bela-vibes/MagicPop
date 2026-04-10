@@ -150,7 +150,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
   return (
     <section 
       id="projects" 
-      className="py-24 md:py-32 bg-transparent relative overflow-hidden transition-colors duration-500"
+      className="py-24 md:py-32 min-h-[100dvh] bg-transparent relative overflow-hidden transition-colors duration-500"
     >
       {/* Header Info */}
       <motion.div 
@@ -160,12 +160,12 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
         transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
         className="px-6 md:px-12 mb-16 flex flex-col md:flex-row justify-between items-end gap-12 relative z-10"
       >
-        <div className="max-w-2xl">
-          <h2 className="font-archivo text-6xl md:text-8xl uppercase tracking-tighter mb-6 text-magic-black dark:text-off-white">{t.title}</h2>
-          <p className="font-medium text-magic-black/60 dark:text-off-white/60 text-lg leading-relaxed mb-10">{t.description}</p>
+        <div className="flex-1">
+          <h2 className="font-archivo text-6xl md:text-8xl uppercase tracking-tighter mb-6 text-magic-black dark:text-off-white max-w-4xl">{t.title}</h2>
+          <p className="font-medium text-magic-black/60 dark:text-off-white/60 text-lg leading-relaxed mb-10 max-w-2xl">{t.description}</p>
           
           {/* Filter Bar */}
-          <div className="flex flex-wrap gap-x-8 gap-y-4">
+          <div className="flex flex-wrap gap-x-8 gap-y-4 w-full">
             <button 
               onClick={() => setActiveFilter(null)}
               className={`font-archivo text-xs uppercase tracking-widest transition-all duration-300 relative pb-1 whitespace-nowrap flex-shrink-0 ${!activeFilter ? 'text-magic-black dark:text-off-white' : 'text-magic-black/40 dark:text-off-white/40 hover:text-magic-black dark:hover:text-off-white'}`}
