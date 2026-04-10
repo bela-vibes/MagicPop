@@ -256,7 +256,7 @@ const App: React.FC = () => {
           id="about" 
           title={t.studio.title} 
           subtitle={t.studio.subtitle} 
-          className="relative overflow-hidden py-16 md:py-48"
+          className="relative overflow-hidden py-16 md:py-32"
         >
           <div className="relative z-10 flex flex-col lg:flex-row gap-8 md:gap-16 items-center">
             <motion.div 
