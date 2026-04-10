@@ -12,7 +12,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
   const t = TRANSLATIONS[lang].hero;
   
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col px-6 md:px-12 pt-28 pb-12 overflow-hidden bg-transparent">
+    <section id="hero" className="relative min-h-[100dvh] flex flex-col px-6 md:px-12 pt-28 pb-12 overflow-hidden bg-transparent">
       <div className="relative z-10 w-full flex-1 flex flex-col">
         <div className="flex-1 flex flex-col justify-start pt-12 md:pt-0">
           <h1 className="font-archivo text-[20vw] md:text-[18vw] leading-[0.8] uppercase tracking-tighter text-magic-black dark:text-off-white flex flex-col select-none pointer-events-none transition-colors duration-500">
