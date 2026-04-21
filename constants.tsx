@@ -20,9 +20,9 @@ export const TRANSLATIONS = {
       title: "Was wir tun",
       subtitle: "Vision mit Handwerk verschmelzen.",
       services: [
-        { title: "Set & Spatial Design", desc: "Wir gestalten Räume, die Geschichten erzählen. Von Filmsets über Markenwelten bis hin zu privaten Interieurs schaffen wir Atmosphären, die Ideen in greifbare Erlebnisse verwandeln. Jedes Detail wird bedacht – Ästhetik, Funktion und Wirkung." },
-        { title: "Concept & Direction", desc: "Starke Projekte beginnen mit einer klaren Idee. Wir entwickeln Konzepte und bieten Creative Direction, die Vision, Identität und Umsetzung in Einklang bringen. Durch die Verbindung von künstlerischer Intuition und strategischem Denken formen wir stimmige und unverwechselbare Ergebnisse." },
-        { title: "Production & Execution", desc: "Ideen zählen nur, wenn sie gut umgesetzt werden. Wir steuern und realisieren Projekte von Anfang bis Ende – von der Planung bis zur finalen Installation. Mit Präzision und Sorgfalt sorgen wir für Qualität, Effizienz und einen reibungslosen Prozess." }
+        { title: "Set & Spatial Design", desc: "Wir gestalten Räume, die wirken. Ob Filmset, Markenwelt oder privates Interieur. Uns interessiert, wie sich ein Raum anfühlt, nicht nur wie er aussieht. Wir denken in Materialien, Licht und Proportionen und bauen daraus Atmosphären, die eine eigene Präsenz haben. Jeder Raum folgt einer klaren Idee und entwickelt daraus seine Wirkung." },
+        { title: "Concept & Direction", desc: "Am Anfang steht eine Idee, die mehr ist als nur ein Bild. Wir entwickeln Konzepte und führen sie weiter, bis sie tragfähig sind. Dabei greifen Vision, Identität und Umsetzung ineinander und formen eine klare gestalterische Linie. So entstehen Arbeiten, die sich stimmig anfühlen und in sich geschlossen funktionieren." },
+        { title: "Production & Execution", desc: "Gute Ideen brauchen eine saubere Umsetzung. Wir planen, organisieren und realisieren Projekte über alle Phasen hinweg. Dabei behalten wir Prozesse, Teams und Details im Blick und sorgen dafür, dass alles zusammenpasst. Das Ziel ist kein reibungsloser Ablauf um seiner selbst willen, sondern ein Ergebnis, das genau so funktioniert, wie es gedacht war." }
       ]
     },
     projects: {
@@ -71,9 +71,9 @@ export const TRANSLATIONS = {
       title: "What We Do",
       subtitle: "Merging vision with craft.",
       services: [
-        { title: "Set & Spatial Design", desc: "We design spaces that tell stories. From film sets to branded environments and private interiors, we create atmospheres that translate ideas into tangible experiences. Every detail is considered — aesthetic, function, and impact." },
-        { title: "Concept & Direction", desc: "Strong projects start with a clear idea. We develop concepts and provide creative direction that align vision, identity, and execution. By combining artistic intuition with strategic thinking, we shape cohesive and distinctive outcomes." },
-        { title: "Production & Execution", desc: "Ideas only matter when they are realised well. We manage and execute projects end-to-end — from planning to final installation. With precision and care, we ensure quality, efficiency, and a seamless process throughout." }
+        { title: "Set & Spatial Design", desc: "We create spaces that have presence. Whether it is a film set, a brand environment, or a private interior, we focus on how a space feels, not just how it looks. We work with material, light, and proportion to build atmospheres that hold their own. Each space grows from a clear idea and develops its impact from there." },
+        { title: "Concept & Direction", desc: "Every project starts with an idea that goes beyond the image. We develop concepts and carry them forward until they hold. Vision, identity, and execution are treated as one continuous line, shaping a clear direction. The result feels coherent and fully resolved." },
+        { title: "Production & Execution", desc: "A strong idea needs a precise execution. We plan, structure, and deliver projects across all phases. Teams, processes, and details are aligned so everything connects. The focus is not just on a smooth process, but on making sure the final outcome works exactly as intended." }
       ]
     },
     projects: {
