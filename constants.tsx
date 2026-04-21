@@ -22,7 +22,7 @@ export const TRANSLATIONS = {
       services: [
         { title: "Set & Spatial Design", desc: "Wir gestalten Räume, die wirken. Ob Filmset, Markenwelt oder privates Interieur. Uns interessiert, wie sich ein Raum anfühlt, nicht nur wie er aussieht. Wir denken in Materialien, Licht und Proportionen und bauen daraus Atmosphären, die eine eigene Präsenz haben. Jeder Raum folgt einer klaren Idee und entwickelt daraus seine Wirkung." },
         { title: "Concept & Direction", desc: "Am Anfang steht eine Idee, die mehr ist als nur ein Bild. Wir entwickeln Konzepte und führen sie weiter, bis sie tragfähig sind. Dabei greifen Vision, Identität und Umsetzung ineinander und formen eine klare gestalterische Linie. So entstehen Arbeiten, die sich stimmig anfühlen und in sich geschlossen funktionieren." },
-        { title: "Production & Execution", desc: "Gute Ideen brauchen eine saubere Umsetzung. Wir planen, organisieren und realisieren Projekte über alle Phasen hinweg. Dabei behalten wir Prozesse, Teams und Details im Blick und sorgen dafür, dass alles zusammenpasst. Das Ziel ist kein reibungsloser Ablauf um seiner selbst willen, sondern ein Ergebnis, das genau so funktioniert, wie es gedacht war." }
+        { title: "Production & Execution", desc: "Gute Ideen brauchen eine saubere Umsetzung. Wir planen, organisieren und realisieren Projekte über alle Phasen hinweg. Dabei behalten wir Prozesse, Teams und Details im Blick und sorgen dafür, dass alles zusammenpasst. Am Ende geht es darum, dass alles so zusammenkommt, wie es gedacht war." }
       ]
     },
     projects: {
@@ -73,7 +73,7 @@ export const TRANSLATIONS = {
       services: [
         { title: "Set & Spatial Design", desc: "We create spaces that have presence. Whether it is a film set, a brand environment, or a private interior, we focus on how a space feels, not just how it looks. We work with material, light, and proportion to build atmospheres that hold their own. Each space grows from a clear idea and develops its impact from there." },
         { title: "Concept & Direction", desc: "Every project starts with an idea that goes beyond the image. We develop concepts and carry them forward until they hold. Vision, identity, and execution are treated as one continuous line, shaping a clear direction. The result feels coherent and fully resolved." },
-        { title: "Production & Execution", desc: "A strong idea needs a precise execution. We plan, structure, and deliver projects across all phases. Teams, processes, and details are aligned so everything connects. The focus is not just on a smooth process, but on making sure the final outcome works exactly as intended." }
+        { title: "Production & Execution", desc: "A strong idea needs a precise execution. We plan, structure, and deliver projects across all phases. Teams, processes, and details are aligned so everything connects. In the end, it's all about everything coming together as planned." }
       ]
     },
     projects: {
