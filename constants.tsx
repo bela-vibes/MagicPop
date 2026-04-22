@@ -39,7 +39,7 @@ export const TRANSLATIONS = {
     studio: {
       title: "About Us",
       subtitle: "Analoge Handarbeit trifft auf digitale Neugier.",
-      p1: "Wir sind Dennis und Bela.",
+      p1: "Wir sind Dennis und Béla.",
       p2: "Als Duo hinter Magic Pop entwickeln wir Ideen und setzen sie visuell um. Uns geht es darum, aus Konzepten etwas zu machen, das man sehen und spüren kann. Wir arbeiten an Art Direction, Set Design und Interiors, bauen Requisiten und realisieren Foto- und Videoproduktionen.",
       startProject: "Melde Dich"
     },
