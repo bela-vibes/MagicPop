@@ -40,7 +40,7 @@ export const TRANSLATIONS = {
       title: "About Us",
       subtitle: "Analoge Handarbeit trifft auf digitale Neugier.",
       p1: "Wir sind Dennis und Béla.",
-      p2: "Kennengelernt haben wir uns im Studium, haben seitdem Erfahrungen in Projekten und Agenturen gesammelt und beschlossen, 2024 gemeinsam unter MagicPop weiterzumachen. Dennis ist im Handwerklichen zuhause – Set Design, Interior, der Aufbau von Räumen, die wirken. Béla bringt das technische Wissen mit: Fotografie, Produktion und das Auge hinter der Kamera. Mit unserer gemeinsamen Leidenschaft für das Geschichtenerzählen entstanden bereits zahlreiche Projekte, bei denen beides zusammenkommt. Habt ihr ein Projekt im Kopf?",
+      p2: "Kennengelernt haben wir uns im Studium, haben seitdem Erfahrungen in Projekten und Agenturen gesammelt und beschlossen, 2024 gemeinsam unter MagicPop weiterzumachen. Dennis ist im Handwerklichen zuhause – Set Design, Interior, der Aufbau von Räumen, die wirken. Béla bringt das technische Wissen mit: Fotografie, Produktion und das Auge hinter der Kamera. Mit unserer gemeinsamen Leidenschaft für das Geschichtenerzählen entstanden bereits zahlreiche Projekte, bei denen beides zusammenkommt. Hast du ein Projekt im Kopf?",
       startProject: "Melde Dich"
     },
     contact: {
