@@ -20,14 +20,14 @@ export const TRANSLATIONS = {
       title: "Was wir tun",
       subtitle: "Vision mit Handwerk verschmelzen.",
       services: [
-        { title: "Set & Spatial Design", desc: "Wir gestalten Räume, die wirken. Ob Filmset, Markenwelt oder privates Interieur. Uns interessiert, wie sich ein Raum anfühlt, nicht nur wie er aussieht. Wir denken in Materialien, Licht und Proportionen und bauen daraus Atmosphären, die eine eigene Präsenz haben. Jeder Raum folgt einer klaren Idee und entwickelt daraus seine Wirkung." },
-        { title: "Concept & Direction", desc: "Am Anfang steht eine Idee, die mehr ist als nur ein Bild. Wir entwickeln Konzepte und führen sie weiter, bis sie tragfähig sind. Dabei greifen Vision, Identität und Umsetzung ineinander und formen eine klare gestalterische Linie. So entstehen Arbeiten, die sich stimmig anfühlen und in sich geschlossen funktionieren." },
-        { title: "Production & Execution", desc: "Gute Ideen brauchen eine saubere Umsetzung. Wir planen, organisieren und realisieren Projekte über alle Phasen hinweg. Dabei behalten wir Prozesse, Teams und Details im Blick und sorgen dafür, dass alles zusammenpasst. Am Ende geht es darum, dass alles so zusammenkommt, wie es gedacht war." }
+        { title: "Set & Spatial Design", desc: "Wir gestalten Räume, die wirken. Ob Filmset, Markenwelt oder privates Interieur. Uns interessiert, wie sich ein Raum anfühlt, welchen Charakter er hat und welche Geschichten er erzählt. Wir denken in Materialien, Licht und Proportionen und bauen daraus Atmosphären, die neue Erlebnisse schaffen." },
+        { title: "Concept & Direction", desc: "Jede Aufgabe hat ihre eigene Logik. Wir arbeiten uns tief in jede Thematik ein, ob Räume, Produkte, Gestaltung oder kreatives Marketing. Dabei entwickeln wir Lösungen, die ästhetisch überzeugen, funktionieren und zur jeweiligen Nische passen – kreativ und mit dem Blick dafür, was bereits da ist und was es braucht, damit es besser wird." },
+        { title: "Production & Execution", desc: "Gute Ideen brauchen eine saubere Umsetzung. Wir planen, organisieren und realisieren Projekte über alle Phasen hinweg. Dabei behalten wir Prozesse, Teams und Details im Blick und sorgen dafür, dass alle Stränge zusammenführen. Wir legen Wert darauf, dass hochwertige Ergebnisse entstehen, die der ursprünglichen Idee gerecht werden." }
       ]
     },
     projects: {
       title: "Projekte",
-      description: "Fahre über die Liste, um mehr zu entdecken.",
+      description: "Was wir gebaut, gestaltet und umgesetzt haben.",
       viewProject: "Projekt ansehen",
       detailLabel: "Projektdetail",
       nextProject: "Nächstes Projekt",
@@ -40,7 +40,7 @@ export const TRANSLATIONS = {
       title: "About Us",
       subtitle: "Analoge Handarbeit trifft auf digitale Neugier.",
       p1: "Wir sind Dennis und Béla.",
-      p2: "Als Duo hinter Magic Pop entwickeln wir Ideen und setzen sie visuell um. Uns geht es darum, aus Konzepten etwas zu machen, das man sehen und spüren kann. Wir arbeiten an Art Direction, Set Design und Interiors, bauen Requisiten und realisieren Foto- und Videoproduktionen.",
+      p2: "Kennengelernt haben wir uns im Studium, haben seitdem Erfahrungen in Projekten und Agenturen gesammelt und beschlossen, 2024 gemeinsam unter MagicPop weiterzumachen. Dennis ist im Handwerklichen zuhause – Set Design, Interior, der Aufbau von Räumen, die wirken. Béla bringt das technische Wissen mit: Fotografie, Produktion und das Auge hinter der Kamera. Mit unserer gemeinsamen Leidenschaft für das Geschichtenerzählen entstanden bereits zahlreiche Projekte, bei denen beides zusammenkommt. Habt ihr ein Projekt im Kopf?",
       startProject: "Melde Dich"
     },
     contact: {
@@ -71,14 +71,14 @@ export const TRANSLATIONS = {
       title: "What We Do",
       subtitle: "Merging vision with craft.",
       services: [
-        { title: "Set & Spatial Design", desc: "We create spaces that have presence. Whether it is a film set, a brand environment, or a private interior, we focus on how a space feels, not just how it looks. We work with material, light, and proportion to build atmospheres that hold their own. Each space grows from a clear idea and develops its impact from there." },
-        { title: "Concept & Direction", desc: "Every project starts with an idea that goes beyond the image. We develop concepts and carry them forward until they hold. Vision, identity, and execution are treated as one continuous line, shaping a clear direction. The result feels coherent and fully resolved." },
-        { title: "Production & Execution", desc: "A strong idea needs a precise execution. We plan, structure, and deliver projects across all phases. Teams, processes, and details are aligned so everything connects. In the end, it's all about everything coming together as planned." }
+        { title: "Set & Spatial Design", desc: "We design spaces that make an impact. Whether it’s a film set, a brand experience, or a private interior. We’re interested in how a space feels, what character it has, and what stories it tells. We think in terms of materials, light, and proportions, and use them to create atmospheres that foster new experiences." },
+        { title: "Concept & Direction", desc: "Every project has its own logic. We delve deeply into every subject—whether it’s spaces, products, design, or creative marketing. In doing so, we develop solutions that are aesthetically compelling, functional, and tailored to the specific niche—creatively and with an eye for what already exists and what’s needed to make it better." },
+        { title: "Production & Execution", desc: "Good ideas need clean execution. We plan, organize, and execute projects across all phases. In doing so, we keep an eye on processes, teams, and details, ensuring that all threads come together. We place great importance on producing high-quality results that do justice to the original idea." }
       ]
     },
     projects: {
       title: "Projects",
-      description: "Hover the list to discover more.",
+      description: "What we’ve built, designed, and brought to life.",
       viewProject: "View Project",
       detailLabel: "Project Detail",
       nextProject: "Next Project",
@@ -90,8 +90,8 @@ export const TRANSLATIONS = {
     studio: {
       title: "About Us",
       subtitle: "Analog craftsmanship meets digital curiosity.",
-      p1: "Dennis and Bela, the duo behind Magic Pop, bring a unique blend of creativity and expertise to combine creative direction and visual execution.",
-      p2: "With a shared passion for storytelling and a keen eye for detail, they have transformed countless concepts into stunning visual experiences. Their combined talents span a wide range of services, including art direction, set design, interior creation, prop fabrication, and photo and video production.",
+      p1: "We are Dennis and Béla.",
+      p2: "We met in college, have since gained experience working on projects and at agencies, and decided to continue our journey together under the name MagicPop in 2024. Dennis excels in the craft—set design, interior design, and creating spaces that make an impact. Béla brings the technical know-how: photography, production, and the eye behind the camera. Our shared passion for storytelling has already led to numerous projects where both of these elements come together. Do you have a project in mind?",
       startProject: "Get in touch"
     },
     contact: {
