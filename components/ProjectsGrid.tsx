@@ -278,7 +278,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                  <span className="font-archivo text-xs uppercase tracking-[0.3em] mb-4 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] translate-y-8 group-hover:translate-y-0 group-hover:scale-125">
                   {project.category[lang]}
                  </span>
-                 <h3 className="font-archivo text-3xl md:text-5xl uppercase tracking-tighter transition-all duration-700 delay-75 ease-[cubic-bezier(0.19,1,0.22,1)] translate-y-8 group-hover:translate-y-0 group-hover:scale-110">
+                 <h3 className="font-archivo text-3xl md:text-5xl uppercase tracking-tighter transition-all duration-700 delay-75 ease-[cubic-bezier(0.19,1,0.22,1)] translate-y-8 group-hover:translate-y-0 group-hover:scale-110 hyphens-manual">
                   {project.title[lang]}
                  </h3>
                  <div className="mt-8 bg-white/20 backdrop-blur-md border-0 px-8 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-magic-black transition-all duration-500 delay-150 translate-y-8 group-hover:translate-y-0">
@@ -327,7 +327,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                     initial={{ opacity: 0, y: 60 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
-                    className="font-archivo text-5xl md:text-[11vw] leading-[0.75] uppercase tracking-tighter mb-16 text-magic-black dark:text-off-white pr-4 md:pr-12 break-normal hyphens-auto"
+                    className="font-archivo text-5xl md:text-[11vw] leading-[0.75] uppercase tracking-tighter mb-16 text-magic-black dark:text-off-white pr-4 md:pr-12 break-normal hyphens-manual"
                   >
                     {selectedProject.title[lang]}
                   </motion.h1>
