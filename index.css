@@ -131,6 +131,12 @@ html { -ms-overflow-style: none; scrollbar-width: none; }
   hyphens: auto;
 }
 
+.hyphens-manual {
+  -webkit-hyphens: manual;
+  -ms-hyphens: manual;
+  hyphens: manual;
+}
+
 /* Image Protection */
 img {
   -webkit-user-drag: none;
