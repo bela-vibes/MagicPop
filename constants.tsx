@@ -126,8 +126,9 @@ export const PROJECTS: Project[] = [
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775468826/060625_SonyMusic-0623_144dpi_SCREEN_mwepyt.jpg",
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775468826/060625_SonyMusic-0684_144dpi_SCREEN_fzxc4j.jpg",
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775653597/060625_SonyMusic-0312_144dpi_SCREEN_zj5gqc.jpg",
-              "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775468824/060625_SonyMusic-0559_144dpi_SCREEN_ycg5r1.jpg",
-              "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775719332/060625_SonyMusic-0714_144dpi_SCREEN_fkwwv1.jpg"
+              "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775719332/060625_SonyMusic-0714_144dpi_SCREEN_fkwwv1.jpg",
+              "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775468824/060625_SonyMusic-0559_144dpi_SCREEN_ycg5r1.jpg"
+              
               ],
     color: "bg-orange-500"
   },
