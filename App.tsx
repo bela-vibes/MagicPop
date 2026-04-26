@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
+import { Analytics } from '@vercel/analytics/react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import ProjectsGrid from './components/ProjectsGrid';
@@ -352,6 +353,7 @@ const App: React.FC = () => {
 
       {currentHash === '#impressum' && <Impressum onClose={closeOverlay} />}
       {currentHash === '#datenschutz' && <Datenschutz onClose={closeOverlay} />}
+      <Analytics />
     </div>
   );
 };
