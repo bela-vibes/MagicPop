@@ -1,14 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="de" class="scroll-smooth">
   <head>
-   <meta charset="UTF-8" />
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<link rel="shortcut icon" href="/favicon.ico?v=1" type="image/x-icon" />
-<link rel="icon" type="image/svg+xml" href="/MP_favicon.svg?v=1" />
-<link rel="apple-touch-icon" href="/apple-touch-icon.png?v=1" />
-<link rel="mask-icon" href="/MP_favicon.svg?v=1" color="#FF4D00" />
+    <link rel="shortcut icon" href="/favicon.ico?v=1" type="image/x-icon" />
+    <link rel="icon" type="image/svg+xml" href="/MP_favicon.svg?v=1" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png?v=1" />
+    <link rel="mask-icon" href="/MP_favicon.svg?v=1" color="#FF4D00" />
     
-    <!-- Preload Critical Fonts -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Magic Pop Creative Studio",
+      "legalName": "Ruf und Lehrnickel GbR",
+      "url": "https://magicpop.berlin",
+      "logo": "https://magicpop.berlin/MP_favicon.svg",
+      "image": "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773295288/Dennis_Ruf_und_Be%CC%81la_Lehrnickel_Magic_Pop_Creative_Studio_tm4vyk.webp",
+      "description": "Magic Pop ist ein Creative Studio aus Berlin für Interior Design, Set Design und Creative Production.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Jonasstr. 40",
+        "addressLocality": "Berlin",
+        "postalCode": "12053",
+        "addressCountry": "DE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 52.4776,
+        "longitude": 13.4421
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "hello@magicpop.berlin",
+        "contactType": "customer service"
+      },
+      "sameAs": [
+        "https://www.instagram.com/magicpop.berlin"
+      ]
+    }
+    </script>
+    
     <link rel="preload" href="/fonts/archivo-black.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/inter-regular.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/fonts/inter-700.woff2" as="font" type="font/woff2" crossorigin>
@@ -23,6 +55,7 @@
     <div id="root"></div>
     <script type="module" src="/index.tsx"></script>
     <script>
+      // Schutz vor einfachem Rechtsklick-Speichern von Bildern
       document.addEventListener('contextmenu', function(e) {
         if (e.target.tagName === 'IMG') e.preventDefault();
       }, false);
