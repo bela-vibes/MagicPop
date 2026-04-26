@@ -181,15 +181,14 @@ const App: React.FC = () => {
   };
 
   return (
-    <div className="relative overflow-hidden selection:bg-magic-orange selection:text-white bg-off-white dark:bg-magic-dark transition-colors duration-500 min-h-screen antialiased transform-gpu">
+    <div className="relative overflow-hidden selection:bg-magic-orange selection:text-white bg-off-white dark:bg-magic-dark transition-colors duration-500 min-h-screen">
       
       <div className="pointer-events-none fixed inset-0 z-[5] overflow-visible">
         <div 
           className={`absolute w-[95vw] h-[95vw] md:w-[80vw] md:h-[80vw] lg:w-[60vw] lg:h-[60vw] max-w-[900px] max-h-[900px] rounded-full transition-colors duration-500 ease-in-out ${headerTheme.blobColor} ${isMobile ? 'opacity-100' : 'opacity-90'} dark:opacity-95`}
           style={{
             transform: `translate3d(${blob1Pos.x}px, ${blob1Pos.y}px, 0) translate(-50%, -50%)`,
-            WebkitTransform: `translate3d(${blob1Pos.x}px, ${blob1Pos.y}px, 0) translate(-50%, -50%)`,
-            willChange: 'transform',
+            willChange: 'transform, filter',
             WebkitBackfaceVisibility: 'hidden',
             backfaceVisibility: 'hidden',
             WebkitPerspective: '1000px',
@@ -202,8 +201,7 @@ const App: React.FC = () => {
           className={`absolute w-[85vw] h-[85vw] md:w-[70vw] md:h-[70vw] lg:w-[50vw] lg:h-[50vw] max-w-[800px] max-h-[800px] rounded-full transition-colors duration-500 ease-in-out ${headerTheme.blobColor} ${isMobile ? 'opacity-85' : 'opacity-75'} dark:opacity-80`}
           style={{
             transform: `translate3d(${blob2Pos.x}px, ${blob2Pos.y}px, 0) translate(-50%, -50%)`,
-            WebkitTransform: `translate3d(${blob2Pos.x}px, ${blob2Pos.y}px, 0) translate(-50%, -50%)`,
-            willChange: 'transform',
+            willChange: 'transform, filter',
             WebkitBackfaceVisibility: 'hidden',
             backfaceVisibility: 'hidden',
             WebkitPerspective: '1000px',
