@@ -15,7 +15,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
     <section id="hero" className="relative min-h-[100dvh] flex flex-col px-6 md:px-12 pt-28 pb-12 overflow-hidden bg-transparent">
       <div className="relative z-10 w-full flex-1 flex flex-col">
         <div className="flex-1 flex flex-col justify-start pt-12 md:pt-0">
-          <h1 className="font-archivo text-[18vw] md:text-[16vw] leading-[0.8] uppercase tracking-tighter text-magic-black dark:text-off-white flex flex-col select-none pointer-events-none transition-colors duration-500">
+          <h1 className="font-archivo text-[20vw] md:text-[18vw] leading-[0.8] uppercase tracking-tighter text-magic-black dark:text-off-white flex flex-col select-none pointer-events-none transition-colors duration-500">
             <motion.span 
               initial={{ opacity: 0, y: 100 }}
               animate={{ opacity: 1, y: 0 }}
@@ -39,7 +39,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4, ease: [0.19, 1, 0.22, 1] }}
-          className="mt-auto md:mt-4 mb-8 md:mb-4 max-w-4xl relative z-20"
+          className="mt-auto md:mt-4 mb-12 md:mb-8 max-w-4xl relative z-20"
         >
           <p className="font-editorial text-3xl md:text-6xl leading-[1.1] text-magic-black dark:text-off-white italic">
             {t.subline} <br />
