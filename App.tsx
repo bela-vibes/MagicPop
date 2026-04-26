@@ -124,7 +124,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPos = window.scrollY + 120;
+      const scrollPos = window.scrollY + 350;
       const offsets = sectionOffsets.current;
 
       if (offsets.contact && scrollPos >= offsets.contact) {
