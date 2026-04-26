@@ -245,7 +245,7 @@ const App: React.FC = () => {
                 className="group pt-0 md:pt-4"
               >
                 <span className="font-archivo text-xs md:text-sm uppercase tracking-widest mb-4 block text-magic-black/30 dark:text-off-white/30">0{i+1}</span>
-                <h3 className="font-archivo text-2xl md:text-3xl uppercase tracking-tighter mb-4 md:mb-6 text-magic-black dark:text-off-white group-hover:translate-x-2 transition-transform duration-300">{service.title}</h3>
+                <h3 className="font-archivo text-xl md:text-2xl uppercase tracking-tighter mb-4 md:mb-6 text-magic-black dark:text-off-white group-hover:translate-x-2 transition-transform duration-300">{service.title}</h3>
                 <p className="text-base md:text-lg text-magic-black/60 dark:text-off-white/60 leading-relaxed font-medium">{service.desc}</p>
               </motion.div>
             ))}
@@ -264,13 +264,13 @@ const App: React.FC = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
-              className="w-full lg:w-1/2"
+              className="w-full lg:w-1/2 flex justify-center"
             >
               <ProximityImage 
                 src="https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773295288/Dennis_Ruf_und_Be%CC%81la_Lehrnickel_Magic_Pop_Creative_Studio_tm4vyk.webp"
                 alt="Studio"
                 mousePos={mousePos}
-                className="aspect-video md:aspect-auto h-full"
+                className="w-full h-auto max-h-[45vh] object-cover rounded-lg"
                 overlayColor="bg-magic-blue/10"
               />
             </motion.div>
@@ -281,8 +281,8 @@ const App: React.FC = () => {
               transition={{ duration: 1, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
               className="w-full lg:w-1/2 space-y-6 md:space-y-8 text-magic-black dark:text-off-white"
             >
-              <p className="font-editorial text-3xl md:text-4xl italic leading-tight drop-shadow-sm opacity-90">{t.studio.p1}</p>
-              <p className="text-lg md:text-xl opacity-60 font-medium leading-relaxed">{t.studio.p2}</p>
+              <p className="font-editorial text-2xl md:text-3xl italic leading-tight drop-shadow-sm opacity-90">{t.studio.p1}</p>
+              <p className="text-base md:text-lg opacity-60 font-medium leading-relaxed">{t.studio.p2}</p>
               <a 
                 href="mailto:hello@magicpop.berlin"
                 className="inline-block w-full md:w-auto bg-magic-blue text-white font-archivo uppercase tracking-widest px-10 py-5 hover:bg-blue-700 transition-all duration-300 shadow-[0_10px_40_rgba(0,56,255,0.3)] hover:shadow-[0_15px_50px_rgba(0,56,255,0.5)] active:scale-95 text-center"
