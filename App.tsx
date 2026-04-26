@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
 import Header from './components/Header';
 import Hero from './components/Hero';
 import ProjectsGrid from './components/ProjectsGrid';
@@ -305,13 +307,13 @@ const App: React.FC = () => {
               <div>
                 <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block mb-4">{t.contact.emailLabel}</span>
                 <a href="mailto:hello@magicpop.berlin" 
-   className="font-archivo uppercase tracking-tighter 
-              text-magic-black dark:text-off-white hover:text-magic-orange 
-              transition-colors duration-300 underline underline-offset-8 
-              decoration-transparent hover:decoration-magic-orange"
-   style={{ fontSize: 'clamp(1rem, 3.5vw, 3rem)', wordBreak: 'keep-all' }}>
-  hello@magicpop.berlin
-</a>
+                   className="font-archivo uppercase tracking-tighter 
+                              text-magic-black dark:text-off-white hover:text-magic-orange 
+                              transition-colors duration-300 underline underline-offset-8 
+                              decoration-transparent hover:decoration-magic-orange"
+                   style={{ fontSize: 'clamp(1rem, 3.5vw, 3rem)', wordBreak: 'keep-all' }}>
+                  hello@magicpop.berlin
+                </a>
               </div>
               <div>
                 <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block mb-4">{t.contact.followLabel}</span>
@@ -352,6 +354,9 @@ const App: React.FC = () => {
 
       {currentHash === '#impressum' && <Impressum onClose={closeOverlay} />}
       {currentHash === '#datenschutz' && <Datenschutz onClose={closeOverlay} />}
+      
+      <Analytics />
+      <SpeedInsights />
     </div>
   );
 };
