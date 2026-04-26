@@ -161,7 +161,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
         className="px-6 md:px-12 mb-16 flex flex-col md:flex-row justify-between items-end gap-12 relative z-10"
       >
         <div className="flex-1">
-          <h2 className="font-archivo text-5xl md:text-[8vw] uppercase tracking-tighter mb-6 text-magic-black dark:text-off-white max-w-4xl leading-[0.9]">{t.title}</h2>
+          <h2 className="font-archivo text-5xl md:text-[10vw] uppercase tracking-tighter mb-4 text-magic-black dark:text-off-white max-w-4xl leading-[0.9]">{t.title}</h2>
           <p className="font-medium text-magic-black/60 dark:text-off-white/60 text-base md:text-lg leading-relaxed mb-10 max-w-2xl">{t.description}</p>
           
           {/* Filter Bar */}
