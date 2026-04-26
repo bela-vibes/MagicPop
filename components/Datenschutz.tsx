@@ -19,6 +19,7 @@ const Datenschutz: React.FC<DatenschutzProps> = ({ onClose }) => {
           </header>
 
           <div className="space-y-16 text-magic-black dark:text-off-white">
+            {/* Sektion 1 */}
             <section>
               <h2 className="font-archivo text-2xl md:text-3xl uppercase tracking-tight mb-6">1. Datenschutz auf einen Blick</h2>
               <div className="space-y-6 opacity-80 text-lg leading-relaxed">
@@ -29,48 +30,56 @@ const Datenschutz: React.FC<DatenschutzProps> = ({ onClose }) => {
                 <div>
                   <h3 className="font-bold mb-2 text-xl">Datenerfassung auf dieser Website</h3>
                   <p><strong>Wer ist verantwortlich?</strong> Die Datenverarbeitung erfolgt durch den Websitebetreiber (siehe Abschnitt „Hinweis zur verantwortlichen Stelle“).</p>
-                  <p className="mt-4"><strong>Wie erfassen wir Daten?</strong> Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen (z. B. per E-Mail). Andere Daten werden automatisch durch die IT-Systeme unserer Hoster erfasst (technische Daten wie IP-Adresse, Browser oder Uhrzeit des Seitenaufrufs).</p>
-                  <p className="mt-4"><strong>Wofür nutzen wir die Daten?</strong> Zur fehlerfreien Bereitstellung der Website und zur Sicherheit.</p>
+                  <p className="mt-4"><strong>Wie erfassen wir Daten?</strong> Ihre Daten werden erhoben, indem Sie uns diese mitteilen oder automatisch durch die IT-Systeme unserer Hoster erfasst werden (z. B. IP-Adresse, Browser oder Uhrzeit des Seitenaufrufs). Wir nutzen zudem eine SSL-Verschlüsselung, um den Schutz Ihrer übertragenen Daten zu gewährleisten.</p>
                 </div>
               </div>
             </section>
 
+            {/* Sektion 2 - Erweitert um Web Analytics */}
             <section>
-              <h2 className="font-archivo text-2xl md:text-3xl uppercase tracking-tight mb-6">2. Hosting & Content Delivery Networks</h2>
+              <h2 className="font-archivo text-2xl md:text-3xl uppercase tracking-tight mb-6">2. Hosting & Analysedienste</h2>
               <div className="opacity-80 text-lg leading-relaxed space-y-8">
                 <div>
-                  <h3 className="font-bold mb-2 text-xl">Vercel</h3>
+                  <h3 className="font-bold mb-2 text-xl">Vercel (Hosting & Analytics)</h3>
                   <p>Wir hosten unsere Website bei Vercel. Anbieter ist die Vercel Inc., 440 N Barranca Ave #4133, Covina, CA 91723, USA.</p>
-                  <p>Wenn Sie unsere Website besuchen, erfasst Vercel verschiedene Logfiles inklusive Ihrer IP-Adresse. Die Verwendung von Vercel erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (Berechtigtes Interesse an einer technisch fehlerfreien Darstellung und Optimierung unserer Website).</p>
-                  <p className="mt-2">Details: <a href="https://vercel.com/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-magic-blue transition-colors underline underline-offset-4">https://vercel.com/privacy</a></p>
-                </div>
+                  <p>Neben dem technischen Hosting nutzen wir folgende Dienste von Vercel:</p>
+                  
+                  <ul className="list-disc pl-6 mt-4 space-y-4">
+                    <li>
+                      <strong>Vercel Speed Insights:</strong> Zur statistischen Auswertung der Ladezeiten unserer Website. Dies hilft uns, die technische Performance stetig zu optimieren.
+                    </li>
+                    <li>
+                      <strong>Vercel Web Analytics:</strong> Zur Analyse der Besucherströme auf unserer Website. Wir können so nachvollziehen, welche Inhalte besonders relevant sind.
+                    </li>
+                  </ul>
 
-                <div className="pl-4 border-l-2 border-magic-orange/30 font-medium">
-                  <h3 className="font-bold mb-2 text-xl italic">Vercel Speed Insights</h3>
-                  <p>Wir nutzen zudem das Analysetool „Vercel Speed Insights“ zur statistischen Auswertung der Ladezeiten unserer Website. Hierbei werden anonymisierte technische Daten (z. B. Browserversion, Region, Ladezeit) erhoben, um die Performance unserer Seite zu messen und zu verbessern. Es werden dabei standardmäßig keine Cookies gesetzt. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO.</p>
+                  <p className="mt-6">
+                    Beide Dienste werden **ohne den Einsatz von Cookies** betrieben. Die Erfassung der Daten erfolgt anonymisiert (z. B. durch Hashing der IP-Adresse), sodass keine Rückschlüsse auf einzelne Personen gezogen werden können. Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO (Berechtigtes Interesse an der technischen Optimierung und wirtschaftlichen Gestaltung unserer Website).
+                  </p>
+                  <p className="mt-2">Details: <a href="https://vercel.com/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-magic-blue transition-colors underline underline-offset-4">https://vercel.com/privacy</a></p>
                 </div>
     
                 <div>
                   <h3 className="font-bold mb-2 text-xl">Cloudinary</h3>
                   <p>Zur Optimierung und Auslieferung von Bildern sowie Video-Inhalten nutzen wir Cloudinary. Anbieter ist die Cloudinary Ltd., 3400 Central Expressway, Suite 110, Santa Clara, CA 95051, USA.</p>
-                  <p>Inhalte werden direkt von den Cloudinary-Servern geladen, wobei Ihre IP-Adresse an Cloudinary übertragen wird. Dies dient der schnellen, stabilen und optimierten Darstellung unserer Projekte gemäß Art. 6 Abs. 1 lit. f DSGVO.</p>
+                  <p>Dies dient der schnellen und stabilen Darstellung unserer Projekte gemäß Art. 6 Abs. 1 lit. f DSGVO.</p>
                   <p className="mt-2">Details: <a href="https://cloudinary.com/privacy" target="_blank" rel="noopener noreferrer" className="hover:text-magic-blue transition-colors underline underline-offset-4">https://cloudinary.com/privacy</a></p>
                 </div>
 
                 <div className="pt-4 border-t border-magic-black/10 dark:border-off-white/10">
                   <p className="text-sm italic">
-                    Hinweis zur Datenübertragung in Drittstaaten: Die oben genannten Anbieter haben ihren Hauptsitz in den USA. Die Datenübertragung erfolgt auf Grundlage von Standardvertragsklauseln der EU-Kommission sowie (sofern vorhanden) dem Data Privacy Framework. Wir haben mit diesen Anbietern Verträge über Auftragsverarbeitung (AVV) gemäß Art. 28 DSGVO abgeschlossen.
+                    Hinweis zur Datenübertragung: Vercel ist unter dem EU-U.S. Data Privacy Framework zertifiziert. Die Datenübertragung erfolgt zudem auf Grundlage von Standardvertragsklauseln der EU-Kommission. Wir haben mit den Anbietern Verträge über Auftragsverarbeitung (AVV) gemäß Art. 28 DSGVO abgeschlossen.
                   </p>
                 </div>
               </div>
             </section>
 
+            {/* Sektion 3 */}
             <section>
               <h2 className="font-archivo text-2xl md:text-3xl uppercase tracking-tight mb-6">3. Verantwortliche Stelle</h2>
               <div className="space-y-8 opacity-80 text-lg leading-relaxed">
                 <div>
-                  <h3 className="font-bold mb-2 text-xl">Hinweis zur verantwortlichen Stelle</h3>
-                  <p>Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:</p>
+                  <h3 className="font-bold mb-2 text-xl">Ansprechpartner</h3>
                   <p className="mt-4 p-6 bg-magic-black/5 dark:bg-off-white/5 rounded-sm inline-block min-w-[300px]">
                     <strong>Ruf und Lehrnickel GbR</strong><br />
                     Jonasstr. 40, 12053 Berlin<br />
@@ -80,23 +89,23 @@ const Datenschutz: React.FC<DatenschutzProps> = ({ onClose }) => {
                 </div>
                 <div>
                   <h3 className="font-bold mb-2 text-xl">Ihre Rechte</h3>
-                  <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten. Sie haben außerdem ein Recht, die Berichtigung oder Löschung dieser Daten zu verlangen sowie ein Beschwerderecht bei der zuständigen Aufsichtsbehörde.</p>
+                  <p>Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten sowie ein Recht auf Berichtigung oder Löschung dieser Daten.</p>
                 </div>
               </div>
             </section>
 
+            {/* Sektion 4 & 5 */}
             <section>
               <h2 className="font-archivo text-2xl md:text-3xl uppercase tracking-tight mb-6">4. Lokale Schriftarten</h2>
               <div className="opacity-80 text-lg leading-relaxed space-y-4">
-                <p>Diese Seite nutzt zur einheitlichen Darstellung von Schriftarten Web Fonts. Diese werden <strong>lokal</strong> auf unserem eigenen Webspace bereitgestellt.</p>
-                <p>Eine Verbindung zu Servern von Google findet nicht statt. Somit werden keine Daten an Google übertragen. Dies dient der DSGVO-konformen Bereitstellung unserer Design-Schriftarten (Archivo, Inter, Instrument Serif).</p>
+                <p>Diese Seite nutzt Web Fonts, die <strong>lokal</strong> auf unserem eigenen Webspace bereitgestellt werden. Eine Verbindung zu Servern von Google findet nicht statt.</p>
               </div>
             </section>
 
             <section>
-              <h2 className="font-archivo text-2xl md:text-3xl uppercase tracking-tight mb-6">5. Social Media (Instagram)</h2>
+              <h2 className="font-archivo text-2xl md:text-3xl uppercase tracking-tight mb-6">5. Social Media</h2>
               <div className="opacity-80 text-lg leading-relaxed space-y-4">
-                <p>Auf unserer Website sind Links zum Dienst Instagram eingebunden (Meta Platforms Ireland Limited). Wenn Sie einen Instagram-Button anklicken, während Sie eingeloggt sind, kann Instagram den Besuch Ihrem Konto zuordnen. Wir erhalten keine Kenntnis vom Inhalt der übermittelten Daten.</p>
+                <p>Links zu Instagram (Meta Platforms Ireland Limited). Instagram kann den Besuch unserer Seite Ihrem Benutzerkonto zuordnen, falls Sie dort eingeloggt sind.</p>
               </div>
             </section>
           </div>
