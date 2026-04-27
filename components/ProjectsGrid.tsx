@@ -1,6 +1,7 @@
 
 import React, { useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
+import { useNavigate } from 'react-router-dom';
 import { PROJECTS, TRANSLATIONS } from '../constants';
 import { Project, Language } from '../types';
 import ProximityImage from './ProximityImage';
@@ -13,6 +14,7 @@ interface ProjectsGridProps {
 }
 
 const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setSelectedProject, mousePos }) => {
+  const navigate = useNavigate();
   const [activeFilter, setActiveFilter] = React.useState<string | null>(null);
   const [isEdgeScrolling, setIsEdgeScrolling] = React.useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -91,46 +93,12 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
     return () => window.removeEventListener('keydown', handleEsc);
   }, [selectedProject]);
 
-  // Handle URL Hash for Deep Linking and Back Button
-  useEffect(() => {
-    const handleHashChange = () => {
-      const hash = window.location.hash.replace('#', '');
-      const project = PROJECTS.find(p => p.slug === hash);
-      
-      if (project) {
-        if (!selectedProject || selectedProject.slug !== hash) {
-          setSelectedProject(project);
-        }
-      } else if (selectedProject) {
-        setSelectedProject(null);
-      }
-    };
-
-    // Initial check on mount
-    handleHashChange();
-
-    window.addEventListener('hashchange', handleHashChange);
-    window.addEventListener('popstate', handleHashChange);
-    return () => {
-      window.removeEventListener('hashchange', handleHashChange);
-      window.removeEventListener('popstate', handleHashChange);
-    };
-  }, [setSelectedProject, selectedProject]);
-
   const handleOpenProject = (project: Project) => {
-    window.location.hash = project.slug;
+    navigate(`/${project.slug}`);
   };
 
   const handleCloseProject = () => {
-    // 1. Force close the UI state immediately for instant feedback
-    setSelectedProject(null);
-    
-    // 2. Clean up the URL hash reliably
-    if (window.location.hash) {
-      // pushState is more reliable than history.back() because it doesn't 
-      // depend on the history stack (e.g. after a page refresh)
-      window.history.pushState(null, '', window.location.pathname + window.location.search);
-    }
+    navigate('/');
   };
 
   useEffect(() => {
