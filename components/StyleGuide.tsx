@@ -79,13 +79,13 @@ const StyleGuide: React.FC = () => {
   return (
     <div className="min-h-screen bg-off-white text-magic-black font-inter selection:bg-magic-blue selection:text-white">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 w-full z-50 px-6 py-8 flex justify-between items-center mix-blend-difference">
+      <nav className="fixed top-0 left-0 w-full z-50 px-6 py-6 md:py-8 flex justify-between items-center mix-blend-difference">
         <Link to="/" className="group flex items-center gap-2 text-off-white hover:opacity-70 transition-opacity">
-          <ArrowLeft size={20} />
-          <span className="font-archivo uppercase text-sm tracking-widest">Back to site</span>
+          <ArrowLeft size={18} />
+          <span className="font-archivo uppercase text-[10px] md:text-sm tracking-widest">Back</span>
         </Link>
-        <div className="font-archivo uppercase text-xl text-off-white tracking-tighter">
-          Magic Pop<span className="font-editorial lowercase text-2xl ml-2">styleguide</span>
+        <div className="font-archivo uppercase text-lg md:text-xl text-off-white tracking-tighter text-right">
+          Magic Pop<span className="font-editorial lowercase text-xl md:text-2xl ml-2">styleguide</span>
         </div>
       </nav>
 
@@ -258,16 +258,16 @@ const StyleGuide: React.FC = () => {
                   <h3 className="font-archivo text-[10px] uppercase tracking-widest mb-2 opacity-40">Headline Font</h3>
                   <p className="font-archivo text-5xl md:text-7xl uppercase tracking-tighter leading-none">Archivo Black</p>
                 </div>
-                <div className="flex flex-col items-end gap-2">
+                <div className="flex items-center gap-3 self-end md:self-start md:flex-col md:items-end md:gap-2">
+                  <span className="font-archivo text-[10px] uppercase tracking-widest opacity-40 order-1 md:order-2">Weight: 400 (Extra Bold)</span>
                   <a 
                     href="https://fonts.google.com/specimen/Archivo+Black" 
                     target="_blank" 
                     rel="noreferrer"
-                    className="p-4 rounded-full bg-magic-black text-white hover:scale-110 duration-200"
+                    className="p-2.5 md:p-4 rounded-full bg-magic-black text-white hover:scale-110 transition-transform duration-200 order-2 md:order-1"
                   >
-                    <ExternalLink size={18} />
+                    <ExternalLink size={14} />
                   </a>
-                  <span className="font-archivo text-[10px] uppercase tracking-widest opacity-40">Weight: 400 (Extra Bold)</span>
                 </div>
               </div>
               <p className="font-archivo text-2xl md:text-4xl uppercase tracking-tighter leading-none opacity-10 break-all">
@@ -283,16 +283,16 @@ const StyleGuide: React.FC = () => {
                   <h3 className="font-archivo text-[10px] uppercase tracking-widest mb-2 opacity-40">Display Font</h3>
                   <p className="font-editorial text-5xl md:text-6xl italic leading-none">Instrument Serif</p>
                 </div>
-                <div className="flex flex-col items-end gap-2">
+                <div className="flex items-center gap-3 self-end md:self-start md:flex-col md:items-end md:gap-2">
+                  <span className="font-archivo text-[10px] uppercase tracking-widest opacity-40 order-1 md:order-2">Weights: 400, 400 Italic</span>
                   <a 
                     href="https://fonts.google.com/specimen/Instrument+Serif" 
                     target="_blank" 
                     rel="noreferrer"
-                    className="p-4 rounded-full bg-magic-black text-white hover:scale-110 duration-200"
+                    className="p-2.5 md:p-4 rounded-full bg-magic-black text-white hover:scale-110 transition-transform duration-200 order-2 md:order-1"
                   >
-                    <ExternalLink size={18} />
+                    <ExternalLink size={14} />
                   </a>
-                  <span className="font-archivo text-[10px] uppercase tracking-widest opacity-40">Weights: 400, 400 Italic</span>
                 </div>
               </div>
               <div className="space-y-4 opacity-10">
@@ -308,16 +308,16 @@ const StyleGuide: React.FC = () => {
                   <h3 className="font-archivo text-[10px] uppercase tracking-widest mb-2 opacity-40">Interface Font</h3>
                   <p className="font-inter text-3xl md:text-4xl font-bold tracking-tight leading-none">Inter</p>
                 </div>
-                <div className="flex flex-col items-end gap-2">
+                <div className="flex items-center gap-3 self-end md:self-start md:flex-col md:items-end md:gap-2">
+                  <span className="font-archivo text-[10px] uppercase tracking-widest opacity-40 order-1 md:order-2">Weights: 400, 500, 700, 900</span>
                   <a 
                     href="https://fonts.google.com/specimen/Inter" 
                     target="_blank" 
                     rel="noreferrer"
-                    className="p-4 rounded-full bg-magic-black text-white hover:scale-110 duration-200"
+                    className="p-2.5 md:p-4 rounded-full bg-magic-black text-white hover:scale-110 transition-transform duration-200 order-2 md:order-1"
                   >
-                    <ExternalLink size={18} />
+                    <ExternalLink size={14} />
                   </a>
-                  <span className="font-archivo text-[10px] uppercase tracking-widest opacity-40">Weights: 400, 500, 700, 900</span>
                 </div>
               </div>
               
