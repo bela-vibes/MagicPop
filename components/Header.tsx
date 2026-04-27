@@ -68,7 +68,7 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
           paddingRight: 'max(1.5rem, env(safe-area-inset-right))',
         }}
       >
-        <div className="font-archivo text-2xl md:text-3xl tracking-tighter uppercase relative z-[110]">
+        <div className="font-archivo text-2xl md:text-3xl tracking-tighter uppercase relative z-[110] leading-[0.9]">
           <a 
             href="#hero" 
             onClick={(e) => handleNavItemClick(e, '#hero')} 
