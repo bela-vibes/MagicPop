@@ -256,10 +256,10 @@ const StyleGuide: React.FC = () => {
               <div className="flex flex-col md:flex-row justify-between items-start mb-12 gap-6">
                 <div>
                   <h3 className="font-archivo text-[10px] uppercase tracking-widest mb-2 opacity-40">Headline Font</h3>
-                  <p className="font-archivo text-5xl md:text-7xl uppercase tracking-tighter leading-none">Archivo Black</p>
+                  <p className="font-archivo text-5xl md:text-7xl uppercase tracking-tighter leading-none mb-2">Archivo Black</p>
+                  <span className="font-archivo text-[9px] md:text-[10px] uppercase tracking-widest opacity-40 block">Weight: 400 (Extra Bold)</span>
                 </div>
                 <div className="flex items-center gap-3 md:flex-col md:items-end md:gap-2">
-                  <span className="font-archivo text-[9px] md:text-[10px] uppercase tracking-widest opacity-40">Weight: 400 (Extra Bold)</span>
                   <a 
                     href="https://fonts.google.com/specimen/Archivo+Black" 
                     target="_blank" 
@@ -281,10 +281,10 @@ const StyleGuide: React.FC = () => {
               <div className="flex flex-col md:flex-row justify-between items-start mb-12 gap-6">
                 <div>
                   <h3 className="font-archivo text-[10px] uppercase tracking-widest mb-2 opacity-40">Display Font</h3>
-                  <p className="font-editorial text-5xl md:text-6xl italic leading-none">Instrument Serif</p>
+                  <p className="font-editorial text-5xl md:text-6xl italic leading-none mb-2">Instrument Serif</p>
+                  <span className="font-archivo text-[9px] md:text-[10px] uppercase tracking-widest opacity-40 block">Weights: 400, 400 Italic</span>
                 </div>
                 <div className="flex items-center gap-3 md:flex-col md:items-end md:gap-2">
-                  <span className="font-archivo text-[9px] md:text-[10px] uppercase tracking-widest opacity-40">Weights: 400, 400 Italic</span>
                   <a 
                     href="https://fonts.google.com/specimen/Instrument+Serif" 
                     target="_blank" 
@@ -306,10 +306,10 @@ const StyleGuide: React.FC = () => {
               <div className="flex flex-col md:flex-row justify-between items-start mb-12 gap-6">
                 <div>
                   <h3 className="font-archivo text-[10px] uppercase tracking-widest mb-2 opacity-40">Interface Font</h3>
-                  <p className="font-inter text-3xl md:text-4xl font-bold tracking-tight leading-none">Inter</p>
+                  <p className="font-inter text-3xl md:text-4xl font-bold tracking-tight leading-none mb-2">Inter</p>
+                  <span className="font-archivo text-[9px] md:text-[10px] uppercase tracking-widest opacity-40 block">Weights: 400, 500, 700, 900</span>
                 </div>
                 <div className="flex items-center gap-3 md:flex-col md:items-end md:gap-2">
-                  <span className="font-archivo text-[9px] md:text-[10px] uppercase tracking-widest opacity-40">Weights: 400, 500, 700, 900</span>
                   <a 
                     href="https://fonts.google.com/specimen/Inter" 
                     target="_blank" 
