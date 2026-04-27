@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Language } from '../types';
 import { TRANSLATIONS } from '../constants';
 
@@ -14,6 +15,8 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDarkMode, toggleDarkMode, onNavClick }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
   const t = TRANSLATIONS[lang].nav;
   
   const navItems = [
@@ -27,10 +30,24 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
 
   const handleNavItemClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    if (onNavClick) onNavClick();
     setIsMenuOpen(false);
-
+    
     const targetId = href.replace('#', '');
+    
+    if (location.pathname !== '/') {
+      // If we are not on the home page, go home first
+      if (onNavClick) onNavClick();
+      navigate('/' + href);
+      
+      // We still need to scroll after navigation, usually this happens via the hash in react-router-dom 
+      // but only if configured. Our LandingPage offsets might need time.
+      // For now, LandingPage will handle closing the overlay, 
+      // and we expect the window to scroll to top (via ScrollToTop logic) or we can force it.
+      return;
+    }
+
+    if (onNavClick) onNavClick();
+
     const element = document.getElementById(targetId);
     
     if (element) {
