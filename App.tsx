@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import StyleGuide from './components/StyleGuide';
+import ScrollToTop from './components/ScrollToTop';
 
 const App: React.FC = () => {
   const navigate = useNavigate();
@@ -20,12 +21,15 @@ const App: React.FC = () => {
   }, [navigate]);
 
   return (
-    <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/styleguide" element={<StyleGuide />} />
-      {/* Catch all for deep links if necessary */}
-      <Route path="*" element={<LandingPage />} />
-    </Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/styleguide" element={<StyleGuide />} />
+        {/* Catch all for deep links if necessary */}
+        <Route path="*" element={<LandingPage />} />
+      </Routes>
+    </>
   );
 };
 
