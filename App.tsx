@@ -342,7 +342,7 @@ const App: React.FC = () => {
       </main>
 
       <footer className="relative z-[20] bg-magic-black dark:bg-magic-dark py-8 md:py-12 px-6 md:px-12 text-off-white flex flex-col md:flex-row justify-between items-center gap-8 transition-colors duration-500">
-        <div className="font-archivo text-xl uppercase tracking-tighter text-off-white">Magic Pop<span className="font-editorial lowercase text-lg ml-1">studio</span></div>
+        <div className="font-archivo text-xl uppercase tracking-tighter text-off-white">Magic Pop<span className="font-editorial lowercase text-lg ml-2">studio</span></div>
         <div className="flex flex-col md:flex-row items-center gap-4 md:gap-8">
           <div className="text-[10px] md:text-xs uppercase tracking-widest text-off-white/30 text-center md:text-left">© 2026 Magic Pop Studio. Create the Magic. Make it Pop.</div>
           <div className="flex gap-4 font-archivo uppercase text-[10px] md:text-xs tracking-widest text-off-white/50">
