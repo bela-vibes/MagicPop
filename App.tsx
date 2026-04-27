@@ -25,7 +25,10 @@ const App: React.FC = () => {
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/impressum" element={<LandingPage />} />
+        <Route path="/datenschutz" element={<LandingPage />} />
         <Route path="/styleguide" element={<StyleGuide />} />
+        <Route path="/:slug" element={<LandingPage />} />
         {/* Catch all for deep links if necessary */}
         <Route path="*" element={<LandingPage />} />
       </Routes>
