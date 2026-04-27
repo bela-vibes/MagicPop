@@ -1,19 +1,21 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Analytics } from "@vercel/analytics/react";
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import ProjectsGrid from './components/ProjectsGrid';
 import Section from './components/Section';
 import { Language, Project } from './types';
-import { Link } from 'react-router-dom';
-import { TRANSLATIONS } from './constants';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
+import { TRANSLATIONS, PROJECTS } from './constants';
 import Impressum from './components/Impressum';
 import Datenschutz from './components/Datenschutz';
 import ProximityImage from './components/ProximityImage';
 
 const LandingPage: React.FC = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [lang, setLang] = useState<Language>('de');
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [mousePos, setMousePos] = useState({ x: -500, y: -500 });
@@ -21,10 +23,45 @@ const LandingPage: React.FC = () => {
   const [blob2Pos, setBlob2Pos] = useState({ x: 0, y: 0 });
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isMobile, setIsMobile] = useState(false);
-  const [currentHash, setCurrentHash] = useState(window.location.hash);
   const requestRef = useRef<number>(null);
   const sectionOffsets = useRef<{ [key: string]: number }>({});
+
+  // Effect to handle routing/overlays based on URL path
+  useEffect(() => {
+    const path = location.pathname;
+    
+    if (path === '/impressum' || path === '/datenschutz' || path === '/') {
+      setSelectedProject(null);
+    } else {
+      const slug = path.substring(1); // remove leading slash
+      const project = PROJECTS.find(p => p.slug === slug);
+      if (project) {
+        setSelectedProject(project);
+      } else if (path !== '/styleguide') {
+        // Only navigate home if it's not the styleguide (which is a separate page)
+        navigate('/');
+      }
+    }
+  }, [location.pathname, navigate]);
   
+  // Effect to handle inner-page scrolling when coming from a sub-route
+  useEffect(() => {
+    if (location.hash && location.pathname === '/') {
+      const id = location.hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        // Small delay to ensure the overlay has started closing and Layout is ready
+        const timer = setTimeout(() => {
+          const headerOffset = 80;
+          const elementPosition = element.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+        }, 100);
+        return () => clearTimeout(timer);
+      }
+    }
+  }, [location.hash, location.pathname]);
+
   const [scrollTheme, setScrollTheme] = useState({
     bg: 'bg-transparent',
     text: 'text-magic-black dark:text-off-white',
@@ -145,24 +182,8 @@ const LandingPage: React.FC = () => {
     };
   }, []);
 
-  useEffect(() => {
-    const handleHashChange = () => {
-      setCurrentHash(window.location.hash);
-      if (window.location.hash === '#impressum' || window.location.hash === '#datenschutz') {
-        window.scrollTo(0, 0);
-      }
-    };
-    window.addEventListener('hashchange', handleHashChange);
-    window.addEventListener('popstate', handleHashChange);
-    return () => {
-      window.removeEventListener('hashchange', handleHashChange);
-      window.removeEventListener('popstate', handleHashChange);
-    };
-  }, []);
-
   const closeOverlay = () => {
-    window.history.pushState("", document.title, window.location.pathname + window.location.search);
-    setCurrentHash('');
+    navigate('/');
   };
 
   const toggleDarkMode = () => {
@@ -219,8 +240,7 @@ const LandingPage: React.FC = () => {
         isDarkMode={isDarkMode}
         toggleDarkMode={toggleDarkMode}
         onNavClick={() => {
-          setSelectedProject(null);
-          setCurrentHash('');
+          navigate('/');
           document.body.style.overflow = 'unset';
         }}
       />
@@ -346,14 +366,38 @@ const LandingPage: React.FC = () => {
           <div className="text-[10px] md:text-xs uppercase tracking-widest text-off-white/30 text-center md:text-left">© 2026 Magic Pop Studio. Create the Magic. Make it Pop.</div>
           <div className="flex gap-4 font-archivo uppercase text-[10px] md:text-xs tracking-widest text-off-white/50">
             <Link to="/styleguide" className="hover:text-magic-blue transition-colors opacity-30 hover:opacity-100">Design</Link>
-            <a href="#impressum" className="hover:text-magic-pink transition-colors">{t.contact.impressum}</a>
-            <a href="#datenschutz" className="hover:text-magic-pink transition-colors">{t.contact.privacy}</a>
+            <Link to="/impressum" className="hover:text-magic-pink transition-colors">{t.contact.impressum}</Link>
+            <Link to="/datenschutz" className="hover:text-magic-pink transition-colors">{t.contact.privacy}</Link>
           </div>
         </div>
       </footer>
 
-      {currentHash === '#impressum' && <Impressum onClose={closeOverlay} />}
-      {currentHash === '#datenschutz' && <Datenschutz onClose={closeOverlay} />}
+      <AnimatePresence mode="wait">
+        {location.pathname === '/impressum' && (
+          <motion.div
+            key="impressum"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
+            className="fixed inset-0 z-[100]"
+          >
+            <Impressum onClose={closeOverlay} />
+          </motion.div>
+        )}
+        {location.pathname === '/datenschutz' && (
+          <motion.div
+            key="datenschutz"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={{ duration: 0.5, ease: [0.19, 1, 0.22, 1] }}
+            className="fixed inset-0 z-[100]"
+          >
+            <Datenschutz onClose={closeOverlay} />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <Analytics />
       <SpeedInsights />
