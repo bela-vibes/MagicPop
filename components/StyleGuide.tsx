@@ -130,9 +130,10 @@ const StyleGuide: React.FC = () => {
                   <div className="w-4 h-4 rounded-full bg-magic-pink" />
                 </div>
               </div>
-              <button className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity bg-magic-black text-white p-3 rounded-full hover:scale-110 active:scale-95 duration-200">
+              {/* INSERT DOWNLOAD URL BELOW (e.g. href="/assets/logos/magic-pop-dark.zip") */}
+              <a href="#" download className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity bg-magic-black text-white p-3 rounded-full hover:scale-110 active:scale-95 duration-200">
                 <Download size={18} />
-              </button>
+              </a>
             </motion.div>
 
             {/* Weiß auf Schwarz */}
@@ -151,9 +152,10 @@ const StyleGuide: React.FC = () => {
                   <div className="w-4 h-4 rounded-full bg-magic-blue" />
                 </div>
               </div>
-              <button className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity bg-white text-magic-black p-3 rounded-full hover:scale-110 active:scale-95 duration-200">
+              {/* INSERT DOWNLOAD URL BELOW (e.g. href="/assets/logos/magic-pop-light.zip") */}
+              <a href="#" download className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity bg-white text-magic-black p-3 rounded-full hover:scale-110 active:scale-95 duration-200">
                 <Download size={18} />
-              </button>
+              </a>
             </motion.div>
 
             {/* Favicon / Icon */}
@@ -165,9 +167,10 @@ const StyleGuide: React.FC = () => {
                 <span className="translate-y-[0.05em]">MP</span>
               </div>
               <span className="text-[10px] uppercase tracking-widest opacity-40 mt-8">Favicon / App Icon</span>
-              <button className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity bg-magic-black text-white p-3 rounded-full hover:scale-110 active:scale-95 duration-200">
+              {/* INSERT DOWNLOAD URL BELOW (e.g. href="/assets/logos/favicon-pack.zip") */}
+              <a href="#" download className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity bg-magic-black text-white p-3 rounded-full hover:scale-110 active:scale-95 duration-200">
                 <Download size={18} />
-              </button>
+              </a>
             </motion.div>
           </div>
         </section>
