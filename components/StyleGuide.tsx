@@ -113,29 +113,59 @@ const StyleGuide: React.FC = () => {
             <h2 className="font-archivo text-4xl uppercase tracking-tighter">Logos</h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Schwarz auf Weiß */}
             <motion.div 
               whileHover={{ y: -5 }}
-              className="bg-white p-12 rounded-2xl border border-magic-black/5 flex flex-col items-center justify-center relative group"
+              className="bg-white p-12 rounded-2xl border border-magic-black/5 flex flex-col items-start justify-center relative group min-h-[300px]"
             >
-              <div className="font-archivo text-5xl uppercase tracking-tighter text-magic-black mb-4">
-                Magic Pop<span className="font-editorial lowercase text-4xl ml-2">studio</span>
+              <div className="font-archivo text-3xl md:text-4xl uppercase tracking-tighter text-magic-black leading-[0.9] text-left mb-6">
+                Magic<br />Pop<span className="font-editorial lowercase inline-block ml-4">studio</span>
               </div>
-              <span className="text-[10px] uppercase tracking-widest opacity-40">Primary Vertical</span>
+              <div className="space-y-4 w-full">
+                <span className="text-[10px] uppercase tracking-widest opacity-40 block">Primary Dark (On Light)</span>
+                <div className="flex gap-2">
+                  <div className="w-4 h-4 rounded-full bg-white border border-magic-black/20" />
+                  <div className="w-4 h-4 rounded-full bg-magic-yellow" />
+                  <div className="w-4 h-4 rounded-full bg-magic-pink" />
+                </div>
+              </div>
               <button className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity bg-magic-black text-white p-3 rounded-full hover:scale-110 active:scale-95 duration-200">
                 <Download size={18} />
               </button>
             </motion.div>
 
+            {/* Weiß auf Schwarz */}
             <motion.div 
               whileHover={{ y: -5 }}
-              className="bg-magic-black p-12 rounded-2xl flex flex-col items-center justify-center relative group"
+              className="bg-magic-black p-12 rounded-2xl flex flex-col items-start justify-center relative group min-h-[300px]"
             >
-              <div className="font-archivo text-5xl uppercase tracking-tighter text-off-white mb-4">
-                Magic Pop<span className="font-editorial lowercase text-4xl ml-2 text-magic-blue">studio</span>
+              <div className="font-archivo text-3xl md:text-4xl uppercase tracking-tighter text-off-white leading-[0.9] text-left mb-6">
+                Magic<br />Pop<span className="font-editorial lowercase inline-block ml-4">studio</span>
               </div>
-              <span className="text-[10px] uppercase tracking-widest opacity-40 text-off-white">Dark Inverse</span>
-              <button className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity bg-magic-blue text-white p-3 rounded-full hover:scale-110 active:scale-95 duration-200">
+              <div className="space-y-4 w-full">
+                <span className="text-[10px] uppercase tracking-widest opacity-40 text-off-white block">Primary Light (On Dark)</span>
+                <div className="flex gap-2">
+                  <div className="w-4 h-4 rounded-full bg-magic-black border border-white/20" />
+                  <div className="w-4 h-4 rounded-full bg-magic-orange" />
+                  <div className="w-4 h-4 rounded-full bg-magic-blue" />
+                </div>
+              </div>
+              <button className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity bg-white text-magic-black p-3 rounded-full hover:scale-110 active:scale-95 duration-200">
+                <Download size={18} />
+              </button>
+            </motion.div>
+
+            {/* Favicon / Icon */}
+            <motion.div 
+              whileHover={{ y: -5 }}
+              className="bg-white p-12 rounded-2xl border border-magic-black/5 flex flex-col items-center justify-center relative group min-h-[300px]"
+            >
+              <div className="w-24 h-24 bg-magic-orange rounded-full flex items-center justify-center font-archivo text-4xl text-magic-black shadow-xl transition-transform duration-500 group-hover:scale-110">
+                <span className="translate-y-[0.05em]">MP</span>
+              </div>
+              <span className="text-[10px] uppercase tracking-widest opacity-40 mt-8">Favicon / App Icon</span>
+              <button className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-opacity bg-magic-black text-white p-3 rounded-full hover:scale-110 active:scale-95 duration-200">
                 <Download size={18} />
               </button>
             </motion.div>
@@ -212,35 +242,6 @@ const StyleGuide: React.FC = () => {
           </motion.div>
         </section>
 
-        {/* Spacing & Grid */}
-        <section className="mb-32">
-          <div className="flex items-center gap-4 mb-12">
-            <div className="w-12 h-12 bg-magic-pink rounded-full flex items-center justify-center text-magic-black">
-              <div className="w-6 h-6 border-2 border-current opacity-50" />
-            </div>
-            <h2 className="font-archivo text-4xl uppercase tracking-tighter">Geometry</h2>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-magic-black/40 font-archivo uppercase text-[10px] tracking-widest">
-            <div className="space-y-4">
-              <p>Corner Radius</p>
-              <div className="h-20 bg-white rounded-sm border border-magic-black/5 flex items-center justify-center">2px (Logo/Buttons)</div>
-              <div className="h-20 bg-white rounded-2xl border border-magic-black/5 flex items-center justify-center">16px (Cards)</div>
-              <div className="h-20 bg-white rounded-full border border-magic-black/5 flex items-center justify-center">Full (Pills)</div>
-            </div>
-            <div className="space-y-4">
-              <p>Section Spacing</p>
-              <div className="h-16 bg-magic-blue/5 border-y border-magic-blue/10 flex items-center justify-center">64px (Mobile Gap)</div>
-              <div className="h-32 bg-magic-blue/5 border-y border-magic-blue/10 flex items-center justify-center">128px (Desktop Gap)</div>
-            </div>
-            <div className="space-y-4">
-              <p>Interactive</p>
-              <div className="h-12 bg-magic-blue text-white flex items-center justify-center cursor-pointer hover:bg-blue-700 transition-colors">Hover State</div>
-              <div className="h-12 border border-magic-black/10 flex items-center justify-center cursor-not-allowed">Disabled</div>
-            </div>
-          </div>
-        </section>
-
         {/* Typography */}
         <section className="mb-32">
           <div className="flex items-center gap-4 mb-12">
@@ -253,11 +254,11 @@ const StyleGuide: React.FC = () => {
           <div className="grid grid-cols-1 gap-12">
             {/* Archivo Black */}
             <div className="p-8 md:p-12 rounded-3xl bg-white border border-magic-black/5">
-              <div className="flex flex-col md:flex-row justify-between items-start mb-12 gap-6">
+              <div className="flex flex-col md:flex-row justify-between items-start mb-8 gap-6">
                 <div>
                   <h3 className="font-archivo text-[10px] uppercase tracking-widest mb-2 opacity-40">Headline Font</h3>
                   <p className="font-archivo text-5xl md:text-7xl uppercase tracking-tighter leading-none mb-2">Archivo Black</p>
-                  <span className="font-archivo text-[9px] md:text-[10px] uppercase tracking-widest opacity-40 block">Weight: 400 (Extra Bold)</span>
+                  <p className="font-archivo text-[10px] md:text-xs uppercase tracking-[0.2em] opacity-60">Weight: 400 (Extra Bold)</p>
                 </div>
                 <div className="flex items-center gap-3 md:flex-col md:items-end md:gap-2">
                   <a 
@@ -278,11 +279,11 @@ const StyleGuide: React.FC = () => {
 
             {/* Instrument Serif */}
             <div className="p-8 md:p-12 rounded-3xl bg-white border border-magic-black/5">
-              <div className="flex flex-col md:flex-row justify-between items-start mb-12 gap-6">
+              <div className="flex flex-col md:flex-row justify-between items-start mb-8 gap-6">
                 <div>
                   <h3 className="font-archivo text-[10px] uppercase tracking-widest mb-2 opacity-40">Display Font</h3>
                   <p className="font-editorial text-5xl md:text-6xl italic leading-none mb-2">Instrument Serif</p>
-                  <span className="font-archivo text-[9px] md:text-[10px] uppercase tracking-widest opacity-40 block">Weights: 400, 400 Italic</span>
+                  <p className="font-archivo text-[10px] md:text-xs uppercase tracking-[0.2em] opacity-60">Weights: 400, 400 Italic</p>
                 </div>
                 <div className="flex items-center gap-3 md:flex-col md:items-end md:gap-2">
                   <a 
@@ -303,11 +304,11 @@ const StyleGuide: React.FC = () => {
 
             {/* Inter */}
             <div className="p-8 md:p-12 rounded-3xl bg-white border border-magic-black/5">
-              <div className="flex flex-col md:flex-row justify-between items-start mb-12 gap-6">
+              <div className="flex flex-col md:flex-row justify-between items-start mb-8 gap-6">
                 <div>
                   <h3 className="font-archivo text-[10px] uppercase tracking-widest mb-2 opacity-40">Interface Font</h3>
                   <p className="font-inter text-3xl md:text-4xl font-bold tracking-tight leading-none mb-2">Inter</p>
-                  <span className="font-archivo text-[9px] md:text-[10px] uppercase tracking-widest opacity-40 block">Weights: 400, 500, 700, 900</span>
+                  <p className="font-archivo text-[10px] md:text-xs uppercase tracking-[0.2em] opacity-60">Weights: 400, 500, 700, 900</p>
                 </div>
                 <div className="flex items-center gap-3 md:flex-col md:items-end md:gap-2">
                   <a 
