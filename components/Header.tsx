@@ -60,7 +60,7 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
             <span className={`${textColor} transition-colors duration-500 ease-in-out mr-1.5`}>Magic</span>
             <div className="flex items-baseline">
               <span className={`${textColor} transition-colors duration-500 ease-in-out`}>Pop</span>
-              <span className={`font-editorial lowercase text-xl md:text-2xl ml-1 ${textColor} transition-colors duration-500 ease-in-out`}>studio</span>
+              <span className={`font-editorial lowercase text-xl md:text-2xl ml-2 ${textColor} transition-colors duration-500 ease-in-out`}>studio</span>
             </div>
           </a>
         </div>
