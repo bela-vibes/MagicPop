@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
 import { motion } from 'motion/react';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -352,6 +354,9 @@ const LandingPage: React.FC = () => {
 
       {currentHash === '#impressum' && <Impressum onClose={closeOverlay} />}
       {currentHash === '#datenschutz' && <Datenschutz onClose={closeOverlay} />}
+
+      <Analytics />
+      <SpeedInsights />
     </div>
   );
 };
