@@ -12,8 +12,7 @@ export const TRANSLATIONS = {
     },
     hero: {
       subline: "studio für",
-      sublineBold1: "räume, objekte und",
-      sublineBold2: "geschichten",
+      sublineBold: "räume, objekte und geschichten",
       location: "Standort Berlin",
       est: "Seit 2024"
     },
