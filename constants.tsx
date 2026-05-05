@@ -59,7 +59,7 @@ export const TRANSLATIONS = {
         { step: "03", title: "Konzept & Umsetzung", desc: "Wir machen die Magic wahr." }
       ],
       trustTitle: "Menschen und Marken die uns vertrauen",
-      footerNoteSmall: "Bereit, deine Ideen in etwas Magisches zu verwandeln?",
+      footerNoteSmall: "Vereinbare ein kostenloses Erstgespräch",
       impressum: "Impressum",
       privacy: "Datenschutz"
     }
@@ -121,7 +121,7 @@ export const TRANSLATIONS = {
         { step: "03", title: "Concept & Execution", desc: "We make the magic happen." }
       ],
       trustTitle: "People and brands who trust us",
-      footerNoteSmall: "Ready to transform your ideas into something truly magical?",
+      footerNoteSmall: "Schedule a free consultation",
       impressum: "Legal Notice",
       privacy: "Privacy Policy"
     }
