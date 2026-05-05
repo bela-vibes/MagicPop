@@ -255,15 +255,17 @@ const LandingPage: React.FC = () => {
         />
 
         {/* Logo Wall */}
-        <section className="bg-transparent pt-8 pb-16 md:pb-24 px-6 md:px-12 max-w-7xl mx-auto">
-          <span className="font-archivo text-[10px] uppercase tracking-[0.3em] text-magic-black/20 dark:text-off-white/20 block text-center mb-12">{t.contact.trustTitle}</span>
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center opacity-30 dark:opacity-20 grayscale brightness-0 dark:invert">
-            <div className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">Sony Music</div>
-            <div className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">LOQI</div>
-            <div className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">Momox</div>
-            <div className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">Dermapharm</div>
-            <div className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">HANA Berlin</div>
-            <div className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">Amores Production</div>
+        <section className="bg-transparent py-16 md:py-24 px-6 md:px-12">
+          <div className="max-w-7xl mx-auto">
+            <span className="font-archivo text-[10px] uppercase tracking-[0.3em] text-magic-black/20 dark:text-off-white/20 block text-center mb-16">{t.contact.trustTitle}</span>
+            <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-10 md:gap-x-20 md:gap-y-16">
+              <div className="font-archivo font-black text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">Sony Music</div>
+              <div className="font-archivo font-black text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">LOQI</div>
+              <div className="font-archivo font-black text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">Momox</div>
+              <div className="font-archivo font-black text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">Dermapharm</div>
+              <div className="font-archivo font-black text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">HANA Berlin</div>
+              <div className="font-archivo font-black text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">Amores Production</div>
+            </div>
           </div>
         </section>
 
@@ -329,7 +331,7 @@ const LandingPage: React.FC = () => {
 
         <Section id="contact" title={t.contact.title} subtitle={t.contact.subtitle} className="bg-transparent py-16 md:py-32">
           {/* Main Contact Grid */}
-          <div className="flex flex-col lg:flex-row gap-12 md:gap-24 mt-12 border-t border-magic-black/10 dark:border-off-white/10 pt-16">
+          <div className="flex flex-col lg:flex-row gap-12 md:gap-24 mt-12 pt-16">
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -357,23 +359,10 @@ const LandingPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="pt-12 border-t border-magic-black/5 dark:border-off-white/5">
-                <span className="font-archivo text-[10px] uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block mb-8">{t.contact.processTitle}</span>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-                  {t.contact.process.map((p: any, i: number) => (
-                    <div key={i} className="space-y-3">
-                      <span className="font-editorial italic text-xl text-magic-black/20 dark:text-off-white/20 block">{p.step}</span>
-                      <h4 className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">{p.title}</h4>
-                      <p className="text-[12px] text-magic-black/50 dark:text-off-white/50 leading-relaxed">{p.desc}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div>
-                <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block mb-4">{t.contact.followLabel}</span>
+              <div className="pt-16 md:pt-24">
+                <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block mb-6">{t.contact.followLabel}</span>
                 <div className="flex gap-8 font-archivo uppercase text-xs md:text-sm tracking-widest text-magic-black dark:text-off-white">
-                  <a href="https://www.instagram.com/magicpop.berlin" target="_blank" rel="noopener noreferrer" className="relative group overflow-hidden">
+                  <a href="https://www.instagram.com/magicpop.berlin" target="_blank" rel="noopener noreferrer" className="relative group overflow-hidden font-black">
                     <span className="block group-hover:-translate-y-full transition-transform duration-300">Instagram</span>
                     <span className="absolute top-0 left-0 block translate-y-full group-hover:translate-y-0 transition-transform duration-300 text-magic-orange">Instagram</span>
                   </a>
