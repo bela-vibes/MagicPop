@@ -8,10 +8,12 @@ import ProjectsGrid from './components/ProjectsGrid';
 import Section from './components/Section';
 import { Language, Project } from './types';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
-import { TRANSLATIONS, PROJECTS } from './constants';
+import { TRANSLATIONS, PROJECTS, CONTACT_EMAIL, CONTACT_PHONE } from './constants';
 import Impressum from './components/Impressum';
 import Datenschutz from './components/Datenschutz';
 import ProximityImage from './components/ProximityImage';
+
+import { Mail, Phone } from 'lucide-react';
 
 const LandingPage: React.FC = () => {
   const location = useLocation();
@@ -259,12 +261,12 @@ const LandingPage: React.FC = () => {
           <div className="max-w-7xl mx-auto">
             <span className="font-archivo text-[10px] uppercase tracking-[0.3em] text-magic-black/20 dark:text-off-white/20 block text-center mb-16">{t.contact.trustTitle}</span>
             <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-10 md:gap-x-20 md:gap-y-16">
-              <div className="font-archivo font-bold text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">Sony Music</div>
-              <div className="font-archivo font-bold text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">LOQI</div>
-              <div className="font-archivo font-bold text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">Momox</div>
-              <div className="font-archivo font-bold text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">Dermapharm</div>
-              <div className="font-archivo font-bold text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">HANA Berlin</div>
-              <div className="font-archivo font-bold text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">Amores Production</div>
+              <div className="font-archivo  text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">Sony Music</div>
+              <div className="font-archivo  text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">LOQI</div>
+              <div className="font-archivo  text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">Momox</div>
+              <div className="font-archivo  text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">Dermapharm</div>
+              <div className="font-archivo  text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">HANA Berlin</div>
+              <div className="font-archivo  text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">Amores Production</div>
             </div>
           </div>
         </section>
@@ -281,7 +283,8 @@ const LandingPage: React.FC = () => {
                 className="group pt-0 md:pt-4"
               >
                 <span className="font-archivo text-xs md:text-sm uppercase tracking-widest mb-4 block text-magic-black/30 dark:text-off-white/30">0{i+1}</span>
-                <h3 className="font-archivo text-xl md:text-2xl uppercase tracking-tighter mb-4 md:mb-6 text-magic-black dark:text-off-white group-hover:translate-x-2 transition-transform duration-300">{service.title}</h3>
+                <h3 className="font-archivo text-xl md:text-2xl uppercase tracking-tighter mb-1 text-magic-black dark:text-off-white group-hover:translate-x-2 transition-transform duration-300">{service.title}</h3>
+                <span className="font-archivo text-[10px] md:text-[11px] uppercase tracking-[0.2em] mb-4 md:mb-6 block text-magic-black/20 dark:text-off-white/20 transition-transform duration-300 group-hover:translate-x-2">{service.subline}</span>
                 <p className="text-base md:text-lg text-magic-black/60 dark:text-off-white/60 leading-relaxed font-medium">{service.desc}</p>
               </motion.div>
             ))}
@@ -320,7 +323,7 @@ const LandingPage: React.FC = () => {
               <p className="font-editorial text-2xl md:text-3xl italic leading-tight drop-shadow-sm opacity-90">{t.studio.p1}</p>
               <p className="text-base md:text-lg opacity-60 font-medium leading-relaxed">{t.studio.p2}</p>
               <a 
-                href="mailto:hello@magicpop.berlin"
+                href={`mailto:${CONTACT_EMAIL}`}
                 className="inline-block w-full md:w-auto bg-magic-blue text-white font-archivo uppercase tracking-widest px-10 py-5 hover:bg-blue-700 transition-all duration-300 shadow-[0_10px_40_rgba(0,56,255,0.3)] hover:shadow-[0_15px_50px_rgba(0,56,255,0.5)] active:scale-95 text-center"
               >
                 {t.studio.startProject}
@@ -337,14 +340,14 @@ const LandingPage: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
-              className="lg:w-1/2 space-y-12"
+              className="lg:w-1/2 flex flex-col justify-between"
             >
               <div className="space-y-6">
                 <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block">{t.contact.emailLabel}</span>
-                <a href="mailto:hello@magicpop.berlin" 
+                <a href={`mailto:${CONTACT_EMAIL}`} 
                    className="font-archivo uppercase tracking-tighter text-magic-black dark:text-off-white hover:text-magic-orange transition-colors duration-300 no-underline hover:underline underline-offset-8 decoration-magic-orange whitespace-nowrap block"
                    style={{ fontSize: 'clamp(0.8rem, 4vw, 3.2rem)', lineHeight: '1' }}>
-                  hello@magicpop.berlin
+                  {CONTACT_EMAIL}
                 </a>
                 
                 <div className="flex flex-wrap gap-x-6 gap-y-3 pt-4 font-archivo text-[10px] uppercase tracking-[0.2em] text-magic-black/40 dark:text-off-white/40">
@@ -359,10 +362,11 @@ const LandingPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="pt-16 md:pt-24">
+              {/* Instagram on Desktop */}
+              <div className="hidden lg:block pt-16 md:pt-24">
                 <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block mb-6">{t.contact.followLabel}</span>
                 <div className="flex gap-8 font-archivo uppercase text-xs md:text-sm tracking-widest text-magic-black dark:text-off-white">
-                  <a href="https://www.instagram.com/magicpop.berlin" target="_blank" rel="noopener noreferrer" className="relative group overflow-hidden font-bold">
+                  <a href="https://www.instagram.com/magicpop.berlin" target="_blank" rel="noopener noreferrer" className="relative group overflow-hidden">
                     <span className="block group-hover:-translate-y-full transition-transform duration-300">Instagram</span>
                     <span className="absolute top-0 left-0 block translate-y-full group-hover:translate-y-0 transition-transform duration-300 text-magic-orange">Instagram</span>
                   </a>
@@ -371,26 +375,60 @@ const LandingPage: React.FC = () => {
             </motion.div>
 
             <motion.div 
-              initial={{ opacity: 0, scale: 0.98 }}
+              initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
-              className="lg:w-1/2 bg-yellow-400 p-8 md:p-10 flex flex-col justify-between shadow-[0_40px_100px_-20px_rgba(250,204,21,0.2)] rounded-sm min-h-[320px]"
+              className="lg:w-1/2 flex flex-col items-center justify-center py-12 lg:py-0"
             >
-              <div>
-                <p className="font-editorial text-3xl md:text-5xl text-magic-black italic leading-tight mb-12">
-                  {t.contact.footerNoteSmall}
-                </p>
+              <div className="relative w-full max-w-[380px]">
+                <motion.div 
+                  animate={{ 
+                    y: [0, -20, 0],
+                    rotate: [-8, -4, -8]
+                  }}
+                  transition={{ 
+                    duration: 6, 
+                    repeat: Infinity, 
+                    ease: "easeInOut" 
+                  }}
+                  className="relative aspect-square w-full bg-yellow-400 rounded-full flex flex-col items-center justify-center text-center p-12 shadow-[0_40px_100px_-20px_rgba(250,204,21,0.5)] transition-shadow duration-500"
+                >
+                  <div className="space-y-8 flex flex-col items-center">
+                    <h3 className="font-editorial text-4xl md:text-5xl lg:text-6xl text-magic-black italic leading-[1] max-w-[300px]">
+                      {t.contact.footerNoteSmall}
+                    </h3>
+                    
+                    <div className="flex gap-6">
+                      <a 
+                        href={`mailto:${CONTACT_EMAIL}`}
+                        className="w-14 h-14 bg-magic-black text-off-white rounded-full flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-95 shadow-xl group/icon"
+                        title={CONTACT_EMAIL}
+                      >
+                        <Mail className="w-6 h-6 group-hover/icon:animate-bounce" />
+                      </a>
+                      <a 
+                        href={`tel:${CONTACT_PHONE.replace(/\s+/g, '')}`}
+                        className="w-14 h-14 bg-magic-black text-off-white rounded-full flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-95 shadow-xl group/icon"
+                        title={CONTACT_PHONE}
+                      >
+                        <Phone className="w-6 h-6 group-hover/icon:animate-bounce" />
+                      </a>
+                    </div>
+                  </div>
+                </motion.div>
               </div>
-              <a 
-                href="mailto:hello@magicpop.berlin"
-                className="group relative inline-flex items-center justify-center bg-magic-black text-off-white font-archivo uppercase tracking-[0.2em] text-[10px] px-10 py-5 overflow-hidden transition-all duration-500 hover:pr-14 active:scale-95 self-start"
-              >
-                <span className="relative z-10">{t.contact.cta}</span>
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-3.5 h-3.5 absolute right-6 translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-                </svg>
-              </a>
+
+              {/* Instagram on Mobile */}
+              <div className="lg:hidden w-full pt-16 flex flex-col items-center">
+                <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block mb-6">{t.contact.followLabel}</span>
+                <div className="flex gap-8 font-archivo uppercase text-xs md:text-sm tracking-widest text-magic-black dark:text-off-white">
+                  <a href="https://www.instagram.com/magicpop.berlin" target="_blank" rel="noopener noreferrer" className="relative group overflow-hidden">
+                    <span className="block group-hover:-translate-y-full transition-transform duration-300">Instagram</span>
+                    <span className="absolute top-0 left-0 block translate-y-full group-hover:translate-y-0 transition-transform duration-300 text-magic-orange">Instagram</span>
+                  </a>
+                </div>
+              </div>
             </motion.div>
           </div>
         </Section>
