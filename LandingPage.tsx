@@ -254,6 +254,19 @@ const LandingPage: React.FC = () => {
           mousePos={mousePos}
         />
 
+        {/* Logo Wall */}
+        <section className="bg-transparent pt-8 pb-16 md:pb-24 px-6 md:px-12 max-w-7xl mx-auto">
+          <span className="font-archivo text-[10px] uppercase tracking-[0.3em] text-magic-black/20 dark:text-off-white/20 block text-center mb-12">{t.contact.trustTitle}</span>
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center opacity-30 dark:opacity-20 grayscale brightness-0 dark:invert">
+            <div className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">Sony Music</div>
+            <div className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">LOQI</div>
+            <div className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">Momox</div>
+            <div className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">Dermapharm</div>
+            <div className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">HANA Berlin</div>
+            <div className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">Amores Production</div>
+          </div>
+        </section>
+
         <Section id="services" title={t.whatWeDo.title} subtitle={t.whatWeDo.subtitle} className="bg-transparent py-16 md:py-32">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mt-12">
             {t.whatWeDo.services.map((service, i) => (
@@ -393,20 +406,6 @@ const LandingPage: React.FC = () => {
                 </svg>
               </a>
             </motion.div>
-          </div>
-
-          {/* Logo Wall */}
-          <div className="mt-24 md:mt-32 pt-16 border-t border-magic-black/5 dark:border-off-white/5">
-            <span className="font-archivo text-[10px] uppercase tracking-[0.3em] text-magic-black/20 dark:text-off-white/20 block text-center mb-12">{t.contact.trustTitle}</span>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center opacity-30 dark:opacity-20 grayscale brightness-0 dark:invert">
-              {/* Hier können echte Logos als SVG oder PNG rein */}
-              <div className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">Sony Music</div>
-              <div className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">LOQI</div>
-              <div className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">Momox</div>
-              <div className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">Dermapharm</div>
-              <div className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">HANA Berlin</div>
-              <div className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">Amores Production</div>
-            </div>
           </div>
         </Section>
       </main>
