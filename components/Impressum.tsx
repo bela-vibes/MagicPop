@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { X } from 'lucide-react';
+import { CONTACT_EMAIL, CONTACT_PHONE } from '../constants';
 
 interface ImpressumProps {
   onClose: () => void;
@@ -35,8 +36,8 @@ const Impressum: React.FC<ImpressumProps> = ({ onClose }) => {
               <div>
                 <h2 className="font-archivo text-xs uppercase tracking-widest opacity-30 mb-4">Kontakt</h2>
                 <p className="text-xl md:text-2xl font-medium leading-relaxed">
-                  Telefon: 0152 22052860<br />
-                  E-Mail: <a href="mailto:hello@magicpop.berlin" className="hover:text-magic-pink transition-colors underline decoration-magic-pink/30 underline-offset-4">hello@magicpop.berlin</a>
+                  Telefon: {CONTACT_PHONE}<br />
+                  E-Mail: <a href={`mailto:${CONTACT_EMAIL}`} className="hover:text-magic-pink transition-colors underline decoration-magic-pink/30 underline-offset-4">{CONTACT_EMAIL}</a>
                 </p>
               </div>
 
