@@ -48,7 +48,18 @@ export const TRANSLATIONS = {
       subtitle: "Schreib uns, sag hallo.",
       emailLabel: "E-Mail uns",
       followLabel: "Folge uns",
-      footerNote: "Bereit, deine Ideen in etwas Magisches zu verwandeln?",
+      footerNote: "Für Marken, Räume und Kampagnen",
+      replyTime: "Antwort innerhalb von 48h",
+      location: "Berlin & europaweit",
+      cta: "Anfrage senden",
+      processTitle: "Unser Prozess",
+      process: [
+        { step: "01", title: "Anfrage senden", desc: "Sag uns, was du im Kopf hast." },
+        { step: "02", title: "Kostenloses Erstgespräch", desc: "Wir finden heraus, ob es passt." },
+        { step: "03", title: "Konzept & Umsetzung", desc: "Wir machen die Magic wahr." }
+      ],
+      trustTitle: "Menschen und Marken die uns vertrauen",
+      footerNoteSmall: "Bereit, deine Ideen in etwas Magisches zu verwandeln?",
       impressum: "Impressum",
       privacy: "Datenschutz"
     }
@@ -99,7 +110,18 @@ export const TRANSLATIONS = {
       subtitle: "Drop a line, say hi.",
       emailLabel: "Email Us",
       followLabel: "Follow Us",
-      footerNote: "Ready to transform your ideas into something truly magical?",
+      footerNote: "For brands, spaces and campaigns",
+      replyTime: "Reply within 48h",
+      location: "Berlin & Europe-wide",
+      cta: "Send Inquiry",
+      processTitle: "Our Process",
+      process: [
+        { step: "01", title: "Send Inquiry", desc: "Tell us what's on your mind." },
+        { step: "02", title: "Free consultation", desc: "We find out if we're a match." },
+        { step: "03", title: "Concept & Execution", desc: "We make the magic happen." }
+      ],
+      trustTitle: "People and brands who trust us",
+      footerNoteSmall: "Ready to transform your ideas into something truly magical?",
       impressum: "Legal Notice",
       privacy: "Privacy Policy"
     }
