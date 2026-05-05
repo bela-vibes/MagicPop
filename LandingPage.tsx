@@ -259,12 +259,12 @@ const LandingPage: React.FC = () => {
           <div className="max-w-7xl mx-auto">
             <span className="font-archivo text-[10px] uppercase tracking-[0.3em] text-magic-black/20 dark:text-off-white/20 block text-center mb-16">{t.contact.trustTitle}</span>
             <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-10 md:gap-x-20 md:gap-y-16">
-              <div className="font-archivo font-black text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">Sony Music</div>
-              <div className="font-archivo font-black text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">LOQI</div>
-              <div className="font-archivo font-black text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">Momox</div>
-              <div className="font-archivo font-black text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">Dermapharm</div>
-              <div className="font-archivo font-black text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">HANA Berlin</div>
-              <div className="font-archivo font-black text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">Amores Production</div>
+              <div className="font-archivo font-bold text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">Sony Music</div>
+              <div className="font-archivo font-bold text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">LOQI</div>
+              <div className="font-archivo font-bold text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">Momox</div>
+              <div className="font-archivo font-bold text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">Dermapharm</div>
+              <div className="font-archivo font-bold text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">HANA Berlin</div>
+              <div className="font-archivo font-bold text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">Amores Production</div>
             </div>
           </div>
         </section>
@@ -331,7 +331,7 @@ const LandingPage: React.FC = () => {
 
         <Section id="contact" title={t.contact.title} subtitle={t.contact.subtitle} className="bg-transparent py-16 md:py-32">
           {/* Main Contact Grid */}
-          <div className="flex flex-col lg:flex-row gap-12 md:gap-24 mt-12 pt-16">
+          <div className="flex flex-col lg:flex-row gap-12 md:gap-24 mt-4">
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -362,7 +362,7 @@ const LandingPage: React.FC = () => {
               <div className="pt-16 md:pt-24">
                 <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block mb-6">{t.contact.followLabel}</span>
                 <div className="flex gap-8 font-archivo uppercase text-xs md:text-sm tracking-widest text-magic-black dark:text-off-white">
-                  <a href="https://www.instagram.com/magicpop.berlin" target="_blank" rel="noopener noreferrer" className="relative group overflow-hidden font-black">
+                  <a href="https://www.instagram.com/magicpop.berlin" target="_blank" rel="noopener noreferrer" className="relative group overflow-hidden font-bold">
                     <span className="block group-hover:-translate-y-full transition-transform duration-300">Instagram</span>
                     <span className="absolute top-0 left-0 block translate-y-full group-hover:translate-y-0 transition-transform duration-300 text-magic-orange">Instagram</span>
                   </a>
@@ -375,13 +375,10 @@ const LandingPage: React.FC = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
-              className="lg:w-1/2 bg-yellow-400 p-8 md:p-12 flex flex-col justify-between shadow-[0_40px_100px_-20px_rgba(250,204,21,0.2)] rounded-sm min-h-[400px]"
+              className="lg:w-1/2 bg-yellow-400 p-8 md:p-10 flex flex-col justify-between shadow-[0_40px_100px_-20px_rgba(250,204,21,0.2)] rounded-sm min-h-[320px]"
             >
               <div>
-                <h3 className="font-archivo text-[10vw] lg:text-6xl text-magic-black uppercase tracking-tighter leading-[0.9] mb-6 break-words">
-                  {t.contact.footerNote}
-                </h3>
-                <p className="font-editorial text-xl text-magic-black/60 italic max-w-xs mb-10">
+                <p className="font-editorial text-3xl md:text-5xl text-magic-black italic leading-tight mb-12">
                   {t.contact.footerNoteSmall}
                 </p>
               </div>
