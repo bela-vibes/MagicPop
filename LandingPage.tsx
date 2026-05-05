@@ -315,47 +315,98 @@ const LandingPage: React.FC = () => {
         </Section>
 
         <Section id="contact" title={t.contact.title} subtitle={t.contact.subtitle} className="bg-transparent py-16 md:py-32">
-          <div className="flex flex-col md:flex-row gap-12 md:gap-16 mt-12">
+          {/* Main Contact Grid */}
+          <div className="flex flex-col lg:flex-row gap-12 md:gap-24 mt-12 border-t border-magic-black/10 dark:border-off-white/10 pt-16">
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
-              className="md:w-1/2 space-y-10 md:space-y-12"
+              className="lg:w-1/2 space-y-12"
             >
-              <div>
-                <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block mb-4">{t.contact.emailLabel}</span>
+              <div className="space-y-6">
+                <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block">{t.contact.emailLabel}</span>
                 <a href="mailto:hello@magicpop.berlin" 
-   className="font-archivo uppercase tracking-tighter 
-              text-magic-black dark:text-off-white hover:text-magic-orange 
-              transition-colors duration-300 underline underline-offset-8 
-              decoration-transparent hover:decoration-magic-orange"
-   style={{ fontSize: 'clamp(1rem, 3.5vw, 3rem)', wordBreak: 'keep-all' }}>
-  hello@magicpop.berlin
-</a>
+                   className="font-archivo uppercase tracking-tighter text-magic-black dark:text-off-white hover:text-magic-orange transition-colors duration-300 no-underline hover:underline underline-offset-8 decoration-magic-orange whitespace-nowrap block"
+                   style={{ fontSize: 'clamp(0.8rem, 4vw, 3.2rem)', lineHeight: '1' }}>
+                  hello@magicpop.berlin
+                </a>
+                
+                <div className="flex flex-wrap gap-x-6 gap-y-3 pt-4 font-archivo text-[10px] uppercase tracking-[0.2em] text-magic-black/40 dark:text-off-white/40">
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-magic-orange animate-pulse" />
+                    {t.contact.replyTime}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-magic-blue" />
+                    {t.contact.location}
+                  </div>
+                </div>
               </div>
+
+              <div className="pt-12 border-t border-magic-black/5 dark:border-off-white/5">
+                <span className="font-archivo text-[10px] uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block mb-8">{t.contact.processTitle}</span>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                  {t.contact.process.map((p: any, i: number) => (
+                    <div key={i} className="space-y-3">
+                      <span className="font-editorial italic text-xl text-magic-black/20 dark:text-off-white/20 block">{p.step}</span>
+                      <h4 className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">{p.title}</h4>
+                      <p className="text-[12px] text-magic-black/50 dark:text-off-white/50 leading-relaxed">{p.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
               <div>
                 <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block mb-4">{t.contact.followLabel}</span>
-                <div className="flex gap-6 md:gap-8 font-archivo uppercase text-xs md:text-sm tracking-widest text-magic-black dark:text-off-white">
-                  <a href="https://www.instagram.com/magicpop.berlin" target="_blank" rel="noopener noreferrer" className="hover:text-magic-orange transition-colors">Instagram</a>
+                <div className="flex gap-8 font-archivo uppercase text-xs md:text-sm tracking-widest text-magic-black dark:text-off-white">
+                  <a href="https://www.instagram.com/magicpop.berlin" target="_blank" rel="noopener noreferrer" className="relative group overflow-hidden">
+                    <span className="block group-hover:-translate-y-full transition-transform duration-300">Instagram</span>
+                    <span className="absolute top-0 left-0 block translate-y-full group-hover:translate-y-0 transition-transform duration-300 text-magic-orange">Instagram</span>
+                  </a>
                 </div>
               </div>
             </motion.div>
+
             <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.98 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
-              className="md:w-1/2 bg-yellow-400 p-8 md:p-12 flex flex-col justify-center shadow-[0_30px_80px_-20px_rgba(250,204,21,0.3)] rounded-sm"
+              className="lg:w-1/2 bg-yellow-400 p-8 md:p-12 flex flex-col justify-between shadow-[0_40px_100px_-20px_rgba(250,204,21,0.2)] rounded-sm min-h-[400px]"
             >
-              <p className="font-editorial text-3xl md:text-5xl text-magic-black italic leading-tight mb-8">{t.contact.footerNote}</p>
+              <div>
+                <h3 className="font-archivo text-[10vw] lg:text-6xl text-magic-black uppercase tracking-tighter leading-[0.9] mb-6 break-words">
+                  {t.contact.footerNote}
+                </h3>
+                <p className="font-editorial text-xl text-magic-black/60 italic max-w-xs mb-10">
+                  {t.contact.footerNoteSmall}
+                </p>
+              </div>
               <a 
                 href="mailto:hello@magicpop.berlin"
-                className="inline-block bg-magic-black text-off-white font-archivo uppercase tracking-widest px-10 py-5 hover:bg-magic-black/80 transition-all duration-300 self-start active:scale-95 text-center"
+                className="group relative inline-flex items-center justify-center bg-magic-black text-off-white font-archivo uppercase tracking-[0.2em] text-[10px] px-10 py-5 overflow-hidden transition-all duration-500 hover:pr-14 active:scale-95 self-start"
               >
-                {t.studio.startProject}
+                <span className="relative z-10">{t.contact.cta}</span>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-3.5 h-3.5 absolute right-6 translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                </svg>
               </a>
             </motion.div>
+          </div>
+
+          {/* Logo Wall */}
+          <div className="mt-24 md:mt-32 pt-16 border-t border-magic-black/5 dark:border-off-white/5">
+            <span className="font-archivo text-[10px] uppercase tracking-[0.3em] text-magic-black/20 dark:text-off-white/20 block text-center mb-12">{t.contact.trustTitle}</span>
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-8 items-center justify-items-center opacity-30 dark:opacity-20 grayscale brightness-0 dark:invert">
+              {/* Hier können echte Logos als SVG oder PNG rein */}
+              <div className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">Sony Music</div>
+              <div className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">LOQI</div>
+              <div className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">Momox</div>
+              <div className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">Dermapharm</div>
+              <div className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">HANA Berlin</div>
+              <div className="font-archivo text-[10px] uppercase tracking-widest text-magic-black dark:text-off-white">Amores Production</div>
+            </div>
           </div>
         </Section>
       </main>
