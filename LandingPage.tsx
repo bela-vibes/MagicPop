@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Analytics } from "@vercel/analytics/react";
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import ProjectsGrid from './components/ProjectsGrid';
@@ -14,6 +14,44 @@ import Datenschutz from './components/Datenschutz';
 import ProximityImage from './components/ProximityImage';
 
 import { Mail, Phone } from 'lucide-react';
+
+interface BrandItemProps {
+  brand: string;
+  index: number;
+  scrollYProgress: any;
+}
+
+const BrandMarquee = ({ title }: { title: string }) => {
+  const brands = ["LOQI", "Paul Kalkbrenner", "Dussmann", "Arte", "Momox", "Biteaway", "Cornelsen", "I Like Visuals", "Studio Stellar"];
+  
+  return (
+    <section className="px-6 md:px-12 pt-2 pb-30 md:pt-10 md:pb-54 overflow-hidden bg-transparent">
+      <div className="mb-10 md:mb-16">
+        <h3 className="font-editorial text-2xl md:text-4xl lg:text-5xl italic text-magic-black dark:text-off-white leading-[1.1]">
+          {title}
+        </h3>
+      </div>
+
+      <div className="relative flex overflow-hidden py-10 -mx-6 md:-mx-12">
+        <motion.div 
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          className="flex gap-x-12 md:gap-x-24 whitespace-nowrap pr-12 md:pr-24"
+        >
+          {/* Erster Satz Icons/Marken */}
+          {[...brands, ...brands].map((brand, i) => (
+            <span 
+              key={`${brand}-${i}`} 
+              className="font-archivo text-5xl md:text-8xl lg:text-9xl uppercase tracking-tighter text-magic-black/90 dark:text-off-white/90 select-none transition-all duration-700 hover:text-magic-orange hover:scale-105 cursor-default"
+            >
+              {brand}
+            </span>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 
 const LandingPage: React.FC = () => {
   const location = useLocation();
@@ -256,20 +294,7 @@ const LandingPage: React.FC = () => {
           mousePos={mousePos}
         />
 
-        {/* Logo Wall */}
-        <section className="bg-transparent py-16 md:py-24 px-6 md:px-12">
-          <div className="max-w-7xl mx-auto">
-            <span className="font-archivo text-[10px] uppercase tracking-[0.3em] text-magic-black/20 dark:text-off-white/20 block text-center mb-16">{t.contact.trustTitle}</span>
-            <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-10 md:gap-x-20 md:gap-y-16">
-              <div className="font-archivo  text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">Sony Music</div>
-              <div className="font-archivo  text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">LOQI</div>
-              <div className="font-archivo  text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">Momox</div>
-              <div className="font-archivo  text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">Dermapharm</div>
-              <div className="font-archivo  text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">HANA Berlin</div>
-              <div className="font-archivo  text-sm md:text-base uppercase tracking-widest text-magic-black dark:text-off-white whitespace-nowrap">Amores Production</div>
-            </div>
-          </div>
-        </section>
+        <BrandMarquee title={t.contact.trustTitle} />
 
         <Section id="services" title={t.whatWeDo.title} subtitle={t.whatWeDo.subtitle} className="bg-transparent py-16 md:py-32">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mt-12">
@@ -394,8 +419,8 @@ const LandingPage: React.FC = () => {
                   }}
                   className="relative aspect-square w-full bg-yellow-400 rounded-full flex flex-col items-center justify-center text-center p-12 shadow-[0_40px_100px_-20px_rgba(250,204,21,0.5)] transition-shadow duration-500"
                 >
-                  <div className="space-y-8 flex flex-col items-center">
-                    <h3 className="font-editorial text-4xl md:text-5xl lg:text-6xl text-magic-black italic leading-[1] max-w-[300px]">
+                  <div className="space-y-6 md:space-y-8 flex flex-col items-center">
+                    <h3 className="font-editorial text-5xl lg:text-6xl text-magic-black italic leading-[1] max-w-[260px] md:max-w-[300px]">
                       {t.contact.footerNoteSmall}
                     </h3>
                     
