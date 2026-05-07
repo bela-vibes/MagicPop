@@ -200,7 +200,7 @@ const LandingPage: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPos = window.scrollY + 550;
+      const scrollPos = window.scrollY + 450;
       const offsets = sectionOffsets.current;
 
       if (offsets.contact && scrollPos >= offsets.contact) {
