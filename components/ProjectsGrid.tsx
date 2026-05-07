@@ -223,7 +223,9 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
               className="relative overflow-hidden bg-magic-black/5 dark:bg-off-white/5 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.02] group-hover:shadow-[0_40px_80px_-20px_rgba(28,25,23,0.3)] dark:group-hover:shadow-[0_40px_80px_-20px_rgba(255,77,0,0.3)] rounded-sm"
               style={{ aspectRatio: '3/2' }}
             >
-              <div className={`absolute inset-0 z-10 transition-transform duration-700 ease-[cubic-bezier(0.83,0,0.17,1)] translate-y-full group-hover:translate-y-0 ${project.color} opacity-90`}></div>
+              <div className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden pointer-events-none">
+                <div className={`w-[55%] aspect-square rounded-full ${project.color} blur-2xl opacity-0 scale-0 group-hover:scale-100 group-hover:opacity-70 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)]`}></div>
+              </div>
               
               {project.image.toLowerCase().endsWith('.mp4') ? (
                 <video 
