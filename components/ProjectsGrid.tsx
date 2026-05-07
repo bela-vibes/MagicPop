@@ -90,7 +90,10 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
     } else {
       document.body.style.overflow = 'unset';
     }
-    return () => window.removeEventListener('keydown', handleEsc);
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+      document.body.style.overflow = 'unset';
+    };
   }, [selectedProject]);
 
   const handleOpenProject = (project: Project) => {
@@ -118,7 +121,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
   return (
     <section 
       id="projects" 
-      className="py-24 md:py-32 min-h-[100dvh] bg-transparent relative overflow-hidden transition-colors duration-500"
+      className="py-24 md:py-32 bg-transparent relative overflow-x-hidden transition-colors duration-500"
     >
       {/* Header Info */}
       <motion.div 
