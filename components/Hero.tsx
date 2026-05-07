@@ -23,7 +23,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
       const dy = Math.max(rect.top - e.clientY, 0, e.clientY - rect.bottom);
       const distance = Math.sqrt(dx * dx + dy * dy);
 
-      setIsNear(distance < 150);
+      setIsNear(distance < 110);
     };
 
     window.addEventListener('mousemove', handleMouseMove);
