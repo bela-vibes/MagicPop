@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { Language } from '../types';
 import { TRANSLATIONS } from '../constants';
@@ -10,6 +10,25 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ lang }) => {
   const t = TRANSLATIONS[lang].hero;
+  const textRef = useRef<HTMLSpanElement>(null);
+  const [isNear, setIsNear] = useState(false);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!textRef.current) return;
+      const rect = textRef.current.getBoundingClientRect();
+      
+      // Calculate distance to the bounding box
+      const dx = Math.max(rect.left - e.clientX, 0, e.clientX - rect.right);
+      const dy = Math.max(rect.top - e.clientY, 0, e.clientY - rect.bottom);
+      const distance = Math.sqrt(dx * dx + dy * dy);
+
+      setIsNear(distance < 150);
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
   
   return (
     <section id="hero" className="relative min-h-[100dvh] flex flex-col px-6 md:px-12 pt-28 pb-12 overflow-hidden bg-transparent">
@@ -43,7 +62,14 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
         >
           <p className="font-editorial text-3xl md:text-6xl leading-[1.1] text-magic-black dark:text-off-white italic">
             {t.subline} <br />
-            <span className="font-archivo not-italic text-2xl md:text-5xl uppercase tracking-tight text-magic-orange">
+            <span 
+              ref={textRef}
+              className={`font-archivo not-italic text-2xl md:text-5xl uppercase tracking-tight transition-colors duration-500 cursor-default ${
+                isNear 
+                  ? 'text-off-white dark:text-magic-black' 
+                  : 'text-magic-orange'
+              }`}
+            >
               {t.sublineBold}
             </span>
           </p>
