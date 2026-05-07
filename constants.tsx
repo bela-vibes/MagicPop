@@ -15,7 +15,8 @@ export const TRANSLATIONS = {
     },
     hero: {
       subline: "studio für",
-      sublineBold: "marken, räume und geschichten",
+      sublineBold1: "marken, räume und",
+      sublineBold2: "geschichten",
       location: "Standort Berlin",
       est: "Seit 2024"
     },
@@ -77,7 +78,8 @@ export const TRANSLATIONS = {
     },
     hero: {
       subline: "studio for",
-      sublineBold: "brands, spaces and stories",
+      sublineBold1: "brands, spaces and",
+      sublineBold2: "stories",
       location: "Located in Berlin",
       est: "est. 2024"
     },
