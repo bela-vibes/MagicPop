@@ -66,7 +66,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
               ref={textRef}
               className={`font-archivo not-italic text-2xl md:text-5xl uppercase tracking-tight transition-colors duration-500 cursor-default ${
                 isNear 
-                  ? 'text-off-white dark:text-magic-black' 
+                  ? 'text-off-white dark:text-off-white' 
                   : 'text-magic-orange'
               }`}
             >
