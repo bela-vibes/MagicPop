@@ -60,17 +60,18 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
           transition={{ duration: 1, delay: 0.4, ease: [0.19, 1, 0.22, 1] }}
           className="mt-auto md:mt-4 mb-8 md:mb-4 max-w-4xl relative z-20"
         >
-          <p className="font-editorial text-3xl md:text-6xl leading-[1.1] text-magic-black dark:text-off-white italic">
+          <p className="font-editorial text-3xl md:text-5xl lg:text-6xl leading-[1.1] text-magic-black dark:text-off-white italic">
             {t.subline} <br />
             <span 
               ref={textRef}
-              className={`font-archivo not-italic text-2xl md:text-5xl uppercase tracking-tight transition-colors duration-500 cursor-default ${
+              className={`font-archivo not-italic text-2xl md:text-4xl lg:text-5xl uppercase tracking-tight transition-colors duration-500 cursor-default inline-block ${
                 isNear 
                   ? 'text-off-white dark:text-off-white' 
                   : 'text-magic-orange'
               }`}
             >
-              {t.sublineBold}
+              {t.sublineBold1} <br />
+              {t.sublineBold2}
             </span>
           </p>
         </motion.div>
