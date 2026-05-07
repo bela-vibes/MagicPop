@@ -25,7 +25,7 @@ const BrandMarquee = ({ title }: { title: string }) => {
   const brands = ["LOQI", "Paul Kalkbrenner", "Dussmann", "Arte", "Momox", "Biteaway", "Cornelsen", "I Like Visuals", "Studio Stellar"];
   
   return (
-    <section className="px-6 md:px-12 pt-2 pb-30 md:pt-24 md:pb-64 overflow-hidden bg-transparent">
+    <section className="px-6 md:px-12 py-16 md:py-32 overflow-hidden bg-transparent">
       <div className="mb-10 md:mb-16">
         <h3 className="font-editorial text-2xl md:text-4xl lg:text-5xl italic text-magic-black dark:text-off-white leading-[1.1]">
           {title}
@@ -42,7 +42,7 @@ const BrandMarquee = ({ title }: { title: string }) => {
           {[...brands, ...brands].map((brand, i) => (
             <span 
               key={`${brand}-${i}`} 
-              className="font-archivo text-5xl md:text-8xl lg:text-9xl uppercase tracking-tighter text-magic-black/90 dark:text-off-white/90 select-none transition-all duration-700 hover:text-magic-orange hover:scale-105 cursor-default"
+              className="font-archivo text-4xl md:text-7xl lg:text-8xl uppercase tracking-tighter text-magic-black/90 dark:text-off-white/90 select-none transition-all duration-700 hover:text-magic-pink hover:scale-105 cursor-default"
             >
               {brand}
             </span>
@@ -200,7 +200,7 @@ const LandingPage: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPos = window.scrollY + 350;
+      const scrollPos = window.scrollY + 550;
       const offsets = sectionOffsets.current;
 
       if (offsets.contact && scrollPos >= offsets.contact) {
@@ -294,8 +294,6 @@ const LandingPage: React.FC = () => {
           mousePos={mousePos}
         />
 
-        <BrandMarquee title={t.contact.trustTitle} />
-
         <Section id="services" title={t.whatWeDo.title} subtitle={t.whatWeDo.subtitle} className="bg-transparent py-16 md:py-32">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mt-12">
             {t.whatWeDo.services.map((service, i) => (
@@ -356,6 +354,8 @@ const LandingPage: React.FC = () => {
             </motion.div>
           </div>
         </Section>
+
+        <BrandMarquee title={t.contact.trustTitle} />
 
         <Section id="contact" title={t.contact.title} subtitle={t.contact.subtitle} className="bg-transparent py-16 md:py-32">
           {/* Main Contact Grid */}
