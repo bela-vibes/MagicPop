@@ -36,7 +36,7 @@ const BrandMarquee = ({ title }: { title: string }) => {
         <motion.div 
           animate={{ x: ["0%", "-50%"] }}
           transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          className="flex gap-x-12 md:gap-x-24 whitespace-nowrap pr-12 md:pr-24"
+          className="flex gap-x-20 md:gap-x-32 whitespace-nowrap pr-20 md:pr-40"
         >
           {/* Erster Satz Icons/Marken */}
           {[...brands, ...brands].map((brand, i) => (
