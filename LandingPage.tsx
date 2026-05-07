@@ -25,7 +25,7 @@ const BrandMarquee = ({ title }: { title: string }) => {
   const brands = ["LOQI", "Paul Kalkbrenner", "Dussmann", "Arte", "Momox", "Biteaway", "Cornelsen", "I Like Visuals", "Studio Stellar"];
   
   return (
-    <section className="px-6 md:px-12 pt-2 pb-30 md:pt-10 md:pb-54 overflow-hidden bg-transparent">
+    <section className="px-6 md:px-12 pt-2 pb-30 md:pt-24 md:pb-64 overflow-hidden bg-transparent">
       <div className="mb-10 md:mb-16">
         <h3 className="font-editorial text-2xl md:text-4xl lg:text-5xl italic text-magic-black dark:text-off-white leading-[1.1]">
           {title}
