@@ -36,7 +36,7 @@ export const TRANSLATIONS = {
       detailLabel: "Projektdetail",
       nextProject: "Nächstes Projekt",
       details: "Details",
-      featured: "Highlights",
+      featured: "Alle Projekte",
       archive: "Archiv",
       backToProjects: "Zurück zur Übersicht"
     },
@@ -99,7 +99,7 @@ export const TRANSLATIONS = {
       detailLabel: "Project Detail",
       nextProject: "Next Project",
       details: "Details",
-      featured: "Featured",
+      featured: "All",
       archive: "Archive",
       backToProjects: "Back to projects"
     },
@@ -138,7 +138,7 @@ export const PROJECTS: Project[] = [
     id: 1,
     slug: "suite-1973",
     title: { de: "Suite 1973", en: "Suite 1973" },
-    category: { de: "Spaces", en: "Spaces" },
+    category: { de: "Interior", en: "Interior" },
     description: {
       de: "Eine Wohnung als Zeitkapsel, irgendwo zwischen DDR Alltag und Space Age.\n\nAm Anfang stand ein glatter weißer Neubau. Der Wunsch war keine simple Referenz, sondern ein echtes Eintauchen in die 70er. Wir wollten den Räumen nicht einfach einen Stil geben, sondern eine Geschichte, die vorher noch nicht da war. Dafür haben wir mit authentischen Materialien wie Holz, Stein und Glas gearbeitet. Gleichzeitig entstand ein klares Farbsystem, das sich durch die gesamte Wohnung zieht. Alles greift ineinander, ohne beliebig zu wirken.\n\nMöbel und Objekte haben wir in enger Zusammenarbeit mit dem Kunden recherchiert und zusammengetragen. Ergänzt wurde das Ganze durch maßgefertigte Einbauten wie Bett und Badezimmerschränke. Für Details wie Bilderrahmen haben wir eigene Lösungen entwickelt und sie im Stil der Zeit neu produzieren lassen. Palmen im Innenraum und auf dem Balkon setzen bewusste Akzente. Am Ende wirkt die Wohnung nicht nur eingerichtet, sondern wie ein Ort, der schon lange existiert. Authentisch, aber trotzdem stylisch und gemütlich. Gestaltet, aber gelebt.\n\nFotografie: Maike Piorr",
       en: "An apartment as a time capsule, somewhere between everyday GDR life and the space age.\n\nIt all started with a sleek, white new building. The request wasn’t just a simple reference, but a genuine immersion in the ’70s. We didn’t want to simply give the rooms a style, but a story that hadn’t been there before. To achieve this, we worked with authentic materials like wood, stone, and glass. At the same time, we developed a clear color scheme that runs throughout the entire apartment. Everything interlocks seamlessly, without feeling arbitrary.\n\nWe researched and curated furniture and objects in close collaboration with the client. The whole was complemented by custom-made built-ins such as the bed and bathroom cabinets. For details like picture frames, we developed our own solutions and had them reproduced in the style of the era. Palm trees inside and on the balcony add deliberate accents. In the end, the apartment doesn’t just look furnished; it feels like a place that has existed for a long time. Authentic, yet stylish and cozy. Designed, yet lived in.\n\nPhotography: Maike Piorr"
@@ -275,7 +275,7 @@ export const PROJECTS: Project[] = [
     id: 4,
     slug: "hana",
     title: { de: "HANA", en: "HANA" },
-    category: { de: "Spaces", en: "Spaces" },
+    category: { de: "Interior", en: "Interior" },
     description: {
       de: "Ein Ort zwischen zwei Welten.\n\nFür HANA Berlin im Berlin Hilton haben wir das bestehende Interieur weiterentwickelt und an das neue Restaurantkonzept angepasst. Die Vision war ein japanisch mediterraner Ansatz, der sich auch im Raum widerspiegeln sollte. Der Ort hatte bereits eine klare Farbwelt, an die wir angeknüpft haben. Unser Ziel war es, diese Basis zu erhalten und gleichzeitig beide Einflüsse zusammenzubringen. Japanische Formsprache trifft auf mediterrane Wärme und Materialität.\n\nWir haben mit neuen Texturen, Farben und ausgewählten Elementen gearbeitet, ohne den Charakter des Raums zu verlieren. Dabei war es uns wichtig, dass sich HANA stimmig in die bestehende Location des Kunden einfügt und als Teil einer größeren gestalterischen Linie funktioniert. Lebendig, warm und klar. Gestaltet, ohne überladen zu wirken.\n\nFotografie: Steffen Sinzinger",
       en: "A place between two worlds.\n\nFor HANA Berlin at the Berlin Hilton, we further developed the existing interior and adapted it to the new restaurant concept. The vision was a Japanese-Mediterranean approach that should also be reflected in the space. The venue already had a clear color palette, which we built upon. Our goal was to preserve this foundation while bringing both influences together. Japanese design language meets Mediterranean warmth and materiality.\n\nWe worked with new textures, colors, and selected elements without losing the character of the space. It was important to us that HANA blend harmoniously into the client’s existing location and function as part of a larger design concept. Lively, warm, and clear. Designed without appearing cluttered.\n\nPhotographed by Steffen Sinzinger"
