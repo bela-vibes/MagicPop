@@ -138,7 +138,7 @@ export const PROJECTS: Project[] = [
     id: 1,
     slug: "suite-1973",
     title: { de: "Suite 1973", en: "Suite 1973" },
-    category: { de: "Space", en: "Space" },
+    category: { de: "Spaces", en: "Spaces" },
     description: {
       de: "Eine Wohnung als Zeitkapsel, irgendwo zwischen DDR Alltag und Space Age.\n\nAm Anfang stand ein glatter weißer Neubau. Der Wunsch war keine simple Referenz, sondern ein echtes Eintauchen in die 70er. Wir wollten den Räumen nicht einfach einen Stil geben, sondern eine Geschichte, die vorher noch nicht da war. Dafür haben wir mit authentischen Materialien wie Holz, Stein und Glas gearbeitet. Gleichzeitig entstand ein klares Farbsystem, das sich durch die gesamte Wohnung zieht. Alles greift ineinander, ohne beliebig zu wirken.\n\nMöbel und Objekte haben wir in enger Zusammenarbeit mit dem Kunden recherchiert und zusammengetragen. Ergänzt wurde das Ganze durch maßgefertigte Einbauten wie Bett und Badezimmerschränke. Für Details wie Bilderrahmen haben wir eigene Lösungen entwickelt und sie im Stil der Zeit neu produzieren lassen. Palmen im Innenraum und auf dem Balkon setzen bewusste Akzente. Am Ende wirkt die Wohnung nicht nur eingerichtet, sondern wie ein Ort, der schon lange existiert. Authentisch, aber trotzdem stylisch und gemütlich. Gestaltet, aber gelebt.\n\nFotografie: Maike Piorr",
       en: "An apartment as a time capsule, somewhere between everyday GDR life and the space age.\n\nIt all started with a sleek, white new building. The request wasn’t just a simple reference, but a genuine immersion in the ’70s. We didn’t want to simply give the rooms a style, but a story that hadn’t been there before. To achieve this, we worked with authentic materials like wood, stone, and glass. At the same time, we developed a clear color scheme that runs throughout the entire apartment. Everything interlocks seamlessly, without feeling arbitrary.\n\nWe researched and curated furniture and objects in close collaboration with the client. The whole was complemented by custom-made built-ins such as the bed and bathroom cabinets. For details like picture frames, we developed our own solutions and had them reproduced in the style of the era. Palm trees inside and on the balcony add deliberate accents. In the end, the apartment doesn’t just look furnished; it feels like a place that has existed for a long time. Authentic, yet stylish and cozy. Designed, yet lived in.\n\nPhotography: Maike Piorr"
@@ -163,7 +163,7 @@ export const PROJECTS: Project[] = [
   id: 2,
   slug: "loqi", // Gefixt: Gerade Anführungszeichen
   title: { de: "LOQI", en: "LOQI" },
-  category: { de: "Brand", en: "Brand" },
+  category: { de: "Brands", en: "Brands" },
   description: {
     de: "Taschen mit Persönlichkeit.\n\nFür LOQI haben wir Bildwelten für das Produktsortiment entwickelt und umgesetzt. Jede Tasche bringt eine eigene Persönlichkeit mit, die wir nicht überformen wollten, sondern sichtbar machen. Statt eines einheitlichen Looks haben wir mit wiederkehrenden Prinzipien gearbeitet. Klare Sets, die sich an die jeweiligen Designs anpassen. Materialität, Farbe und Kontext greifen ineinander und geben jeder Szene ihren eigenen Charme und folgen trotzdem einer einheitlichen Ästhetik.\n\nDas Ergebnis ist eine Bildsprache, die flexibel bleibt. Neue Produkte, neue Kontexte, neue Saisons – die Welt, die wir gebaut haben, wächst mit.",
     en: "Bags with personality.\n\nFor LOQI, we developed and implemented visual concepts for the product range. Each bag has its own personality, which we didn’t want to overshadow, but rather bring to the forefront. Instead of a uniform look, we worked with recurring principles. Clean sets that adapt to the respective designs. Materiality, color, and context intertwine, giving each scene its own charm while still adhering to a consistent aesthetic.\n\nThe result is a visual language that remains flexible. New products, new contexts, new seasons—the world we’ve built grows with them."
@@ -215,7 +215,7 @@ export const PROJECTS: Project[] = [
     id: 8,
     slug: "momox",
     title: { de: "Momox", en: "Momox" },
-    category: { de: "Brand", en: "Brand" },
+    category: { de: "Brands", en: "Brands" },
     description: {
     de: "Monochrome Klarheit.\n\nFür eine neue Kampagne von Momox haben wir die Produktion umgesetzt und die Bildwelt räumlich gebaut. Ausgangspunkt war das Momox-Blau und ein reduzierter, monochromer Look, die sich als verbindende Elemente durch alle Motive ziehen.\n\nDas Ziel lag darin, für jede Kategorie eigenständige Still-Life-Settings zu entwickeln, die einzeln funktionieren und gleichzeitig Teil eines größeren Ganzen bleiben. Dazu gehörte auch die gezielte Entwicklung und Auswahl von Requisiten, um den Fokus klar auf Produkt und Kategorie zu lenken.\n\nAgentur: I LIKE VISUALS",
     en: "Monochromatic clarity.\n\nFor a new Momox campaign, we handled production and built the visual world spatially. The starting point was Momox blue and a minimalist, monochromatic look, which serve as connecting elements running through all motifs.\n\nThe goal was to develop distinct still-life settings for each category that function individually while remaining part of a larger whole. This also involved the deliberate development and selection of props to clearly direct the focus toward the product and category.\n\nAgency: I LIKE VISUALS"
@@ -240,7 +240,7 @@ export const PROJECTS: Project[] = [
     id: 6,
     slug: "bite-away",
     title: { de: "Bite Away", en: "Bite Away" },
-    category: { de: "Brand", en: "Brand" },
+    category: { de: "Brands", en: "Brands" },
     description: {
       de: "Juckt mich nicht!\n\nFür die Kampagne „Juckt Mich Nicht!“ von Dermapharm haben wir die kreative Produktion für einen Werbefilm umgesetzt. Im Zentrum steht eine Familie, deren Umgang mit Mückenschutz langsam ins Absurde kippt.\n\nWir haben sechs eigenständige Sets entworfen und gebaut, die zusammen mit Kostüm und Requisiten eine geschlossene Welt bilden. Jedes Set wurde wie ein eigener Charakter behandelt, mit eigener Farbwelt und eigener Intensität und verstärken so die leicht überdrehte Realität.\n\nAgentur: I LIKE VISUALS",
       en: "Juckt mich nicht!\n\nFor Dermapharm’s “Juckt Mich Nicht!” campaign, we handled the creative production of a promotional film. The story centers on a family whose approach to mosquito repellent gradually veers into the absurd.\n\nWe designed and built six distinct sets that, together with costumes and props, form a cohesive world. Each set was treated as its own character, with its own color palette and intensity, thereby reinforcing the slightly over-the-top reality.\n\nAgency: I LIKE VISUALS"
@@ -275,7 +275,7 @@ export const PROJECTS: Project[] = [
     id: 4,
     slug: "hana",
     title: { de: "HANA", en: "HANA" },
-    category: { de: "Space", en: "Space" },
+    category: { de: "Spaces", en: "Spaces" },
     description: {
       de: "Ein Ort zwischen zwei Welten.\n\nFür HANA Berlin im Berlin Hilton haben wir das bestehende Interieur weiterentwickelt und an das neue Restaurantkonzept angepasst. Die Vision war ein japanisch mediterraner Ansatz, der sich auch im Raum widerspiegeln sollte. Der Ort hatte bereits eine klare Farbwelt, an die wir angeknüpft haben. Unser Ziel war es, diese Basis zu erhalten und gleichzeitig beide Einflüsse zusammenzubringen. Japanische Formsprache trifft auf mediterrane Wärme und Materialität.\n\nWir haben mit neuen Texturen, Farben und ausgewählten Elementen gearbeitet, ohne den Charakter des Raums zu verlieren. Dabei war es uns wichtig, dass sich HANA stimmig in die bestehende Location des Kunden einfügt und als Teil einer größeren gestalterischen Linie funktioniert. Lebendig, warm und klar. Gestaltet, ohne überladen zu wirken.\n\nFotografie: Steffen Sinzinger",
       en: "A place between two worlds.\n\nFor HANA Berlin at the Berlin Hilton, we further developed the existing interior and adapted it to the new restaurant concept. The vision was a Japanese-Mediterranean approach that should also be reflected in the space. The venue already had a clear color palette, which we built upon. Our goal was to preserve this foundation while bringing both influences together. Japanese design language meets Mediterranean warmth and materiality.\n\nWe worked with new textures, colors, and selected elements without losing the character of the space. It was important to us that HANA blend harmoniously into the client’s existing location and function as part of a larger design concept. Lively, warm, and clear. Designed without appearing cluttered.\n\nPhotographed by Steffen Sinzinger"
