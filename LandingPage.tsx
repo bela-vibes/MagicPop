@@ -68,7 +68,7 @@ const LandingPage: React.FC = () => {
 
   // Reset title when on landing page
   useEffect(() => {
-    document.title = "magicpop | creative studio";
+    document.title = "Magic Pop Studio";
   }, []);
 
   // Effect to handle routing/overlays based on URL path
