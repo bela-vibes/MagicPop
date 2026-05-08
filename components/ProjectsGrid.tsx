@@ -121,7 +121,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
   return (
     <section 
       id="projects" 
-      className="py-24 md:py-32 bg-transparent relative overflow-x-hidden transition-colors duration-500"
+      className="pt-12 pb-6 md:py-32 bg-transparent relative overflow-x-hidden transition-colors duration-500"
     >
       {/* Header Info */}
       <motion.div 
@@ -207,7 +207,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 1, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
-        className={`flex overflow-x-auto gap-8 px-6 md:px-12 scroll-px-6 md:scroll-px-12 no-scrollbar pb-12 min-h-[400px] relative z-10 ${!isEdgeScrolling ? 'snap-x snap-mandatory' : ''}`}
+        className={`flex overflow-x-auto gap-8 px-6 md:px-12 scroll-px-6 md:scroll-px-12 no-scrollbar pb-4 md:pb-12 min-h-[400px] relative z-10 ${!isEdgeScrolling ? 'snap-x snap-mandatory' : ''}`}
       >
         {filteredProjects.map((project, index) => (
           <motion.div 
@@ -224,7 +224,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
               style={{ aspectRatio: '3/2' }}
             >
               <div className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden pointer-events-none">
-                <div className={`w-[55%] aspect-square rounded-full ${project.color} blur-2xl opacity-0 scale-0 group-hover:scale-100 group-hover:opacity-70 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)]`}></div>
+                <div className={`w-[55%] aspect-square rounded-full ${project.color} blur-2xl opacity-0 scale-0 group-hover:scale-100 group-hover:opacity-85 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)]`}></div>
               </div>
               
               {project.image.toLowerCase().endsWith('.mp4') ? (
