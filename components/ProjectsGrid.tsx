@@ -101,7 +101,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
   };
 
   const handleCloseProject = () => {
-    navigate('/');
+    navigate('/#projects');
   };
 
   useEffect(() => {
