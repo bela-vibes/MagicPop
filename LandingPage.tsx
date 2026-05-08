@@ -25,7 +25,7 @@ const BrandMarquee = ({ title }: { title: string }) => {
   const brands = ["LOQI", "Paul Kalkbrenner", "Dussmann", "Arte", "Momox", "Biteaway", "Cornelsen", "I Like Visuals", "Studio Stellar"];
   
   return (
-    <section className="px-6 md:px-12 py-16 md:py-32 overflow-hidden bg-transparent">
+    <section className="px-6 md:px-12 py-12 md:py-32 overflow-hidden bg-transparent">
       <div className="mb-10 md:mb-16">
         <h3 className="font-editorial text-2xl md:text-4xl lg:text-5xl italic text-magic-black dark:text-off-white leading-[1.1]">
           {title}
@@ -42,7 +42,7 @@ const BrandMarquee = ({ title }: { title: string }) => {
           {[...brands, ...brands].map((brand, i) => (
             <span 
               key={`${brand}-${i}`} 
-              className="font-archivo text-4xl md:text-7xl lg:text-8xl uppercase tracking-tighter text-magic-black/90 dark:text-off-white/90 select-none transition-all duration-700 hover:text-magic-pink hover:scale-105 cursor-default"
+              className="font-archivo text-4xl md:text-7xl lg:text-8xl uppercase tracking-tighter text-magic-black/90 dark:text-off-white/90 select-none cursor-default"
             >
               {brand}
             </span>
@@ -294,7 +294,7 @@ const LandingPage: React.FC = () => {
           mousePos={mousePos}
         />
 
-        <Section id="services" title={t.whatWeDo.title} subtitle={t.whatWeDo.subtitle} className="bg-transparent py-16 md:py-32">
+        <Section id="services" title={t.whatWeDo.title} subtitle={t.whatWeDo.subtitle} className="bg-transparent pt-6 pb-12 md:py-32">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mt-12">
             {t.whatWeDo.services.map((service, i) => (
               <motion.div 
@@ -318,7 +318,7 @@ const LandingPage: React.FC = () => {
           id="about" 
           title={t.studio.title} 
           subtitle={t.studio.subtitle} 
-          className="relative overflow-hidden py-16 md:py-32"
+          className="relative overflow-hidden py-12 md:py-32"
         >
           <div className="relative z-10 flex flex-col lg:flex-row gap-8 md:gap-16 items-center">
             <motion.div 
@@ -345,19 +345,13 @@ const LandingPage: React.FC = () => {
             >
               <p className="font-editorial text-2xl md:text-3xl italic leading-tight drop-shadow-sm opacity-90">{t.studio.p1}</p>
               <p className="text-base md:text-lg opacity-60 font-medium leading-relaxed">{t.studio.p2}</p>
-              <a 
-                href={`mailto:${CONTACT_EMAIL}`}
-                className="inline-block w-full md:w-auto bg-magic-blue text-white font-archivo uppercase tracking-widest px-10 py-5 hover:bg-blue-700 transition-all duration-300 shadow-[0_10px_40_rgba(0,56,255,0.3)] hover:shadow-[0_15px_50px_rgba(0,56,255,0.5)] active:scale-95 text-center"
-              >
-                {t.studio.startProject}
-              </a>
             </motion.div>
           </div>
         </Section>
 
         <BrandMarquee title={t.contact.trustTitle} />
 
-        <Section id="contact" title={t.contact.title} subtitle={t.contact.subtitle} className="bg-transparent py-16 md:py-32">
+        <Section id="contact" title={t.contact.title} subtitle={t.contact.subtitle} className="bg-transparent py-12 md:py-32">
           {/* Main Contact Grid */}
           <div className="flex flex-col lg:flex-row gap-12 md:gap-24 mt-4">
             <motion.div 
@@ -406,38 +400,38 @@ const LandingPage: React.FC = () => {
               transition={{ duration: 1, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
               className="lg:w-1/2 flex flex-col items-center justify-center py-12 lg:py-0"
             >
-              <div className="relative w-full max-w-[380px]">
+              <div className="relative w-full max-w-[280px] md:max-w-[340px] lg:max-w-[380px]">
                 <motion.div 
                   animate={{ 
-                    y: [0, -20, 0],
-                    rotate: [-8, -4, -8]
+                    y: [0, -15, 0],
+                    rotate: [-6, -3, -6]
                   }}
                   transition={{ 
                     duration: 6, 
                     repeat: Infinity, 
                     ease: "easeInOut" 
                   }}
-                  className="relative aspect-square w-full bg-yellow-400 rounded-full flex flex-col items-center justify-center text-center p-12 shadow-[0_40px_100px_-20px_rgba(250,204,21,0.5)] transition-shadow duration-500"
+                  className="relative aspect-square w-full bg-yellow-400 rounded-full flex flex-col items-center justify-center text-center p-8 md:p-12 shadow-[0_30px_80px_-20px_rgba(250,204,21,0.4)] transition-shadow duration-500"
                 >
-                  <div className="space-y-6 md:space-y-8 flex flex-col items-center">
-                    <h3 className="font-editorial text-5xl lg:text-6xl text-magic-black italic leading-[1] max-w-[260px] md:max-w-[300px]">
+                  <div className="space-y-4 md:space-y-6 flex flex-col items-center">
+                    <h3 className="font-editorial text-4xl md:text-5xl lg:text-6xl text-magic-black italic leading-[1.1] max-w-[200px] md:max-w-[260px] lg:max-w-[300px]">
                       {t.contact.footerNoteSmall}
                     </h3>
                     
-                    <div className="flex gap-6">
+                    <div className="flex gap-4 md:gap-6">
                       <a 
                         href={`mailto:${CONTACT_EMAIL}`}
-                        className="w-14 h-14 bg-magic-black text-off-white rounded-full flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-95 shadow-xl group/icon"
+                        className="w-12 h-12 md:w-14 md:h-14 bg-magic-black text-off-white rounded-full flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-95 shadow-xl group/icon"
                         title={CONTACT_EMAIL}
                       >
-                        <Mail className="w-6 h-6 group-hover/icon:animate-bounce" />
+                        <Mail className="w-5 h-5 md:w-6 md:h-6 group-hover/icon:animate-bounce" />
                       </a>
                       <a 
                         href={`tel:${CONTACT_PHONE.replace(/\s+/g, '')}`}
-                        className="w-14 h-14 bg-magic-black text-off-white rounded-full flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-95 shadow-xl group/icon"
+                        className="w-12 h-12 md:w-14 md:h-14 bg-magic-black text-off-white rounded-full flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-95 shadow-xl group/icon"
                         title={CONTACT_PHONE}
                       >
-                        <Phone className="w-6 h-6 group-hover/icon:animate-bounce" />
+                        <Phone className="w-5 h-5 md:w-6 md:h-6 group-hover/icon:animate-bounce" />
                       </a>
                     </div>
                   </div>
