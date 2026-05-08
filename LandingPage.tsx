@@ -22,7 +22,7 @@ interface BrandItemProps {
 }
 
 const BrandMarquee = ({ title }: { title: string }) => {
-  const brands = ["LOQI", "Paul Kalkbrenner", "Dussmann", "Arte", "Momox", "Biteaway", "Cornelsen", "I Like Visuals", "Studio Stellar"];
+  const brands = ["LOQI", "Paul Kalkbrenner", "Dussmann", "I Like Visuals",  "Arte", "Momox", "Biteaway", "Cornelsen", "Studio Stellar"];
   
   return (
     <section className="px-6 md:px-12 py-12 md:py-32 overflow-hidden bg-transparent">
