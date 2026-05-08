@@ -66,6 +66,11 @@ const LandingPage: React.FC = () => {
   const requestRef = useRef<number>(null);
   const sectionOffsets = useRef<{ [key: string]: number }>({});
 
+  // Reset title when on landing page
+  useEffect(() => {
+    document.title = "magicpop | creative studio";
+  }, []);
+
   // Effect to handle routing/overlays based on URL path
   useEffect(() => {
     const path = location.pathname;
