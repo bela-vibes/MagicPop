@@ -90,7 +90,10 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
     } else {
       document.body.style.overflow = 'unset';
     }
-    return () => window.removeEventListener('keydown', handleEsc);
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+      document.body.style.overflow = 'unset';
+    };
   }, [selectedProject]);
 
   const handleOpenProject = (project: Project) => {
@@ -98,7 +101,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
   };
 
   const handleCloseProject = () => {
-    navigate('/');
+    navigate('/#projects');
   };
 
   useEffect(() => {
@@ -118,7 +121,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
   return (
     <section 
       id="projects" 
-      className="py-24 md:py-32 min-h-[100dvh] bg-transparent relative overflow-hidden transition-colors duration-500"
+      className="pt-12 pb-6 md:py-32 bg-transparent relative overflow-x-hidden transition-colors duration-500"
     >
       {/* Header Info */}
       <motion.div 
@@ -204,7 +207,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 1, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
-        className={`flex overflow-x-auto gap-8 px-6 md:px-12 scroll-px-6 md:scroll-px-12 no-scrollbar pb-12 min-h-[400px] relative z-10 ${!isEdgeScrolling ? 'snap-x snap-mandatory' : ''}`}
+        className={`flex overflow-x-auto gap-8 px-6 md:px-12 scroll-px-6 md:scroll-px-12 no-scrollbar pb-4 md:pb-12 min-h-[400px] relative z-10 ${!isEdgeScrolling ? 'snap-x snap-mandatory' : ''}`}
       >
         {filteredProjects.map((project, index) => (
           <motion.div 
@@ -214,13 +217,15 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: index * 0.1, ease: [0.19, 1, 0.22, 1] }}
-            className="w-[80vw] md:w-[45vw] flex-shrink-0 snap-start group cursor-pointer"
+            className="w-[75vw] md:w-[60vw] lg:w-[43vw] flex-shrink-0 snap-start group cursor-pointer"
           >
             <div 
               className="relative overflow-hidden bg-magic-black/5 dark:bg-off-white/5 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.02] group-hover:shadow-[0_40px_80px_-20px_rgba(28,25,23,0.3)] dark:group-hover:shadow-[0_40px_80px_-20px_rgba(255,77,0,0.3)] rounded-sm"
               style={{ aspectRatio: '3/2' }}
             >
-              <div className={`absolute inset-0 z-10 transition-transform duration-700 ease-[cubic-bezier(0.83,0,0.17,1)] translate-y-full group-hover:translate-y-0 ${project.color} opacity-90`}></div>
+              <div className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden pointer-events-none">
+                <div className={`w-[55%] aspect-square rounded-full ${project.color} blur-2xl opacity-0 scale-0 group-hover:scale-100 group-hover:opacity-85 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)]`}></div>
+              </div>
               
               {project.image.toLowerCase().endsWith('.mp4') ? (
                 <video 
@@ -242,14 +247,14 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                 />
               )}
               
-              <div className="absolute inset-0 z-20 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-8 text-white text-center">
-                 <span className="font-archivo text-xs uppercase tracking-[0.3em] mb-4 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] translate-y-8 group-hover:translate-y-0 group-hover:scale-125">
+              <div className="absolute inset-0 z-20 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-4 md:p-6 lg:p-8 text-white text-center">
+                 <span className="font-archivo text-[10px] md:text-xs uppercase tracking-[0.3em] mb-2 md:mb-4 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] translate-y-8 group-hover:translate-y-0 group-hover:scale-110 lg:group-hover:scale-125">
                   {project.category[lang]}
                  </span>
-                 <h3 className="font-archivo text-3xl md:text-5xl uppercase tracking-tighter transition-all duration-700 delay-75 ease-[cubic-bezier(0.19,1,0.22,1)] translate-y-8 group-hover:translate-y-0 group-hover:scale-110 hyphens-manual">
+                 <h3 className="font-archivo text-xl md:text-3xl lg:text-5xl uppercase tracking-tighter transition-all duration-700 delay-75 ease-[cubic-bezier(0.19,1,0.22,1)] translate-y-8 group-hover:translate-y-0 group-hover:scale-105 lg:group-hover:scale-110 hyphens-manual">
                   {project.title[lang]}
                  </h3>
-                 <div className="mt-8 bg-white/20 backdrop-blur-md border-0 px-8 py-3 uppercase text-xs tracking-widest hover:bg-white hover:text-magic-black transition-all duration-500 delay-150 translate-y-8 group-hover:translate-y-0">
+                 <div className="mt-4 md:mt-6 lg:mt-8 bg-white/20 backdrop-blur-md border-0 px-6 py-2 md:px-8 md:py-3 uppercase text-[10px] md:text-xs tracking-widest hover:bg-white hover:text-magic-black transition-all duration-500 delay-150 translate-y-8 group-hover:translate-y-0">
                     {t.viewProject}
                  </div>
               </div>
