@@ -12,11 +12,16 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
   const t = TRANSLATIONS[lang].hero;
   const textRef = useRef<HTMLSpanElement>(null);
   const [isNear, setIsNear] = useState(false);
+  const [isMobileDevice, setIsMobileDevice] = useState(false);
 
   useEffect(() => {
-    // Better mobile detection for Safari/iOS
-    const isMobileDevice = window.matchMedia("(max-width: 767px)").matches;
-    if (isMobileDevice) return;
+    const checkMobile = () => {
+      const isMobile = window.matchMedia("(max-width: 767px)").matches;
+      setIsMobileDevice(isMobile);
+      return isMobile;
+    };
+    
+    if (checkMobile()) return;
     
     const handleMouseMove = (e: MouseEvent) => {
       if (!textRef.current) return;
