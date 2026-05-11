@@ -7,8 +7,8 @@ interface ProximityImageProps {
   mousePos: { x: number; y: number };
   className?: string;
   overlayColor?: string;
-  /** Narrow viewports: single image, no springs / duplicate decode (desktop keeps full effect). */
-  staticOnNarrow?: boolean;
+  /** Narrow layouts: always full color, one image (no grayscale / proximity). */
+  alwaysColor?: boolean;
 }
 
 const ProximityImage: React.FC<ProximityImageProps> = ({
@@ -17,7 +17,7 @@ const ProximityImage: React.FC<ProximityImageProps> = ({
   mousePos,
   className,
   overlayColor,
-  staticOnNarrow,
+  alwaysColor,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -26,7 +26,7 @@ const ProximityImage: React.FC<ProximityImageProps> = ({
   const scale = useSpring(1.05, { stiffness: 60, damping: 20 });
 
   useEffect(() => {
-    if (staticOnNarrow) return;
+    if (alwaysColor) return;
 
     const updateProximity = () => {
       if (!containerRef.current) return;
@@ -50,9 +50,9 @@ const ProximityImage: React.FC<ProximityImageProps> = ({
     };
 
     updateProximity();
-  }, [mousePos, opacity, scale, staticOnNarrow]);
+  }, [mousePos, opacity, scale, alwaysColor]);
 
-  if (staticOnNarrow) {
+  if (alwaysColor) {
     return (
       <div ref={containerRef} className={`relative overflow-hidden rounded-sm ${className}`}>
         <div className="relative w-full h-full">
@@ -67,16 +67,24 @@ const ProximityImage: React.FC<ProximityImageProps> = ({
     <div ref={containerRef} className={`relative overflow-hidden rounded-sm ${className}`}>
       <motion.div style={{ scale }} className="w-full h-full">
         {/* Grayscale Layer (Static) */}
-        <img
-          src={src}
+        <img 
+          src={src} 
           alt={`${alt} grayscale`}
           className="w-full h-full object-cover grayscale"
           draggable={false}
         />
-
+        
         {/* Color Layer (Animated Opacity) */}
-        <motion.div style={{ opacity }} className="absolute inset-0 z-10">
-          <img src={src} alt={`${alt} color`} className="w-full h-full object-cover" draggable={false} />
+        <motion.div 
+          style={{ opacity }}
+          className="absolute inset-0 z-10"
+        >
+          <img 
+            src={src} 
+            alt={`${alt} color`}
+            className="w-full h-full object-cover"
+            draggable={false}
+          />
           {overlayColor && <div className={`absolute inset-0 ${overlayColor} pointer-events-none`} />}
         </motion.div>
       </motion.div>
