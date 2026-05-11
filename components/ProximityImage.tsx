@@ -6,7 +6,6 @@ interface ProximityImageProps {
   alt: string;
   className?: string;
   overlayColor?: string;
-  // mousePos entfernt, da wir global auf CSS Variablen zugreifen
 }
 
 const ProximityImage: React.FC<ProximityImageProps> = ({ src, alt, className, overlayColor }) => {
@@ -17,15 +16,31 @@ const ProximityImage: React.FC<ProximityImageProps> = ({ src, alt, className, ov
   const scale = useSpring(1.05, { stiffness: 60, damping: 20 });
 
   useEffect(() => {
+    // SECURITY CHECK: Auf Mobile deaktivieren wir den Effekt komplett.
+    // Das spart CPU und verhindert den "White Screen of Death" auf Safari.
+    if (window.innerWidth < 768) {
+      opacity.set(1); // Direkt Farbe zeigen
+      scale.set(1);   // Normaler Scale
+      return; 
+    }
+
     let frameId: number;
 
     const updateProximity = () => {
       if (!containerRef.current) return;
 
-      // Mausposition direkt aus den CSS-Variablen lesen
+      // Mausposition aus den CSS-Variablen lesen
       const rootStyle = getComputedStyle(document.documentElement);
-      const mouseX = parseFloat(rootStyle.getPropertyValue('--mouse-x')) || 0;
-      const mouseY = parseFloat(rootStyle.getPropertyValue('--mouse-y')) || 0;
+      const mX = rootStyle.getPropertyValue('--mouse-x');
+      
+      // Falls die Variable noch nicht gesetzt wurde (Page Load), Loop fortsetzen
+      if (!mX || mX.trim() === "") {
+        frameId = requestAnimationFrame(updateProximity);
+        return;
+      }
+
+      const mouseX = parseFloat(mX);
+      const mouseY = parseFloat(rootStyle.getPropertyValue('--mouse-y'));
 
       const rect = containerRef.current.getBoundingClientRect();
       
