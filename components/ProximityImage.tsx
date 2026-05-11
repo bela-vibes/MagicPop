@@ -4,64 +4,63 @@ import { motion, useSpring } from 'motion/react';
 interface ProximityImageProps {
   src: string;
   alt: string;
-  mousePos: { x: number; y: number };
+  /** Always-updated pointer (incl. touch); avoids React re-renders on every move. */
+  pointerRef: React.MutableRefObject<{ x: number; y: number }>;
   className?: string;
   overlayColor?: string;
-  /** Narrow viewports: single image, no springs / duplicate decode (desktop keeps full effect). */
-  staticOnNarrow?: boolean;
 }
 
-const ProximityImage: React.FC<ProximityImageProps> = ({
-  src,
-  alt,
-  mousePos,
-  className,
-  overlayColor,
-  staticOnNarrow,
-}) => {
+const ProximityImage: React.FC<ProximityImageProps> = ({ src, alt, pointerRef, className, overlayColor }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const intersectingRef = useRef(true);
 
   // Springs for smooth transitions
   const opacity = useSpring(0, { stiffness: 60, damping: 20 });
   const scale = useSpring(1.05, { stiffness: 60, damping: 20 });
 
   useEffect(() => {
-    if (staticOnNarrow) return;
+    const el = containerRef.current;
+    if (!el) return;
 
-    const updateProximity = () => {
-      if (!containerRef.current) return;
+    const io = new IntersectionObserver(
+      ([e]) => {
+        intersectingRef.current = e.isIntersecting;
+      },
+      { rootMargin: '80px' }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
 
-      const rect = containerRef.current.getBoundingClientRect();
+  useEffect(() => {
+    let raf = 0;
 
-      // Hotspot padding: 10% of the image size
-      const paddingX = rect.width * 0.1;
-      const paddingY = rect.height * 0.1;
+    const tick = () => {
+      const el = containerRef.current;
+      if (el && intersectingRef.current) {
+        const rect = el.getBoundingClientRect();
+        const { x, y } = pointerRef.current;
 
-      const isInsideHotspot =
-        mousePos.x >= rect.left - paddingX &&
-        mousePos.x <= rect.right + paddingX &&
-        mousePos.y >= rect.top - paddingY &&
-        mousePos.y <= rect.bottom + paddingY;
+        const paddingX = rect.width * 0.1;
+        const paddingY = rect.height * 0.1;
 
-      const intensity = isInsideHotspot ? 1 : 0;
+        const isInsideHotspot =
+          x >= rect.left - paddingX &&
+          x <= rect.right + paddingX &&
+          y >= rect.top - paddingY &&
+          y <= rect.bottom + paddingY;
 
-      opacity.set(intensity);
-      scale.set(1.05 - intensity * 0.05);
+        const intensity = isInsideHotspot ? 1 : 0;
+        opacity.set(intensity);
+        scale.set(1.05 - intensity * 0.05);
+      }
+
+      raf = requestAnimationFrame(tick);
     };
 
-    updateProximity();
-  }, [mousePos, opacity, scale, staticOnNarrow]);
-
-  if (staticOnNarrow) {
-    return (
-      <div ref={containerRef} className={`relative overflow-hidden rounded-sm ${className}`}>
-        <div className="relative w-full h-full">
-          <img src={src} alt={alt} className="w-full h-full object-cover" draggable={false} />
-          {overlayColor && <div className={`absolute inset-0 ${overlayColor} pointer-events-none`} />}
-        </div>
-      </div>
-    );
-  }
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [pointerRef, opacity, scale]);
 
   return (
     <div ref={containerRef} className={`relative overflow-hidden rounded-sm ${className}`}>
