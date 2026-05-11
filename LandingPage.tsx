@@ -137,34 +137,33 @@ const LandingPage: React.FC = () => {
 
   const t = TRANSLATIONS[lang] || TRANSLATIONS.de;
 
+  // Optimized height for mobile browsers (dvh) and safer overflow
   useEffect(() => {
     const updateOffsets = () => {
       const ids = ['services', 'projects', 'about', 'contact'];
       const offsets: { [key: string]: number } = {};
       ids.forEach(id => {
         const el = document.getElementById(id);
-        if (el) offsets[id] = el.offsetTop;
+        if (el) offsets[id] = el.getBoundingClientRect().top + window.pageYOffset;
       });
       sectionOffsets.current = offsets;
     };
 
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+      updateOffsets();
+    };
     
     updateOffsets();
-    checkMobile();
+    handleResize();
     
-    window.addEventListener('resize', () => {
-      updateOffsets();
-      checkMobile();
-    });
+    window.addEventListener('resize', handleResize, { passive: true });
     
-    const timer = setTimeout(updateOffsets, 1000);
+    // Additional offset update after fonts/images might have loaded
+    const timer = setTimeout(updateOffsets, 1500);
     
     return () => {
-      window.removeEventListener('resize', () => {
-        updateOffsets();
-        checkMobile();
-      });
+      window.removeEventListener('resize', handleResize);
       clearTimeout(timer);
     };
   }, []);
@@ -279,7 +278,7 @@ const LandingPage: React.FC = () => {
   };
 
   return (
-    <div className="relative overflow-hidden selection:bg-magic-orange selection:text-white bg-off-white dark:bg-magic-dark transition-colors duration-500 min-h-screen">
+    <div className="relative overflow-x-hidden selection:bg-magic-orange selection:text-white bg-off-white dark:bg-magic-dark transition-colors duration-500 min-h-[100dvh]">
       
       <div className="pointer-events-none fixed inset-0 z-[5] overflow-visible">
         {!isMobile && (
@@ -291,8 +290,10 @@ const LandingPage: React.FC = () => {
                 y: blob1Y,
                 translateX: '-50%',
                 translateY: '-50%',
-                filter: 'blur(100px)', // Reduced blur slightly
+                filter: 'blur(100px)',
                 WebkitFilter: 'blur(100px)',
+                backfaceVisibility: 'hidden',
+                WebkitBackfaceVisibility: 'hidden',
               }}
             />
             <motion.div 
@@ -302,8 +303,10 @@ const LandingPage: React.FC = () => {
                 y: blob2Y,
                 translateX: '-50%',
                 translateY: '-50%',
-                filter: 'blur(120px)', // Reduced blur slightly
+                filter: 'blur(120px)',
                 WebkitFilter: 'blur(120px)',
+                backfaceVisibility: 'hidden',
+                WebkitBackfaceVisibility: 'hidden',
               }}
             />
           </>
@@ -319,7 +322,7 @@ const LandingPage: React.FC = () => {
         toggleDarkMode={toggleDarkMode}
         onNavClick={() => {
           navigate('/');
-          document.body.style.overflow = 'unset';
+          document.body.style.overflow = '';
         }}
       />
       
