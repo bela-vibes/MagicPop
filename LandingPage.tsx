@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, memo } from 'react';
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Analytics } from "@vercel/analytics/react";
-import { motion, AnimatePresence, useScroll, useTransform, useMotionValue } from 'motion/react';
+import { motion, AnimatePresence, useScroll, useTransform, useMotionValue } from 'framer-motion';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import ProjectsGrid from './components/ProjectsGrid';
@@ -159,11 +159,17 @@ const LandingPage: React.FC = () => {
   }, [lang]);
 
   useEffect(() => {
+    if (isMobile) {
+      if (mouseX.get() === -500) {
+        mouseX.set(window.innerWidth / 2);
+        mouseY.set(window.innerHeight / 2);
+      }
+      return;
+    }
+    
     const handleMove = (e: MouseEvent | TouchEvent) => {
-      if (isMobile) return;
-      
-      const x = 'touches' in e ? e.touches[0].clientX : e.clientX;
-      const y = 'touches' in e ? e.touches[0].clientY : e.clientY;
+      const x = 'touches' in e ? e.touches[0].clientX : (e as MouseEvent).clientX;
+      const y = 'touches' in e ? e.touches[0].clientY : (e as MouseEvent).clientY;
       mouseX.set(x);
       mouseY.set(y);
     };
@@ -211,7 +217,7 @@ const LandingPage: React.FC = () => {
     };
     animationFrameId = requestAnimationFrame(animateBlobs);
     return () => cancelAnimationFrame(animationFrameId);
-  }, [mouseX, mouseY, blob1X, blob1Y, blob2X, blob2Y]);
+  }, [mouseX, mouseY, blob1X, blob1Y, blob2X, blob2Y, isMobile]);
 
   useEffect(() => {
     if (isDarkMode) {
@@ -516,6 +522,8 @@ const LandingPage: React.FC = () => {
           </motion.div>
         )}
       </AnimatePresence>
+      <SpeedInsights />
+      <Analytics />
     </div>
   );
 };
