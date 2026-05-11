@@ -14,19 +14,23 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
   const [isNear, setIsNear] = useState(false);
 
   useEffect(() => {
+    // Better mobile detection for Safari/iOS
+    const isMobileDevice = window.matchMedia("(max-width: 767px)").matches;
+    if (isMobileDevice) return;
+    
     const handleMouseMove = (e: MouseEvent) => {
       if (!textRef.current) return;
       const rect = textRef.current.getBoundingClientRect();
       
-      // Calculate distance to the bounding box
       const dx = Math.max(rect.left - e.clientX, 0, e.clientX - rect.right);
       const dy = Math.max(rect.top - e.clientY, 0, e.clientY - rect.bottom);
       const distance = Math.sqrt(dx * dx + dy * dy);
 
-      setIsNear(distance < 110);
+      const near = distance < 110;
+      setIsNear(prev => prev !== near ? near : prev);
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
   
