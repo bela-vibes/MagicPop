@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { motion } from 'motion/react';
 import { Language } from '../types';
 import { TRANSLATIONS } from '../constants';
@@ -10,25 +10,6 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ lang }) => {
   const t = TRANSLATIONS[lang].hero;
-  const textRef = useRef<HTMLSpanElement>(null);
-  const [isNear, setIsNear] = useState(false);
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      if (!textRef.current) return;
-      const rect = textRef.current.getBoundingClientRect();
-      
-      // Calculate distance to the bounding box
-      const dx = Math.max(rect.left - e.clientX, 0, e.clientX - rect.right);
-      const dy = Math.max(rect.top - e.clientY, 0, e.clientY - rect.bottom);
-      const distance = Math.sqrt(dx * dx + dy * dy);
-
-      setIsNear(distance < 110);
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, []);
   
   return (
     <section id="hero" className="relative min-h-[100dvh] flex flex-col px-6 md:px-12 pt-28 pb-12 overflow-hidden bg-transparent">
@@ -60,18 +41,10 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
           transition={{ duration: 1, delay: 0.4, ease: [0.19, 1, 0.22, 1] }}
           className="mt-auto md:mt-4 mb-8 md:mb-4 max-w-4xl relative z-20"
         >
-          <p className="font-editorial text-3xl md:text-5xl lg:text-6xl leading-[1.1] text-magic-black dark:text-off-white italic">
+          <p className="font-editorial text-3xl md:text-6xl leading-[1.1] text-magic-black dark:text-off-white italic">
             {t.subline} <br />
-            <span 
-              ref={textRef}
-              className={`font-archivo not-italic text-2xl md:text-4xl lg:text-5xl uppercase tracking-tight transition-colors duration-500 cursor-default inline-block ${
-                isNear 
-                  ? 'text-off-white dark:text-off-white' 
-                  : 'text-magic-orange'
-              }`}
-            >
-              {t.sublineBold1} <br />
-              {t.sublineBold2}
+            <span className="font-archivo not-italic text-2xl md:text-5xl uppercase tracking-tight text-magic-orange">
+              {t.sublineBold}
             </span>
           </p>
         </motion.div>
