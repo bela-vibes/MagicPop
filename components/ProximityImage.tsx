@@ -1,15 +1,16 @@
 import React, { useRef, useEffect } from 'react';
-import { motion, useSpring } from 'motion/react';
+import { motion, useSpring, MotionValue } from 'motion/react';
 
 interface ProximityImageProps {
   src: string;
   alt: string;
-  mousePos: { x: number; y: number };
+  mouseX: MotionValue<number>;
+  mouseY: MotionValue<number>;
   className?: string;
   overlayColor?: string;
 }
 
-const ProximityImage: React.FC<ProximityImageProps> = ({ src, alt, mousePos, className, overlayColor }) => {
+const ProximityImage: React.FC<ProximityImageProps> = ({ src, alt, mouseX, mouseY, className, overlayColor }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   
   // Springs for smooth transitions
@@ -21,16 +22,18 @@ const ProximityImage: React.FC<ProximityImageProps> = ({ src, alt, mousePos, cla
       if (!containerRef.current) return;
 
       const rect = containerRef.current.getBoundingClientRect();
+      const mX = mouseX.get();
+      const mY = mouseY.get();
       
       // Hotspot padding: 10% of the image size
       const paddingX = rect.width * 0.10;
       const paddingY = rect.height * 0.10;
 
       const isInsideHotspot = 
-        mousePos.x >= rect.left - paddingX &&
-        mousePos.x <= rect.right + paddingX &&
-        mousePos.y >= rect.top - paddingY &&
-        mousePos.y <= rect.bottom + paddingY;
+        mX >= rect.left - paddingX &&
+        mX <= rect.right + paddingX &&
+        mY >= rect.top - paddingY &&
+        mY <= rect.bottom + paddingY;
 
       const intensity = isInsideHotspot ? 1 : 0;
       
@@ -38,8 +41,17 @@ const ProximityImage: React.FC<ProximityImageProps> = ({ src, alt, mousePos, cla
       scale.set(1.05 - (intensity * 0.05));
     };
 
+    // Use MotionValue subscriptions to update without re-rendering the component
+    const unsubX = mouseX.on("change", updateProximity);
+    const unsubY = mouseY.on("change", updateProximity);
+    
     updateProximity();
-  }, [mousePos, opacity, scale]);
+
+    return () => {
+      unsubX();
+      unsubY();
+    };
+  }, [mouseX, mouseY, opacity, scale]);
 
   return (
     <div ref={containerRef} className={`relative overflow-hidden rounded-sm ${className}`}>
