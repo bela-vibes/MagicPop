@@ -89,23 +89,19 @@
     text-rendering: optimizeLegibility;
   }
 
-  /* Prevent font stuttering/jittering in Safari during animations */
+  /* Safari Optimization: Removed translateZ(0) here to reduce GPU layer pressure */
   h1, h2, h3, h4, p, span, a, button {
     -webkit-font-smoothing: antialiased;
-    -webkit-transform: translateZ(0); /* Helps Safari keep text on a clean subpixel grid */
   }
 }
 
-/* Dark Mode Transition */
-html.transitioning,
-html.transitioning *,
-html.transitioning *::before,
-html.transitioning *::after {
-  transition:
-    background-color 0.5s ease-in-out !important,
-    color 0.5s ease-in-out !important,
-    border-color 0.5s ease-in-out !important,
-    fill 0.5s ease-in-out !important,
+/* Dark Mode Transition - FIXED SYNTAX */
+html.transitioning * {
+  transition: 
+    background-color 0.5s ease-in-out, 
+    color 0.5s ease-in-out, 
+    border-color 0.5s ease-in-out, 
+    fill 0.5s ease-in-out, 
     stroke 0.5s ease-in-out !important;
 }
 
@@ -141,18 +137,20 @@ html { -ms-overflow-style: none; scrollbar-width: none; }
 /* Image Protection */
 img {
   -webkit-user-drag: none;
-  -khtml-user-drag: none;
-  -moz-user-drag: none;
-  -o-user-drag: none;
   user-drag: none;
   user-select: none;
   -webkit-user-select: none;
-  -ms-user-select: none;
 }
 
-/* Optimize backdrop-filter for Safari */
+/* Optimize backdrop-filter for Safari Mobile */
 @supports (-webkit-backdrop-filter: blur(1px)) {
   .backdrop-blur-md {
-    -webkit-backdrop-filter: blur(8px); /* Slightly lower blur for Safari */
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  /* Safari Stability Fix: Reduce Blur-Intensity for Blobs to prevent White Screen */
+  .blur-3xl {
+    filter: blur(40px) !important;
+    -webkit-filter: blur(40px) !important;
   }
 }
