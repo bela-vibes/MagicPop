@@ -106,7 +106,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
   }, [selectedProject]);
 
   const handleOpenProject = (project: Project) => {
-    navigate(`/${project.slug}`);
+    navigate(`/${project.slug}`, { state: { scrolledFromProjects: true } });
   };
 
   const handleCloseProject = () => {
