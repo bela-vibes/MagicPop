@@ -226,12 +226,12 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
             className="w-[75vw] md:w-[60vw] lg:w-[43vw] flex-shrink-0 snap-start group cursor-pointer"
           >
             <div
-              className="relative overflow-hidden bg-magic-black/5 dark:bg-off-white/5 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.02] group-hover:shadow-[0_40px_80px_-20px_rgba(28,25,23,0.3)] dark:group-hover:shadow-[0_40px_80px_-20px_rgba(255,77,0,0.3)] rounded-sm"
+              className="relative overflow-hidden bg-magic-black/5 dark:bg-off-white/5 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] md:group-hover:scale-[1.02] md:group-hover:shadow-[0_40px_80px_-20px_rgba(28,25,23,0.3)] dark:md:group-hover:shadow-[0_40px_80px_-20px_rgba(255,77,0,0.3)] rounded-sm"
               style={{ aspectRatio: '3/2' }}
             >
               <div className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden pointer-events-none">
                 <div
-                  className={`w-[55%] aspect-square rounded-full ${project.color} blur-2xl opacity-0 scale-0 group-hover:scale-100 group-hover:opacity-85 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)]`}
+                  className={`w-[55%] aspect-square rounded-full ${project.color} blur-2xl opacity-0 scale-0 md:group-hover:scale-100 md:group-hover:opacity-85 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)]`}
                 />
               </div>
 
@@ -243,7 +243,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
                   loop
                   playsInline
                   autoPlay
-                  className="relative z-[11] w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-110"
+                  className="relative z-[11] w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] md:group-hover:scale-110"
                 />
               ) : (
                 <img
@@ -251,29 +251,29 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
                   alt={project.title[lang]}
                   draggable="false"
                   loading="lazy"
-                  className="relative z-[11] w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-110"
+                  className="relative z-[11] w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] md:group-hover:scale-110"
                 />
               )}
 
-              <div className="absolute inset-0 z-20 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 p-4 md:p-6 lg:p-8 text-white text-center">
-                <span className="font-archivo text-[10px] md:text-xs uppercase tracking-[0.3em] mb-2 md:mb-4 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] translate-y-8 group-hover:translate-y-0 group-hover:scale-110 lg:group-hover:scale-125">
+              <div className="absolute inset-0 z-20 max-md:hidden flex flex-col justify-center items-center opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 p-4 md:p-6 lg:p-8 text-white text-center">
+                <span className="font-archivo text-[10px] md:text-xs uppercase tracking-[0.3em] mb-2 md:mb-4 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] translate-y-8 md:group-hover:translate-y-0 md:group-hover:scale-110 lg:group-hover:scale-125">
                   {project.category[lang]}
                 </span>
-                <h3 className="font-archivo text-xl md:text-3xl lg:text-5xl uppercase tracking-tighter transition-all duration-700 delay-75 ease-[cubic-bezier(0.19,1,0.22,1)] translate-y-8 group-hover:translate-y-0 group-hover:scale-105 lg:group-hover:scale-110 hyphens-manual">
+                <h3 className="font-archivo text-xl md:text-3xl lg:text-5xl uppercase tracking-tighter transition-all duration-700 delay-75 ease-[cubic-bezier(0.19,1,0.22,1)] translate-y-8 md:group-hover:translate-y-0 md:group-hover:scale-105 lg:group-hover:scale-110 hyphens-manual">
                   {project.title[lang]}
                 </h3>
-                <div className="mt-4 md:mt-6 lg:mt-8 bg-white/20 backdrop-blur-md border-0 px-6 py-2 md:px-8 md:py-3 uppercase text-[10px] md:text-xs tracking-widest hover:bg-white hover:text-magic-black transition-all duration-500 delay-150 translate-y-8 group-hover:translate-y-0">
+                <div className="mt-4 md:mt-6 lg:mt-8 bg-white/20 backdrop-blur-md border-0 px-6 py-2 md:px-8 md:py-3 uppercase text-[10px] md:text-xs tracking-widest md:hover:bg-white md:hover:text-magic-black transition-all duration-500 delay-150 translate-y-8 md:group-hover:translate-y-0">
                   {t.viewProject}
                 </div>
               </div>
             </div>
 
-            <div className="mt-8 flex justify-between items-start transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:translate-x-1">
-              <div className="transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.03] origin-left">
+            <div className="mt-8 flex justify-between items-start transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] md:group-hover:translate-x-1">
+              <div className="transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] md:group-hover:scale-[1.03] origin-left">
                 <h3 className="font-archivo text-2xl uppercase tracking-tighter mb-1 text-magic-black dark:text-off-white transition-colors duration-300">{project.title[lang]}</h3>
                 <p className="font-editorial text-xl italic text-magic-black/40 dark:text-off-white/40">{project.category[lang]}</p>
               </div>
-              <div className="w-12 h-12 rounded-full bg-magic-black/5 dark:bg-off-white/5 flex items-center justify-center transition-all duration-500 group-hover:rotate-45">
+              <div className="w-12 h-12 rounded-full bg-magic-black/5 dark:bg-off-white/5 flex items-center justify-center transition-all duration-500 md:group-hover:rotate-45">
                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor" className="w-5 h-5 transition-colors text-magic-black dark:text-off-white">
                     <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
                  </svg>
