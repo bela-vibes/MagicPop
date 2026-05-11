@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Analytics } from "@vercel/analytics/react";
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import ProjectsGrid from './components/ProjectsGrid';
@@ -15,19 +15,15 @@ import ProximityImage from './components/ProximityImage';
 
 import { Mail, Phone } from 'lucide-react';
 
-const BrandMarquee = ({ title, isMobile }: { title: string; isMobile: boolean }) => {
+interface BrandItemProps {
+  brand: string;
+  index: number;
+  scrollYProgress: any;
+}
+
+const BrandMarquee = ({ title }: { title: string }) => {
   const brands = ["LOQI", "Paul Kalkbrenner", "Dussmann", "I Like Visuals",  "Arte", "Momox", "Biteaway", "Cornelsen", "Studio Stellar"];
-
-  const row = (keyPrefix: string) =>
-    [...brands, ...brands].map((brand, i) => (
-      <span
-        key={`${keyPrefix}-${brand}-${i}`}
-        className="font-archivo text-4xl md:text-7xl lg:text-8xl uppercase tracking-tighter text-magic-black/90 dark:text-off-white/90 select-none cursor-default"
-      >
-        {brand}
-      </span>
-    ));
-
+  
   return (
     <section className="px-6 md:px-12 py-12 md:py-32 overflow-hidden bg-transparent">
       <div className="mb-10 md:mb-16">
@@ -37,19 +33,21 @@ const BrandMarquee = ({ title, isMobile }: { title: string; isMobile: boolean })
       </div>
 
       <div className="relative flex overflow-hidden py-10 -mx-6 md:-mx-12">
-        {isMobile ? (
-          <div className="brand-marquee-css flex w-max gap-x-20 md:gap-x-30 whitespace-nowrap pr-20 md:pr-40">
-            {row('css')}
-          </div>
-        ) : (
-          <motion.div
-            animate={{ x: ['0%', '-50%'] }}
-            transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-            className="flex gap-x-20 md:gap-x-30 whitespace-nowrap pr-20 md:pr-40"
-          >
-            {row('motion')}
-          </motion.div>
-        )}
+        <motion.div 
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          className="flex gap-x-20 md:gap-x-30 whitespace-nowrap pr-20 md:pr-40"
+        >
+          {/* Erster Satz Icons/Marken */}
+          {[...brands, ...brands].map((brand, i) => (
+            <span 
+              key={`${brand}-${i}`} 
+              className="font-archivo text-4xl md:text-7xl lg:text-8xl uppercase tracking-tighter text-magic-black/90 dark:text-off-white/90 select-none cursor-default"
+            >
+              {brand}
+            </span>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
@@ -64,16 +62,9 @@ const LandingPage: React.FC = () => {
   const [blob1Pos, setBlob1Pos] = useState({ x: 0, y: 0 });
   const [blob2Pos, setBlob2Pos] = useState({ x: 0, y: 0 });
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [isMobile, setIsMobile] = useState(
-    () => typeof window !== 'undefined' && window.innerWidth < 768
-  );
-  const requestRef = useRef<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+  const requestRef = useRef<number>(null);
   const sectionOffsets = useRef<{ [key: string]: number }>({});
-  const pointerRef = useRef({ x: 0, y: 0 });
-  const blob1HostRef = useRef<HTMLDivElement>(null);
-  const blob2HostRef = useRef<HTMLDivElement>(null);
-  const lastMobileBlobRef = useRef({ b1x: 0, b1y: 0, b2x: 0, b2y: 0 });
-  const wasMobileRef = useRef(isMobile);
 
   // Reset title when on landing page
   useEffect(() => {
@@ -133,7 +124,7 @@ const LandingPage: React.FC = () => {
     const updateOffsets = () => {
       const ids = ['services', 'projects', 'about', 'contact'];
       const offsets: { [key: string]: number } = {};
-      ids.forEach((id) => {
+      ids.forEach(id => {
         const el = document.getElementById(id);
         if (el) offsets[id] = el.offsetTop;
       });
@@ -141,21 +132,22 @@ const LandingPage: React.FC = () => {
     };
 
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
-
-    const onResize = () => {
-      updateOffsets();
-      checkMobile();
-    };
-
+    
     updateOffsets();
     checkMobile();
-
-    window.addEventListener('resize', onResize);
-
+    
+    window.addEventListener('resize', () => {
+      updateOffsets();
+      checkMobile();
+    });
+    
     const timer = setTimeout(updateOffsets, 1000);
-
+    
     return () => {
-      window.removeEventListener('resize', onResize);
+      window.removeEventListener('resize', () => {
+        updateOffsets();
+        checkMobile();
+      });
       clearTimeout(timer);
     };
   }, []);
@@ -165,88 +157,23 @@ const LandingPage: React.FC = () => {
   }, [lang]);
 
   useEffect(() => {
-    const center = () => ({
-      x: window.innerWidth / 2,
-      y: window.innerHeight / 2,
-    });
-    pointerRef.current = center();
-    setMousePos(center());
-
     const handleMove = (e: MouseEvent | TouchEvent) => {
       const x = 'touches' in e ? e.touches[0].clientX : e.clientX;
       const y = 'touches' in e ? e.touches[0].clientY : e.clientY;
-      pointerRef.current = { x, y };
-      if (window.innerWidth >= 768) {
-        setMousePos({ x, y });
-      }
+      setMousePos({ x, y });
     };
-
     window.addEventListener('mousemove', handleMove);
     window.addEventListener('touchmove', handleMove, { passive: true });
-
+    if (mousePos.x === -500) {
+      setMousePos({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
+    }
     return () => {
       window.removeEventListener('mousemove', handleMove);
       window.removeEventListener('touchmove', handleMove);
     };
-  }, []);
-
-  // Narrow: blob motion via CSS variables (no per-frame React); wide: unchanged Motion-math + setState
-  useEffect(() => {
-    if (!isMobile) return;
-
-    let b1x = 0;
-    let b1y = 0;
-    let b2x = 0;
-    let b2y = 0;
-    let time = 0;
-    let rafId = 0;
-
-    const pushVars = () => {
-      const n1 = blob1HostRef.current;
-      const n2 = blob2HostRef.current;
-      if (n1) {
-        n1.style.setProperty('--blob1-x', `${b1x}px`);
-        n1.style.setProperty('--blob1-y', `${b1y}px`);
-      }
-      if (n2) {
-        n2.style.setProperty('--blob2-x', `${b2x}px`);
-        n2.style.setProperty('--blob2-y', `${b2y}px`);
-      }
-    };
-
-    const animate = () => {
-      time += 0.01;
-      const m = pointerRef.current;
-      const driftX = Math.sin(time * 0.5) * 20;
-      const driftY = Math.cos(time * 0.3) * 20;
-
-      b1x += (m.x + driftX - b1x) * 0.06;
-      b1y += (m.y + driftY - b1y) * 0.06;
-      b2x += (m.x - driftX - b2x) * 0.03;
-      b2y += (m.y - driftY - b2y) * 0.03;
-
-      lastMobileBlobRef.current = { b1x, b1y, b2x, b2y };
-      pushVars();
-      rafId = requestAnimationFrame(animate);
-    };
-
-    pushVars();
-    rafId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(rafId);
-  }, [isMobile]);
+  }, [mousePos.x, isMobile]);
 
   useEffect(() => {
-    if (wasMobileRef.current && !isMobile) {
-      const o = lastMobileBlobRef.current;
-      setBlob1Pos({ x: o.b1x, y: o.b1y });
-      setBlob2Pos({ x: o.b2x, y: o.b2y });
-    }
-    wasMobileRef.current = isMobile;
-  }, [isMobile]);
-
-  useEffect(() => {
-    if (isMobile) return;
-
     let time = 0;
     const animate = () => {
       time += 0.01;
@@ -264,7 +191,7 @@ const LandingPage: React.FC = () => {
     };
     requestRef.current = requestAnimationFrame(animate);
     return () => {
-      if (requestRef.current !== null) cancelAnimationFrame(requestRef.current);
+      if (requestRef.current) cancelAnimationFrame(requestRef.current);
     };
   }, [mousePos, isMobile]);
 
@@ -322,59 +249,31 @@ const LandingPage: React.FC = () => {
     <div className="relative overflow-hidden selection:bg-magic-orange selection:text-white bg-off-white dark:bg-magic-dark transition-colors duration-500 min-h-screen">
       
       <div className="pointer-events-none fixed inset-0 z-[5] overflow-visible">
-        <div
-          ref={blob1HostRef}
+        <div 
           className={`absolute w-[95vw] h-[95vw] md:w-[80vw] md:h-[80vw] lg:w-[60vw] lg:h-[60vw] max-w-[900px] max-h-[900px] rounded-full transition-colors duration-500 ease-in-out ${headerTheme.blobColor} ${isMobile ? 'opacity-100' : 'opacity-90'} dark:opacity-95`}
-          style={
-            isMobile
-              ? {
-                  transform:
-                    'translate3d(var(--blob1-x, 0px), var(--blob1-y, 0px), 0) translate(-50%, -50%)',
-                  WebkitBackfaceVisibility: 'hidden',
-                  backfaceVisibility: 'hidden',
-                  WebkitPerspective: '1000px',
-                  perspective: '1000px',
-                  WebkitFilter: 'blur(56px)',
-                  filter: 'blur(56px)',
-                }
-              : {
-                  transform: `translate3d(${blob1Pos.x}px, ${blob1Pos.y}px, 0) translate(-50%, -50%)`,
-                  willChange: 'transform, filter',
-                  WebkitBackfaceVisibility: 'hidden',
-                  backfaceVisibility: 'hidden',
-                  WebkitPerspective: '1000px',
-                  perspective: '1000px',
-                  WebkitFilter: 'blur(140px)',
-                  filter: 'blur(140px)',
-                }
-          }
+          style={{
+            transform: `translate3d(${blob1Pos.x}px, ${blob1Pos.y}px, 0) translate(-50%, -50%)`,
+            willChange: 'transform, filter',
+            WebkitBackfaceVisibility: 'hidden',
+            backfaceVisibility: 'hidden',
+            WebkitPerspective: '1000px',
+            perspective: '1000px',
+            WebkitFilter: isMobile ? 'blur(80px)' : 'blur(140px)',
+            filter: isMobile ? 'blur(80px)' : 'blur(140px)',
+          }}
         />
-        <div
-          ref={blob2HostRef}
+        <div 
           className={`absolute w-[85vw] h-[85vw] md:w-[70vw] md:h-[70vw] lg:w-[50vw] lg:h-[50vw] max-w-[800px] max-h-[800px] rounded-full transition-colors duration-500 ease-in-out ${headerTheme.blobColor} ${isMobile ? 'opacity-85' : 'opacity-75'} dark:opacity-80`}
-          style={
-            isMobile
-              ? {
-                  transform:
-                    'translate3d(var(--blob2-x, 0px), var(--blob2-y, 0px), 0) translate(-50%, -50%)',
-                  WebkitBackfaceVisibility: 'hidden',
-                  backfaceVisibility: 'hidden',
-                  WebkitPerspective: '1000px',
-                  perspective: '1000px',
-                  WebkitFilter: 'blur(72px)',
-                  filter: 'blur(72px)',
-                }
-              : {
-                  transform: `translate3d(${blob2Pos.x}px, ${blob2Pos.y}px, 0) translate(-50%, -50%)`,
-                  willChange: 'transform, filter',
-                  WebkitBackfaceVisibility: 'hidden',
-                  backfaceVisibility: 'hidden',
-                  WebkitPerspective: '1000px',
-                  perspective: '1000px',
-                  WebkitFilter: 'blur(160px)',
-                  filter: 'blur(160px)',
-                }
-          }
+          style={{
+            transform: `translate3d(${blob2Pos.x}px, ${blob2Pos.y}px, 0) translate(-50%, -50%)`,
+            willChange: 'transform, filter',
+            WebkitBackfaceVisibility: 'hidden',
+            backfaceVisibility: 'hidden',
+            WebkitPerspective: '1000px',
+            perspective: '1000px',
+            WebkitFilter: isMobile ? 'blur(100px)' : 'blur(160px)',
+            filter: isMobile ? 'blur(100px)' : 'blur(160px)',
+          }}
         />
       </div>
 
@@ -397,7 +296,7 @@ const LandingPage: React.FC = () => {
           lang={lang}
           selectedProject={selectedProject}
           setSelectedProject={setSelectedProject}
-          pointerRef={pointerRef}
+          mousePos={mousePos}
           isMobile={isMobile}
         />
 
@@ -438,9 +337,10 @@ const LandingPage: React.FC = () => {
               <ProximityImage
                 src="https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773295288/Dennis_Ruf_und_Be%CC%81la_Lehrnickel_Magic_Pop_Creative_Studio_tm4vyk.webp"
                 alt="Studio"
-                pointerRef={pointerRef}
+                mousePos={mousePos}
                 className="w-full h-auto max-h-[45vh] object-cover rounded-lg"
                 overlayColor="bg-magic-blue/10"
+                alwaysColor={isMobile}
               />
             </motion.div>
             <motion.div 
@@ -456,7 +356,7 @@ const LandingPage: React.FC = () => {
           </div>
         </Section>
 
-        <BrandMarquee title={t.contact.trustTitle} isMobile={isMobile} />
+        <BrandMarquee title={t.contact.trustTitle} />
 
         <Section id="contact" title={t.contact.title} subtitle={t.contact.subtitle} className="bg-transparent py-12 md:py-32">
           {/* Main Contact Grid */}
