@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef, useMemo } from 'react';
-import { motion, AnimatePresence, MotionValue } from 'motion/react';
+import { motion, AnimatePresence, MotionValue } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { PROJECTS, TRANSLATIONS } from '../constants';
 import { Project, Language } from '../types';
