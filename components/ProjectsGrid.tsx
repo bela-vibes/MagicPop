@@ -11,9 +11,17 @@ interface ProjectsGridProps {
   selectedProject: Project | null;
   setSelectedProject: (project: Project | null) => void;
   mousePos: { x: number; y: number };
+  /** Skip perpetual RAF (edge-scroll is pointer-only); narrow layouts only. */
+  isMobile?: boolean;
 }
 
-const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setSelectedProject, mousePos }) => {
+const ProjectsGrid: React.FC<ProjectsGridProps> = ({
+  lang,
+  selectedProject,
+  setSelectedProject,
+  mousePos,
+  isMobile = false,
+}) => {
   const navigate = useNavigate();
   const [activeFilter, setActiveFilter] = React.useState<string | null>(null);
   const [isEdgeScrolling, setIsEdgeScrolling] = React.useState(false);
@@ -32,8 +40,10 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
     return PROJECTS.filter(p => p.category[lang] === activeFilter);
   }, [activeFilter, lang]);
 
-  // Edge Scrolling Logic
+  // Edge Scrolling Logic (desktop only — continuous RAF is costly on iOS)
   useEffect(() => {
+    if (isMobile) return;
+
     const startScrolling = () => {
       if (scrollRef.current && scrollSpeedRef.current !== 0) {
         scrollRef.current.scrollLeft += scrollSpeedRef.current;
@@ -48,7 +58,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, []);
+  }, [isMobile]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!scrollRef.current) return;
@@ -325,11 +335,12 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                             />
                           </div>
                         ) : (
-                          <ProximityImage 
-                            src={selectedProject.gallery[0] || selectedProject.image} 
-                            alt="" 
+                          <ProximityImage
+                            src={selectedProject.gallery[0] || selectedProject.image}
+                            alt=""
                             mousePos={mousePos}
                             className="w-full h-auto"
+                            staticOnNarrow={isMobile}
                           />
                         )}
                       </div>
