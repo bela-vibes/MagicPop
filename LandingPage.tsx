@@ -13,41 +13,7 @@ import Impressum from './components/Impressum';
 import Datenschutz from './components/Datenschutz';
 import ProximityImage from './components/ProximityImage';
 
-// Instead of lucide-react, we use inline SVGs for Mail and Phone to ensure maximum compatibility 
-// and avoid potential "parsing errors" on older mobile browsers caused by library bundles.
-const MailIcon = ({ className }: { className?: string }) => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    width="24" 
-    height="24" 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round" 
-    className={className}
-  >
-    <rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-  </svg>
-);
-
-const PhoneIcon = ({ className }: { className?: string }) => (
-  <svg 
-    xmlns="http://www.w3.org/2000/svg" 
-    width="24" 
-    height="24" 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round" 
-    className={className}
-  >
-    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-  </svg>
-);
+import { Mail, Phone } from 'lucide-react';
 
 interface BrandItemProps {
   brand: string;
@@ -56,7 +22,7 @@ interface BrandItemProps {
 }
 
 const BrandMarquee = ({ title }: { title: string }) => {
-  const brands = ["LOQI", "Paul Kalkbrenner", "Dussmann", "Arte", "Momox", "Biteaway", "Cornelsen", "I Like Visuals", "Studio Stellar"];
+  const brands = ["LOQI", "Paul Kalkbrenner", "Dussmann", "I Like Visuals",  "Arte", "Momox", "Biteaway", "Cornelsen", "Studio Stellar"];
   
   return (
     <section className="px-6 md:px-12 py-12 md:py-32 overflow-hidden bg-transparent">
@@ -102,7 +68,7 @@ const LandingPage: React.FC = () => {
 
   // Reset title when on landing page
   useEffect(() => {
-    document.title = "magicpop | creative studio";
+    document.title = "Magic Pop Studio — Creative Studio Berlin";
   }, []);
 
   // Effect to handle routing/overlays based on URL path
@@ -160,32 +126,29 @@ const LandingPage: React.FC = () => {
       const offsets: { [key: string]: number } = {};
       ids.forEach(id => {
         const el = document.getElementById(id);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          offsets[id] = rect.top + window.pageYOffset;
-        }
+        if (el) offsets[id] = el.offsetTop;
       });
       sectionOffsets.current = offsets;
     };
 
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    
+    updateOffsets();
     checkMobile();
     
-    // Defer measurement to allow browser to complete initial rendering
-    const initialTimer = setTimeout(updateOffsets, 500);
-    const longTimer = setTimeout(updateOffsets, 2000);
-    
-    const handleResize = () => {
+    window.addEventListener('resize', () => {
       updateOffsets();
       checkMobile();
-    };
-
-    window.addEventListener('resize', handleResize);
+    });
+    
+    const timer = setTimeout(updateOffsets, 1000);
     
     return () => {
-      window.removeEventListener('resize', handleResize);
-      clearTimeout(initialTimer);
-      clearTimeout(longTimer);
+      window.removeEventListener('resize', () => {
+        updateOffsets();
+        checkMobile();
+      });
+      clearTimeout(timer);
     };
   }, []);
 
@@ -210,29 +173,19 @@ const LandingPage: React.FC = () => {
     };
   }, [mousePos.x, isMobile]);
 
-  const mousePosRef = useRef(mousePos);
-  
-  useEffect(() => {
-    mousePosRef.current = mousePos;
-  }, [mousePos]);
-
   useEffect(() => {
     let time = 0;
     const animate = () => {
       time += 0.01;
       const driftX = Math.sin(time * 0.5) * 20;
       const driftY = Math.cos(time * 0.3) * 20;
-      
-      const currentMouseX = mousePosRef.current.x;
-      const currentMouseY = mousePosRef.current.y;
-
       setBlob1Pos((prev) => ({
-        x: prev.x + (currentMouseX + driftX - prev.x) * 0.06,
-        y: prev.y + (currentMouseY + driftY - prev.y) * 0.06,
+        x: prev.x + (mousePos.x + driftX - prev.x) * 0.06,
+        y: prev.y + (mousePos.y + driftY - prev.y) * 0.06,
       }));
       setBlob2Pos((prev) => ({
-        x: prev.x + (currentMouseX - driftX - prev.x) * 0.03,
-        y: prev.y + (currentMouseY - driftY - prev.y) * 0.03,
+        x: prev.x + (mousePos.x - driftX - prev.x) * 0.03,
+        y: prev.y + (mousePos.y - driftY - prev.y) * 0.03,
       }));
       requestRef.current = requestAnimationFrame(animate);
     };
@@ -240,7 +193,7 @@ const LandingPage: React.FC = () => {
     return () => {
       if (requestRef.current) cancelAnimationFrame(requestRef.current);
     };
-  }, []);
+  }, [mousePos, isMobile]);
 
   useEffect(() => {
     if (isDarkMode) {
@@ -476,14 +429,14 @@ const LandingPage: React.FC = () => {
                         className="w-12 h-12 md:w-14 md:h-14 bg-magic-black text-off-white rounded-full flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-95 shadow-xl group/icon"
                         title={CONTACT_EMAIL}
                       >
-                        <MailIcon className="w-5 h-5 md:w-6 md:h-6 group-hover/icon:animate-bounce" />
+                        <Mail className="w-5 h-5 md:w-6 md:h-6 group-hover/icon:animate-bounce" />
                       </a>
                       <a 
                         href={`tel:${CONTACT_PHONE.replace(/\s+/g, '')}`}
                         className="w-12 h-12 md:w-14 md:h-14 bg-magic-black text-off-white rounded-full flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-95 shadow-xl group/icon"
                         title={CONTACT_PHONE}
                       >
-                        <PhoneIcon className="w-5 h-5 md:w-6 md:h-6 group-hover/icon:animate-bounce" />
+                        <Phone className="w-5 h-5 md:w-6 md:h-6 group-hover/icon:animate-bounce" />
                       </a>
                     </div>
                   </div>
