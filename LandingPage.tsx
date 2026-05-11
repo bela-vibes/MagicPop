@@ -21,13 +21,7 @@ interface BrandItemProps {
   scrollYProgress: any;
 }
 
-// Memoize sections to prevent re-renders when motion values change
-const MemoizedHeader = memo(Header);
-const MemoizedHero = memo(Hero);
-const MemoizedProjectsGrid = memo(ProjectsGrid);
-const MemoizedSection = memo(Section);
-
-const BrandMarquee = memo(({ title }: { title: string }) => {
+const BrandMarquee = ({ title }: { title: string }) => {
   const brands = ["LOQI", "Paul Kalkbrenner", "Dussmann", "Arte", "Momox", "Biteaway", "Cornelsen", "I Like Visuals", "Studio Stellar"];
   const isMobileMarquee = typeof window !== 'undefined' && window.innerWidth < 768;
   
@@ -59,7 +53,7 @@ const BrandMarquee = memo(({ title }: { title: string }) => {
       </div>
     </section>
   );
-});
+};
 
 const LandingPage: React.FC = () => {
   const location = useLocation();
@@ -76,16 +70,17 @@ const LandingPage: React.FC = () => {
   const blob2Y = useMotionValue(0);
 
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [isMobile, setIsMobile] = useState(true); // Default to true for safety
+  const [isMobile, setIsMobile] = useState(false);
   const requestRef = useRef<number>(null);
   const sectionOffsets = useRef<{ [key: string]: number }>({});
 
-  // Reset title when on landing page
   useEffect(() => {
     document.title = "magicpop | creative studio";
     
-    // Immediate check on mount
-    setIsMobile(window.innerWidth < 768);
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   // Effect to handle routing/overlays based on URL path
@@ -137,7 +132,7 @@ const LandingPage: React.FC = () => {
 
   const t = TRANSLATIONS[lang] || TRANSLATIONS.de;
 
-  // Optimized height for mobile browsers (dvh) and safer overflow
+  // Background Theme Logic
   useEffect(() => {
     const updateOffsets = () => {
       const ids = ['services', 'projects', 'about', 'contact'];
@@ -149,21 +144,12 @@ const LandingPage: React.FC = () => {
       sectionOffsets.current = offsets;
     };
 
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-      updateOffsets();
-    };
-    
     updateOffsets();
-    handleResize();
-    
-    window.addEventListener('resize', handleResize, { passive: true });
     
     // Additional offset update after fonts/images might have loaded
     const timer = setTimeout(updateOffsets, 1500);
     
     return () => {
-      window.removeEventListener('resize', handleResize);
       clearTimeout(timer);
     };
   }, []);
@@ -192,7 +178,7 @@ const LandingPage: React.FC = () => {
       window.removeEventListener('mousemove', handleMove);
       window.removeEventListener('touchmove', handleMove);
     };
-  }, [mouseX, mouseY]);
+  }, [mouseX, mouseY, isMobile]);
 
   // Blob animation loop - updates MotionValues directly (bypass React state)
   useEffect(() => {
@@ -278,7 +264,7 @@ const LandingPage: React.FC = () => {
   };
 
   return (
-    <div className="relative overflow-x-hidden selection:bg-magic-orange selection:text-white bg-off-white dark:bg-magic-dark transition-colors duration-500 min-h-[100dvh]">
+    <div className="relative overflow-x-hidden selection:bg-magic-orange selection:text-white bg-off-white dark:bg-magic-dark transition-colors duration-500 min-h-screen">
       
       <div className="pointer-events-none fixed inset-0 z-[5] overflow-visible">
         {!isMobile && (
@@ -292,8 +278,6 @@ const LandingPage: React.FC = () => {
                 translateY: '-50%',
                 filter: 'blur(100px)',
                 WebkitFilter: 'blur(100px)',
-                backfaceVisibility: 'hidden',
-                WebkitBackfaceVisibility: 'hidden',
               }}
             />
             <motion.div 
@@ -305,15 +289,13 @@ const LandingPage: React.FC = () => {
                 translateY: '-50%',
                 filter: 'blur(120px)',
                 WebkitFilter: 'blur(120px)',
-                backfaceVisibility: 'hidden',
-                WebkitBackfaceVisibility: 'hidden',
               }}
             />
           </>
         )}
       </div>
 
-      <MemoizedHeader 
+      <Header 
         bgColor={`${headerTheme.bg} ${headerTheme.shadow}`} 
         textColor={headerTheme.text} 
         lang={lang} 
@@ -327,8 +309,8 @@ const LandingPage: React.FC = () => {
       />
       
       <main className="relative z-[10] mt-0">
-        <MemoizedHero lang={lang} />
-        <MemoizedProjectsGrid 
+        <Hero lang={lang} />
+        <ProjectsGrid 
           lang={lang} 
           selectedProject={selectedProject} 
           setSelectedProject={setSelectedProject} 
@@ -336,7 +318,7 @@ const LandingPage: React.FC = () => {
           mouseY={mouseY}
         />
 
-        <MemoizedSection id="services" title={t.whatWeDo.title} subtitle={t.whatWeDo.subtitle} className="bg-transparent pt-6 pb-12 md:py-32">
+        <Section id="services" title={t.whatWeDo.title} subtitle={t.whatWeDo.subtitle} className="bg-transparent pt-6 pb-12 md:py-32">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mt-12">
             {t.whatWeDo.services.map((service, i) => (
               <motion.div 
@@ -354,9 +336,9 @@ const LandingPage: React.FC = () => {
               </motion.div>
             ))}
           </div>
-        </MemoizedSection>
+        </Section>
 
-        <MemoizedSection 
+        <Section 
           id="about" 
           title={t.studio.title} 
           subtitle={t.studio.subtitle} 
@@ -390,11 +372,11 @@ const LandingPage: React.FC = () => {
               <p className="text-base md:text-lg opacity-60 font-medium leading-relaxed">{t.studio.p2}</p>
             </motion.div>
           </div>
-        </MemoizedSection>
+        </Section>
 
         <BrandMarquee title={t.contact.trustTitle} />
 
-        <MemoizedSection id="contact" title={t.contact.title} subtitle={t.contact.subtitle} className="bg-transparent py-12 md:py-32">
+        <Section id="contact" title={t.contact.title} subtitle={t.contact.subtitle} className="bg-transparent py-12 md:py-32">
           {/* Main Contact Grid */}
           <div className="flex flex-col lg:flex-row gap-12 md:gap-24 mt-4">
             <motion.div 
@@ -493,7 +475,7 @@ const LandingPage: React.FC = () => {
               </div>
             </motion.div>
           </div>
-        </MemoizedSection>
+        </Section>
       </main>
 
       <footer className="relative z-[20] bg-magic-black dark:bg-magic-dark py-8 md:py-12 px-6 md:px-12 text-off-white flex flex-col md:flex-row justify-between items-center gap-8 transition-colors duration-500">
