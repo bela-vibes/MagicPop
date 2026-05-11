@@ -156,34 +156,24 @@ const LandingPage: React.FC = () => {
 
   useEffect(() => {
     const updateOffsets = () => {
-      // Use requestAnimationFrame to avoid "Layout Thrashing" by deferring measurements 
-      // until after the next paint, ensuring the browser is ready.
-      requestAnimationFrame(() => {
-        const ids = ['services', 'projects', 'about', 'contact'];
-        const offsets: { [key: string]: number } = {};
-        ids.forEach(id => {
-          const el = document.getElementById(id);
-          if (el) {
-            // Using getBoundingClientRect + scrollY for more reliable absolute positioning
-            const rect = el.getBoundingClientRect();
-            offsets[id] = rect.top + window.scrollY;
-          }
-        });
-        sectionOffsets.current = offsets;
+      const ids = ['services', 'projects', 'about', 'contact'];
+      const offsets: { [key: string]: number } = {};
+      ids.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          offsets[id] = rect.top + window.pageYOffset;
+        }
       });
+      sectionOffsets.current = offsets;
     };
 
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
-    
-    // Execute mobile check immediately
     checkMobile();
     
-    // Defer initial measurement to allow the browser to complete initial rendering tasks
-    // (especially the heavy CSS filters/blobs on mobile)
-    const initialTimer = setTimeout(updateOffsets, 200);
-    
-    // Recalculate once more after 1s to capture any late-rendering content or image loads
-    const longTimer = setTimeout(updateOffsets, 1500);
+    // Defer measurement to allow browser to complete initial rendering
+    const initialTimer = setTimeout(updateOffsets, 500);
+    const longTimer = setTimeout(updateOffsets, 2000);
     
     const handleResize = () => {
       updateOffsets();
@@ -191,12 +181,9 @@ const LandingPage: React.FC = () => {
     };
 
     window.addEventListener('resize', handleResize);
-    // Image loading can shift layouts, so we catch the final state with this
-    window.addEventListener('load', updateOffsets);
     
     return () => {
       window.removeEventListener('resize', handleResize);
-      window.removeEventListener('load', updateOffsets);
       clearTimeout(initialTimer);
       clearTimeout(longTimer);
     };
@@ -223,19 +210,29 @@ const LandingPage: React.FC = () => {
     };
   }, [mousePos.x, isMobile]);
 
+  const mousePosRef = useRef(mousePos);
+  
+  useEffect(() => {
+    mousePosRef.current = mousePos;
+  }, [mousePos]);
+
   useEffect(() => {
     let time = 0;
     const animate = () => {
       time += 0.01;
       const driftX = Math.sin(time * 0.5) * 20;
       const driftY = Math.cos(time * 0.3) * 20;
+      
+      const currentMouseX = mousePosRef.current.x;
+      const currentMouseY = mousePosRef.current.y;
+
       setBlob1Pos((prev) => ({
-        x: prev.x + (mousePos.x + driftX - prev.x) * 0.06,
-        y: prev.y + (mousePos.y + driftY - prev.y) * 0.06,
+        x: prev.x + (currentMouseX + driftX - prev.x) * 0.06,
+        y: prev.y + (currentMouseY + driftY - prev.y) * 0.06,
       }));
       setBlob2Pos((prev) => ({
-        x: prev.x + (mousePos.x - driftX - prev.x) * 0.03,
-        y: prev.y + (mousePos.y - driftY - prev.y) * 0.03,
+        x: prev.x + (currentMouseX - driftX - prev.x) * 0.03,
+        y: prev.y + (currentMouseY - driftY - prev.y) * 0.03,
       }));
       requestRef.current = requestAnimationFrame(animate);
     };
@@ -243,7 +240,7 @@ const LandingPage: React.FC = () => {
     return () => {
       if (requestRef.current) cancelAnimationFrame(requestRef.current);
     };
-  }, [mousePos, isMobile]);
+  }, []);
 
   useEffect(() => {
     if (isDarkMode) {
