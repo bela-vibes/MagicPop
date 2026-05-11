@@ -2,17 +2,20 @@ import React, { useState, useEffect, useRef } from 'react';
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Analytics } from "@vercel/analytics/react";
 import { motion, AnimatePresence } from 'motion/react';
+import { useLocation, useNavigate, Link } from 'react-router-dom';
+
+// Components
 import Header from './components/Header';
 import Hero from './components/Hero';
 import ProjectsGrid from './components/ProjectsGrid';
 import Section from './components/Section';
-import { Language, Project } from './types';
-import { useLocation, useNavigate, Link } from 'react-router-dom';
-import { TRANSLATIONS, PROJECTS, CONTACT_EMAIL, CONTACT_PHONE } from './constants';
 import Impressum from './components/Impressum';
 import Datenschutz from './components/Datenschutz';
 import ProximityImage from './components/ProximityImage';
-import { Mail, Phone } from 'lucide-react';
+
+// Context & Constants
+import { Language, Project } from './types';
+import { TRANSLATIONS, PROJECTS, CONTACT_EMAIL } from './constants';
 
 const BrandMarquee = ({ title }: { title: string }) => {
   const brands = ["LOQI", "Paul Kalkbrenner", "Dussmann", "I Like Visuals", "Arte", "Momox", "Biteaway", "Cornelsen", "Studio Stellar"];
@@ -59,11 +62,20 @@ const LandingPage: React.FC = () => {
 
   // Performance-optimiertes Mouse Tracking via CSS Variables
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
     const handleMove = (e: MouseEvent | TouchEvent) => {
-      const x = 'touches' in e ? e.touches[0].clientX : e.clientX;
-      const y = 'touches' in e ? e.touches[0].clientY : e.clientY;
+      // Auf Mobile stoppen wir das Tracking für die Blobs, um White-Screens zu verhindern
+      if (window.innerWidth < 768) return;
+
+      const x = 'touches' in e ? e.touches[0].clientX : (e as MouseEvent).clientX;
+      const y = 'touches' in e ? e.touches[0].clientY : (e as MouseEvent).clientY;
       
-      // Direkte Manipulation ohne React Re-render
       document.documentElement.style.setProperty('--mouse-x', `${x}px`);
       document.documentElement.style.setProperty('--mouse-y', `${y}px`);
     };
@@ -71,16 +83,18 @@ const LandingPage: React.FC = () => {
     window.addEventListener('mousemove', handleMove);
     window.addEventListener('touchmove', handleMove, { passive: true });
     
-    // Initial in die Mitte setzen
+    // Initial-Position
     document.documentElement.style.setProperty('--mouse-x', `${window.innerWidth / 2}px`);
     document.documentElement.style.setProperty('--mouse-y', `${window.innerHeight / 2}px`);
 
     return () => {
+      window.removeEventListener('resize', checkMobile);
       window.removeEventListener('mousemove', handleMove);
       window.removeEventListener('touchmove', handleMove);
     };
   }, []);
 
+  // Sync Path with Projects
   useEffect(() => {
     const path = location.pathname;
     if (path === '/impressum' || path === '/datenschutz' || path === '/') {
@@ -109,6 +123,7 @@ const LandingPage: React.FC = () => {
 
   const t = TRANSLATIONS[lang] || TRANSLATIONS.de;
 
+  // Update Section Offsets
   useEffect(() => {
     const updateOffsets = () => {
       const ids = ['services', 'projects', 'about', 'contact'];
@@ -119,13 +134,12 @@ const LandingPage: React.FC = () => {
       });
       sectionOffsets.current = offsets;
     };
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
     updateOffsets();
-    checkMobile();
-    window.addEventListener('resize', () => { updateOffsets(); checkMobile(); });
-    return () => window.removeEventListener('resize', () => { updateOffsets(); checkMobile(); });
+    window.addEventListener('resize', updateOffsets);
+    return () => window.removeEventListener('resize', updateOffsets);
   }, []);
 
+  // Scroll Logic for Theme Switching
   useEffect(() => {
     const handleScroll = () => {
       const scrollPos = window.scrollY + 400;
@@ -160,28 +174,20 @@ const LandingPage: React.FC = () => {
   return (
     <div className="relative selection:bg-magic-orange selection:text-white bg-off-white dark:bg-magic-dark transition-colors duration-500 min-h-screen">
       
-      {/* PERFORMANCE BLOBS: CSS Variables & GPU Acceleration */}
-      <div className="pointer-events-none fixed inset-0 z-[5] overflow-hidden">
+      {/* PERFORMANCE BLOBS */}
+      <div className="pointer-events-none fixed inset-0 z-[5] overflow-hidden" style={{ contain: 'strict' }}>
         <div 
-          className={`absolute w-[120vw] h-[120vw] md:w-[80vw] md:h-[80vw] max-w-[900px] max-h-[900px] rounded-full transition-colors duration-700 ease-in-out ${headerTheme.blobColor} opacity-50 dark:opacity-40`}
+          className={`absolute rounded-full transition-colors duration-1000 ease-in-out ${headerTheme.blobColor} opacity-80 dark:opacity-50`}
           style={{
-            left: 'var(--mouse-x)',
-            top: 'var(--mouse-y)',
+            left: isMobile ? '75%' : 'var(--mouse-x)',
+            top: isMobile ? '20%' : 'var(--mouse-y)',
+            width: isMobile ? '350px' : '80vw',
+            height: isMobile ? '350px' : '80vw',
             transform: 'translate3d(-50%, -50%, 0)', 
             filter: isMobile ? 'blur(60px)' : 'blur(120px)',
-            willChange: 'transform',
             WebkitFilter: isMobile ? 'blur(60px)' : 'blur(120px)',
-          }}
-        />
-        <div 
-          className={`absolute w-[100vw] h-[100vw] md:w-[60vw] md:h-[60vw] max-w-[700px] max-h-[700px] rounded-full transition-colors duration-1000 ease-in-out ${headerTheme.blobColor} opacity-30 dark:opacity-20`}
-          style={{
-            left: 'var(--mouse-x)',
-            top: 'var(--mouse-y)',
-            transform: 'translate3d(-40%, -45%, 0)',
-            filter: isMobile ? 'blur(80px)' : 'blur(140px)',
             willChange: 'transform',
-            WebkitFilter: isMobile ? 'blur(80px)' : 'blur(140px)',
+            backfaceVisibility: 'hidden',
           }}
         />
       </div>
@@ -198,7 +204,12 @@ const LandingPage: React.FC = () => {
       
       <main className="relative z-[10]">
         <Hero lang={lang} />
-        <ProjectsGrid lang={lang} selectedProject={selectedProject} setSelectedProject={setSelectedProject} />
+        
+        <ProjectsGrid 
+          lang={lang} 
+          selectedProject={selectedProject} 
+          setSelectedProject={setSelectedProject} 
+        />
 
         <Section id="services" title={t.whatWeDo.title} subtitle={t.whatWeDo.subtitle} className="pt-6 pb-12 md:py-32">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mt-12">
@@ -247,9 +258,9 @@ const LandingPage: React.FC = () => {
               </a>
             </div>
             <div className="lg:w-1/2 flex justify-center">
-               <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity }} className="w-64 h-64 bg-yellow-400 rounded-full flex items-center justify-center p-8 shadow-xl">
-                  <h3 className="font-editorial text-3xl italic text-center text-magic-black">{t.contact.footerNoteSmall}</h3>
-               </motion.div>
+                <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity }} className="w-64 h-64 bg-yellow-400 rounded-full flex items-center justify-center p-8 shadow-xl">
+                   <h3 className="font-editorial text-3xl italic text-center text-magic-black">{t.contact.footerNoteSmall}</h3>
+                </motion.div>
             </div>
           </div>
         </Section>
