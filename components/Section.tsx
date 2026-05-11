@@ -11,12 +11,14 @@ interface SectionProps {
 }
 
 const Section: React.FC<SectionProps> = ({ id, title, subtitle, children, className = "" }) => {
+  const isMobileSize = typeof window !== 'undefined' && window.innerWidth < 768;
+
   return (
-    <section id={id} className={`px-6 md:px-12 min-h-[100dvh] flex flex-col justify-center ${className}`}>
+    <section id={id} className={`px-6 md:px-12 flex flex-col justify-center ${className}`}>
       <motion.div 
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
+        initial={isMobileSize ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        whileInView={isMobileSize ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
         className="mb-10 md:mb-16"
       >
@@ -30,9 +32,9 @@ const Section: React.FC<SectionProps> = ({ id, title, subtitle, children, classN
         )}
       </motion.div>
       <motion.div 
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
+        initial={isMobileSize ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+        whileInView={isMobileSize ? { opacity: 1, y: 0 } : { opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-20px" }}
         transition={{ duration: 0.8, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
         className="flex-1"
       >
