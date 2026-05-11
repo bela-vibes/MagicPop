@@ -99,7 +99,10 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
     } else {
       document.body.style.overflow = 'unset';
     }
-    return () => window.removeEventListener('keydown', handleEsc);
+    return () => {
+      window.removeEventListener('keydown', handleEsc);
+      document.body.style.overflow = 'unset';
+    };
   }, [selectedProject]);
 
   const handleOpenProject = (project: Project) => {
@@ -226,15 +229,9 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
             className="w-[75vw] md:w-[60vw] lg:w-[43vw] flex-shrink-0 snap-start group cursor-pointer"
           >
             <div
-              className="relative overflow-hidden bg-magic-black/5 dark:bg-off-white/5 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] md:group-hover:scale-[1.02] md:group-hover:shadow-[0_40px_80px_-20px_rgba(28,25,23,0.3)] dark:md:group-hover:shadow-[0_40px_80px_-20px_rgba(255,77,0,0.3)] rounded-sm"
+              className="relative isolate overflow-hidden bg-magic-black/5 dark:bg-off-white/5 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] md:group-hover:scale-[1.02] md:group-hover:shadow-[0_40px_80px_-20px_rgba(28,25,23,0.3)] dark:md:group-hover:shadow-[0_40px_80px_-20px_rgba(255,77,0,0.3)] rounded-sm"
               style={{ aspectRatio: '3/2' }}
             >
-              <div className="absolute inset-0 z-10 flex items-center justify-center overflow-hidden pointer-events-none">
-                <div
-                  className={`w-[55%] aspect-square rounded-full ${project.color} blur-2xl opacity-0 scale-0 md:group-hover:scale-100 md:group-hover:opacity-85 transition-all duration-1000 ease-[cubic-bezier(0.19,1,0.22,1)]`}
-                />
-              </div>
-
               {project.image.toLowerCase().endsWith('.mp4') ? (
                 <video
                   src={project.image}
@@ -243,7 +240,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
                   loop
                   playsInline
                   autoPlay
-                  className="relative z-[11] w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] md:group-hover:scale-110"
+                  className="relative z-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] md:group-hover:scale-110"
                 />
               ) : (
                 <img
@@ -251,18 +248,25 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
                   alt={project.title[lang]}
                   draggable="false"
                   loading="lazy"
-                  className="relative z-[11] w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] md:group-hover:scale-110"
+                  className="relative z-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] md:group-hover:scale-110"
                 />
               )}
 
-              <div className="absolute inset-0 z-20 max-md:hidden flex flex-col justify-center items-center opacity-0 md:group-hover:opacity-100 transition-opacity duration-500 p-4 md:p-6 lg:p-8 text-white text-center">
-                <span className="font-archivo text-[10px] md:text-xs uppercase tracking-[0.3em] mb-2 md:mb-4 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] translate-y-8 md:group-hover:translate-y-0 md:group-hover:scale-110 lg:group-hover:scale-125">
+              {/* Über dem Medium: Farbe + Blur sichtbar (früher war z-[11] auf dem Bild darüber) */}
+              <div className="pointer-events-none absolute inset-0 z-[12] flex items-center justify-center overflow-hidden opacity-0 md:group-hover:opacity-100">
+                <div
+                  className={`aspect-square w-[72%] max-w-[min(400px,94%)] scale-[0.6] rounded-full ${project.color} blur-[48px] md:blur-[64px] transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] mix-blend-plus-lighter md:group-hover:scale-100`}
+                />
+              </div>
+
+              <div className="absolute inset-0 z-20 max-md:hidden flex flex-col items-center justify-center p-4 text-center text-white opacity-0 md:group-hover:opacity-100 md:p-6 lg:p-8">
+                <span className="font-archivo mb-2 translate-y-8 text-[10px] uppercase tracking-[0.3em] transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] md:mb-4 md:text-xs md:group-hover:translate-y-0 md:group-hover:scale-110 lg:group-hover:scale-125">
                   {project.category[lang]}
                 </span>
-                <h3 className="font-archivo text-xl md:text-3xl lg:text-5xl uppercase tracking-tighter transition-all duration-700 delay-75 ease-[cubic-bezier(0.19,1,0.22,1)] translate-y-8 md:group-hover:translate-y-0 md:group-hover:scale-105 lg:group-hover:scale-110 hyphens-manual">
+                <h3 className="font-archivo translate-y-8 text-xl uppercase tracking-tighter hyphens-manual transition-all delay-75 duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] md:text-3xl md:group-hover:translate-y-0 md:group-hover:scale-105 lg:text-5xl lg:group-hover:scale-110">
                   {project.title[lang]}
                 </h3>
-                <div className="mt-4 md:mt-6 lg:mt-8 bg-white/20 backdrop-blur-md border-0 px-6 py-2 md:px-8 md:py-3 uppercase text-[10px] md:text-xs tracking-widest md:hover:bg-white md:hover:text-magic-black transition-all duration-500 delay-150 translate-y-8 md:group-hover:translate-y-0">
+                <div className="mt-4 translate-y-8 border-0 bg-white/45 px-6 py-2 text-[10px] uppercase tracking-widest text-white shadow-sm backdrop-blur-md transition-transform delay-100 duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] md:mt-6 md:px-8 md:py-3 md:text-xs lg:mt-8 md:group-hover:translate-y-0">
                   {t.viewProject}
                 </div>
               </div>
