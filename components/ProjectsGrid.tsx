@@ -106,6 +106,10 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
   }, [selectedProject]);
 
   const handleOpenProject = (project: Project) => {
+    const first = project.gallery[0];
+    if (first && !first.toLowerCase().endsWith('.mp4')) {
+      new Image().src = first;
+    }
     navigate(`/${project.slug}`, { state: { scrolledFromProjects: true } });
   };
 
@@ -349,6 +353,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
                             mousePos={mousePos}
                             className="w-full h-auto"
                             alwaysColor={isMobile}
+                            priority
                           />
                         )}
                       </div>

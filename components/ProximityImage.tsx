@@ -9,6 +9,8 @@ interface ProximityImageProps {
   overlayColor?: string;
   /** Narrow layouts: always full color, one image (no grayscale / proximity). */
   alwaysColor?: boolean;
+  /** Mark as LCP image — sets fetchpriority="high" and loading="eager". */
+  priority?: boolean;
 }
 
 const ProximityImage: React.FC<ProximityImageProps> = ({
@@ -18,6 +20,7 @@ const ProximityImage: React.FC<ProximityImageProps> = ({
   className,
   overlayColor,
   alwaysColor,
+  priority = false,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -56,7 +59,14 @@ const ProximityImage: React.FC<ProximityImageProps> = ({
     return (
       <div ref={containerRef} className={`relative overflow-hidden rounded-sm ${className}`}>
         <div className="relative w-full h-full">
-          <img src={src} alt={alt} className="w-full h-full object-cover" draggable={false} />
+          <img
+            src={src}
+            alt={alt}
+            className="w-full h-full object-cover"
+            draggable={false}
+            fetchPriority={priority ? 'high' : 'auto'}
+            loading={priority ? 'eager' : undefined}
+          />
           {overlayColor && <div className={`absolute inset-0 ${overlayColor} pointer-events-none`} />}
         </div>
       </div>
@@ -67,23 +77,27 @@ const ProximityImage: React.FC<ProximityImageProps> = ({
     <div ref={containerRef} className={`relative overflow-hidden rounded-sm ${className}`}>
       <motion.div style={{ scale }} className="w-full h-full">
         {/* Grayscale Layer (Static) */}
-        <img 
-          src={src} 
+        <img
+          src={src}
           alt={`${alt} grayscale`}
           className="w-full h-full object-cover grayscale"
           draggable={false}
+          fetchPriority={priority ? 'high' : 'auto'}
+          loading={priority ? 'eager' : undefined}
         />
-        
+
         {/* Color Layer (Animated Opacity) */}
-        <motion.div 
+        <motion.div
           style={{ opacity }}
           className="absolute inset-0 z-10"
         >
-          <img 
-            src={src} 
+          <img
+            src={src}
             alt={`${alt} color`}
             className="w-full h-full object-cover"
             draggable={false}
+            fetchPriority={priority ? 'high' : 'auto'}
+            loading={priority ? 'eager' : undefined}
           />
           {overlayColor && <div className={`absolute inset-0 ${overlayColor} pointer-events-none`} />}
         </motion.div>

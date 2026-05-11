@@ -1,6 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { SpeedInsights } from "@vercel/speed-insights/react";
-import { Analytics } from "@vercel/analytics/react";
+import React, { useState, useEffect, useRef, Suspense, lazy } from 'react';
+
+const SpeedInsights = lazy(() =>
+  import('@vercel/speed-insights/react').then(m => ({ default: m.SpeedInsights }))
+);
+const Analytics = lazy(() =>
+  import('@vercel/analytics/react').then(m => ({ default: m.Analytics }))
+);
 import { motion, AnimatePresence } from 'motion/react';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -58,6 +63,7 @@ const BrandMarquee = ({ title, isMobile }: { title: string; isMobile: boolean })
 const LandingPage: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [analyticsReady, setAnalyticsReady] = useState(false);
   const [lang, setLang] = useState<Language>('de');
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [mousePos, setMousePos] = useState({ x: -500, y: -500 });
@@ -78,6 +84,14 @@ const LandingPage: React.FC = () => {
   // Reset title when on landing page
   useEffect(() => {
     document.title = "Magic Pop Studio — Creative Studio Berlin";
+  }, []);
+
+  useEffect(() => {
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(() => setAnalyticsReady(true), { timeout: 4000 });
+    } else {
+      setTimeout(() => setAnalyticsReady(true), 3000);
+    }
   }, []);
 
   const wasProjectOpen = useRef(false);
@@ -656,8 +670,12 @@ const LandingPage: React.FC = () => {
         )}
       </AnimatePresence>
 
-      <Analytics />
-      <SpeedInsights />
+      {analyticsReady && (
+        <Suspense fallback={null}>
+          <Analytics />
+          <SpeedInsights />
+        </Suspense>
+      )}
     </div>
   );
 };
