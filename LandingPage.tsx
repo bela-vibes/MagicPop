@@ -200,12 +200,24 @@ const LandingPage: React.FC = () => {
       }
     };
 
-    window.addEventListener('mousemove', handleMove);
-    window.addEventListener('touchmove', handleMove, { passive: true });
+    let mouseMoveListener: (() => void) | undefined;
+    const deferListeners = () => {
+      window.addEventListener('mousemove', handleMove);
+      window.addEventListener('touchmove', handleMove, { passive: true });
+      mouseMoveListener = () => {
+        window.removeEventListener('mousemove', handleMove);
+        window.removeEventListener('touchmove', handleMove);
+      };
+    };
+
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(deferListeners, { timeout: 500 }); // Defer for up to 500ms
+    } else {
+      setTimeout(deferListeners, 100); // Fallback to setTimeout
+    }
 
     return () => {
-      window.removeEventListener('mousemove', handleMove);
-      window.removeEventListener('touchmove', handleMove);
+      if (mouseMoveListener) mouseMoveListener();
     };
   }, []);
 
