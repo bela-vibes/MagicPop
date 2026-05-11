@@ -23,7 +23,6 @@ interface BrandItemProps {
 
 const BrandMarquee = ({ title }: { title: string }) => {
   const brands = ["LOQI", "Paul Kalkbrenner", "Dussmann", "Arte", "Momox", "Biteaway", "Cornelsen", "I Like Visuals", "Studio Stellar"];
-  const isMobileMarquee = typeof window !== 'undefined' && window.innerWidth < 768;
   
   return (
     <section className="px-6 md:px-12 py-12 md:py-32 overflow-hidden bg-transparent">
@@ -35,12 +34,11 @@ const BrandMarquee = ({ title }: { title: string }) => {
 
       <div className="relative flex overflow-hidden py-10 -mx-6 md:-mx-12">
         <motion.div 
-          animate={!isMobileMarquee ? { x: ["0%", "-50%"] } : undefined}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
           className="flex gap-x-12 md:gap-x-30 whitespace-nowrap pr-12 md:pr-40"
-          style={{ transform: 'translateZ(0)' }}
+          style={{ willChange: 'transform' }}
         >
-          {/* Static on mobile for debugging */}
           {[...brands, ...brands].map((brand, i) => (
             <span 
               key={`${brand}-${i}`} 
@@ -71,17 +69,22 @@ const LandingPage: React.FC = () => {
 
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [isClient, setIsClient] = useState(false);
   const requestRef = useRef<number>(null);
   const sectionOffsets = useRef<{ [key: string]: number }>({});
 
   useEffect(() => {
+    setIsClient(true);
     document.title = "magicpop | creative studio";
     
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
-    window.addEventListener('resize', checkMobile);
+    window.addEventListener('resize', checkMobile, { passive: true });
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
+
+  // Performance: Don't render anything until client is ready
+  if (!isClient) return <div className="bg-off-white min-h-screen" />;
 
   // Effect to handle routing/overlays based on URL path
   useEffect(() => {
