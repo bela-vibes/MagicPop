@@ -93,11 +93,11 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
       document.body.style.overflow = 'hidden';
       window.addEventListener('keydown', handleEsc);
     } else {
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
     }
     return () => {
       window.removeEventListener('keydown', handleEsc);
-      document.body.style.overflow = 'unset';
+      document.body.style.overflow = '';
     };
   }, [selectedProject]);
 
