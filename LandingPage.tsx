@@ -261,8 +261,17 @@ const LandingPage: React.FC = () => {
       rafId = requestAnimationFrame(animate);
     };
 
-    pushVars();
-    rafId = requestAnimationFrame(animate);
+    const startAnimation = () => {
+      pushVars();
+      rafId = requestAnimationFrame(animate);
+    };
+
+    if ('requestIdleCallback' in window) {
+      window.requestIdleCallback(startAnimation, { timeout: 500 });
+    } else {
+      setTimeout(startAnimation, 100);
+    }
+
     return () => cancelAnimationFrame(rafId);
   }, [isMobile]);
 
