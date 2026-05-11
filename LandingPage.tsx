@@ -44,7 +44,7 @@ const LandingPage: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   
-  // ORIGINAL BLOB LOGIC
+  // BLOB LOGIC
   const [mousePos, setMousePos] = useState({ x: -500, y: -500 });
   const [blob1Pos, setBlob1Pos] = useState({ x: 0, y: 0 });
   const [blob2Pos, setBlob2Pos] = useState({ x: 0, y: 0 });
@@ -59,13 +59,11 @@ const LandingPage: React.FC = () => {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Sync Mouse Position
   useEffect(() => {
     const handleMove = (e: MouseEvent | TouchEvent) => {
       const x = 'touches' in e ? e.touches[0].clientX : (e as MouseEvent).clientX;
       const y = 'touches' in e ? e.touches[0].clientY : (e as MouseEvent).clientY;
       setMousePos({ x, y });
-      // Zusätzlich für ProximityImage CSS Variablen setzen
       document.documentElement.style.setProperty('--mouse-x', `${x}px`);
       document.documentElement.style.setProperty('--mouse-y', `${y}px`);
     };
@@ -77,29 +75,26 @@ const LandingPage: React.FC = () => {
     };
   }, []);
 
-  // ORIGINAL DRIFT ANIMATION FOR BLOBS
   useEffect(() => {
     let time = 0;
     const animate = () => {
       time += 0.01;
       const driftX = Math.sin(time * 0.5) * 20;
       const driftY = Math.cos(time * 0.3) * 20;
-      
       setBlob1Pos((prev) => ({
-        x: prev.x + (mousePos.x + driftX - prev.x) * (isMobile ? 0.1 : 0.06),
-        y: prev.y + (mousePos.y + driftY - prev.y) * (isMobile ? 0.1 : 0.06),
+        x: prev.x + (mousePos.x + driftX - prev.x) * 0.06,
+        y: prev.y + (mousePos.y + driftY - prev.y) * 0.06,
       }));
       setBlob2Pos((prev) => ({
-        x: prev.x + (mousePos.x - driftX - prev.x) * (isMobile ? 0.05 : 0.03),
-        y: prev.y + (mousePos.y - driftY - prev.y) * (isMobile ? 0.05 : 0.03),
+        x: prev.x + (mousePos.x - driftX - prev.x) * 0.03,
+        y: prev.y + (mousePos.y - driftY - prev.y) * 0.03,
       }));
       requestRef.current = requestAnimationFrame(animate);
     };
     requestRef.current = requestAnimationFrame(animate);
     return () => { if (requestRef.current) cancelAnimationFrame(requestRef.current); };
-  }, [mousePos, isMobile]);
+  }, [mousePos]);
 
-  // Route & Theme Logic
   useEffect(() => {
     const path = location.pathname;
     if (path === '/impressum' || path === '/datenschutz' || path === '/') {
@@ -142,23 +137,21 @@ const LandingPage: React.FC = () => {
   return (
     <div className="relative selection:bg-magic-orange selection:text-white bg-off-white dark:bg-magic-dark transition-colors duration-500 min-h-screen overflow-x-hidden">
       
-      {/* THE OLD BLOB LOOK - RE-IMPLEMENTED */}
+      {/* BLOBS */}
       <div className="pointer-events-none fixed inset-0 z-[5] overflow-visible">
         <div 
-          className={`absolute w-[95vw] h-[95vw] md:w-[80vw] md:h-[80vw] lg:w-[60vw] lg:h-[60vw] max-w-[900px] max-h-[900px] rounded-full transition-colors duration-500 ease-in-out ${headerTheme.blobColor} ${isMobile ? 'opacity-90' : 'opacity-90'} dark:opacity-95`}
+          className={`absolute w-[95vw] h-[95vw] md:w-[80vw] md:h-[80vw] lg:w-[60vw] lg:h-[60vw] max-w-[900px] max-h-[900px] rounded-full transition-colors duration-500 ease-in-out ${headerTheme.blobColor} opacity-90 dark:opacity-95`}
           style={{
             transform: `translate3d(${blob1Pos.x}px, ${blob1Pos.y}px, 0) translate(-50%, -50%)`,
             willChange: 'transform',
-            WebkitFilter: isMobile ? 'blur(60px)' : 'blur(140px)',
             filter: isMobile ? 'blur(60px)' : 'blur(140px)',
           }}
         />
         <div 
-          className={`absolute w-[85vw] h-[85vw] md:w-[70vw] md:h-[70vw] lg:w-[50vw] lg:h-[50vw] max-w-[800px] max-h-[800px] rounded-full transition-colors duration-500 ease-in-out ${headerTheme.blobColor} ${isMobile ? 'opacity-75' : 'opacity-75'} dark:opacity-80`}
+          className={`absolute w-[85vw] h-[85vw] md:w-[70vw] md:h-[70vw] lg:w-[50vw] lg:h-[50vw] max-w-[800px] max-h-[800px] rounded-full transition-colors duration-500 ease-in-out ${headerTheme.blobColor} opacity-75 dark:opacity-80`}
           style={{
             transform: `translate3d(${blob2Pos.x}px, ${blob2Pos.y}px, 0) translate(-50%, -50%)`,
             willChange: 'transform',
-            WebkitFilter: isMobile ? 'blur(80px)' : 'blur(160px)',
             filter: isMobile ? 'blur(80px)' : 'blur(160px)',
           }}
         />
@@ -197,17 +190,56 @@ const LandingPage: React.FC = () => {
 
         <BrandMarquee title={t.contact.trustTitle} />
 
+        {/* KONTAKT SEKTION - VOLLSTÄNDIG WIEDERHERGESTELLT */}
         <Section id="contact" title={t.contact.title} subtitle={t.contact.subtitle} className="py-12 md:py-32">
-          <div className="flex flex-col lg:flex-row gap-12 md:gap-24">
-            <div className="lg:w-1/2">
-              <span className="font-archivo text-xs uppercase tracking-widest opacity-30 block mb-6">{t.contact.emailLabel}</span>
-              <a href={`mailto:${CONTACT_EMAIL}`} className="font-archivo uppercase tracking-tighter text-magic-orange block" style={{ fontSize: 'clamp(1rem, 5vw, 3rem)' }}>{CONTACT_EMAIL}</a>
-            </div>
-            <div className="lg:w-1/2 flex justify-center">
-                <motion.div animate={{ y: [0, -10, 0] }} transition={{ duration: 4, repeat: Infinity }} className="w-64 h-64 bg-yellow-400 rounded-full flex items-center justify-center p-8 shadow-xl">
-                   <h3 className="font-editorial text-3xl italic text-center text-magic-black">{t.contact.footerNoteSmall}</h3>
+          <div className="flex flex-col lg:flex-row gap-12 md:gap-24 mt-4">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="lg:w-1/2 flex flex-col justify-between">
+              <div className="space-y-6">
+                <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block">{t.contact.emailLabel}</span>
+                <a href={`mailto:${CONTACT_EMAIL}`} className="font-archivo uppercase tracking-tighter text-magic-black dark:text-off-white hover:text-magic-orange transition-colors no-underline block" style={{ fontSize: 'clamp(0.8rem, 4vw, 3.2rem)', lineHeight: '1' }}>
+                  {CONTACT_EMAIL}
+                </a>
+                <div className="flex flex-wrap gap-x-6 gap-y-3 pt-4 font-archivo text-[10px] uppercase tracking-[0.2em] text-magic-black/40 dark:text-off-white/40">
+                  <div className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-magic-orange animate-pulse" />{t.contact.replyTime}</div>
+                  <div className="flex items-center gap-2"><div className="w-1.5 h-1.5 rounded-full bg-magic-blue" />{t.contact.location}</div>
+                </div>
+              </div>
+              
+              <div className="hidden lg:block pt-16 md:pt-24">
+                <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block mb-6">{t.contact.followLabel}</span>
+                <div className="flex gap-8 font-archivo uppercase text-xs md:text-sm tracking-widest text-magic-black dark:text-off-white">
+                  <a href="https://www.instagram.com/magicpop.berlin" target="_blank" rel="noopener noreferrer" className="relative group overflow-hidden">
+                    <span className="block group-hover:-translate-y-full transition-transform duration-300">Instagram</span>
+                    <span className="absolute top-0 left-0 block translate-y-full group-hover:translate-y-0 transition-transform duration-300 text-magic-orange">Instagram</span>
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, scale: 0.9 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 1 }} className="lg:w-1/2 flex flex-col items-center justify-center">
+              <div className="relative w-full max-w-[280px] md:max-w-[380px]">
+                <motion.div animate={{ y: [0, -15, 0], rotate: [-6, -3, -6] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} className="relative aspect-square w-full bg-yellow-400 rounded-full flex flex-col items-center justify-center text-center p-8 md:p-12 shadow-xl">
+                  <div className="space-y-4 md:space-y-6 flex flex-col items-center">
+                    <h3 className="font-editorial text-4xl md:text-5xl lg:text-6xl text-magic-black italic leading-[1.1]">
+                      {t.contact.footerNoteSmall}
+                    </h3>
+                    <div className="flex gap-4 md:gap-6">
+                      <a href={`mailto:${CONTACT_EMAIL}`} className="w-12 h-12 md:w-14 md:h-14 bg-magic-black text-off-white rounded-full flex items-center justify-center transition-all hover:scale-110 shadow-xl group/icon">
+                        <Mail className="w-5 h-5 md:w-6 md:h-6 group-hover/icon:animate-bounce" />
+                      </a>
+                      <a href={`tel:${CONTACT_PHONE.replace(/\s+/g, '')}`} className="w-12 h-12 md:w-14 md:h-14 bg-magic-black text-off-white rounded-full flex items-center justify-center transition-all hover:scale-110 shadow-xl group/icon">
+                        <Phone className="w-5 h-5 md:w-6 md:h-6 group-hover/icon:animate-bounce" />
+                      </a>
+                    </div>
+                  </div>
                 </motion.div>
-            </div>
+              </div>
+              
+              <div className="lg:hidden w-full pt-16 flex flex-col items-center">
+                <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block mb-6">{t.contact.followLabel}</span>
+                <a href="https://www.instagram.com/magicpop.berlin" target="_blank" rel="noopener noreferrer" className="font-archivo uppercase text-xs tracking-widest text-magic-black dark:text-off-white">Instagram</a>
+              </div>
+            </motion.div>
           </div>
         </Section>
       </main>
