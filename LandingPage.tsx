@@ -80,12 +80,29 @@ const LandingPage: React.FC = () => {
     document.title = "Magic Pop Studio — Creative Studio Berlin";
   }, []);
 
+  const wasProjectOpen = useRef(false);
+
   // Effect to handle routing/overlays based on URL path
   useEffect(() => {
     const path = location.pathname;
+    const isHome = path === '/';
+    const isProject = !(['/impressum', '/datenschutz', '/', '/styleguide'].includes(path)) && PROJECTS.some(p => p.slug === path.substring(1));
     
     if (path === '/impressum' || path === '/datenschutz' || path === '/') {
       setSelectedProject(null);
+      
+      // If we were just on a project and now we are home, scroll to projects section
+      if (isHome && wasProjectOpen.current) {
+        const element = document.getElementById('projects');
+        if (element) {
+          setTimeout(() => {
+            const headerOffset = 80;
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.scrollY - headerOffset;
+            window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+          }, 100);
+        }
+      }
     } else {
       const slug = path.substring(1); // remove leading slash
       const project = PROJECTS.find(p => p.slug === slug);
@@ -96,6 +113,8 @@ const LandingPage: React.FC = () => {
         navigate('/');
       }
     }
+    
+    wasProjectOpen.current = isProject;
   }, [location.pathname, navigate]);
   
   // Effect to handle inner-page scrolling when coming from a sub-route
