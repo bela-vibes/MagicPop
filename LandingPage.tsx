@@ -29,7 +29,7 @@ const BrandMarquee = ({ title, isMobile }: { title: string; isMobile: boolean })
     ));
 
   return (
-    <section className="px-6 md:px-12 py-12 md:py-32 overflow-hidden bg-transparent">
+    <section className="px-6 md:px-12 pt-12 pb-16 md:pt-32 md:pb-48 overflow-hidden bg-transparent">
       <div className="mb-10 md:mb-16">
         <h3 className="font-editorial text-2xl md:text-4xl lg:text-5xl italic text-magic-black dark:text-off-white leading-[1.1]">
           {title}
@@ -420,7 +420,7 @@ const LandingPage: React.FC = () => {
           isMobile={isMobile}
         />
 
-        <Section id="services" title={t.whatWeDo.title} subtitle={t.whatWeDo.subtitle} className="bg-transparent pt-6 pb-12 md:py-32">
+        <Section id="services" title={t.whatWeDo.title} subtitle={t.whatWeDo.subtitle} className="bg-transparent pt-6 pb-24 md:pt-32 md:pb-48">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mt-12">
             {t.whatWeDo.services.map((service, i) => (
               <motion.div 
@@ -444,7 +444,7 @@ const LandingPage: React.FC = () => {
           id="about" 
           title={t.studio.title} 
           subtitle={t.studio.subtitle} 
-          className="relative overflow-hidden py-12 md:py-32"
+          className="relative overflow-hidden pt-24 pb-12 md:pt-48 md:pb-32"
         >
           <div className="relative z-10 flex flex-col lg:flex-row gap-8 md:gap-16 items-center">
             <motion.div 
@@ -478,7 +478,7 @@ const LandingPage: React.FC = () => {
 
         <BrandMarquee title={t.contact.trustTitle} isMobile={isMobile} />
 
-        <Section id="contact" title={t.contact.title} subtitle={t.contact.subtitle} className="bg-transparent py-12 md:py-32">
+        <Section id="contact" title={t.contact.title} subtitle={t.contact.subtitle} className="bg-transparent pt-16 pb-12 md:pt-40 md:pb-32">
           {/* Main Contact Grid */}
           <div className="flex flex-col lg:flex-row gap-12 md:gap-24 mt-4">
             <motion.div 
