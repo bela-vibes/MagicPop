@@ -147,6 +147,19 @@ html { -ms-overflow-style: none; scrollbar-width: none; }
 .brand-marquee-css {
   animation: brand-marquee 30s linear infinite;
   will-change: transform;
+  /* Safari fix: isoliert den render-context */
+  contain: paint;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.brand-marquee-item {
+  display: inline-block;
+  /* Safari fix: erzwingt sauberes subpixel-rendering für jedes einzelne wort */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* Image Protection */
@@ -165,7 +178,7 @@ img {
   
   /* Safari Stability Fix: Reduce Blur-Intensity for Blobs to prevent White Screen */
   .blur-3xl {
-    filter: blur(40px) !important;
-    -webkit-filter: blur(40px) !important;
+    filter: blur(32px) !important;
+    -webkit-filter: blur(32px) !important;
   }
 }
