@@ -12,16 +12,17 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
   const t = TRANSLATIONS[lang].hero;
   const textRef = useRef<HTMLSpanElement>(null);
   const [isNear, setIsNear] = useState(false);
-  const [isMobileDevice, setIsMobileDevice] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const checkMobile = () => {
-      const isMobile = window.matchMedia("(max-width: 767px)").matches;
-      setIsMobileDevice(isMobile);
-      return isMobile;
-    };
-    
-    if (checkMobile()) return;
+    setIsMobile(window.innerWidth < 768);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  useEffect(() => {
+    if (isMobile) return;
     
     const handleMouseMove = (e: MouseEvent) => {
       if (!textRef.current) return;
@@ -45,20 +46,18 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
         <div className="flex-1 flex flex-col justify-start pt-12 md:pt-0">
           <h1 className="font-archivo text-[18vw] md:text-[16vw] leading-[0.8] uppercase tracking-tighter text-magic-black dark:text-off-white flex flex-col select-none pointer-events-none transition-colors duration-500">
             <motion.span 
-              initial={isMobileDevice ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+              initial={{ opacity: 0, y: 100 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
               className="relative inline-block"
-              style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
             >
               Magic
             </motion.span>
             <motion.span 
-              initial={isMobileDevice ? { opacity: 1, y: 0 } : { opacity: 0, y: 100 }}
+              initial={{ opacity: 0, y: 100 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.1, ease: [0.19, 1, 0.22, 1] }}
               className="text-right -mt-[2vw] md:-mt-[3vw] relative inline-block"
-              style={{ backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
             >
               Pop
             </motion.span>
@@ -66,7 +65,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
         </div>
         
         <motion.div 
-          initial={isMobileDevice ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4, ease: [0.19, 1, 0.22, 1] }}
           className="mt-auto md:mt-4 mb-8 md:mb-4 max-w-4xl relative z-20"
