@@ -510,9 +510,55 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
                 </div>
               )}
 
-              <div className="mt-32 pb-12 flex flex-col items-center">
+              {/* Next project in same category — circular */}
+              {(() => {
+                const categoryProjects = PROJECTS.filter(p => p.category[lang] === selectedProject.category[lang]);
+                if (categoryProjects.length < 2) return null;
+                const currentIdx = categoryProjects.findIndex(p => p.id === selectedProject.id);
+                const next = categoryProjects[(currentIdx + 1) % categoryProjects.length];
+                return (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className="mt-32 pt-10 border-t border-magic-black/10 dark:border-off-white/10"
+                  >
+                    <div
+                      onClick={() => handleOpenProject(next)}
+                      className="group cursor-pointer flex items-center justify-between gap-6"
+                    >
+                      <div className="flex flex-col gap-2">
+                        <span className="font-archivo text-[10px] uppercase tracking-[0.25em] text-magic-black/30 dark:text-off-white/30">
+                          {t.nextProject} · {next.category[lang]}
+                        </span>
+                        <h3 className="font-editorial italic text-2xl md:text-5xl text-magic-black/60 dark:text-off-white/60 group-hover:text-magic-black dark:group-hover:text-off-white transition-colors duration-300">
+                          {next.title[lang]}
+                        </h3>
+                      </div>
+
+                      <div className="flex-shrink-0 flex items-center gap-4">
+                        <div className="w-30 md:w-48 aspect-[3/2] overflow-hidden rounded-sm flex-shrink-0">
+                          <img
+                            src={next.image}
+                            alt={next.title[lang]}
+                            loading="lazy"
+                            draggable={false}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                          />
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5 text-magic-black/30 dark:text-off-white/30 group-hover:text-magic-orange transition-colors duration-300 group-hover:translate-x-1 transition-transform flex-shrink-0">
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25" />
+                        </svg>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })()}
+
+              <div className="mt-24 pb-12 flex flex-col items-center">
                 <div className="w-px h-24 bg-magic-black/20 dark:bg-off-white/20 mb-12"></div>
-                <button 
+                <button
                   onClick={handleCloseProject}
                   className="font-archivo uppercase tracking-widest text-xs md:text-sm text-magic-black/40 dark:text-off-white/40 hover:text-magic-orange transition-colors flex items-center gap-4 group"
                 >
