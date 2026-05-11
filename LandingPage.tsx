@@ -1,17 +1,57 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Analytics } from "@vercel/analytics/react";
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useScroll, useTransform } from 'motion/react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import ProjectsGrid from './components/ProjectsGrid';
 import Section from './components/Section';
 import { Language, Project } from './types';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
-import { TRANSLATIONS, PROJECTS } from './constants';
+import { TRANSLATIONS, PROJECTS, CONTACT_EMAIL, CONTACT_PHONE } from './constants';
 import Impressum from './components/Impressum';
 import Datenschutz from './components/Datenschutz';
 import ProximityImage from './components/ProximityImage';
+
+import { Mail, Phone } from 'lucide-react';
+
+interface BrandItemProps {
+  brand: string;
+  index: number;
+  scrollYProgress: any;
+}
+
+const BrandMarquee = ({ title }: { title: string }) => {
+  const brands = ["LOQI", "Paul Kalkbrenner", "Dussmann", "I Like Visuals",  "Arte", "Momox", "Biteaway", "Cornelsen", "Studio Stellar"];
+  
+  return (
+    <section className="px-6 md:px-12 py-12 md:py-32 overflow-hidden bg-transparent">
+      <div className="mb-10 md:mb-16">
+        <h3 className="font-editorial text-2xl md:text-4xl lg:text-5xl italic text-magic-black dark:text-off-white leading-[1.1]">
+          {title}
+        </h3>
+      </div>
+
+      <div className="relative flex overflow-hidden py-10 -mx-6 md:-mx-12">
+        <motion.div 
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+          className="flex gap-x-20 md:gap-x-30 whitespace-nowrap pr-20 md:pr-40"
+        >
+          {/* Erster Satz Icons/Marken */}
+          {[...brands, ...brands].map((brand, i) => (
+            <span 
+              key={`${brand}-${i}`} 
+              className="font-archivo text-4xl md:text-7xl lg:text-8xl uppercase tracking-tighter text-magic-black/90 dark:text-off-white/90 select-none cursor-default"
+            >
+              {brand}
+            </span>
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 
 const LandingPage: React.FC = () => {
   const location = useLocation();
@@ -25,6 +65,11 @@ const LandingPage: React.FC = () => {
   const [isMobile, setIsMobile] = useState(false);
   const requestRef = useRef<number>(null);
   const sectionOffsets = useRef<{ [key: string]: number }>({});
+
+  // Reset title when on landing page
+  useEffect(() => {
+    document.title = "Magic Pop Studio — Creative Studio Berlin";
+  }, []);
 
   // Effect to handle routing/overlays based on URL path
   useEffect(() => {
@@ -160,7 +205,7 @@ const LandingPage: React.FC = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPos = window.scrollY + 350;
+      const scrollPos = window.scrollY + 400;
       const offsets = sectionOffsets.current;
 
       if (offsets.contact && scrollPos >= offsets.contact) {
@@ -254,7 +299,7 @@ const LandingPage: React.FC = () => {
           mousePos={mousePos}
         />
 
-        <Section id="services" title={t.whatWeDo.title} subtitle={t.whatWeDo.subtitle} className="bg-transparent py-16 md:py-32">
+        <Section id="services" title={t.whatWeDo.title} subtitle={t.whatWeDo.subtitle} className="bg-transparent pt-6 pb-12 md:py-32">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mt-12">
             {t.whatWeDo.services.map((service, i) => (
               <motion.div 
@@ -266,7 +311,8 @@ const LandingPage: React.FC = () => {
                 className="group pt-0 md:pt-4"
               >
                 <span className="font-archivo text-xs md:text-sm uppercase tracking-widest mb-4 block text-magic-black/30 dark:text-off-white/30">0{i+1}</span>
-                <h3 className="font-archivo text-xl md:text-2xl uppercase tracking-tighter mb-4 md:mb-6 text-magic-black dark:text-off-white group-hover:translate-x-2 transition-transform duration-300">{service.title}</h3>
+                <h3 className="font-archivo text-xl md:text-2xl uppercase tracking-tighter mb-1 text-magic-black dark:text-off-white group-hover:translate-x-2 transition-transform duration-300">{service.title}</h3>
+                <span className="font-archivo text-[10px] md:text-[11px] uppercase tracking-[0.2em] mb-4 md:mb-6 block text-magic-black/20 dark:text-off-white/20 transition-transform duration-300 group-hover:translate-x-2">{service.subline}</span>
                 <p className="text-base md:text-lg text-magic-black/60 dark:text-off-white/60 leading-relaxed font-medium">{service.desc}</p>
               </motion.div>
             ))}
@@ -277,7 +323,7 @@ const LandingPage: React.FC = () => {
           id="about" 
           title={t.studio.title} 
           subtitle={t.studio.subtitle} 
-          className="relative overflow-hidden py-16 md:py-32"
+          className="relative overflow-hidden py-12 md:py-32"
         >
           <div className="relative z-10 flex flex-col lg:flex-row gap-8 md:gap-16 items-center">
             <motion.div 
@@ -304,57 +350,109 @@ const LandingPage: React.FC = () => {
             >
               <p className="font-editorial text-2xl md:text-3xl italic leading-tight drop-shadow-sm opacity-90">{t.studio.p1}</p>
               <p className="text-base md:text-lg opacity-60 font-medium leading-relaxed">{t.studio.p2}</p>
-              <a 
-                href="mailto:hello@magicpop.berlin"
-                className="inline-block w-full md:w-auto bg-magic-blue text-white font-archivo uppercase tracking-widest px-10 py-5 hover:bg-blue-700 transition-all duration-300 shadow-[0_10px_40_rgba(0,56,255,0.3)] hover:shadow-[0_15px_50px_rgba(0,56,255,0.5)] active:scale-95 text-center"
-              >
-                {t.studio.startProject}
-              </a>
             </motion.div>
           </div>
         </Section>
 
-        <Section id="contact" title={t.contact.title} subtitle={t.contact.subtitle} className="bg-transparent py-16 md:py-32">
-          <div className="flex flex-col md:flex-row gap-12 md:gap-16 mt-12">
+        <BrandMarquee title={t.contact.trustTitle} />
+
+        <Section id="contact" title={t.contact.title} subtitle={t.contact.subtitle} className="bg-transparent py-12 md:py-32">
+          {/* Main Contact Grid */}
+          <div className="flex flex-col lg:flex-row gap-12 md:gap-24 mt-4">
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
-              className="md:w-1/2 space-y-10 md:space-y-12"
+              className="lg:w-1/2 flex flex-col justify-between"
             >
-              <div>
-                <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block mb-4">{t.contact.emailLabel}</span>
-                <a href="mailto:hello@magicpop.berlin" 
-   className="font-archivo uppercase tracking-tighter 
-              text-magic-black dark:text-off-white hover:text-magic-orange 
-              transition-colors duration-300 underline underline-offset-8 
-              decoration-transparent hover:decoration-magic-orange"
-   style={{ fontSize: 'clamp(1rem, 3.5vw, 3rem)', wordBreak: 'keep-all' }}>
-  hello@magicpop.berlin
-</a>
+              <div className="space-y-6">
+                <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block">{t.contact.emailLabel}</span>
+                <a href={`mailto:${CONTACT_EMAIL}`} 
+                   className="font-archivo uppercase tracking-tighter text-magic-black dark:text-off-white hover:text-magic-orange transition-colors duration-300 no-underline hover:underline underline-offset-8 decoration-magic-orange whitespace-nowrap block"
+                   style={{ fontSize: 'clamp(0.8rem, 4vw, 3.2rem)', lineHeight: '1' }}>
+                  {CONTACT_EMAIL}
+                </a>
+                
+                <div className="flex flex-wrap gap-x-6 gap-y-3 pt-4 font-archivo text-[10px] uppercase tracking-[0.2em] text-magic-black/40 dark:text-off-white/40">
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-magic-orange animate-pulse" />
+                    {t.contact.replyTime}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-1.5 h-1.5 rounded-full bg-magic-blue" />
+                    {t.contact.location}
+                  </div>
+                </div>
               </div>
-              <div>
-                <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block mb-4">{t.contact.followLabel}</span>
-                <div className="flex gap-6 md:gap-8 font-archivo uppercase text-xs md:text-sm tracking-widest text-magic-black dark:text-off-white">
-                  <a href="https://www.instagram.com/magicpop.berlin" target="_blank" rel="noopener noreferrer" className="hover:text-magic-orange transition-colors">Instagram</a>
+
+              {/* Instagram on Desktop */}
+              <div className="hidden lg:block pt-16 md:pt-24">
+                <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block mb-6">{t.contact.followLabel}</span>
+                <div className="flex gap-8 font-archivo uppercase text-xs md:text-sm tracking-widest text-magic-black dark:text-off-white">
+                  <a href="https://www.instagram.com/magicpop.berlin" target="_blank" rel="noopener noreferrer" className="relative group overflow-hidden">
+                    <span className="block group-hover:-translate-y-full transition-transform duration-300">Instagram</span>
+                    <span className="absolute top-0 left-0 block translate-y-full group-hover:translate-y-0 transition-transform duration-300 text-magic-orange">Instagram</span>
+                  </a>
                 </div>
               </div>
             </motion.div>
+
             <motion.div 
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 1, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
-              className="md:w-1/2 bg-yellow-400 p-8 md:p-12 flex flex-col justify-center shadow-[0_30px_80px_-20px_rgba(250,204,21,0.3)] rounded-sm"
+              className="lg:w-1/2 flex flex-col items-center justify-center py-12 lg:py-0"
             >
-              <p className="font-editorial text-3xl md:text-5xl text-magic-black italic leading-tight mb-8">{t.contact.footerNote}</p>
-              <a 
-                href="mailto:hello@magicpop.berlin"
-                className="inline-block bg-magic-black text-off-white font-archivo uppercase tracking-widest px-10 py-5 hover:bg-magic-black/80 transition-all duration-300 self-start active:scale-95 text-center"
-              >
-                {t.studio.startProject}
-              </a>
+              <div className="relative w-full max-w-[280px] md:max-w-[340px] lg:max-w-[380px]">
+                <motion.div 
+                  animate={{ 
+                    y: [0, -15, 0],
+                    rotate: [-6, -3, -6]
+                  }}
+                  transition={{ 
+                    duration: 6, 
+                    repeat: Infinity, 
+                    ease: "easeInOut" 
+                  }}
+                  className="relative aspect-square w-full bg-yellow-400 rounded-full flex flex-col items-center justify-center text-center p-8 md:p-12 shadow-[0_30px_80px_-20px_rgba(250,204,21,0.4)] transition-shadow duration-500"
+                >
+                  <div className="space-y-4 md:space-y-6 flex flex-col items-center">
+                    <h3 className="font-editorial text-4xl md:text-5xl lg:text-6xl text-magic-black italic leading-[1.1] max-w-[200px] md:max-w-[260px] lg:max-w-[300px]">
+                      {t.contact.footerNoteSmall}
+                    </h3>
+                    
+                    <div className="flex gap-4 md:gap-6">
+                      <a 
+                        href={`mailto:${CONTACT_EMAIL}`}
+                        className="w-12 h-12 md:w-14 md:h-14 bg-magic-black text-off-white rounded-full flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-95 shadow-xl group/icon"
+                        title={CONTACT_EMAIL}
+                      >
+                        <Mail className="w-5 h-5 md:w-6 md:h-6 group-hover/icon:animate-bounce" />
+                      </a>
+                      <a 
+                        href={`tel:${CONTACT_PHONE.replace(/\s+/g, '')}`}
+                        className="w-12 h-12 md:w-14 md:h-14 bg-magic-black text-off-white rounded-full flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-95 shadow-xl group/icon"
+                        title={CONTACT_PHONE}
+                      >
+                        <Phone className="w-5 h-5 md:w-6 md:h-6 group-hover/icon:animate-bounce" />
+                      </a>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+
+              {/* Instagram on Mobile */}
+              <div className="lg:hidden w-full pt-16 flex flex-col items-center">
+                <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block mb-6">{t.contact.followLabel}</span>
+                <div className="flex gap-8 font-archivo uppercase text-xs md:text-sm tracking-widest text-magic-black dark:text-off-white">
+                  <a href="https://www.instagram.com/magicpop.berlin" target="_blank" rel="noopener noreferrer" className="relative group overflow-hidden">
+                    <span className="block group-hover:-translate-y-full transition-transform duration-300">Instagram</span>
+                    <span className="absolute top-0 left-0 block translate-y-full group-hover:translate-y-0 transition-transform duration-300 text-magic-orange">Instagram</span>
+                  </a>
+                </div>
+              </div>
             </motion.div>
           </div>
         </Section>
