@@ -110,7 +110,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
   };
 
   const handleCloseProject = () => {
-    navigate('/');
+    navigate('/#projects');
   };
 
   useEffect(() => {
@@ -266,7 +266,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
                 <h3 className="font-archivo translate-y-8 text-xl uppercase tracking-tighter hyphens-manual transition-all delay-75 duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] md:text-3xl md:group-hover:translate-y-0 md:group-hover:scale-105 lg:text-5xl lg:group-hover:scale-110">
                   {project.title[lang]}
                 </h3>
-                <div className="mt-4 translate-y-8 border-0 bg-white/45 px-6 py-2 text-[10px] uppercase tracking-widest text-white shadow-sm backdrop-blur-md transition-transform delay-100 duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] md:mt-6 md:px-8 md:py-3 md:text-xs lg:mt-8 md:group-hover:translate-y-0">
+                <div className="mt-4 translate-y-8 border-0 bg-white/45 px-6 py-2 text-[10px] uppercase tracking-widest text-white backdrop-blur-md transition-transform delay-100 duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] md:mt-6 md:px-8 md:py-3 md:text-xs lg:mt-8 md:group-hover:translate-y-0">
                   {t.viewProject}
                 </div>
               </div>
