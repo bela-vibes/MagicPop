@@ -39,8 +39,10 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
     return PROJECTS.filter(p => p.category[lang] === activeFilter);
   }, [activeFilter, lang]);
 
-  // Edge Scrolling Logic
+  // Edge scrolling (pointer only) — skip perpetual RAF on narrow viewports / iOS
   useEffect(() => {
+    if (isMobile) return;
+
     const startScrolling = () => {
       if (scrollRef.current && scrollSpeedRef.current !== 0) {
         scrollRef.current.scrollLeft += scrollSpeedRef.current;
@@ -55,7 +57,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, []);
+  }, [isMobile]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!scrollRef.current) return;
