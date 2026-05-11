@@ -61,7 +61,7 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
 
   return (
     <>
-      <header 
+      <header
         className={`fixed top-0 left-0 w-full z-[700] transition-[background-color,padding,box-shadow] duration-500 ease-in-out py-5 lg:py-6 flex justify-between items-center ${bgColor}`}
         style={{
           paddingLeft: 'max(1.5rem, env(safe-area-inset-left))',

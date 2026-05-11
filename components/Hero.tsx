@@ -14,16 +14,14 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
   const [isNear, setIsNear] = useState(false);
 
   useEffect(() => {
+    if (window.matchMedia('(hover: none)').matches) return;
+
     const handleMouseMove = (e: MouseEvent) => {
       if (!textRef.current) return;
       const rect = textRef.current.getBoundingClientRect();
-      
-      // Calculate distance to the bounding box
       const dx = Math.max(rect.left - e.clientX, 0, e.clientX - rect.right);
       const dy = Math.max(rect.top - e.clientY, 0, e.clientY - rect.bottom);
-      const distance = Math.sqrt(dx * dx + dy * dy);
-
-      setIsNear(distance < 110);
+      setIsNear(Math.sqrt(dx * dx + dy * dy) < 110);
     };
 
     window.addEventListener('mousemove', handleMouseMove);
@@ -65,9 +63,9 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
             <span 
               ref={textRef}
               className={`font-archivo not-italic text-2xl md:text-4xl lg:text-5xl uppercase tracking-tight transition-colors duration-500 cursor-default inline-block ${
-                isNear 
-                  ? 'text-off-white dark:text-off-white' 
-                  : 'text-magic-orange'
+                isNear
+                  ? 'text-off-white dark:text-off-white'
+                  : 'text-magic-orange dark:text-off-white md:text-magic-orange'
               }`}
             >
               {t.sublineBold1} <br />

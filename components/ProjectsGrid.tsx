@@ -240,6 +240,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
                   loop
                   playsInline
                   autoPlay
+                  preload="none"
                   className="relative z-0 h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] md:group-hover:scale-110"
                 />
               ) : (

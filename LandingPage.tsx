@@ -65,7 +65,7 @@ const LandingPage: React.FC = () => {
   const [blob2Pos, setBlob2Pos] = useState({ x: 0, y: 0 });
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isMobile, setIsMobile] = useState(
-    () => typeof window !== 'undefined' && window.innerWidth < 768
+    () => typeof window !== 'undefined' && (window.innerWidth < 768 || window.matchMedia('(hover: none)').matches)
   );
   const requestRef = useRef<number | null>(null);
   const sectionOffsets = useRef<{ [key: string]: number }>({});
@@ -159,7 +159,7 @@ const LandingPage: React.FC = () => {
       sectionOffsets.current = offsets;
     };
 
-    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    const checkMobile = () => setIsMobile(window.innerWidth < 768 || window.matchMedia('(hover: none)').matches);
 
     const onResize = () => {
       updateOffsets();
@@ -317,6 +317,20 @@ const LandingPage: React.FC = () => {
   }, [isDarkMode]);
 
   useEffect(() => {
+    const colorMap: Record<string, { light: string; dark: string }> = {
+      'bg-transparent':  { light: '#F9F7F2', dark: '#000000' },
+      'bg-magic-orange': { light: '#FF4D00', dark: '#FF4D00' },
+      'bg-yellow-400':   { light: '#FACC15', dark: '#FACC15' },
+      'bg-magic-blue':   { light: '#0038FF', dark: '#0038FF' },
+      'bg-magic-pink':   { light: '#FFB7D5', dark: '#FFB7D5' },
+    };
+    const entry = colorMap[headerTheme.bg] ?? colorMap['bg-transparent'];
+    const color = isDarkMode ? entry.dark : entry.light;
+    const meta = document.querySelector<HTMLMetaElement>('meta[name="theme-color"]');
+    if (meta) meta.content = color;
+  }, [headerTheme.bg, isDarkMode]);
+
+  useEffect(() => {
     const handleScroll = () => {
       const scrollPos = window.scrollY + 400;
       const offsets = sectionOffsets.current;
@@ -370,6 +384,7 @@ const LandingPage: React.FC = () => {
               ? {
                   transform:
                     'translate3d(var(--blob1-x, 0px), var(--blob1-y, 0px), 0) translate(-50%, -50%)',
+                  willChange: 'transform',
                   WebkitBackfaceVisibility: 'hidden',
                   backfaceVisibility: 'hidden',
                   WebkitPerspective: '1000px',
@@ -397,6 +412,7 @@ const LandingPage: React.FC = () => {
               ? {
                   transform:
                     'translate3d(var(--blob2-x, 0px), var(--blob2-y, 0px), 0) translate(-50%, -50%)',
+                  willChange: 'transform',
                   WebkitBackfaceVisibility: 'hidden',
                   backfaceVisibility: 'hidden',
                   WebkitPerspective: '1000px',
