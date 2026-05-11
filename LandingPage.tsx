@@ -382,7 +382,7 @@ const LandingPage: React.FC = () => {
           </div>
         </MemoizedSection>
 
-        <BrandMarquee title={t.contact.trustTitle} />
+        {/* <BrandMarquee title={t.contact.trustTitle} /> */}
 
         <MemoizedSection id="contact" title={t.contact.title} subtitle={t.contact.subtitle} className="bg-transparent py-12 md:py-32">
           {/* Main Contact Grid */}
