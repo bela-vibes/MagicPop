@@ -1,6 +1,6 @@
 
 import React, { useEffect, useRef, useMemo } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, MotionValue } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
 import { PROJECTS, TRANSLATIONS } from '../constants';
 import { Project, Language } from '../types';
@@ -10,10 +10,11 @@ interface ProjectsGridProps {
   lang: Language;
   selectedProject: Project | null;
   setSelectedProject: (project: Project | null) => void;
-  mousePos: { x: number; y: number };
+  mouseX: MotionValue<number>;
+  mouseY: MotionValue<number>;
 }
 
-const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setSelectedProject, mousePos }) => {
+const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setSelectedProject, mouseX, mouseY }) => {
   const navigate = useNavigate();
   const [activeFilter, setActiveFilter] = React.useState<string | null>(null);
   const [isEdgeScrolling, setIsEdgeScrolling] = React.useState(false);
@@ -32,23 +33,27 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
     return PROJECTS.filter(p => p.category[lang] === activeFilter);
   }, [activeFilter, lang]);
 
-  // Edge Scrolling Logic
+  // Optimized Edge Scrolling Logic
   useEffect(() => {
+    let animationFrameId: number;
+    
     const startScrolling = () => {
-      if (scrollRef.current && scrollSpeedRef.current !== 0) {
+      if (isEdgeScrolling && scrollRef.current && scrollSpeedRef.current !== 0) {
         scrollRef.current.scrollLeft += scrollSpeedRef.current;
+        animationFrameId = requestAnimationFrame(startScrolling);
       }
-      animationFrameRef.current = requestAnimationFrame(startScrolling);
     };
 
-    animationFrameRef.current = requestAnimationFrame(startScrolling);
+    if (isEdgeScrolling) {
+      animationFrameId = requestAnimationFrame(startScrolling);
+    }
 
     return () => {
-      if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
       }
     };
-  }, []);
+  }, [isEdgeScrolling]);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!scrollRef.current) return;
@@ -217,7 +222,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: index * 0.1, ease: [0.19, 1, 0.22, 1] }}
-            className="w-[75vw] md:w-[60vw] lg:w-[43vw] flex-shrink-0 snap-start group cursor-pointer"
+            className="w-[75vw] md:w-[60vw] lg:w-[45vw] flex-shrink-0 snap-start group cursor-pointer"
           >
             <div 
               className="relative overflow-hidden bg-magic-black/5 dark:bg-off-white/5 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:scale-[1.02] group-hover:shadow-[0_40px_80px_-20px_rgba(28,25,23,0.3)] dark:group-hover:shadow-[0_40px_80px_-20px_rgba(255,77,0,0.3)] rounded-sm"
@@ -333,7 +338,8 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setS
                           <ProximityImage 
                             src={selectedProject.gallery[0] || selectedProject.image} 
                             alt="" 
-                            mousePos={mousePos}
+                            mouseX={mouseX}
+                            mouseY={mouseY}
                             className="w-full h-auto"
                           />
                         )}
