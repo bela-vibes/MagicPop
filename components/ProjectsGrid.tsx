@@ -10,18 +10,10 @@ interface ProjectsGridProps {
   lang: Language;
   selectedProject: Project | null;
   setSelectedProject: (project: Project | null) => void;
-  pointerRef: React.MutableRefObject<{ x: number; y: number }>;
-  /** Skip perpetual RAF (edge-scroll is pointer-only); narrow layouts only. */
-  isMobile?: boolean;
+  mousePos: { x: number; y: number };
 }
 
-const ProjectsGrid: React.FC<ProjectsGridProps> = ({
-  lang,
-  selectedProject,
-  setSelectedProject,
-  pointerRef,
-  isMobile = false,
-}) => {
+const ProjectsGrid: React.FC<ProjectsGridProps> = ({ lang, selectedProject, setSelectedProject, mousePos }) => {
   const navigate = useNavigate();
   const [activeFilter, setActiveFilter] = React.useState<string | null>(null);
   const [isEdgeScrolling, setIsEdgeScrolling] = React.useState(false);
@@ -40,10 +32,8 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
     return PROJECTS.filter(p => p.category[lang] === activeFilter);
   }, [activeFilter, lang]);
 
-  // Edge Scrolling Logic (desktop only — continuous RAF is costly on iOS)
+  // Edge Scrolling Logic
   useEffect(() => {
-    if (isMobile) return;
-
     const startScrolling = () => {
       if (scrollRef.current && scrollSpeedRef.current !== 0) {
         scrollRef.current.scrollLeft += scrollSpeedRef.current;
@@ -58,7 +48,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [isMobile]);
+  }, []);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!scrollRef.current) return;
@@ -335,10 +325,10 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
                             />
                           </div>
                         ) : (
-                          <ProximityImage
-                            src={selectedProject.gallery[0] || selectedProject.image}
-                            alt=""
-                            pointerRef={pointerRef}
+                          <ProximityImage 
+                            src={selectedProject.gallery[0] || selectedProject.image} 
+                            alt="" 
+                            mousePos={mousePos}
                             className="w-full h-auto"
                           />
                         )}
