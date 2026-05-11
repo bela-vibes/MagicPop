@@ -134,6 +134,21 @@ html { -ms-overflow-style: none; scrollbar-width: none; }
   hyphens: manual;
 }
 
+/* Mobile: GPU-friendly marquee (avoids long-running JS-driven Motion on the main thread) */
+@keyframes brand-marquee {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.brand-marquee-css {
+  animation: brand-marquee 30s linear infinite;
+  will-change: transform;
+}
+
 /* Image Protection */
 img {
   -webkit-user-drag: none;
