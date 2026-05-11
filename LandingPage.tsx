@@ -22,7 +22,7 @@ const BrandMarquee = ({ title, isMobile }: { title: string; isMobile: boolean })
     [...brands, ...brands].map((brand, i) => (
       <span
         key={`${keyPrefix}-${brand}-${i}`}
-        className="font-archivo text-4xl md:text-7xl lg:text-8xl uppercase tracking-tighter text-magic-black/90 dark:text-off-white/90 select-none cursor-default"
+        className="brand-marquee-item font-archivo text-4xl md:text-7xl lg:text-8xl uppercase tracking-tighter text-magic-black/90 dark:text-off-white/90 select-none cursor-default px-10 md:px-15"
       >
         {brand}
       </span>
@@ -38,14 +38,14 @@ const BrandMarquee = ({ title, isMobile }: { title: string; isMobile: boolean })
 
       <div className="relative flex overflow-hidden py-10 -mx-6 md:-mx-12">
         {isMobile ? (
-          <div className="brand-marquee-css flex w-max gap-x-20 md:gap-x-30 whitespace-nowrap pr-20 md:pr-40">
+          <div className="brand-marquee-css flex w-max whitespace-nowrap">
             {row('css')}
           </div>
         ) : (
           <motion.div
             animate={{ x: ['0%', '-50%'] }}
             transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-            className="flex gap-x-20 md:gap-x-30 whitespace-nowrap pr-20 md:pr-40"
+            className="flex w-max whitespace-nowrap"
           >
             {row('motion')}
           </motion.div>
