@@ -71,9 +71,35 @@ const StyleGuide: React.FC = () => {
   ];
 
   const handleCopy = (hex: string) => {
-    navigator.clipboard.writeText(hex);
-    setCopiedColor(hex);
-    setTimeout(() => setCopiedColor(null), 2000);
+    const showToast = () => {
+      setCopiedColor(hex);
+      setTimeout(() => setCopiedColor(null), 2000);
+    };
+
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(hex).then(showToast).catch(() => {
+        // Fallback für iPad Safari
+        const el = document.createElement('textarea');
+        el.value = hex;
+        el.style.cssText = 'position:fixed;opacity:0';
+        document.body.appendChild(el);
+        el.focus();
+        el.select();
+        document.execCommand('copy');
+        document.body.removeChild(el);
+        showToast();
+      });
+    } else {
+      const el = document.createElement('textarea');
+      el.value = hex;
+      el.style.cssText = 'position:fixed;opacity:0';
+      document.body.appendChild(el);
+      el.focus();
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+      showToast();
+    }
   };
 
   return (
