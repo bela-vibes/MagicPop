@@ -397,7 +397,7 @@ const LandingPage: React.FC = () => {
           lang={lang}
           selectedProject={selectedProject}
           setSelectedProject={setSelectedProject}
-          mousePos={mousePos}
+          pointerRef={pointerRef}
           isMobile={isMobile}
         />
 
@@ -438,10 +438,9 @@ const LandingPage: React.FC = () => {
               <ProximityImage
                 src="https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773295288/Dennis_Ruf_und_Be%CC%81la_Lehrnickel_Magic_Pop_Creative_Studio_tm4vyk.webp"
                 alt="Studio"
-                mousePos={mousePos}
+                pointerRef={pointerRef}
                 className="w-full h-auto max-h-[45vh] object-cover rounded-lg"
                 overlayColor="bg-magic-blue/10"
-                staticOnNarrow={isMobile}
               />
             </motion.div>
             <motion.div 
