@@ -246,7 +246,7 @@ export const PROJECTS: Project[] = [
       en: "Juckt mich nicht!\n\nFor Dermapharm’s “Juckt Mich Nicht!” campaign, we handled the creative production of a promotional film. The story centers on a family whose approach to mosquito repellent gradually veers into the absurd.\n\nWe designed and built six distinct sets that, together with costumes and props, form a cohesive world. Each set was treated as its own character, with its own color palette and intensity, thereby reinforcing the slightly over-the-top reality.\n\nAgency: I LIKE VISUALS"
     },
     year: "2024",
-    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/qf_auto,q_auto,w_800/v1775457438/Bildschirmfoto_2024-04-29_um_09.46.40.png_oggl6i.webp",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_800/v1775457438/Bildschirmfoto_2024-04-29_um_09.46.40.png_oggl6i.webp",
     gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775457439/Bildschirmfoto_2024-04-29_um_09.47.07.png_o0xgqk.webp",
              "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775457437/Bildschirmfoto_2024-04-29_um_09.46.10.png_ql21ep.webp",
              "https://res.cloudinary.com/dpe3jvf3e/video/upload/v1775458767/YTDown.com_YouTube_bite-away-Insektenstich-Juckt-mich-nicht_Media_1s06Wkf_Q6U_001_1080p_g96cmk.mp4",
