@@ -18,6 +18,18 @@ export default defineConfig(({ mode }) => {
         alias: {
           '@': path.resolve(__dirname, '.'),
         }
-      }
+      },
+      build: {
+        target: 'esnext',
+        rollupOptions: {
+          output: {
+            manualChunks: {
+              'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+              'vendor-motion': ['motion/react', 'motion'],
+              'vendor-icons':  ['lucide-react'],
+            },
+          },
+        },
+      },
     };
 });
