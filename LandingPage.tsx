@@ -339,6 +339,24 @@ const LandingPage: React.FC = () => {
     };
   }, []);
 
+  // Scroll-triggered animations via native IntersectionObserver
+  useEffect(() => {
+    const els = document.querySelectorAll('.s-fade-up, .s-fade-left, .s-fade-right, .s-fade-scale');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in-view');
+            observer.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    els.forEach(el => observer.observe(el));
+    return () => observer.disconnect();
+  }, [selectedProject]);
+
   const closeOverlay = () => {
     navigate('/');
   };
@@ -443,19 +461,16 @@ const LandingPage: React.FC = () => {
         <Section id="services" title={t.whatWeDo.title} subtitle={t.whatWeDo.subtitle} className="bg-transparent pt-6 pb-24 md:pt-32 md:pb-48">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mt-12">
             {t.whatWeDo.services.map((service, i) => (
-              <motion.div 
-                key={i} 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.6, delay: i * 0.1, ease: [0.19, 1, 0.22, 1] }}
-                className="group pt-0 md:pt-4"
+              <div
+                key={i}
+                className="s-fade-up group pt-0 md:pt-4"
+                style={{ '--sd': `${i * 0.1}s` } as React.CSSProperties}
               >
                 <span className="font-archivo text-xs md:text-sm uppercase tracking-widest mb-4 block text-magic-black/30 dark:text-off-white/30">0{i+1}</span>
                 <h3 className="font-archivo text-xl md:text-2xl uppercase tracking-tighter mb-1 text-magic-black dark:text-off-white group-hover:translate-x-2 transition-transform duration-300">{service.title}</h3>
                 <span className="font-archivo text-[10px] md:text-[11px] uppercase tracking-[0.2em] mb-4 md:mb-6 block text-magic-black/20 dark:text-off-white/20 transition-transform duration-300 group-hover:translate-x-2">{service.subline}</span>
                 <p className="text-base md:text-lg text-magic-black/60 dark:text-off-white/60 leading-relaxed font-medium">{service.desc}</p>
-              </motion.div>
+              </div>
             ))}
           </div>
         </Section>
@@ -467,13 +482,7 @@ const LandingPage: React.FC = () => {
           className="relative overflow-hidden pt-24 pb-12 md:pt-48 md:pb-32"
         >
           <div className="relative z-10 flex flex-col lg:flex-row gap-8 md:gap-16 items-center">
-            <motion.div 
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, ease: [0.19, 1, 0.22, 1] }}
-              className="w-full lg:w-1/2 flex justify-center"
-            >
+            <div className="s-fade-left w-full lg:w-1/2 flex justify-center">
               <ProximityImage
                 src="https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773295288/Dennis_Ruf_und_Be%CC%81la_Lehrnickel_Magic_Pop_Creative_Studio_tm4vyk.webp"
                 alt="Studio"
@@ -482,17 +491,14 @@ const LandingPage: React.FC = () => {
                 overlayColor="bg-magic-blue/10"
                 alwaysColor={isMobile}
               />
-            </motion.div>
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
-              className="w-full lg:w-1/2 space-y-6 md:space-y-8 text-magic-black dark:text-off-white"
+            </div>
+            <div
+              className="s-fade-right w-full lg:w-1/2 space-y-6 md:space-y-8 text-magic-black dark:text-off-white"
+              style={{ '--sd': '0.15s' } as React.CSSProperties}
             >
               <p className="font-editorial text-2xl md:text-3xl italic leading-tight drop-shadow-sm opacity-90">{t.studio.p1}</p>
               <p className="text-base md:text-lg opacity-60 font-medium leading-relaxed">{t.studio.p2}</p>
-            </motion.div>
+            </div>
           </div>
         </Section>
 
@@ -501,13 +507,7 @@ const LandingPage: React.FC = () => {
         <Section id="contact" title={t.contact.title} subtitle={t.contact.subtitle} className="bg-transparent pt-16 pb-12 md:pt-40 md:pb-32">
           {/* Main Contact Grid */}
           <div className="flex flex-col lg:flex-row gap-12 md:gap-24 mt-4">
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
-              className="lg:w-1/2 flex flex-col justify-between"
-            >
+            <div className="s-fade-up lg:w-1/2 flex flex-col justify-between">
               <div className="space-y-6">
                 <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block">{t.contact.emailLabel}</span>
                 <a href={`mailto:${CONTACT_EMAIL}`} 
@@ -538,14 +538,11 @@ const LandingPage: React.FC = () => {
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
-              className="lg:w-1/2 flex flex-col items-center justify-center py-12 lg:py-0"
+            <div
+              className="s-fade-scale lg:w-1/2 flex flex-col items-center justify-center py-12 lg:py-0"
+              style={{ '--sd': '0.15s' } as React.CSSProperties}
             >
               <div className="relative w-full max-w-[280px] md:max-w-[340px] lg:max-w-[380px]">
                 <motion.div 
@@ -595,7 +592,7 @@ const LandingPage: React.FC = () => {
                   </a>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </Section>
       </main>

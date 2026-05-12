@@ -11,6 +11,9 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
   const t = TRANSLATIONS[lang].hero;
   const textRef = useRef<HTMLSpanElement>(null);
   const [isNear, setIsNear] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
     if (window.matchMedia('(hover: none)').matches) return;
@@ -32,16 +35,16 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
       <div className="relative z-10 w-full flex-1 flex flex-col">
         <div className="flex-1 flex flex-col justify-start pt-12 md:pt-0">
           <h1 className="font-archivo text-[18vw] md:text-[16vw] leading-[0.8] uppercase tracking-tighter text-magic-black dark:text-off-white flex flex-col select-none pointer-events-none transition-colors duration-500">
-            <span className="hero-magic relative inline-block">
+            <span className={`${mounted ? 'hero-magic' : 'opacity-0'} relative inline-block`}>
               Magic
             </span>
-            <span className="hero-pop text-right -mt-[2vw] md:-mt-[3vw] relative inline-block">
+            <span className={`${mounted ? 'hero-pop' : 'opacity-0'} text-right -mt-[2vw] md:-mt-[3vw] relative inline-block`}>
               Pop
             </span>
           </h1>
         </div>
         
-        <div className="hero-subline mt-auto md:mt-4 mb-8 md:mb-4 max-w-4xl relative z-20">
+        <div className={`${mounted ? 'hero-subline' : 'opacity-0'} mt-auto md:mt-4 mb-8 md:mb-4 max-w-4xl relative z-20`}>
           <p className="font-editorial text-3xl md:text-5xl lg:text-6xl leading-[1.1] text-magic-black dark:text-off-white italic">
             {t.subline} <br />
             <span 
@@ -59,7 +62,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
         </div>
       </div>
 
-      <div className="hero-footer mt-auto flex justify-between items-end relative z-10">
+      <div className={`${mounted ? 'hero-footer' : 'opacity-0'} mt-auto flex justify-between items-end relative z-10`}>
         <div className="flex flex-col gap-1 md:gap-2">
            <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] font-black text-magic-black/30 dark:text-off-white/30">{t.location}</span>
            <span className="text-[10px] md:text-xs uppercase tracking-[0.3em] font-black text-magic-black/30 dark:text-off-white/30">{t.est}</span>
