@@ -78,8 +78,6 @@ const LandingPage: React.FC = () => {
   const pointerRef = useRef({ x: 0, y: 0 });
   const blob1HostRef = useRef<HTMLDivElement>(null);
   const blob2HostRef = useRef<HTMLDivElement>(null);
-  const lastMobileBlobRef = useRef({ b1x: 0, b1y: 0, b2x: 0, b2y: 0 });
-  const wasMobileRef = useRef(isMobile);
 
   // Reset title when on landing page
   useEffect(() => {
@@ -235,67 +233,40 @@ const LandingPage: React.FC = () => {
     };
   }, []);
 
-  // Mobile blobs: CSS variables + RAF, no per-frame React state
+
+  // Mobile blobs: gentle drift toward touch, no React state
   useEffect(() => {
     if (!isMobile) return;
 
-    let b1x = 0;
-    let b1y = 0;
-    let b2x = 0;
-    let b2y = 0;
-    let time = 0;
+    let b1x = window.innerWidth * 0.5;
+    let b1y = window.innerHeight * 0.45;
+    let b2x = window.innerWidth * 0.6;
+    let b2y = window.innerHeight * 0.55;
     let rafId = 0;
 
-    const pushVars = () => {
-      const n1 = blob1HostRef.current;
-      const n2 = blob2HostRef.current;
-      if (n1) {
-        n1.style.setProperty('--blob1-x', `${b1x}px`);
-        n1.style.setProperty('--blob1-y', `${b1y}px`);
-      }
-      if (n2) {
-        n2.style.setProperty('--blob2-x', `${b2x}px`);
-        n2.style.setProperty('--blob2-y', `${b2y}px`);
-      }
-    };
-
     const animate = () => {
-      time += 0.01;
       const m = pointerRef.current;
-      const driftX = Math.sin(time * 0.5) * 20;
-      const driftY = Math.cos(time * 0.3) * 20;
+      b1x += (m.x - b1x) * 0.02;
+      b1y += (m.y - b1y) * 0.02;
+      b2x += (m.x - b2x) * 0.012;
+      b2y += (m.y - b2y) * 0.012;
 
-      b1x += (m.x + driftX - b1x) * 0.06;
-      b1y += (m.y + driftY - b1y) * 0.06;
-      b2x += (m.x - driftX - b2x) * 0.03;
-      b2y += (m.y - driftY - b2y) * 0.03;
+      blob1HostRef.current?.style.setProperty('--bx', `${b1x}px`);
+      blob1HostRef.current?.style.setProperty('--by', `${b1y}px`);
+      blob2HostRef.current?.style.setProperty('--bx', `${b2x}px`);
+      blob2HostRef.current?.style.setProperty('--by', `${b2y}px`);
 
-      lastMobileBlobRef.current = { b1x, b1y, b2x, b2y };
-      pushVars();
       rafId = requestAnimationFrame(animate);
     };
 
-    const startAnimation = () => {
-      pushVars();
-      rafId = requestAnimationFrame(animate);
-    };
-
+    const start = () => { rafId = requestAnimationFrame(animate); };
     if ('requestIdleCallback' in window) {
-      window.requestIdleCallback(startAnimation, { timeout: 500 });
+      window.requestIdleCallback(start, { timeout: 500 });
     } else {
-      setTimeout(startAnimation, 100);
+      setTimeout(start, 100);
     }
 
     return () => cancelAnimationFrame(rafId);
-  }, [isMobile]);
-
-  useEffect(() => {
-    if (wasMobileRef.current && !isMobile) {
-      const o = lastMobileBlobRef.current;
-      setBlob1Pos({ x: o.b1x, y: o.b1y });
-      setBlob2Pos({ x: o.b2x, y: o.b2y });
-    }
-    wasMobileRef.current = isMobile;
   }, [isMobile]);
 
   useEffect(() => {
@@ -392,17 +363,16 @@ const LandingPage: React.FC = () => {
       <div className="pointer-events-none fixed inset-0 z-[5] overflow-visible">
         <div
           ref={blob1HostRef}
-          className={`absolute w-[95vw] h-[95vw] md:w-[80vw] md:h-[80vw] lg:w-[60vw] lg:h-[60vw] max-w-[900px] max-h-[900px] rounded-full transition-colors duration-500 ease-in-out ${headerTheme.blobColor} ${isMobile ? 'opacity-100' : 'opacity-90'} dark:opacity-95`}
+          className={`absolute w-[min(95vw,95vh)] h-[min(95vw,95vh)] md:w-[80vw] md:h-[80vw] lg:w-[60vw] lg:h-[60vw] max-w-[900px] max-h-[900px] rounded-full transition-colors duration-500 ease-in-out ${headerTheme.blobColor} ${isMobile ? 'opacity-100' : 'opacity-90'} dark:opacity-95`}
           style={
             isMobile
               ? {
-                  transform:
-                    'translate3d(var(--blob1-x, 0px), var(--blob1-y, 0px), 0) translate(-50%, -50%)',
+                  left: 'var(--bx, 50vw)',
+                  top: 'var(--by, 45vh)',
+                  transform: 'translate3d(-50%, -50%, 0)',
                   willChange: 'transform',
                   WebkitBackfaceVisibility: 'hidden',
                   backfaceVisibility: 'hidden',
-                  WebkitPerspective: '1000px',
-                  perspective: '1000px',
                   WebkitFilter: 'blur(56px)',
                   filter: 'blur(56px)',
                 }
@@ -420,17 +390,16 @@ const LandingPage: React.FC = () => {
         />
         <div
           ref={blob2HostRef}
-          className={`absolute w-[85vw] h-[85vw] md:w-[70vw] md:h-[70vw] lg:w-[50vw] lg:h-[50vw] max-w-[800px] max-h-[800px] rounded-full transition-colors duration-500 ease-in-out ${headerTheme.blobColor} ${isMobile ? 'opacity-85' : 'opacity-75'} dark:opacity-80`}
+          className={`absolute w-[min(85vw,85vh)] h-[min(85vw,85vh)] md:w-[70vw] md:h-[70vw] lg:w-[50vw] lg:h-[50vw] max-w-[800px] max-h-[800px] rounded-full transition-colors duration-500 ease-in-out ${headerTheme.blobColor} ${isMobile ? 'opacity-85' : 'opacity-75'} dark:opacity-80`}
           style={
             isMobile
               ? {
-                  transform:
-                    'translate3d(var(--blob2-x, 0px), var(--blob2-y, 0px), 0) translate(-50%, -50%)',
+                  left: 'var(--bx, 60vw)',
+                  top: 'var(--by, 55vh)',
+                  transform: 'translate3d(-50%, -50%, 0)',
                   willChange: 'transform',
                   WebkitBackfaceVisibility: 'hidden',
                   backfaceVisibility: 'hidden',
-                  WebkitPerspective: '1000px',
-                  perspective: '1000px',
                   WebkitFilter: 'blur(72px)',
                   filter: 'blur(72px)',
                 }
