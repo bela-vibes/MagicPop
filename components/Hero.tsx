@@ -15,21 +15,33 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
   useEffect(() => { setMounted(true); }, []);
 
   useEffect(() => {
-    if (window.matchMedia('(hover: none)').matches) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
+    const handleMove = (e: MouseEvent | TouchEvent) => {
       if (!textRef.current) return;
+      const x = 'touches' in e ? e.touches[0]?.clientX : e.clientX;
+      const y = 'touches' in e ? e.touches[0]?.clientY : e.clientY;
+      if (x === undefined || y === undefined) return;
       const rect = textRef.current.getBoundingClientRect();
-      const dx = Math.max(rect.left - e.clientX, 0, e.clientX - rect.right);
-      const dy = Math.max(rect.top - e.clientY, 0, e.clientY - rect.bottom);
+      const dx = Math.max(rect.left - x, 0, x - rect.right);
+      const dy = Math.max(rect.top - y, 0, y - rect.bottom);
       const near = Math.sqrt(dx * dx + dy * dy) < 110;
-      // Direct DOM — no React re-render
-      textRef.current.style.color = near ? '#F9F7F2' : '';
       textRef.current.style.transition = 'color 0.3s ease';
+      textRef.current.style.color = near ? '#F9F7F2' : '';
     };
 
-    window.addEventListener('mousemove', handleMouseMove, { passive: true });
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    const handleTouchEnd = () => {
+      if (!textRef.current) return;
+      textRef.current.style.transition = 'color 0.5s ease';
+      textRef.current.style.color = '';
+    };
+
+    window.addEventListener('mousemove', handleMove, { passive: true });
+    window.addEventListener('touchmove', handleMove, { passive: true });
+    window.addEventListener('touchend', handleTouchEnd, { passive: true });
+    return () => {
+      window.removeEventListener('mousemove', handleMove);
+      window.removeEventListener('touchmove', handleMove);
+      window.removeEventListener('touchend', handleTouchEnd);
+    };
   }, []);
   
   return (
