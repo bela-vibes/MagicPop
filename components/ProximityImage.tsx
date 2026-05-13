@@ -22,6 +22,7 @@ const ProximityImage: React.FC<ProximityImageProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const colorLayerRef = useRef<HTMLDivElement>(null);
+  const hideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   useEffect(() => {
     if (alwaysColor) return;
@@ -31,29 +32,65 @@ const ProximityImage: React.FC<ProximityImageProps> = ({
     if (!container || !colorLayer) return;
 
     const show = () => {
+      if (hideTimerRef.current !== null) {
+        clearTimeout(hideTimerRef.current);
+        hideTimerRef.current = null;
+      }
       colorLayer.style.transition = 'opacity 0.35s ease';
       colorLayer.style.opacity = '1';
     };
-    const hide = () => {
-      colorLayer.style.transition = 'opacity 2s ease';
+
+    const hideDesktop = () => {
+      colorLayer.style.transition = 'opacity 0.5s ease';
       colorLayer.style.opacity = '0';
     };
-    const hideDelayed = () => setTimeout(hide, 600);
 
-    // Desktop
-    container.addEventListener('mouseenter', show);
-    container.addEventListener('mouseleave', hide);
-    // Mobile touch
-    container.addEventListener('touchstart', show, { passive: true });
-    container.addEventListener('touchend', hideDelayed, { passive: true });
-    container.addEventListener('touchcancel', hide, { passive: true });
+    const hideMobile = () => {
+      // Delay equals the show-transition duration so the browser has painted
+      // opacity:1 before we start the 3 s fade. Without this, iOS fires
+      // pointerdown + pointerup in the same task and the transition sees 0→0.
+      hideTimerRef.current = setTimeout(() => {
+        hideTimerRef.current = null;
+        colorLayer.style.transition = 'opacity 3s ease';
+        colorLayer.style.opacity = '0';
+      }, 400);
+    };
+
+    const handlePointerEnter = (e: PointerEvent) => {
+      if (e.pointerType === 'mouse') show();
+    };
+    const handlePointerLeave = (e: PointerEvent) => {
+      if (e.pointerType === 'mouse') hideDesktop();
+    };
+    const handlePointerDown = (e: PointerEvent) => {
+      if (e.pointerType === 'touch') show();
+    };
+    const handlePointerUp = (e: PointerEvent) => {
+      if (e.pointerType === 'touch') hideMobile();
+    };
+    const handlePointerCancel = (e: PointerEvent) => {
+      if (e.pointerType === 'touch') {
+        if (hideTimerRef.current !== null) {
+          clearTimeout(hideTimerRef.current);
+          hideTimerRef.current = null;
+        }
+        hideDesktop();
+      }
+    };
+
+    container.addEventListener('pointerenter', handlePointerEnter);
+    container.addEventListener('pointerleave', handlePointerLeave);
+    container.addEventListener('pointerdown', handlePointerDown);
+    container.addEventListener('pointerup', handlePointerUp);
+    container.addEventListener('pointercancel', handlePointerCancel);
 
     return () => {
-      container.removeEventListener('mouseenter', show);
-      container.removeEventListener('mouseleave', hide);
-      container.removeEventListener('touchstart', show);
-      container.removeEventListener('touchend', hideDelayed);
-      container.removeEventListener('touchcancel', hide);
+      if (hideTimerRef.current !== null) clearTimeout(hideTimerRef.current);
+      container.removeEventListener('pointerenter', handlePointerEnter);
+      container.removeEventListener('pointerleave', handlePointerLeave);
+      container.removeEventListener('pointerdown', handlePointerDown);
+      container.removeEventListener('pointerup', handlePointerUp);
+      container.removeEventListener('pointercancel', handlePointerCancel);
     };
   }, [alwaysColor]);
 
