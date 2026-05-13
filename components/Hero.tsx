@@ -51,8 +51,8 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
               ref={textRef}
               className={`font-archivo not-italic text-2xl md:text-4xl lg:text-5xl uppercase tracking-tight transition-colors duration-500 cursor-default inline-block ${
                 isNear
-                  ? 'text-off-white dark:text-off-white'
-                  : 'text-magic-orange dark:text-off-white md:text-magic-orange'
+                  ? 'text-off-white'
+                  : 'text-magic-orange'
               }`}
             >
               {t.sublineBold1} <br />
@@ -87,4 +87,4 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
   );
 };
 
-export default Hero;
+export default React.memo(Hero);

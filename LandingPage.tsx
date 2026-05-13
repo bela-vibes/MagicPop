@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, Suspense, lazy } from 'react';
+import React, { useState, useEffect, useRef, Suspense, lazy, startTransition } from 'react';
 
 const SpeedInsights = lazy(() =>
   import('@vercel/speed-insights/react').then(m => ({ default: m.SpeedInsights }))
@@ -78,6 +78,7 @@ const LandingPage: React.FC = () => {
   const pointerRef = useRef({ x: 0, y: 0 });
   const blob1HostRef = useRef<HTMLDivElement>(null);
   const blob2HostRef = useRef<HTMLDivElement>(null);
+  const selectedProjectRef = useRef<typeof selectedProject>(null);
 
   // Reset title when on landing page
   useEffect(() => {
@@ -93,6 +94,9 @@ const LandingPage: React.FC = () => {
   }, []);
 
   const wasProjectOpen = useRef(false);
+
+  // Keep ref in sync so scroll handler can check without stale closure
+  useEffect(() => { selectedProjectRef.current = selectedProject; }, [selectedProject]);
 
   // Effect to handle routing/overlays based on URL path
   useEffect(() => {
@@ -316,21 +320,48 @@ const LandingPage: React.FC = () => {
   }, [headerTheme.bg, isDarkMode]);
 
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollPos = window.scrollY + 400;
-      const offsets = sectionOffsets.current;
+    let ticking = false;
 
-      if (offsets.contact && scrollPos >= offsets.contact) {
-        setScrollTheme(prev => prev.bg === 'bg-magic-pink' ? prev : { bg: 'bg-magic-pink', text: 'text-magic-black', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,183,213,0.6)]', blobColor: 'bg-magic-pink' });
-      } else if (offsets.about && scrollPos >= offsets.about) {
-        setScrollTheme(prev => prev.bg === 'bg-magic-blue' ? prev : { bg: 'bg-magic-blue', text: 'text-white', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(0,56,255,0.6)]', blobColor: 'bg-magic-blue' });
-      } else if (offsets.services && scrollPos >= offsets.services) {
-        setScrollTheme(prev => prev.bg === 'bg-yellow-400' ? prev : { bg: 'bg-yellow-400', text: 'text-magic-black', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.6)]', blobColor: 'bg-yellow-400' });
-      } else if (offsets.projects && scrollPos >= offsets.projects) {
-        setScrollTheme(prev => prev.bg === 'bg-magic-orange' ? prev : { bg: 'bg-magic-orange', text: 'text-white', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,77,0,0.6)]', blobColor: 'bg-magic-orange' });
-      } else {
-        setScrollTheme(prev => prev.bg === 'bg-transparent' ? prev : { bg: 'bg-transparent', text: 'text-magic-black dark:text-off-white', shadow: '', blobColor: 'bg-magic-orange' });
+    // Section color map: [bgHex, blobHex, reactTheme]
+    type ThemeEntry = { bg: string; blob: string; react: { bg: string; text: string; shadow: string; blobColor: string } };
+    const THEMES: Record<string, ThemeEntry> = {
+      contact:  { bg: '#FFB7D5', blob: '#FFB7D5', react: { bg: 'bg-magic-pink',   text: 'text-magic-black',            shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,183,213,0.6)]', blobColor: 'bg-magic-pink'   } },
+      about:    { bg: '#0038FF', blob: '#0038FF', react: { bg: 'bg-magic-blue',   text: 'text-white',                  shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(0,56,255,0.6)]',   blobColor: 'bg-magic-blue'   } },
+      services: { bg: '#FACC15', blob: '#FACC15', react: { bg: 'bg-yellow-400',   text: 'text-magic-black',            shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.6)]', blobColor: 'bg-yellow-400'   } },
+      projects: { bg: '#FF4D00', blob: '#FF4D00', react: { bg: 'bg-magic-orange', text: 'text-white',                  shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,77,0,0.6)]',   blobColor: 'bg-magic-orange' } },
+      default:  { bg: 'transparent', blob: '#FF4D00', react: { bg: 'bg-transparent', text: 'text-magic-black dark:text-off-white', shadow: '', blobColor: 'bg-magic-orange' } },
+    };
+
+    const applyTheme = (key: string) => {
+      const t = THEMES[key];
+      // Direct DOM — runs in the same RAF frame, zero React overhead
+      if (!selectedProjectRef.current) {
+        const header = document.getElementById('main-header');
+        if (header) header.style.backgroundColor = t.bg;
+        if (blob1HostRef.current) blob1HostRef.current.style.backgroundColor = t.blob;
+        if (blob2HostRef.current) blob2HostRef.current.style.backgroundColor = t.blob;
       }
+      // React state — only for text colors, deferred
+      startTransition(() => {
+        setScrollTheme(prev => prev.bg === t.react.bg ? prev : t.react);
+      });
+    };
+
+    const handleScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const scrollPos = window.scrollY + 400;
+        const offsets = sectionOffsets.current;
+
+        if      (offsets.contact  && scrollPos >= offsets.contact)  applyTheme('contact');
+        else if (offsets.about    && scrollPos >= offsets.about)    applyTheme('about');
+        else if (offsets.services && scrollPos >= offsets.services) applyTheme('services');
+        else if (offsets.projects && scrollPos >= offsets.projects) applyTheme('projects');
+        else                                                         applyTheme('default');
+
+        ticking = false;
+      });
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -338,24 +369,6 @@ const LandingPage: React.FC = () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
-
-  // Scroll-triggered animations via native IntersectionObserver
-  useEffect(() => {
-    const els = document.querySelectorAll('.s-fade-up, .s-fade-left, .s-fade-right, .s-fade-scale');
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(e => {
-          if (e.isIntersecting) {
-            e.target.classList.add('in-view');
-            observer.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.12 }
-    );
-    els.forEach(el => observer.observe(el));
-    return () => observer.disconnect();
-  }, [selectedProject]);
 
   const closeOverlay = () => {
     navigate('/');
@@ -461,11 +474,7 @@ const LandingPage: React.FC = () => {
         <Section id="services" title={t.whatWeDo.title} subtitle={t.whatWeDo.subtitle} className="bg-transparent pt-6 pb-24 md:pt-32 md:pb-48">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mt-12">
             {t.whatWeDo.services.map((service, i) => (
-              <div
-                key={i}
-                className="s-fade-up group pt-0 md:pt-4"
-                style={{ '--sd': `${i * 0.1}s` } as React.CSSProperties}
-              >
+              <div key={i} className="group pt-0 md:pt-4">
                 <span className="font-archivo text-xs md:text-sm uppercase tracking-widest mb-4 block text-magic-black/30 dark:text-off-white/30">0{i+1}</span>
                 <h3 className="font-archivo text-xl md:text-2xl uppercase tracking-tighter mb-1 text-magic-black dark:text-off-white group-hover:translate-x-2 transition-transform duration-300">{service.title}</h3>
                 <span className="font-archivo text-[10px] md:text-[11px] uppercase tracking-[0.2em] mb-4 md:mb-6 block text-magic-black/20 dark:text-off-white/20 transition-transform duration-300 group-hover:translate-x-2">{service.subline}</span>
@@ -482,7 +491,7 @@ const LandingPage: React.FC = () => {
           className="relative overflow-hidden pt-24 pb-12 md:pt-48 md:pb-32"
         >
           <div className="relative z-10 flex flex-col lg:flex-row gap-8 md:gap-16 items-center">
-            <div className="s-fade-left w-full lg:w-1/2 flex justify-center">
+            <div className="w-full lg:w-1/2 flex justify-center">
               <ProximityImage
                 src="https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773295288/Dennis_Ruf_und_Be%CC%81la_Lehrnickel_Magic_Pop_Creative_Studio_tm4vyk.webp"
                 alt="Studio"
@@ -492,10 +501,7 @@ const LandingPage: React.FC = () => {
                 alwaysColor={isMobile}
               />
             </div>
-            <div
-              className="s-fade-right w-full lg:w-1/2 space-y-6 md:space-y-8 text-magic-black dark:text-off-white"
-              style={{ '--sd': '0.15s' } as React.CSSProperties}
-            >
+            <div className="w-full lg:w-1/2 space-y-6 md:space-y-8 text-magic-black dark:text-off-white">
               <p className="font-editorial text-2xl md:text-3xl italic leading-tight drop-shadow-sm opacity-90">{t.studio.p1}</p>
               <p className="text-base md:text-lg opacity-60 font-medium leading-relaxed">{t.studio.p2}</p>
             </div>
@@ -507,7 +513,7 @@ const LandingPage: React.FC = () => {
         <Section id="contact" title={t.contact.title} subtitle={t.contact.subtitle} className="bg-transparent pt-16 pb-12 md:pt-40 md:pb-32">
           {/* Main Contact Grid */}
           <div className="flex flex-col lg:flex-row gap-12 md:gap-24 mt-4">
-            <div className="s-fade-up lg:w-1/2 flex flex-col justify-between">
+            <div className="lg:w-1/2 flex flex-col justify-between">
               <div className="space-y-6">
                 <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block">{t.contact.emailLabel}</span>
                 <a href={`mailto:${CONTACT_EMAIL}`} 
@@ -540,10 +546,7 @@ const LandingPage: React.FC = () => {
               </div>
             </div>
 
-            <div
-              className="s-fade-scale lg:w-1/2 flex flex-col items-center justify-center py-12 lg:py-0"
-              style={{ '--sd': '0.15s' } as React.CSSProperties}
-            >
+            <div className="lg:w-1/2 flex flex-col items-center justify-center py-12 lg:py-0">
               <div className="relative w-full max-w-[280px] md:max-w-[340px] lg:max-w-[380px]">
                 <motion.div 
                   animate={{ 

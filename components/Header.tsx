@@ -62,7 +62,8 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
   return (
     <>
       <header
-        className={`fixed top-0 left-0 w-full z-[700] transition-[background-color,padding,box-shadow] duration-500 ease-in-out py-5 lg:py-6 flex justify-between items-center ${bgColor}`}
+        id="main-header"
+        className={`fixed top-0 left-0 w-full z-[700] transition-[background-color,padding,box-shadow] duration-200 ease-out py-5 lg:py-6 flex justify-between items-center ${bgColor}`}
         style={{
           paddingLeft: 'max(1.5rem, env(safe-area-inset-left))',
           paddingRight: 'max(1.5rem, env(safe-area-inset-right))',
@@ -74,10 +75,10 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
             onClick={(e) => handleNavItemClick(e, '#hero')} 
             className="hover:opacity-60 flex flex-wrap items-baseline"
           >
-            <span className={`${textColor} transition-colors duration-500 ease-in-out mr-1.5`}>Magic</span>
+            <span className={`${textColor} transition-colors duration-200 ease-out mr-1.5`}>Magic</span>
             <div className="flex items-baseline">
-              <span className={`${textColor} transition-colors duration-500 ease-in-out`}>Pop</span>
-              <span className={`font-editorial lowercase text-xl md:text-2xl ml-2 ${textColor} transition-colors duration-500 ease-in-out`}>studio</span>
+              <span className={`${textColor} transition-colors duration-200 ease-out`}>Pop</span>
+              <span className={`font-editorial lowercase text-xl md:text-2xl ml-2 ${textColor} transition-colors duration-200 ease-out`}>studio</span>
             </div>
           </a>
         </div>
@@ -89,7 +90,7 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
                 key={item.label}
                 href={item.href}
                 onClick={(e) => handleNavItemClick(e, item.href)}
-                className={`font-archivo text-xs uppercase tracking-widest hover:opacity-60 transition-colors duration-500 ease-in-out ${textColor}`}
+                className={`font-archivo text-xs uppercase tracking-widest hover:opacity-60 transition-colors duration-200 ease-out ${textColor}`}
               >
                 {item.label}
               </a>
@@ -113,7 +114,7 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
               )}
             </button>
 
-            <div className={`flex gap-2 lg:gap-3 font-archivo text-[10px] lg:text-xs uppercase tracking-widest ${textColor} transition-colors duration-500 ease-in-out`}>
+            <div className={`flex gap-2 lg:gap-3 font-archivo text-[10px] lg:text-xs uppercase tracking-widest ${textColor} transition-colors duration-200 ease-out`}>
               <button 
                 onClick={() => setLang('de')}
                 className={`transition-all duration-300 ${lang === 'de' ? 'opacity-100 font-black' : 'opacity-40 hover:opacity-100'}`}

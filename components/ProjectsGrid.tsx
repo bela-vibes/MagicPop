@@ -137,13 +137,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
       className="py-24 md:py-32 min-h-[100dvh] bg-transparent relative overflow-hidden transition-colors duration-500"
     >
       {/* Header Info */}
-      <motion.div 
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
-        className="px-6 md:px-12 mb-16 flex flex-col md:flex-row justify-between items-end gap-12 relative z-10"
-      >
+      <div className="px-6 md:px-12 mb-16 flex flex-col md:flex-row justify-between items-end gap-12 relative z-10">
         <div className="flex-1">
           <h2 className="font-archivo text-5xl md:text-[10vw] uppercase tracking-tighter mb-4 text-magic-black dark:text-off-white max-w-4xl leading-[0.9]">{t.title}</h2>
           <p className="font-medium text-magic-black/60 dark:text-off-white/60 text-base md:text-lg leading-relaxed mb-10 max-w-2xl">{t.description}</p>
@@ -209,27 +203,19 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
             </svg>
           </button>
         </div>
-      </motion.div>
+      </div>
 
       {/* Horizontal Slider */}
-      <motion.div 
+      <div
         ref={scrollRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        initial={{ opacity: 0, x: 100 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
         className={`flex overflow-x-auto gap-8 px-6 md:px-12 scroll-px-6 md:scroll-px-12 no-scrollbar pb-12 min-h-[400px] relative z-10 ${!isEdgeScrolling ? 'snap-x snap-mandatory' : ''}`}
       >
         {filteredProjects.map((project, index) => (
-          <motion.div
+          <div
             key={project.id}
             onClick={() => handleOpenProject(project)}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: index * 0.1, ease: [0.19, 1, 0.22, 1] }}
             className="w-[75vw] md:w-[60vw] lg:w-[43vw] flex-shrink-0 snap-start group cursor-pointer"
           >
             <div
@@ -288,9 +274,9 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
                  </svg>
               </div>
             </div>
-          </motion.div>
+          </div>
         ))}
-      </motion.div>
+      </div>
 
       {/* Project Detail Modal */}
       <AnimatePresence mode="wait">
@@ -577,4 +563,4 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
   );
 };
 
-export default ProjectsGrid;
+export default React.memo(ProjectsGrid);
