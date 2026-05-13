@@ -10,7 +10,6 @@ interface HeroProps {
 const Hero: React.FC<HeroProps> = ({ lang }) => {
   const t = TRANSLATIONS[lang].hero;
   const textRef = useRef<HTMLSpanElement>(null);
-  const [isNear, setIsNear] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => { setMounted(true); }, []);
@@ -23,10 +22,13 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
       const rect = textRef.current.getBoundingClientRect();
       const dx = Math.max(rect.left - e.clientX, 0, e.clientX - rect.right);
       const dy = Math.max(rect.top - e.clientY, 0, e.clientY - rect.bottom);
-      setIsNear(Math.sqrt(dx * dx + dy * dy) < 110);
+      const near = Math.sqrt(dx * dx + dy * dy) < 110;
+      // Direct DOM — no React re-render
+      textRef.current.style.color = near ? '#F9F7F2' : '';
+      textRef.current.style.transition = 'color 0.3s ease';
     };
 
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
   
@@ -49,11 +51,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
             {t.subline} <br />
             <span 
               ref={textRef}
-              className={`font-archivo not-italic text-2xl md:text-4xl lg:text-5xl uppercase tracking-tight transition-colors duration-500 cursor-default inline-block ${
-                isNear
-                  ? 'text-off-white'
-                  : 'text-magic-orange'
-              }`}
+              className="font-archivo not-italic text-2xl md:text-4xl lg:text-5xl uppercase tracking-tight cursor-default inline-block text-magic-orange"
             >
               {t.sublineBold1} <br />
               {t.sublineBold2}

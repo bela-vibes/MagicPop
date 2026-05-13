@@ -75,6 +75,13 @@
     outline: none !important;
   }
 
+  img {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+    pointer-events: none;
+  }
+
   a, button, input, textarea, select {
     outline: none !important;
     box-shadow: none !important;

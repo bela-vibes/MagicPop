@@ -66,7 +66,6 @@ const LandingPage: React.FC = () => {
   const [analyticsReady, setAnalyticsReady] = useState(false);
   const [lang, setLang] = useState<Language>('de');
   const [isDarkMode, setIsDarkMode] = useState(false);
-  const [mousePos, setMousePos] = useState({ x: -500, y: -500 });
   const [blob1Pos, setBlob1Pos] = useState({ x: 0, y: 0 });
   const [blob2Pos, setBlob2Pos] = useState({ x: 0, y: 0 });
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -200,20 +199,12 @@ const LandingPage: React.FC = () => {
   }, [lang]);
 
   useEffect(() => {
-    const center = () => ({
-      x: window.innerWidth / 2,
-      y: window.innerHeight / 2,
-    });
-    pointerRef.current = center();
-    setMousePos(center());
+    pointerRef.current = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
 
     const handleMove = (e: MouseEvent | TouchEvent) => {
       const x = 'touches' in e ? e.touches[0].clientX : e.clientX;
       const y = 'touches' in e ? e.touches[0].clientY : e.clientY;
       pointerRef.current = { x, y };
-      if (window.innerWidth >= 768) {
-        setMousePos({ x, y });
-      }
     };
 
     let mouseMoveListener: (() => void) | undefined;
@@ -277,25 +268,27 @@ const LandingPage: React.FC = () => {
     if (isMobile) return;
 
     let time = 0;
+    let b1x = window.innerWidth / 2, b1y = window.innerHeight / 2;
+    let b2x = window.innerWidth / 2, b2y = window.innerHeight / 2;
+
     const animate = () => {
       time += 0.01;
+      const m = pointerRef.current;
       const driftX = Math.sin(time * 0.5) * 20;
       const driftY = Math.cos(time * 0.3) * 20;
-      setBlob1Pos((prev) => ({
-        x: prev.x + (mousePos.x + driftX - prev.x) * 0.06,
-        y: prev.y + (mousePos.y + driftY - prev.y) * 0.06,
-      }));
-      setBlob2Pos((prev) => ({
-        x: prev.x + (mousePos.x - driftX - prev.x) * 0.03,
-        y: prev.y + (mousePos.y - driftY - prev.y) * 0.03,
-      }));
+      b1x += (m.x + driftX - b1x) * 0.06;
+      b1y += (m.y + driftY - b1y) * 0.06;
+      b2x += (m.x - driftX - b2x) * 0.03;
+      b2y += (m.y - driftY - b2y) * 0.03;
+      setBlob1Pos({ x: b1x, y: b1y });
+      setBlob2Pos({ x: b2x, y: b2y });
       requestRef.current = requestAnimationFrame(animate);
     };
     requestRef.current = requestAnimationFrame(animate);
     return () => {
       if (requestRef.current !== null) cancelAnimationFrame(requestRef.current);
     };
-  }, [mousePos, isMobile]);
+  }, [isMobile]);
 
   useEffect(() => {
     if (isDarkMode) {
@@ -467,7 +460,6 @@ const LandingPage: React.FC = () => {
           lang={lang}
           selectedProject={selectedProject}
           setSelectedProject={setSelectedProject}
-          mousePos={mousePos}
           isMobile={isMobile}
         />
 
@@ -495,10 +487,8 @@ const LandingPage: React.FC = () => {
               <ProximityImage
                 src="https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773295288/Dennis_Ruf_und_Be%CC%81la_Lehrnickel_Magic_Pop_Creative_Studio_tm4vyk.webp"
                 alt="Studio"
-                mousePos={mousePos}
                 className="w-full h-auto max-h-[45vh] object-cover rounded-lg"
                 overlayColor="bg-magic-blue/10"
-                alwaysColor={isMobile}
               />
             </div>
             <div className="w-full lg:w-1/2 space-y-6 md:space-y-8 text-magic-black dark:text-off-white">

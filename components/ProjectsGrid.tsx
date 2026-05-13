@@ -10,7 +10,6 @@ interface ProjectsGridProps {
   lang: Language;
   selectedProject: Project | null;
   setSelectedProject: (project: Project | null) => void;
-  mousePos: { x: number; y: number };
   isMobile?: boolean;
 }
 
@@ -18,7 +17,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
   lang,
   selectedProject,
   setSelectedProject,
-  mousePos,
+
   isMobile = false,
 }) => {
   const navigate = useNavigate();
@@ -336,9 +335,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
                           <ProximityImage
                             src={selectedProject.gallery[0] || selectedProject.image}
                             alt=""
-                            mousePos={mousePos}
                             className="w-full h-auto"
-                            alwaysColor={isMobile}
                             priority
                           />
                         )}
