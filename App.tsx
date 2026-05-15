@@ -14,6 +14,11 @@ const App: React.FC = () => {
         const isStyleGuide = window.location.pathname === '/styleguide';
         navigate(isStyleGuide ? '/' : '/styleguide');
       }
+
+      // . to toggle dark mode (skip when typing in inputs)
+      if (e.key === '.' && !(e.target instanceof HTMLInputElement) && !(e.target instanceof HTMLTextAreaElement) && !(e.target instanceof HTMLSelectElement)) {
+        document.documentElement.classList.toggle('dark');
+      }
     };
 
     window.addEventListener('keydown', handleKeyDown);
@@ -28,7 +33,7 @@ const App: React.FC = () => {
         <Route path="/impressum" element={<LandingPage />} />
         <Route path="/datenschutz" element={<LandingPage />} />
         <Route path="/styleguide" element={<StyleGuide />} />
-        <Route path="/:slug" element={<LandingPage />} />
+<Route path="/:slug" element={<LandingPage />} />
         {/* Catch all for deep links if necessary */}
         <Route path="*" element={<LandingPage />} />
       </Routes>
