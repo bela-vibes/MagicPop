@@ -109,11 +109,12 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
     if (first && !first.toLowerCase().endsWith('.mp4')) {
       new Image().src = first;
     }
-    navigate(`/${project.slug}`, { state: { scrolledFromProjects: true } });
+    const prefix = lang === 'en' ? '/en' : '';
+    navigate(`${prefix}/${project.slug}`, { state: { scrolledFromProjects: true } });
   };
 
   const handleCloseProject = () => {
-    navigate('/#projects');
+    navigate(lang === 'en' ? '/en#projects' : '/#projects');
   };
 
   useEffect(() => {

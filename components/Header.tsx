@@ -31,18 +31,16 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
   const handleNavItemClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setIsMenuOpen(false);
-    
+
     const targetId = href.replace('#', '');
-    
-    if (location.pathname !== '/') {
+    const isEnglish = location.pathname.startsWith('/en');
+    const homeBase = isEnglish ? '/en' : '/';
+    const isHome = location.pathname === '/' || location.pathname === '/en';
+
+    if (!isHome) {
       // If we are not on the home page, go home first
       if (onNavClick) onNavClick();
-      navigate('/' + href);
-      
-      // We still need to scroll after navigation, usually this happens via the hash in react-router-dom 
-      // but only if configured. Our LandingPage offsets might need time.
-      // For now, LandingPage will handle closing the overlay, 
-      // and we expect the window to scroll to top (via ScrollToTop logic) or we can force it.
+      navigate(homeBase + href);
       return;
     }
 

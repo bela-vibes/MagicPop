@@ -64,7 +64,15 @@ const LandingPage: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [analyticsReady, setAnalyticsReady] = useState(false);
-  const [lang, setLang] = useState<Language>('de');
+
+  // Derive language from URL — /en/* is English, everything else is German
+  const isEnglish = location.pathname.startsWith('/en');
+  const lang: Language = isEnglish ? 'en' : 'de';
+  // rawPath strips /en prefix so all path logic stays the same
+  const rawPath = isEnglish ? location.pathname.slice(3) || '/' : location.pathname;
+  // langPath builds the correct URL for a given path in the current language
+  const langPath = (path: string) =>
+    isEnglish ? (path === '/' ? '/en' : `/en${path}`) : path;
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [blob1Pos, setBlob1Pos] = useState({ x: 0, y: 0 });
   const [blob2Pos, setBlob2Pos] = useState({ x: 0, y: 0 });
@@ -99,13 +107,12 @@ const LandingPage: React.FC = () => {
 
   // Effect to handle routing/overlays based on URL path
   useEffect(() => {
-    const path = location.pathname;
-    const isHome = path === '/';
-    const isProject = !(['/impressum', '/datenschutz', '/', '/styleguide'].includes(path)) && PROJECTS.some(p => p.slug === path.substring(1));
-    
-    if (path === '/impressum' || path === '/datenschutz' || path === '/') {
+    const isHome = rawPath === '/';
+    const isProject = !(['/impressum', '/datenschutz', '/', '/styleguide'].includes(rawPath)) && PROJECTS.some(p => p.slug === rawPath.substring(1));
+
+    if (rawPath === '/impressum' || rawPath === '/datenschutz' || rawPath === '/') {
       setSelectedProject(null);
-      
+
       // If we were just on a project and now we are home, scroll to projects section
       if (isHome && wasProjectOpen.current) {
         const element = document.getElementById('projects');
@@ -119,22 +126,22 @@ const LandingPage: React.FC = () => {
         }
       }
     } else {
-      const slug = path.substring(1); // remove leading slash
+      const slug = rawPath.substring(1); // remove leading slash
       const project = PROJECTS.find(p => p.slug === slug);
       if (project) {
         setSelectedProject(project);
-      } else if (path !== '/styleguide') {
+      } else if (rawPath !== '/styleguide') {
         // Only navigate home if it's not the styleguide (which is a separate page)
-        navigate('/');
+        navigate(langPath('/'));
       }
     }
-    
+
     wasProjectOpen.current = isProject;
   }, [location.pathname, navigate]);
   
   // Effect to handle inner-page scrolling when coming from a sub-route
   useEffect(() => {
-    if (location.hash && location.pathname === '/') {
+    if (location.hash && rawPath === '/') {
       const id = location.hash.replace('#', '');
       const element = document.getElementById(id);
       if (element) {
@@ -298,6 +305,16 @@ const LandingPage: React.FC = () => {
     }
   }, [isDarkMode]);
 
+  // Sync with keyboard shortcut (. key) dispatched from App.tsx
+  useEffect(() => {
+    const handler = (e: Event) => {
+      const { isDark } = (e as CustomEvent<{ isDark: boolean }>).detail;
+      setIsDarkMode(isDark);
+    };
+    window.addEventListener('magicpop:darkmode', handler);
+    return () => window.removeEventListener('magicpop:darkmode', handler);
+  }, []);
+
   useEffect(() => {
     const colorMap: Record<string, { light: string; dark: string }> = {
       'bg-transparent':  { light: '#F9F7F2', dark: '#000000' },
@@ -364,7 +381,15 @@ const LandingPage: React.FC = () => {
   }, []);
 
   const closeOverlay = () => {
-    navigate('/');
+    navigate(langPath('/'));
+  };
+
+  const handleSetLang = (newLang: Language) => {
+    if (newLang === lang) return;
+    // Keep same sub-page when switching (e.g. /impressum ↔ /en/impressum)
+    navigate(newLang === 'en'
+      ? (rawPath === '/' ? '/en' : `/en${rawPath}`)
+      : rawPath);
   };
 
   const toggleDarkMode = () => {
@@ -444,12 +469,12 @@ const LandingPage: React.FC = () => {
       <Header 
         bgColor={`${headerTheme.bg} ${headerTheme.shadow}`} 
         textColor={headerTheme.text} 
-        lang={lang} 
-        setLang={setLang} 
+        lang={lang}
+        setLang={handleSetLang}
         isDarkMode={isDarkMode}
         toggleDarkMode={toggleDarkMode}
         onNavClick={() => {
-          navigate('/');
+          navigate(langPath('/'));
           document.body.style.overflow = 'unset';
         }}
       />
@@ -596,14 +621,14 @@ const LandingPage: React.FC = () => {
           <div className="text-[10px] md:text-xs uppercase tracking-widest text-off-white/30 text-center md:text-left">© 2026 Magic Pop Studio. Create the Magic. Make it Pop.</div>
           <div className="flex gap-4 font-archivo uppercase text-[10px] md:text-xs tracking-widest text-off-white/50">
             <Link to="/styleguide" className="hover:text-magic-blue transition-colors opacity-30 hover:opacity-100">Design</Link>
-            <Link to="/impressum" className="hover:text-magic-pink transition-colors">{t.contact.impressum}</Link>
-            <Link to="/datenschutz" className="hover:text-magic-pink transition-colors">{t.contact.privacy}</Link>
+            <Link to={langPath('/impressum')} className="hover:text-magic-pink transition-colors">{t.contact.impressum}</Link>
+            <Link to={langPath('/datenschutz')} className="hover:text-magic-pink transition-colors">{t.contact.privacy}</Link>
           </div>
         </div>
       </footer>
 
       <AnimatePresence mode="wait">
-        {location.pathname === '/impressum' && (
+        {rawPath === '/impressum' && (
           <motion.div
             key="impressum"
             initial={{ opacity: 0, y: 20 }}
@@ -615,7 +640,7 @@ const LandingPage: React.FC = () => {
             <Impressum onClose={closeOverlay} />
           </motion.div>
         )}
-        {location.pathname === '/datenschutz' && (
+        {rawPath === '/datenschutz' && (
           <motion.div
             key="datenschutz"
             initial={{ opacity: 0, y: 20 }}

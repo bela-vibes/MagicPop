@@ -17,7 +17,8 @@ const App: React.FC = () => {
 
       // . to toggle dark mode (skip when typing in inputs)
       if (e.key === '.' && !(e.target instanceof HTMLInputElement) && !(e.target instanceof HTMLTextAreaElement) && !(e.target instanceof HTMLSelectElement)) {
-        document.documentElement.classList.toggle('dark');
+        const isDark = document.documentElement.classList.toggle('dark');
+        window.dispatchEvent(new CustomEvent('magicpop:darkmode', { detail: { isDark } }));
       }
     };
 
@@ -33,7 +34,12 @@ const App: React.FC = () => {
         <Route path="/impressum" element={<LandingPage />} />
         <Route path="/datenschutz" element={<LandingPage />} />
         <Route path="/styleguide" element={<StyleGuide />} />
-<Route path="/:slug" element={<LandingPage />} />
+        {/* English versions — must come before /:slug */}
+        <Route path="/en" element={<LandingPage />} />
+        <Route path="/en/impressum" element={<LandingPage />} />
+        <Route path="/en/datenschutz" element={<LandingPage />} />
+        <Route path="/en/:slug" element={<LandingPage />} />
+        <Route path="/:slug" element={<LandingPage />} />
         {/* Catch all for deep links if necessary */}
         <Route path="*" element={<LandingPage />} />
       </Routes>
