@@ -510,7 +510,7 @@ const LandingPage: React.FC = () => {
           <div className="relative z-10 flex flex-col lg:flex-row gap-8 md:gap-16 items-center">
             <div className="w-full lg:w-1/2 flex justify-center">
               <ProximityImage
-                src="https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_900/v1773295288/Dennis_Ruf_und_Be%CC%81la_Lehrnickel_Magic_Pop_Creative_Studio_tm4vyk.webp"
+                src="https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_1400/v1773295288/Dennis_Ruf_und_Be%CC%81la_Lehrnickel_Magic_Pop_Creative_Studio_tm4vyk.webp"
                 alt="Studio"
                 className="w-full aspect-[3/2] rounded-lg"
                 overlayColor="bg-magic-blue/10"
