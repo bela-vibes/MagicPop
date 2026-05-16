@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Homepage -->
+  <url>
+    <loc>https://magicpop.berlin/</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://magicpop.berlin/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://magicpop.berlin/en"/>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Impressum -->
+  <url>
+    <loc>https://magicpop.berlin/impressum</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://magicpop.berlin/impressum"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://magicpop.berlin/en/impressum"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.1</priority>
+  </url>
+
+  <!-- Datenschutz -->
+  <url>
+    <loc>https://magicpop.berlin/datenschutz</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://magicpop.berlin/datenschutz"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://magicpop.berlin/en/datenschutz"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.1</priority>
+  </url>
+
+  <!-- Projects (DE) -->
+  <url>
+    <loc>https://magicpop.berlin/suite-1973</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://magicpop.berlin/suite-1973"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://magicpop.berlin/en/suite-1973"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://magicpop.berlin/loqi</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://magicpop.berlin/loqi"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://magicpop.berlin/en/loqi"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://magicpop.berlin/nachtzimmer</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://magicpop.berlin/nachtzimmer"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://magicpop.berlin/en/nachtzimmer"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://magicpop.berlin/momox</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://magicpop.berlin/momox"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://magicpop.berlin/en/momox"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://magicpop.berlin/bite-away</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://magicpop.berlin/bite-away"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://magicpop.berlin/en/bite-away"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://magicpop.berlin/suitcase</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://magicpop.berlin/suitcase"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://magicpop.berlin/en/suitcase"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://magicpop.berlin/hana</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://magicpop.berlin/hana"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://magicpop.berlin/en/hana"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://magicpop.berlin/endspiel</loc>
+    <xhtml:link rel="alternate" hreflang="de" href="https://magicpop.berlin/endspiel"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://magicpop.berlin/en/endspiel"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
