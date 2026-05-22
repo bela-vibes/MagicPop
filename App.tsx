@@ -3,6 +3,8 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import StyleGuide from './components/StyleGuide';
 import ScrollToTop from './components/ScrollToTop';
+import { SpeedInsights } from '@vercel/speed-insights/react';
+import { Analytics } from '@vercel/analytics/react';
 
 const App: React.FC = () => {
   const navigate = useNavigate();
@@ -28,6 +30,8 @@ const App: React.FC = () => {
 
   return (
     <>
+      <SpeedInsights />
+      <Analytics />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<LandingPage />} />

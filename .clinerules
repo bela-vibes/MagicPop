@@ -1,0 +1,13 @@
+# TOKEN-SAVING & PERFORMANCE RULES
+- Be extremely concise. Avoid conversational filler.
+- DO NOT rewrite entire files. Only provide the specific snippets or functions that need changing.
+- When suggesting changes, use the format: "In [filename], change [old code] to [new code]".
+- DO NOT explain how React or Tailwind works unless I explicitly ask "Why?".
+- Before reading a file, check if it's already in the context history to save tokens.
+- Priority: Functionality first, then performance, then aesthetics.
+- If a task is unclear, ask ONE clarifying question instead of guessing and wasting tokens.
+
+# PROJECT CONTEXT
+- This is a high-end creative studio website (Magic Pop Studio).
+- Tech stack: React, Vite, Tailwind CSS, Framer Motion (motion/react).
+- Keep the "Blob" animations and proximity effects intact unless told otherwise.
