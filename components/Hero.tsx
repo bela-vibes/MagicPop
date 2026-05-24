@@ -57,7 +57,7 @@ const Hero: React.FC<HeroProps> = ({ lang }) => {
             </span>
           </h1>
         </div>
-        
+
         <div className={`${mounted ? 'hero-subline' : 'opacity-0'} mt-auto md:mt-4 mb-8 md:mb-4 max-w-4xl relative z-20`}>
           <p className="font-editorial text-3xl md:text-5xl lg:text-6xl leading-[1.1] text-magic-black dark:text-off-white italic">
             {t.subline} <br />
