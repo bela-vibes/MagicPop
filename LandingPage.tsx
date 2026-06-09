@@ -231,10 +231,10 @@ const LandingPage: React.FC = () => {
 
     const animate = () => {
       const m = pointerRef.current;
-      b1x += (m.x - b1x) * 0.02;
-      b1y += (m.y - b1y) * 0.02;
-      b2x += (m.x - b2x) * 0.012;
-      b2y += (m.y - b2y) * 0.012;
+      b1x += (m.x - b1x) * 0.04;
+      b1y += (m.y - b1y) * 0.04;
+      b2x += (m.x - b2x) * 0.025;
+      b2y += (m.y - b2y) * 0.025;
 
       blob1HostRef.current?.style.setProperty('--bx', `${b1x}px`);
       blob1HostRef.current?.style.setProperty('--by', `${b1y}px`);
