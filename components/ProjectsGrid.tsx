@@ -29,13 +29,15 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
   const t = TRANSLATIONS[lang].projects;
 
   const categories = useMemo(() => {
-    const cats = PROJECTS.map(p => p.category[lang]);
+    const cats = PROJECTS.filter(p => p.published !== false).map(p => p.category[lang]);
     return Array.from(new Set(cats));
   }, [lang]);
 
+  const publishedProjects = PROJECTS.filter(p => p.published !== false);
+
   const filteredProjects = useMemo(() => {
-    if (!activeFilter) return PROJECTS;
-    return PROJECTS.filter(p => p.category[lang] === activeFilter);
+    if (!activeFilter) return publishedProjects;
+    return publishedProjects.filter(p => p.category[lang] === activeFilter);
   }, [activeFilter, lang]);
 
   // Edge scrolling (pointer only) — skip perpetual RAF on narrow viewports / iOS

@@ -10,6 +10,8 @@ export interface LocalizedString {
 export interface Project {
   id: number;
   slug: string;
+  /** Defaults to true. Set to false to hide from grid and sitemap (preview via URL still works). */
+  published?: boolean;
   title: LocalizedString;
   category: LocalizedString;
   description: LocalizedString;

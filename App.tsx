@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import LandingPage from './LandingPage';
 import StyleGuide from './components/StyleGuide';
 import ScrollToTop from './components/ScrollToTop';
@@ -8,7 +8,6 @@ import { Analytics } from '@vercel/analytics/react';
 
 const App: React.FC = () => {
   const navigate = useNavigate();
-  const location = useLocation();
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
