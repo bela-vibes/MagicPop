@@ -316,12 +316,12 @@ export const PROJECTS: Project[] = [
   },
 {
     id: 9,
-    slug: "wunderkammer",
-    title: { de: "Wunder\u00ADkammer", en: "Wunder\u00ADkammer" },
+    slug: "motorclub",
+    title: { de: "Motor club", en: "Motor club" },
     published: false, 
     category: { de: "", en: "" },
     description: {
-      de: "Ein Ort zwischen zwei Welten.\n\nFür HANA Berlin im Berlin Hilton haben wir das bestehende Interieur weiterentwickelt und an das neue Restaurantkonzept angepasst. Die Vision war ein japanisch mediterraner Ansatz, der sich auch im Raum widerspiegeln sollte. Der Ort hatte bereits eine klare Farbwelt, an die wir angeknüpft haben. Unser Ziel war es, diese Basis zu erhalten und gleichzeitig beide Einflüsse zusammenzubringen. Japanische Formsprache trifft auf mediterrane Wärme und Materialität.\n\nWir haben mit neuen Texturen, Farben und ausgewählten Elementen gearbeitet, ohne den Charakter des Raums zu verlieren. Dabei war es uns wichtig, dass sich HANA stimmig in die bestehende Location des Kunden einfügt und als Teil einer größeren gestalterischen Linie funktioniert. Lebendig, warm und klar. Gestaltet, ohne überladen zu wirken.\n\nFotografie: Steffen Sinzinger",
+      de: "Eine Garage für Menschen und Maschinen.\n\nAus einer grauen, funktionalen Tiefgarage mit Werkstatt und Waschstation entstand ein Ort, an dem man gerne Zeit verbringt. Die Idee war Autos einen Rahmen zu geben und gleichzeitig einen Raum zu schaffen, der sich wohnlich, einladend und gelebt anfühlt. Auf rund 700 Quadratmetern haben wir verschiedene Bereiche entwickelt, die zwischen Clubhaus, Wunderkammer und Lounge wechseln.\n\nBesondere Schwerpunkte bilden die Werkstatt im Mid Century Stil sowie die Waschstation mit ihren markanten Pfauenfliesen. Dazwischen finden sich Pflanzenwände, Fundstücke und kuriose Objekte, die an eine Wunderkammer erinnern. Die Oldtimer werden dabei Teil einer größeren Geschichte. Über die gesamte Garage verteilt laden Sitzgruppen und Lounge-Bereiche dazu ein, die Fahrzeuge aus immer neuen Perspektiven zu erleben. So entstand ein Ort, der Werkstatt, Ausstellungsraum und Wohnzimmer zugleich sein kann.",
       en: "A place between two worlds.\n\nFor HANA Berlin at the Berlin Hilton, we further developed the existing interior and adapted it to the new restaurant concept. The vision was a Japanese-Mediterranean approach that should also be reflected in the space. The venue already had a clear color palette, which we built upon. Our goal was to preserve this foundation while bringing both influences together. Japanese design language meets Mediterranean warmth and materiality.\n\nWe worked with new textures, colors, and selected elements without losing the character of the space. It was important to us that HANA blend harmoniously into the client’s existing location and function as part of a larger design concept. Lively, warm, and clear. Designed without appearing cluttered.\n\nPhotographed by Steffen Sinzinger"
     },
     year: "2023",
