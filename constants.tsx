@@ -327,15 +327,16 @@ export const PROJECTS: Project[] = [
     year: "2023",
     image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_800/v1773296846/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_uiplwp.jpg",
     gallery: [
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165831/_DSC0056_fza0du.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165837/image_31_dl00lc.png",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165831/_DSC0056_fza0du.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165843/Bildschirmfoto_2026-06-11_um_10.15.36_gvmqce.png",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165830/_DSC0192_korpte.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165835/image_34_iwkuhu.png",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165840/image_30_qgpe5a.png",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165835/image_34_iwkuhu.png",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165831/_DSC0231_w1srlw.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165952/_DSC0136_smdg9m.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165836/image_33_ccnb9h.png",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165842/Bildschirmfoto_2026-06-11_um_10.16.39_nuolor.png"
       
     ],
     color: "bg-pink-400"
