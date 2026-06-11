@@ -334,8 +334,9 @@ export const PROJECTS: Project[] = [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165835/image_34_iwkuhu.png",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165840/image_30_qgpe5a.png",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165831/_DSC0231_w1srlw.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165836/image_33_ccnb9h.png",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165952/_DSC0136_smdg9m.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165836/image_33_ccnb9h.png",
+      
     ],
     color: "bg-pink-400"
   },
