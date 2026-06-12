@@ -202,7 +202,7 @@ export const PROJECTS: Project[] = [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781254954/Bildschirmfoto_2026-06-11_um_10.15.36_gvmqce.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781255676/_DSC0192_korpte.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781255185/image_30_qgpe5a.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781255411/image_34_iwkuhu.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781257393/image_34_iwkuhu.webp",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781255910/_DSC0231_w1srlw.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781255221/image_32_waurzk.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781255349/image_33_ccnb9h.jpg",
