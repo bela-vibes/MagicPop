@@ -197,7 +197,7 @@ export const PROJECTS: Project[] = [
     year: "2023",
     image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_800/v1781256513/Bildschirmfoto_2026-06-11_um_10.15.36_gvmqce.jpg",
     gallery: [
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781255277/image_31_dl00lc.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781258060/image_31_dl00lc.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781255440/_DSC0056_fza0du.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781254954/Bildschirmfoto_2026-06-11_um_10.15.36_gvmqce.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781255676/_DSC0192_korpte.jpg",
