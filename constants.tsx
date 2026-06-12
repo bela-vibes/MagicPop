@@ -169,7 +169,7 @@ export const PROJECTS: Project[] = [
     en: "Bags with personality.\n\nFor LOQI, we developed and implemented visual concepts for the product range. Each bag has its own personality, which we didn’t want to overshadow, but rather bring to the forefront. Instead of a uniform look, we worked with recurring principles. Clean sets that adapt to the respective designs. Materiality, color, and context intertwine, giving each scene its own charm while still adhering to a consistent aesthetic.\n\nThe result is a visual language that remains flexible. New products, new contexts, new seasons—the world we’ve built grows with them."
   },
   year: "2025", // Gefixt: Gerade Anführungszeichen
-  image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_800/v1775379704/LOQI_Rolex_Shanghai_1_gfmomc.jpg",
+  image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto/w_800/v1775379704/LOQI_Rolex_Shanghai_1_gfmomc.jpg",
   gallery: [
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775379704/LOQI_Rolex_Shanghai_1_gfmomc.jpg",
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775379798/250807_LOQI_TravelRetail_Banner_dvuadv.jpg",
@@ -185,7 +185,58 @@ export const PROJECTS: Project[] = [
   ],
   color: "bg-yellow-400"
 },
-   {
+{
+    id: 9,
+    slug: "motorclub",
+    title: { de: "Motor club", en: "Motor club" },
+    category: { de: "Interior", en: "Interior" },
+    description: {
+      de: "Eine Garage für Menschen und Maschinen.\n\nAus einer grauen, funktionalen Tiefgarage mit Werkstatt und Waschstation entstand ein Ort, an dem man gerne Zeit verbringt. Die Idee war Autos einen Rahmen zu geben und gleichzeitig einen Raum zu schaffen, der sich wohnlich, einladend und gelebt anfühlt. Auf rund 700 Quadratmetern haben wir verschiedene Bereiche entwickelt, die zwischen Clubhaus, Wunderkammer und Lounge wechseln.\n\nBesondere Highlights bilden die Werkstatt im Mid Century Stil sowie die Waschstation mit ihren markanten Jugendstilfliesen. Dazwischen finden sich Pflanzenwände, Fundstücke und kuriose Objekte, die an eine Wunderkammer erinnern. Die Fahrzeuge werden Teil der Einrichtung und stehen in direktem Dialog mit dem Interior. Über die gesamte Fläche verteilt laden Sitzgruppen und Lounge-Bereiche dazu ein, die Fahrzeuge aus immer neuen Perspektiven zu entdecken.",
+      en: "A garage for people and machines.\n\nWhat started as a grey, functional underground garage with a workshop and washing station became a place designed for spending time. The goal was to create a setting for the cars while shaping an environment that feels welcoming, comfortable, and lived in. Across roughly 700 square meters, we developed a series of spaces that move between clubhouse, cabinet of curiosities, and lounge.\n\nKey features include a Mid Century inspired workshop and a washing station finished with distinctive Art Nouveau tiles. In between, plant walls, collected objects, and unusual finds create the atmosphere of a modern Wunderkammer. The vehicles become part of the interior itself, entering into a direct dialogue with the space around them. Throughout the garage, lounge areas and seating groups invite visitors to discover the cars from constantly changing perspectives."
+    },
+    year: "2023",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_800/v1781256513/Bildschirmfoto_2026-06-11_um_10.15.36_gvmqce.jpg",
+    gallery: [
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781255277/image_31_dl00lc.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781255440/_DSC0056_fza0du.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781254954/Bildschirmfoto_2026-06-11_um_10.15.36_gvmqce.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781255676/_DSC0192_korpte.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781255185/image_30_qgpe5a.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781255411/image_34_iwkuhu.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781255910/_DSC0231_w1srlw.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781255221/image_32_waurzk.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781255349/image_33_ccnb9h.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781254869/_DSC0136_smdg9m.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781255105/Bildschirmfoto_2026-06-11_um_10.16.39_nuolor.jpg"
+      
+    ],
+    color: "bg-red-600"
+  },
+   
+{
+    id: 8,
+    slug: "momox",
+    title: { de: "Momox", en: "Momox" },
+    category: { de: "Brands", en: "Brands" },
+    description: {
+    de: "Monochrome Klarheit.\n\nFür eine neue Kampagne von Momox haben wir die Produktion umgesetzt und die Bildwelt räumlich gebaut. Ausgangspunkt war das Momox-Blau und ein reduzierter, monochromer Look, die sich als verbindende Elemente durch alle Motive ziehen.\n\nDas Ziel lag darin, für jede Kategorie eigenständige Still-Life-Settings zu entwickeln, die einzeln funktionieren und gleichzeitig Teil eines größeren Ganzen bleiben. Dazu gehörte auch die gezielte Entwicklung und Auswahl von Requisiten, um den Fokus klar auf Produkt und Kategorie zu lenken.\n\nAgentur: I LIKE VISUALS",
+    en: "Monochromatic clarity.\n\nFor a new Momox campaign, we handled production and built the visual world spatially. The starting point was Momox blue and a minimalist, monochromatic look, which serve as connecting elements running through all motifs.\n\nThe goal was to develop distinct still-life settings for each category that function individually while remaining part of a larger whole. This also involved the deliberate development and selection of props to clearly direct the focus toward the product and category.\n\nAgency: I LIKE VISUALS"
+    },
+    year: "2025",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_800/v1775553750/250120_FL_Alle_Momox_ILV_3_i4phy8.jpg",
+    gallery: [
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775472374/250120_4Arms_Momox_ILV_anpivr.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775472375/250120_DVD_Momox_ILV_qayaha.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/video/upload/q_auto/f_auto/v1775552395/YTDown.com_YouTube_Media_H4JC6hoojk4_001_1080p_makei5.mp4",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775552774/250120_buch_Momox_ILV_occ6il.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775552774/250120_vinyl_Momox_ILV_sbkdil.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775553750/250120_FL_Alle_Momox_ILV_3_i4phy8.jpg",
+      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775552774/250120_game_Momox_ILV_pspj2v.jpg"
+      
+    ],
+    color: "bg-orange-500"
+  },
+ {
     id: 3,
     slug: "nachtzimmer",
     title: { de: "Nacht\u00ADzimmer", en: "Nacht\u00ADzimmer" },
@@ -211,32 +262,7 @@ export const PROJECTS: Project[] = [
     ],
     color: "bg-red-600"
   },
-{
-    id: 8,
-    slug: "momox",
-    title: { de: "Momox", en: "Momox" },
-    category: { de: "Brands", en: "Brands" },
-    description: {
-    de: "Monochrome Klarheit.\n\nFür eine neue Kampagne von Momox haben wir die Produktion umgesetzt und die Bildwelt räumlich gebaut. Ausgangspunkt war das Momox-Blau und ein reduzierter, monochromer Look, die sich als verbindende Elemente durch alle Motive ziehen.\n\nDas Ziel lag darin, für jede Kategorie eigenständige Still-Life-Settings zu entwickeln, die einzeln funktionieren und gleichzeitig Teil eines größeren Ganzen bleiben. Dazu gehörte auch die gezielte Entwicklung und Auswahl von Requisiten, um den Fokus klar auf Produkt und Kategorie zu lenken.\n\nAgentur: I LIKE VISUALS",
-    en: "Monochromatic clarity.\n\nFor a new Momox campaign, we handled production and built the visual world spatially. The starting point was Momox blue and a minimalist, monochromatic look, which serve as connecting elements running through all motifs.\n\nThe goal was to develop distinct still-life settings for each category that function individually while remaining part of a larger whole. This also involved the deliberate development and selection of props to clearly direct the focus toward the product and category.\n\nAgency: I LIKE VISUALS"
-    },
-    year: "2025",
-    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_800/v1775553750/250120_FL_Alle_Momox_ILV_3_i4phy8.jpg",
-    gallery: [
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775472374/250120_4Arms_Momox_ILV_anpivr.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775472375/250120_DVD_Momox_ILV_qayaha.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/video/upload/q_auto/f_auto/v1775552395/YTDown.com_YouTube_Media_H4JC6hoojk4_001_1080p_makei5.mp4",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775552774/250120_buch_Momox_ILV_occ6il.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775552774/250120_vinyl_Momox_ILV_sbkdil.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775553750/250120_FL_Alle_Momox_ILV_3_i4phy8.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775552774/250120_game_Momox_ILV_pspj2v.jpg"
-      
-    ],
-    color: "bg-orange-500"
-  },
- 
- 
-  {
+ {
     id: 6,
     slug: "bite-away",
     title: { de: "Bite Away", en: "Bite Away" },
@@ -314,32 +340,5 @@ export const PROJECTS: Project[] = [
     ],
     color: "bg-zinc-900"
   },
-{
-    id: 9,
-    slug: "motorclub",
-    title: { de: "Motor club", en: "Motor club" },
-    published: false, 
-    category: { de: "", en: "" },
-    description: {
-      de: "Eine Garage für Menschen und Maschinen.\n\nAus einer grauen, funktionalen Tiefgarage mit Werkstatt und Waschstation entstand ein Ort, an dem man gerne Zeit verbringt. Die Idee war Autos einen Rahmen zu geben und gleichzeitig einen Raum zu schaffen, der sich wohnlich, einladend und gelebt anfühlt. Auf rund 700 Quadratmetern haben wir verschiedene Bereiche entwickelt, die zwischen Clubhaus, Wunderkammer und Lounge wechseln.\n\nBesondere Highlights bilden die Werkstatt im Mid Century Stil sowie die Waschstation mit ihren markanten Jugendstilfliesen. Dazwischen finden sich Pflanzenwände, Fundstücke und kuriose Objekte, die an eine Wunderkammer erinnern. Die Fahrzeuge werden Teil der Einrichtung und stehen in direktem Dialog mit dem Interior. Über die gesamte Fläche verteilt laden Sitzgruppen und Lounge-Bereiche dazu ein, die Fahrzeuge aus immer neuen Perspektiven zu entdecken.",
-      en: "A place between two worlds.\n\nFor HANA Berlin at the Berlin Hilton, we further developed the existing interior and adapted it to the new restaurant concept. The vision was a Japanese-Mediterranean approach that should also be reflected in the space. The venue already had a clear color palette, which we built upon. Our goal was to preserve this foundation while bringing both influences together. Japanese design language meets Mediterranean warmth and materiality.\n\nWe worked with new textures, colors, and selected elements without losing the character of the space. It was important to us that HANA blend harmoniously into the client’s existing location and function as part of a larger design concept. Lively, warm, and clear. Designed without appearing cluttered.\n\nPhotographed by Steffen Sinzinger"
-    },
-    year: "2023",
-    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_800/v1773296846/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_uiplwp.jpg",
-    gallery: [
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165837/image_31_dl00lc.png",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165831/_DSC0056_fza0du.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165843/Bildschirmfoto_2026-06-11_um_10.15.36_gvmqce.png",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165830/_DSC0192_korpte.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165840/image_30_qgpe5a.png",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165835/image_34_iwkuhu.png",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165831/_DSC0231_w1srlw.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165839/image_32_waurzk.png",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165836/image_33_ccnb9h.png",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781165952/_DSC0136_smdg9m.jpg",
-      "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781169016/Bildschirmfoto_2026-06-11_um_10.16.39_nuolor.jpg"
-      
-    ],
-    color: "bg-pink-400"
-  },
+
 ];
