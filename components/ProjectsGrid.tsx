@@ -136,7 +136,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
   return (
     <section 
       id="projects" 
-      className="py-24 md:py-32 min-h-[100dvh] bg-transparent relative overflow-hidden transition-colors duration-500"
+      className="pt-10 pb-24 md:py-32 min-h-[100dvh] bg-transparent relative overflow-hidden transition-colors duration-500"
     >
       {/* Header Info */}
       <div className="px-6 md:px-12 mb-16 flex flex-col md:flex-row justify-between items-end gap-12 relative z-10">
