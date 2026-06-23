@@ -5,44 +5,74 @@ import { TRANSLATIONS } from '../constants';
 
 interface HeroProps {
   lang: Language;
+  isMobile?: boolean;
+  blob1Ref?: React.RefObject<HTMLDivElement | null>;
+  blob2Ref?: React.RefObject<HTMLDivElement | null>;
 }
 
-const Hero: React.FC<HeroProps> = ({ lang }) => {
+const Hero: React.FC<HeroProps> = ({ lang, isMobile = false, blob1Ref, blob2Ref }) => {
   const t = TRANSLATIONS[lang].hero;
   const textRef = useRef<HTMLSpanElement>(null);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => { setMounted(true); }, []);
 
+  // Desktop: white-on-proximity follows the cursor.
   useEffect(() => {
-    const handleMove = (e: MouseEvent | TouchEvent) => {
+    if (isMobile) return;
+    const handleMove = (e: MouseEvent) => {
       if (!textRef.current) return;
-      const x = 'touches' in e ? e.touches[0]?.clientX : e.clientX;
-      const y = 'touches' in e ? e.touches[0]?.clientY : e.clientY;
-      if (x === undefined || y === undefined) return;
       const rect = textRef.current.getBoundingClientRect();
-      const dx = Math.max(rect.left - x, 0, x - rect.right);
-      const dy = Math.max(rect.top - y, 0, y - rect.bottom);
+      const dx = Math.max(rect.left - e.clientX, 0, e.clientX - rect.right);
+      const dy = Math.max(rect.top - e.clientY, 0, e.clientY - rect.bottom);
       const near = Math.sqrt(dx * dx + dy * dy) < 110;
       textRef.current.style.transition = 'color 0.3s ease';
       textRef.current.style.color = near ? '#F9F7F2' : '';
     };
 
-    const handleTouchEnd = () => {
-      if (!textRef.current) return;
-      textRef.current.style.transition = 'color 0.5s ease';
-      textRef.current.style.color = '';
+    window.addEventListener('mousemove', handleMove, { passive: true });
+    return () => window.removeEventListener('mousemove', handleMove);
+  }, [isMobile]);
+
+  // Mobile: the orange text turns white exactly when an orange blob actually
+  // sits behind it — driven by the blob's real position, not the finger. This
+  // fixes the lag where the blob drifts under the text after touch-end.
+  useEffect(() => {
+    if (!isMobile) return;
+    let rafId = 0;
+    let last = 0;
+
+    const check = (now: number) => {
+      rafId = requestAnimationFrame(check);
+      if (now - last < 90) return; // throttle: layout reads are expensive
+      last = now;
+
+      const el = textRef.current;
+      if (!el) return;
+      const tr = el.getBoundingClientRect();
+
+      let overlap = false;
+      for (const ref of [blob1Ref, blob2Ref]) {
+        const b = ref?.current?.getBoundingClientRect();
+        if (!b || b.width === 0) continue;
+        const bcx = b.left + b.width / 2;
+        const bcy = b.top + b.height / 2;
+        const r = b.width / 2; // blob is a circle
+        // nearest point of the text rect to the blob centre
+        const nx = Math.max(tr.left, Math.min(bcx, tr.right));
+        const ny = Math.max(tr.top, Math.min(bcy, tr.bottom));
+        const dx = bcx - nx;
+        const dy = bcy - ny;
+        if (Math.sqrt(dx * dx + dy * dy) < r) { overlap = true; break; }
+      }
+
+      el.style.transition = 'color 0.3s ease';
+      el.style.color = overlap ? '#F9F7F2' : '';
     };
 
-    window.addEventListener('mousemove', handleMove, { passive: true });
-    window.addEventListener('touchmove', handleMove, { passive: true });
-    window.addEventListener('touchend', handleTouchEnd, { passive: true });
-    return () => {
-      window.removeEventListener('mousemove', handleMove);
-      window.removeEventListener('touchmove', handleMove);
-      window.removeEventListener('touchend', handleTouchEnd);
-    };
-  }, []);
+    rafId = requestAnimationFrame(check);
+    return () => cancelAnimationFrame(rafId);
+  }, [isMobile, blob1Ref, blob2Ref]);
   
   return (
     <section id="hero" className="relative min-h-[100dvh] flex flex-col px-6 md:px-12 pt-28 pb-12 overflow-hidden bg-transparent">

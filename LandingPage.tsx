@@ -463,7 +463,7 @@ const LandingPage: React.FC = () => {
       />
       
       <main className="relative z-[10] mt-0">
-        <Hero lang={lang} />
+        <Hero lang={lang} isMobile={isMobile} blob1Ref={blob1HostRef} blob2Ref={blob2HostRef} />
         <ProjectsGrid
           lang={lang}
           selectedProject={selectedProject}
