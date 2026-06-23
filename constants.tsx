@@ -188,7 +188,7 @@ export const PROJECTS: Project[] = [
 {
     id: 9,
     slug: "motorclub",
-    title: { de: "Motor club", en: "Motor club" },
+    title: { de: "Motor Club", en: "Motor Club" },
     category: { de: "Interior", en: "Interior" },
     description: {
       de: "Eine Garage für Menschen und Maschinen.\n\nAus einer grauen, funktionalen Tiefgarage mit Werkstatt und Waschstation entstand ein Ort, an dem man gerne Zeit verbringt. Die Idee war Autos einen Rahmen zu geben und gleichzeitig einen Raum zu schaffen, der sich wohnlich, einladend und gelebt anfühlt. Auf rund 700 Quadratmetern haben wir verschiedene Bereiche entwickelt, die zwischen Clubhaus, Wunderkammer und Lounge wechseln.\n\nBesondere Highlights bilden die Werkstatt im Mid Century Stil sowie die Waschstation mit ihren markanten Jugendstilfliesen. Dazwischen finden sich Pflanzenwände, Fundstücke und kuriose Objekte, die an eine Wunderkammer erinnern. Die Fahrzeuge werden Teil der Einrichtung und stehen in direktem Dialog mit dem Interior. Über die gesamte Fläche verteilt laden Sitzgruppen und Lounge-Bereiche dazu ein, die Fahrzeuge aus immer neuen Perspektiven zu entdecken.",
