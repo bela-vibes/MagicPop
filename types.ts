@@ -17,6 +17,8 @@ export interface Project {
   description: LocalizedString;
   year: string;
   image: string;
+  /** Optional portrait (9:16-ish) crop used for the mobile hero slideshow. Falls back to `image`. */
+  imagePortrait?: string;
   gallery: string[];
   videoPosters?: { [videoUrl: string]: string };
   color: string;

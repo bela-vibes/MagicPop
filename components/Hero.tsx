@@ -25,11 +25,12 @@ const Hero: React.FC<HeroProps> = ({ lang, isMobile = false, blob1Ref, blob2Ref 
   const slides = useMemo(
     () =>
       PROJECTS.filter(p => p.published !== false)
-        .map(p => p.image)
+        // On mobile prefer the portrait crop; fall back to the landscape image.
+        .map(p => (isMobile && p.imagePortrait ? p.imagePortrait : p.image))
         .filter(src => !src.toLowerCase().endsWith('.mp4'))
         // full-bleed hero wants a sharper image than the 800px grid thumbnail
         .map(src => src.replace('w_800', 'w_1600')),
-    []
+    [isMobile]
   );
   const [current, setCurrent] = useState(0);
   const slideLayerRef = useRef<HTMLDivElement>(null);
