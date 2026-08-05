@@ -20,8 +20,8 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
   const t = TRANSLATIONS[lang].nav;
   
   const navItems = [
-    { label: t.projects, href: '#projects' },
     { label: t.whatWeDo, href: '#services' },
+    { label: t.projects, href: '#projects' },
     { label: t.studio, href: '#about' },
     { label: t.contact, href: '#contact' },
   ];
