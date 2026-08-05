@@ -11,9 +11,10 @@ interface HeaderProps {
   isDarkMode: boolean;
   toggleDarkMode: () => void;
   onNavClick?: () => void;
+  showDarkToggle?: boolean;
 }
 
-const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDarkMode, toggleDarkMode, onNavClick }) => {
+const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDarkMode, toggleDarkMode, onNavClick, showDarkToggle = true }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -96,9 +97,11 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
           </nav>
 
           <div className="flex items-center gap-2 lg:gap-6">
-            <button 
+            <button
               onClick={toggleDarkMode}
-              className={`p-2 rounded-full transition-all duration-300 hover:scale-110 active:scale-95 ${textColor}`}
+              className={`p-2 rounded-full transition-all duration-300 hover:scale-110 active:scale-95 ${textColor} ${showDarkToggle ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+              aria-hidden={!showDarkToggle}
+              tabIndex={showDarkToggle ? 0 : -1}
               aria-label="Toggle Dark Mode"
             >
               {isDarkMode ? (

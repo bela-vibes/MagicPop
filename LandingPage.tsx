@@ -449,13 +449,16 @@ const LandingPage: React.FC = () => {
         />
       </div>
 
-      <Header 
-        bgColor={`${headerTheme.bg} ${headerTheme.shadow}`} 
-        textColor={headerTheme.text} 
+      <Header
+        bgColor={`${headerTheme.bg} ${headerTheme.shadow}`}
+        textColor={headerTheme.text}
         lang={lang}
         setLang={handleSetLang}
         isDarkMode={isDarkMode}
         toggleDarkMode={toggleDarkMode}
+        // In the slideshow hero, dark mode has no visible effect — hide the
+        // toggle until the user scrolls into the first coloured section.
+        showDarkToggle={!SLIDESHOW_HERO || headerTheme.text !== HERO_TOP_THEME.text}
         onNavClick={() => {
           navigate(langPath('/'));
           document.body.style.overflow = 'unset';
@@ -471,7 +474,7 @@ const LandingPage: React.FC = () => {
           isMobile={isMobile}
         />
 
-        <Section id="services" title={t.whatWeDo.title} subtitle={t.whatWeDo.subtitle} className="bg-transparent pt-6 pb-24 md:pt-32 md:pb-48">
+        <Section id="services" title={t.whatWeDo.title} subtitle={t.whatWeDo.subtitle} className="bg-transparent pt-6 pb-24 md:pt-24 md:pb-48">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mt-12">
             {t.whatWeDo.services.map((service, i) => (
               <div key={i} className="group pt-0 md:pt-4">
@@ -488,7 +491,7 @@ const LandingPage: React.FC = () => {
           id="about" 
           title={t.studio.title} 
           subtitle={t.studio.subtitle} 
-          className="relative overflow-hidden pt-24 pb-12 md:pt-48 md:pb-32"
+          className="relative overflow-hidden pt-6 pb-24 md:pt-24 md:pb-48"
         >
           <div className="relative z-10 flex flex-col lg:flex-row gap-8 md:gap-16 items-center">
             <div className="w-full lg:w-1/2 flex justify-center">
@@ -508,7 +511,7 @@ const LandingPage: React.FC = () => {
 
         <BrandMarquee title={t.contact.trustTitle} isMobile={isMobile} />
 
-        <Section id="contact" title={t.contact.title} subtitle={t.contact.subtitle} className="bg-transparent pt-16 pb-12 md:pt-40 md:pb-32">
+        <Section id="contact" title={t.contact.title} subtitle={t.contact.subtitle} className="bg-transparent pt-16 pb-12 md:pt-24 md:pb-32">
           {/* Main Contact Grid */}
           <div className="flex flex-col lg:flex-row gap-12 md:gap-24 mt-4">
             <div className="lg:w-1/2 flex flex-col justify-between">
