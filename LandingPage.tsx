@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, startTransition } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import Header from './components/Header';
-import Hero from './components/Hero';
+import Hero, { SLIDESHOW_HERO } from './components/Hero';
 import ProjectsGrid from './components/ProjectsGrid';
 import Section from './components/Section';
 import { Language, Project } from './types';
@@ -53,6 +53,23 @@ const BrandMarquee = ({ title, isMobile }: { title: string; isMobile: boolean })
   );
 };
 
+// Header theme at the very top of a route.
+// Home hero: white text (dark slideshow images) — but only when the slideshow
+// hero is active; the old graphic hero sits on a light background.
+const HERO_TOP_THEME = {
+  bg: 'bg-transparent',
+  text: SLIDESHOW_HERO ? 'text-off-white' : 'text-magic-black dark:text-off-white',
+  shadow: '',
+  blobColor: 'bg-magic-orange',
+};
+// Light overlay pages (Impressum/Datenschutz) need dark text on off-white.
+const LIGHT_TOP_THEME = {
+  bg: 'bg-transparent',
+  text: 'text-magic-black dark:text-off-white',
+  shadow: '',
+  blobColor: 'bg-magic-orange',
+};
+
 const LandingPage: React.FC = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -77,6 +94,16 @@ const LandingPage: React.FC = () => {
   const blob1HostRef = useRef<HTMLDivElement>(null);
   const blob2HostRef = useRef<HTMLDivElement>(null);
   const selectedProjectRef = useRef<typeof selectedProject>(null);
+  const isHomeRef = useRef(rawPath === '/');
+
+  // Keep the header text colour correct at the top of each route:
+  // white over the dark home hero, dark over the light overlay pages.
+  useEffect(() => {
+    isHomeRef.current = rawPath === '/';
+    if (window.scrollY < 100) {
+      setScrollTheme(rawPath === '/' ? HERO_TOP_THEME : LIGHT_TOP_THEME);
+    }
+  }, [rawPath]);
 
   // Reset title when on landing page
   useEffect(() => {
@@ -140,12 +167,9 @@ const LandingPage: React.FC = () => {
     }
   }, [location.hash, location.pathname]);
 
-  const [scrollTheme, setScrollTheme] = useState({
-    bg: 'bg-transparent',
-    text: 'text-magic-black dark:text-off-white',
-    shadow: '',
-    blobColor: 'bg-magic-orange'
-  });
+  const [scrollTheme, setScrollTheme] = useState(
+    rawPath === '/' ? HERO_TOP_THEME : LIGHT_TOP_THEME
+  );
 
   const headerTheme = selectedProject
     ? { bg: 'bg-magic-orange', text: 'text-white', shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,77,0,0.6)]', blobColor: 'bg-magic-orange' }
@@ -320,9 +344,12 @@ const LandingPage: React.FC = () => {
     const THEMES: Record<string, ThemeEntry> = {
       contact:  { bg: '#FFB7D5', blob: '#FFB7D5', react: { bg: 'bg-magic-pink',   text: 'text-magic-black',            shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,183,213,0.6)]', blobColor: 'bg-magic-pink'   } },
       about:    { bg: '#0038FF', blob: '#0038FF', react: { bg: 'bg-magic-blue',   text: 'text-white',                  shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(0,56,255,0.6)]',   blobColor: 'bg-magic-blue'   } },
-      services: { bg: '#FACC15', blob: '#FACC15', react: { bg: 'bg-yellow-400',   text: 'text-magic-black',            shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.6)]', blobColor: 'bg-yellow-400'   } },
-      projects: { bg: '#FF4D00', blob: '#FF4D00', react: { bg: 'bg-magic-orange', text: 'text-white',                  shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,77,0,0.6)]',   blobColor: 'bg-magic-orange' } },
-      default:  { bg: 'transparent', blob: '#FF4D00', react: { bg: 'bg-transparent', text: 'text-magic-black dark:text-off-white', shadow: '', blobColor: 'bg-magic-orange' } },
+      // Colours stay in scroll order: 1st coloured section orange, 2nd yellow.
+      // WAS WIR TUN (services) is now first → orange; PROJEKTE second → yellow.
+      services: { bg: '#FF4D00', blob: '#FF4D00', react: { bg: 'bg-magic-orange', text: 'text-white',                  shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,77,0,0.6)]',   blobColor: 'bg-magic-orange' } },
+      projects: { bg: '#FACC15', blob: '#FACC15', react: { bg: 'bg-yellow-400',   text: 'text-magic-black',            shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.6)]', blobColor: 'bg-yellow-400'   } },
+      heroTop:  { bg: 'transparent', blob: '#FF4D00', react: HERO_TOP_THEME },
+      lightTop: { bg: 'transparent', blob: '#FF4D00', react: LIGHT_TOP_THEME },
     };
 
     const applyTheme = (key: string) => {
@@ -336,7 +363,9 @@ const LandingPage: React.FC = () => {
       }
       // React state — only for text colors, deferred
       startTransition(() => {
-        setScrollTheme(prev => prev.bg === t.react.bg ? prev : t.react);
+        setScrollTheme(prev =>
+          prev.bg === t.react.bg && prev.text === t.react.text ? prev : t.react
+        );
       });
     };
 
@@ -349,9 +378,9 @@ const LandingPage: React.FC = () => {
 
         if      (offsets.contact  && scrollPos >= offsets.contact)  applyTheme('contact');
         else if (offsets.about    && scrollPos >= offsets.about)    applyTheme('about');
-        else if (offsets.services && scrollPos >= offsets.services) applyTheme('services');
         else if (offsets.projects && scrollPos >= offsets.projects) applyTheme('projects');
-        else                                                         applyTheme('default');
+        else if (offsets.services && scrollPos >= offsets.services) applyTheme('services');
+        else                                                         applyTheme(isHomeRef.current ? 'heroTop' : 'lightTop');
 
         ticking = false;
       });
@@ -467,12 +496,6 @@ const LandingPage: React.FC = () => {
       
       <main className="relative z-[10] mt-0">
         <Hero lang={lang} isMobile={isMobile} blob1Ref={blob1HostRef} blob2Ref={blob2HostRef} />
-        <ProjectsGrid
-          lang={lang}
-          selectedProject={selectedProject}
-          setSelectedProject={setSelectedProject}
-          isMobile={isMobile}
-        />
 
         <Section id="services" title={t.whatWeDo.title} subtitle={t.whatWeDo.subtitle} className="bg-transparent pt-6 pb-24 md:pt-24 md:pb-48">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mt-12">
@@ -486,6 +509,13 @@ const LandingPage: React.FC = () => {
             ))}
           </div>
         </Section>
+
+        <ProjectsGrid
+          lang={lang}
+          selectedProject={selectedProject}
+          setSelectedProject={setSelectedProject}
+          isMobile={isMobile}
+        />
 
         <Section 
           id="about" 
