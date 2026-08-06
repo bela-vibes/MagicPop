@@ -13,11 +13,11 @@ interface SectionProps {
 const Section: React.FC<SectionProps> = ({ id, title, subtitle, children, className = "" }) => {
   return (
     <section id={id} className={`px-6 md:px-12 min-h-[100dvh] flex flex-col justify-center ${className}`}>
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ duration: 0.8, ease: [0.19, 1, 0.22, 1] }}
+        viewport={{ once: true, margin: "0px 0px 200px 0px" }}
+        transition={{ duration: 0.6, ease: [0.19, 1, 0.22, 1] }}
         className="mb-10 md:mb-16"
       >
         <h2 className="font-archivo text-5xl md:text-[10vw] leading-[0.9] uppercase tracking-tighter mb-4 text-inherit">
@@ -29,11 +29,11 @@ const Section: React.FC<SectionProps> = ({ id, title, subtitle, children, classN
           </p>
         )}
       </motion.div>
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-50px" }}
-        transition={{ duration: 0.8, delay: 0.2, ease: [0.19, 1, 0.22, 1] }}
+        viewport={{ once: true, margin: "0px 0px 150px 0px" }}
+        transition={{ duration: 0.6, delay: 0.15, ease: [0.19, 1, 0.22, 1] }}
         className="flex-1"
       >
         {children}
