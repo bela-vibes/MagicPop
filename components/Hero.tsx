@@ -47,7 +47,8 @@ const Hero: React.FC<HeroProps> = ({ lang, isMobile = false, blob1Ref, blob2Ref 
     return () => clearInterval(id);
   }, [slides.length]);
 
-  // Scroll transition: the image shrinks + fades as the projects rise over it
+  // Parallax: the image layer scrolls slower than the page (depth). The layer
+  // is scaled up so the slower movement never reveals an edge gap.
   useEffect(() => {
     if (!SLIDESHOW_HERO) return;
     let rafId = 0;
@@ -55,10 +56,10 @@ const Hero: React.FC<HeroProps> = ({ lang, isMobile = false, blob1Ref, blob2Ref 
 
     const apply = () => {
       ticking = false;
-      // Simple crossfade: the whole hero fades out as the projects scroll in.
-      const p = Math.min(Math.max(window.scrollY / window.innerHeight, 0), 1);
-      if (slideLayerRef.current) slideLayerRef.current.style.opacity = `${1 - p}`;
-      if (contentRef.current) contentRef.current.style.opacity = `${1 - p}`;
+      const y = window.scrollY * 0.25;
+      if (slideLayerRef.current) {
+        slideLayerRef.current.style.transform = `translate3d(0, ${y}px, 0) scale(1.25)`;
+      }
     };
 
     const onScroll = () => {
@@ -134,12 +135,12 @@ const Hero: React.FC<HeroProps> = ({ lang, isMobile = false, blob1Ref, blob2Ref 
   // ── New slideshow hero ─────────────────────────────────────────────────
   if (SLIDESHOW_HERO) {
     return (
-      <section id="hero" className="relative h-[100svh] overflow-hidden bg-transparent">
+      <section id="hero" className="relative h-[100svh] overflow-hidden bg-yellow-400">
         {/* Full-bleed crossfading slideshow */}
         <div
           ref={slideLayerRef}
           className="absolute inset-0 overflow-hidden will-change-transform"
-          style={{ transformOrigin: 'center center' }}
+          style={{ transformOrigin: 'center center', transform: 'scale(1.25)' }}
         >
           {slides.map((src, i) => (
             <img

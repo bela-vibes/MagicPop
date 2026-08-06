@@ -60,7 +60,8 @@ const HERO_TOP_THEME = {
   bg: 'bg-transparent',
   text: SLIDESHOW_HERO ? 'text-off-white' : 'text-magic-black dark:text-off-white',
   shadow: '',
-  blobColor: 'bg-magic-orange',
+  // Yellow blob behind the hero → smooth transition into the yellow first section.
+  blobColor: 'bg-yellow-400',
 };
 // Light overlay pages (Impressum/Datenschutz) need dark text on off-white.
 const LIGHT_TOP_THEME = {
@@ -344,11 +345,10 @@ const LandingPage: React.FC = () => {
     const THEMES: Record<string, ThemeEntry> = {
       contact:  { bg: '#FFB7D5', blob: '#FFB7D5', react: { bg: 'bg-magic-pink',   text: 'text-magic-black',            shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,183,213,0.6)]', blobColor: 'bg-magic-pink'   } },
       about:    { bg: '#0038FF', blob: '#0038FF', react: { bg: 'bg-magic-blue',   text: 'text-white',                  shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(0,56,255,0.6)]',   blobColor: 'bg-magic-blue'   } },
-      // Colours stay in scroll order: 1st coloured section orange, 2nd yellow.
-      // WAS WIR TUN (services) is now first → orange; PROJEKTE second → yellow.
-      services: { bg: '#FF4D00', blob: '#FF4D00', react: { bg: 'bg-magic-orange', text: 'text-white',                  shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,77,0,0.6)]',   blobColor: 'bg-magic-orange' } },
-      projects: { bg: '#FACC15', blob: '#FACC15', react: { bg: 'bg-yellow-400',   text: 'text-magic-black',            shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.6)]', blobColor: 'bg-yellow-400'   } },
-      heroTop:  { bg: 'transparent', blob: '#FF4D00', react: HERO_TOP_THEME },
+      // WAS WIR TUN (services) → yellow; PROJEKTE → orange.
+      services: { bg: '#FACC15', blob: '#FACC15', react: { bg: 'bg-yellow-400',   text: 'text-magic-black',            shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.6)]', blobColor: 'bg-yellow-400'   } },
+      projects: { bg: '#FF4D00', blob: '#FF4D00', react: { bg: 'bg-magic-orange', text: 'text-white',                  shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,77,0,0.6)]',   blobColor: 'bg-magic-orange' } },
+      heroTop:  { bg: 'transparent', blob: '#FACC15', react: HERO_TOP_THEME },
       lightTop: { bg: 'transparent', blob: '#FF4D00', react: LIGHT_TOP_THEME },
     };
 
