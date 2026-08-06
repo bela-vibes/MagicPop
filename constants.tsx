@@ -170,6 +170,7 @@ export const PROJECTS: Project[] = [
   },
   year: "2025", // Gefixt: Gerade Anführungszeichen
   image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto/w_800/v1775379704/LOQI_Rolex_Shanghai_1_gfmomc.jpg",
+  imagePortrait: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1786000421/LOQI_Rolex_Shanghai_1_hoch_byz3bt.jpg",
   gallery: [
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775379704/LOQI_Rolex_Shanghai_1_gfmomc.jpg",
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775379798/250807_LOQI_TravelRetail_Banner_dvuadv.jpg",
@@ -224,6 +225,7 @@ export const PROJECTS: Project[] = [
     },
     year: "2025",
     image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_800/v1775553750/250120_FL_Alle_Momox_ILV_3_i4phy8.jpg",
+    imagePortrait: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1786000749/250120_FL_Alle_Momox_ILV_3_hoch_xaqxdl.jpg",
     gallery: [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775472374/250120_4Arms_Momox_ILV_anpivr.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775472375/250120_DVD_Momox_ILV_qayaha.jpg",
@@ -247,6 +249,7 @@ export const PROJECTS: Project[] = [
     },
     year: "2017",
     image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_800/v1773247550/02_-_Fisch_q9rvsk.jpg",
+    imagePortrait: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1786000769/02_-_Fisch_hoch_brquvb.jpg",
     gallery: [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773294351/Nachtzimmer0_MagicPop2024.jpg_ylyg9j.webp",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773261659/08---Mermaid_bk4obw.jpg",
@@ -273,6 +276,7 @@ export const PROJECTS: Project[] = [
     },
     year: "2024",
     image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_800/v1775457438/Bildschirmfoto_2024-04-29_um_09.46.40.png_oggl6i.webp",
+    imagePortrait: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1786000312/Biteaway_hoch_x68u8j.jpg",
     gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775457439/Bildschirmfoto_2024-04-29_um_09.47.07.png_o0xgqk.webp",
              "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775457437/Bildschirmfoto_2024-04-29_um_09.46.10.png_ql21ep.webp",
              "https://res.cloudinary.com/dpe3jvf3e/video/upload/v1775458767/YTDown.com_YouTube_bite-away-Insektenstich-Juckt-mich-nicht_Media_1s06Wkf_Q6U_001_1080p_g96cmk.mp4",
@@ -291,6 +295,7 @@ export const PROJECTS: Project[] = [
     },
     year: "2023",
     image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_800/v1775420840/Bildschirmfoto_2026-04-05_um_22.26.25_oxn9ne.png",
+    imagePortrait: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1786000774/Bildschirmfoto_2026-04-05_um_22.26_mknpi2.jpg",
     gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775420863/Bildschirmfoto_2026-04-05_um_22.26.13_kgvhnw.png",
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1775457660/ezgif-1bdb65971b5e9ce5_xb4jej.gif",
               "https://res.cloudinary.com/dpe3jvf3e/video/upload/v1773394785/2023-magic-pop-production-set-design-props-suitcase-ameli-in-the-woods-amores-production_ike2mz.mp4"],
