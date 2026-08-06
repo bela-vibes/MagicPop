@@ -497,7 +497,7 @@ const LandingPage: React.FC = () => {
       <main className="relative z-[10] mt-0">
         <Hero lang={lang} isMobile={isMobile} blob1Ref={blob1HostRef} blob2Ref={blob2HostRef} />
 
-        <Section id="services" title={t.whatWeDo.title} subtitle={t.whatWeDo.subtitle} className="bg-transparent pt-20 pb-24 md:pt-24 md:pb-48">
+        <Section id="services" title={t.whatWeDo.title} subtitle={t.whatWeDo.subtitle} className="bg-transparent pt-20 pb-24 md:mt-28 md:pt-24 md:pb-48">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mt-12">
             {t.whatWeDo.services.map((service, i) => (
               <div key={i} className="group pt-0 md:pt-4">
