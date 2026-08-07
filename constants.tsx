@@ -170,7 +170,7 @@ export const PROJECTS: Project[] = [
   },
   year: "2025", // Gefixt: Gerade Anführungszeichen
   image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto:good,w_1920,c_limit/v1775379704/LOQI_Rolex_Shanghai_1_gfmomc.jpg",
-  imagePortrait: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto:good,w_1080,c_limitv1786000421/LOQI_Rolex_Shanghai_1_hoch_byz3bt.jpg",
+  imagePortrait: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto:good,w_1080,c_limit/v1786000421/LOQI_Rolex_Shanghai_1_hoch_byz3bt.jpg",
   gallery: [
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775379704/LOQI_Rolex_Shanghai_1_gfmomc.jpg",
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775379798/250807_LOQI_TravelRetail_Banner_dvuadv.jpg",
@@ -225,7 +225,7 @@ export const PROJECTS: Project[] = [
     },
     year: "2025",
     image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto:good,w_1920,c_limit/v1775553750/250120_FL_Alle_Momox_ILV_3_i4phy8.jpg",
-    imagePortrait: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto:good,w_1080,c_limitv1786000749/250120_FL_Alle_Momox_ILV_3_hoch_xaqxdl.jpg",
+    imagePortrait: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto:good,w_1080,c_limit/v1786000749/250120_FL_Alle_Momox_ILV_3_hoch_xaqxdl.jpg",
     gallery: [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775472374/250120_4Arms_Momox_ILV_anpivr.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775472375/250120_DVD_Momox_ILV_qayaha.jpg",
