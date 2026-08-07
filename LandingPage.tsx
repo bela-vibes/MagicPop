@@ -27,14 +27,14 @@ const BrandMarquee = ({ title, isMobile }: { title: string; isMobile: boolean })
     ));
 
   return (
-    <section className="px-6 md:px-12 pt-12 pb-16 md:pt-32 md:pb-48 overflow-hidden bg-transparent">
-      <div className="mb-10 md:mb-16">
+    <section className="px-6 md:px-12 lg:px-20 pt-12 pb-16 md:pt-32 md:pb-48 overflow-hidden bg-transparent">
+      <div className="max-w-6xl 2xl:max-w-[1536px] mx-auto mb-10 md:mb-16">
         <h3 className="font-editorial text-2xl md:text-4xl lg:text-5xl italic text-magic-black dark:text-off-white leading-[1.1]">
           {title}
         </h3>
       </div>
 
-      <div className="relative flex overflow-hidden py-10 -mx-6 md:-mx-12">
+      <div className="relative flex overflow-hidden py-10 2xl:py-20 -mx-6 md:-mx-12 lg:-mx-20">
         {isMobile ? (
           <div className="brand-marquee-css flex w-max whitespace-nowrap">
             {row('css')}
@@ -500,13 +500,13 @@ const LandingPage: React.FC = () => {
         <Hero lang={lang} isMobile={isMobile} blob1Ref={blob1HostRef} blob2Ref={blob2HostRef} />
 
         <Section id="services" title={t.whatWeDo.title} subtitle={t.whatWeDo.subtitle} className="bg-transparent pt-20 pb-24 md:mt-28 md:pt-24 md:pb-48 2xl:min-h-0 2xl:pt-[20vh] 2xl:pb-[20vh]">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mt-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mt-12 lg:mt-4 2xl:mt-12">
             {t.whatWeDo.services.map((service, i) => (
               <div key={i} className="group pt-0 md:pt-4">
                 <span className="font-archivo text-xs md:text-sm uppercase tracking-widest mb-4 block text-magic-black/30 dark:text-off-white/30">0{i+1}</span>
                 <h3 className="font-archivo text-xl md:text-2xl uppercase tracking-tighter mb-1 text-magic-black dark:text-off-white group-hover:translate-x-2 transition-transform duration-300">{service.title}</h3>
                 <span className="font-archivo text-[10px] md:text-[11px] uppercase tracking-[0.2em] mb-4 md:mb-6 block text-magic-black/20 dark:text-off-white/20 transition-transform duration-300 group-hover:translate-x-2">{service.subline}</span>
-                <p className="text-base md:text-lg text-magic-black/60 dark:text-off-white/60 leading-relaxed font-medium">{service.desc}</p>
+                <p className="text-base 2xl:text-lg text-magic-black/60 dark:text-off-white/60 leading-relaxed font-medium">{service.desc}</p>
               </div>
             ))}
           </div>
@@ -535,8 +535,8 @@ const LandingPage: React.FC = () => {
               />
             </div>
             <div className="w-full lg:w-1/2 space-y-6 md:space-y-8 text-magic-black dark:text-off-white">
-              <p className="font-editorial text-2xl md:text-3xl italic leading-tight drop-shadow-sm opacity-90">{t.studio.p1}</p>
-              <p className="text-base md:text-lg opacity-60 font-medium leading-relaxed">{t.studio.p2}</p>
+              <p className="font-editorial text-2xl 2xl:text-3xl italic leading-tight drop-shadow-sm opacity-90">{t.studio.p1}</p>
+              <p className="text-base 2xl:text-lg opacity-60 font-medium leading-relaxed">{t.studio.p2}</p>
             </div>
           </div>
         </Section>
@@ -546,7 +546,7 @@ const LandingPage: React.FC = () => {
         <Section id="contact" title={t.contact.title} subtitle={t.contact.subtitle} className="bg-transparent pt-16 pb-12 md:pt-24 md:pb-32 2xl:min-h-0 2xl:pb-48">
           {/* Main Contact Grid */}
           <div className="flex flex-col lg:flex-row gap-12 md:gap-24 mt-4">
-            <div className="lg:w-1/2 flex flex-col justify-between">
+            <div className="lg:w-1/2 flex flex-col justify-between lg:justify-start 2xl:justify-between">
               <div className="space-y-6">
                 <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block">{t.contact.emailLabel}</span>
                 <a href={`mailto:${CONTACT_EMAIL}`} 
@@ -568,7 +568,7 @@ const LandingPage: React.FC = () => {
               </div>
 
               {/* Instagram on Desktop */}
-              <div className="hidden lg:block pt-16 md:pt-24">
+              <div className="hidden lg:block pt-16 md:pt-24 lg:pt-10 2xl:pt-24">
                 <span className="font-archivo text-xs uppercase tracking-widest text-magic-black/30 dark:text-off-white/30 block mb-6">{t.contact.followLabel}</span>
                 <div className="flex gap-8 font-archivo uppercase text-xs md:text-sm tracking-widest text-magic-black dark:text-off-white">
                   <a href="https://www.instagram.com/magicpop.berlin" target="_blank" rel="noopener noreferrer" className="relative group overflow-hidden">
@@ -580,7 +580,7 @@ const LandingPage: React.FC = () => {
             </div>
 
             <div className="lg:w-1/2 flex flex-col items-center justify-center py-12 lg:py-0">
-              <div className="relative w-full max-w-[280px] md:max-w-[340px] lg:max-w-[380px]">
+              <div className="relative w-full max-w-[280px] md:max-w-[340px] lg:max-w-[300px] 2xl:max-w-[380px]">
                 <motion.div 
                   animate={{ 
                     y: [0, -15, 0],
@@ -591,24 +591,24 @@ const LandingPage: React.FC = () => {
                     repeat: Infinity, 
                     ease: "easeInOut" 
                   }}
-                  className="relative aspect-square w-full bg-yellow-400 rounded-full flex flex-col items-center justify-center text-center p-8 md:p-12 shadow-[0_30px_80px_-20px_rgba(250,204,21,0.4)] transition-shadow duration-500"
+                  className="relative aspect-square w-full bg-yellow-400 rounded-full flex flex-col items-center justify-center text-center p-8 md:p-12 lg:p-9 2xl:p-12 shadow-[0_30px_80px_-20px_rgba(250,204,21,0.4)] transition-shadow duration-500"
                 >
-                  <div className="space-y-4 md:space-y-6 flex flex-col items-center">
-                    <h3 className="font-editorial text-4xl md:text-5xl lg:text-6xl text-magic-black italic leading-[1.1] max-w-[200px] md:max-w-[260px] lg:max-w-[300px]">
+                  <div className="space-y-4 md:space-y-6 lg:space-y-4 2xl:space-y-6 flex flex-col items-center">
+                    <h3 className="font-editorial text-4xl md:text-5xl lg:text-5xl 2xl:text-6xl text-magic-black italic leading-[1.1] max-w-[200px] md:max-w-[260px] lg:max-w-[240px] 2xl:max-w-[300px]">
                       {t.contact.footerNoteSmall}
                     </h3>
                     
                     <div className="flex gap-4 md:gap-6">
                       <a 
                         href={`mailto:${CONTACT_EMAIL}`}
-                        className="w-12 h-12 md:w-14 md:h-14 bg-magic-black text-off-white rounded-full flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-95 shadow-xl group/icon"
+                        className="w-12 h-12 md:w-14 md:h-14 lg:w-12 lg:h-12 2xl:w-14 2xl:h-14 bg-magic-black text-off-white rounded-full flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-95 shadow-xl group/icon"
                         title={CONTACT_EMAIL}
                       >
                         <Mail className="w-5 h-5 md:w-6 md:h-6 group-hover/icon:animate-bounce" />
                       </a>
                       <a 
                         href={`tel:${CONTACT_PHONE.replace(/\s+/g, '')}`}
-                        className="w-12 h-12 md:w-14 md:h-14 bg-magic-black text-off-white rounded-full flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-95 shadow-xl group/icon"
+                        className="w-12 h-12 md:w-14 md:h-14 lg:w-12 lg:h-12 2xl:w-14 2xl:h-14 bg-magic-black text-off-white rounded-full flex items-center justify-center transition-all duration-500 hover:scale-110 active:scale-95 shadow-xl group/icon"
                         title={CONTACT_PHONE}
                       >
                         <Phone className="w-5 h-5 md:w-6 md:h-6 group-hover/icon:animate-bounce" />

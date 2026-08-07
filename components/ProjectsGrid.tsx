@@ -136,15 +136,15 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
   return (
     <section 
       id="projects" 
-      className="py-24 md:pt-24 md:pb-32 min-h-[100dvh] bg-transparent relative overflow-hidden transition-colors duration-500"
+      className="py-24 md:pt-24 md:pb-32 px-6 md:px-12 lg:px-20 min-h-[100dvh] bg-transparent relative overflow-hidden transition-colors duration-500"
     >
       {/* Constrain to the same centred column width as the other sections */}
-      <div className="max-w-[1536px] mx-auto">
+      <div className="max-w-6xl 2xl:max-w-[1536px] mx-auto">
       {/* Header Info */}
-      <div className="px-6 md:px-12 mb-16 flex flex-col md:flex-row justify-between items-end gap-12 relative z-10">
+      <div className="mb-16 flex flex-col md:flex-row justify-between items-end gap-12 relative z-10">
         <div className="flex-1">
-          <h2 className="font-archivo text-[clamp(3rem,10vw,9rem)] uppercase tracking-tighter mb-4 text-magic-black dark:text-off-white max-w-4xl leading-[0.9]">{t.title}</h2>
-          <p className="font-medium text-magic-black/60 dark:text-off-white/60 text-base md:text-lg leading-relaxed mb-10 max-w-2xl">{t.description}</p>
+          <h2 className="font-archivo text-[clamp(3rem,7vw,9rem)] uppercase tracking-tighter mb-4 text-magic-black dark:text-off-white max-w-4xl leading-[0.9]">{t.title}</h2>
+          <p className="font-medium text-magic-black/60 dark:text-off-white/60 text-base 2xl:text-lg leading-relaxed mb-10 max-w-2xl">{t.description}</p>
           
           {/* Filter Bar */}
           <div className="flex flex-wrap gap-x-8 gap-y-4 w-full">
@@ -214,13 +214,13 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
         ref={scrollRef}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className={`flex overflow-x-auto gap-8 px-6 md:px-12 scroll-px-6 md:scroll-px-12 no-scrollbar pb-12 min-h-[400px] relative z-10 ${!isEdgeScrolling ? 'snap-x snap-mandatory' : ''}`}
+        className={`flex overflow-x-auto gap-8 no-scrollbar pb-12 min-h-[400px] relative z-10 ${!isEdgeScrolling ? 'snap-x snap-mandatory' : ''}`}
       >
         {filteredProjects.map((project, index) => (
           <div
             key={project.id}
             onClick={() => handleOpenProject(project)}
-            className="w-[75vw] md:w-[60vw] lg:w-[43vw] lg:max-w-[640px] flex-shrink-0 snap-start group cursor-pointer"
+            className="w-[75vw] md:w-[60vw] lg:w-[28vw] lg:max-w-[640px] flex-shrink-0 snap-start group cursor-pointer"
           >
             <div
               className="relative isolate overflow-hidden bg-magic-black/5 dark:bg-off-white/5 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] md:group-hover:scale-[1.02] md:group-hover:shadow-[0_40px_80px_-20px_rgba(28,25,23,0.3)] dark:md:group-hover:shadow-[0_40px_80px_-20px_rgba(255,77,0,0.3)] rounded-sm"
@@ -250,7 +250,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
               {/* Über dem Medium: Farbe + Blur sichtbar (früher war z-[11] auf dem Bild darüber) */}
               <div className="pointer-events-none absolute inset-0 z-[12] flex items-center justify-center overflow-hidden opacity-0 md:group-hover:opacity-100">
                 <div
-                  className={`aspect-square w-[72%] max-w-[min(400px,94%)] scale-[0.6] rounded-full ${project.color} blur-[48px] md:blur-[64px] transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] mix-blend-plus-lighter md:group-hover:scale-100`}
+                  className={`aspect-square w-[72%] max-w-[min(400px,94%)] scale-[0.6] rounded-full ${project.color} blur-[48px] md:blur-[64px] lg:blur-[44px] 2xl:blur-[64px] transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] mix-blend-plus-lighter md:group-hover:scale-100`}
                 />
               </div>
 
@@ -258,7 +258,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
                 <span className="font-archivo mb-2 translate-y-8 text-[10px] uppercase tracking-[0.3em] transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] md:mb-4 md:text-xs md:group-hover:translate-y-0 md:group-hover:scale-110 lg:group-hover:scale-125">
                   {project.category[lang]}
                 </span>
-                <h3 className="font-archivo translate-y-8 text-xl uppercase tracking-tighter hyphens-manual transition-all delay-75 duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] md:text-3xl md:group-hover:translate-y-0 md:group-hover:scale-105 lg:text-5xl lg:group-hover:scale-110">
+                <h3 className="font-archivo translate-y-8 text-xl uppercase tracking-tighter hyphens-manual transition-all delay-75 duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] md:text-3xl md:group-hover:translate-y-0 md:group-hover:scale-105 2xl:text-5xl lg:group-hover:scale-110">
                   {project.title[lang]}
                 </h3>
                 <div className="mt-4 translate-y-8 border-0 bg-white/45 px-6 py-2 text-[10px] uppercase tracking-widest text-white backdrop-blur-md transition-transform delay-100 duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] md:mt-6 md:px-8 md:py-3 md:text-xs lg:mt-8 md:group-hover:translate-y-0">
