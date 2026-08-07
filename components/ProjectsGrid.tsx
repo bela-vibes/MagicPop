@@ -141,7 +141,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
       {/* Constrain to the same centred column width as the other sections */}
       <div className="max-w-6xl 2xl:max-w-[1536px] mx-auto">
       {/* Header Info */}
-      <div className="mb-16 flex flex-col md:flex-row justify-between items-end gap-12 relative z-10">
+      <div className="mb-16 flex flex-col md:flex-row justify-between items-stretch md:items-end gap-12 relative z-10">
         <div className="flex-1">
           <h2 className="font-archivo text-[clamp(3rem,7vw,9rem)] uppercase tracking-tighter mb-4 text-magic-black dark:text-off-white max-w-4xl leading-[0.9]">{t.title}</h2>
           <p className="font-medium text-magic-black/60 dark:text-off-white/60 text-base 2xl:text-lg leading-relaxed mb-10 max-w-2xl">{t.description}</p>
