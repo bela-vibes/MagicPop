@@ -373,7 +373,9 @@ const LandingPage: React.FC = () => {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
-        const scrollPos = window.scrollY + 400;
+        // Lookahead scales with viewport so the colour switches as a section
+        // approaches — earlier, and consistent across small and large screens.
+        const scrollPos = window.scrollY + window.innerHeight * 0.5;
         const offsets = sectionOffsets.current;
 
         if      (offsets.contact  && scrollPos >= offsets.contact)  applyTheme('contact');
@@ -497,7 +499,7 @@ const LandingPage: React.FC = () => {
       <main className="relative z-[10] mt-0">
         <Hero lang={lang} isMobile={isMobile} blob1Ref={blob1HostRef} blob2Ref={blob2HostRef} />
 
-        <Section id="services" title={t.whatWeDo.title} subtitle={t.whatWeDo.subtitle} className="bg-transparent pt-20 pb-24 md:mt-28 md:pt-24 md:pb-48">
+        <Section id="services" title={t.whatWeDo.title} subtitle={t.whatWeDo.subtitle} className="bg-transparent pt-20 pb-24 md:mt-28 md:pt-24 md:pb-48 2xl:min-h-0 2xl:pt-[20vh] 2xl:pb-[20vh]">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 mt-12">
             {t.whatWeDo.services.map((service, i) => (
               <div key={i} className="group pt-0 md:pt-4">
@@ -521,7 +523,7 @@ const LandingPage: React.FC = () => {
           id="about" 
           title={t.studio.title} 
           subtitle={t.studio.subtitle} 
-          className="relative overflow-hidden pt-6 pb-24 md:pt-24 md:pb-48"
+          className="relative overflow-hidden pt-6 pb-24 md:pt-24 md:pb-48 2xl:min-h-0 2xl:pb-40"
         >
           <div className="relative z-10 flex flex-col lg:flex-row gap-8 md:gap-16 items-center">
             <div className="w-full lg:w-1/2 flex justify-center">
@@ -541,7 +543,7 @@ const LandingPage: React.FC = () => {
 
         <BrandMarquee title={t.contact.trustTitle} isMobile={isMobile} />
 
-        <Section id="contact" title={t.contact.title} subtitle={t.contact.subtitle} className="bg-transparent pt-16 pb-12 md:pt-24 md:pb-32">
+        <Section id="contact" title={t.contact.title} subtitle={t.contact.subtitle} className="bg-transparent pt-16 pb-12 md:pt-24 md:pb-32 2xl:min-h-0 2xl:pb-48">
           {/* Main Contact Grid */}
           <div className="flex flex-col lg:flex-row gap-12 md:gap-24 mt-4">
             <div className="lg:w-1/2 flex flex-col justify-between">

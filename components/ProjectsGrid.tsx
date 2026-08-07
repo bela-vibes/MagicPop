@@ -138,10 +138,12 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
       id="projects" 
       className="py-24 md:pt-24 md:pb-32 min-h-[100dvh] bg-transparent relative overflow-hidden transition-colors duration-500"
     >
+      {/* Constrain to the same centred column width as the other sections */}
+      <div className="max-w-[1536px] mx-auto">
       {/* Header Info */}
       <div className="px-6 md:px-12 mb-16 flex flex-col md:flex-row justify-between items-end gap-12 relative z-10">
         <div className="flex-1">
-          <h2 className="font-archivo text-5xl md:text-[10vw] uppercase tracking-tighter mb-4 text-magic-black dark:text-off-white max-w-4xl leading-[0.9]">{t.title}</h2>
+          <h2 className="font-archivo text-[clamp(3rem,10vw,9rem)] uppercase tracking-tighter mb-4 text-magic-black dark:text-off-white max-w-4xl leading-[0.9]">{t.title}</h2>
           <p className="font-medium text-magic-black/60 dark:text-off-white/60 text-base md:text-lg leading-relaxed mb-10 max-w-2xl">{t.description}</p>
           
           {/* Filter Bar */}
@@ -218,7 +220,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
           <div
             key={project.id}
             onClick={() => handleOpenProject(project)}
-            className="w-[75vw] md:w-[60vw] lg:w-[43vw] flex-shrink-0 snap-start group cursor-pointer"
+            className="w-[75vw] md:w-[60vw] lg:w-[43vw] lg:max-w-[640px] flex-shrink-0 snap-start group cursor-pointer"
           >
             <div
               className="relative isolate overflow-hidden bg-magic-black/5 dark:bg-off-white/5 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] md:group-hover:scale-[1.02] md:group-hover:shadow-[0_40px_80px_-20px_rgba(28,25,23,0.3)] dark:md:group-hover:shadow-[0_40px_80px_-20px_rgba(255,77,0,0.3)] rounded-sm"
@@ -278,6 +280,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
             </div>
           </div>
         ))}
+      </div>
       </div>
 
       {/* Project Detail Modal */}
