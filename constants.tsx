@@ -248,7 +248,7 @@ export const PROJECTS: Project[] = [
       en: "A room tells its stories.\n\nFor our photo series, we developed a visual world that captures moments you can’t quite grasp. These images transport the viewer into a cinematic aesthetic inspired by Americana, capturing individual scenes in a hotel room where it remains unclear what happened before or after.\n\nEach image opens up a world of its own. Inspired by Old Hollywood glamour, surreal lighting, and fantastical characters, a total of 25 different motifs were created. For each story, we reimagined the color palette, costumes, and hair & makeup. The sets were built from scratch, the lighting tailored to each scene, and props—including lifelike animal replicas—handcrafted. In post-production, we brought everything together and gave the images their final look."
     },
     year: "2017",
-    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto,w_800/v1773247550/02_-_Fisch_q9rvsk.jpg",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1773247550/02_-_Fisch_q9rvsk.jpg",
     imagePortrait: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1786000769/02_-_Fisch_hoch_brquvb.jpg",
     gallery: [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773294351/Nachtzimmer0_MagicPop2024.jpg_ylyg9j.webp",
