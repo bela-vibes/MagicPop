@@ -144,7 +144,7 @@ export const PROJECTS: Project[] = [
       en: "An apartment as a time capsule, somewhere between everyday GDR life and the space age.\n\nIt all started with a sleek, white new building. The request wasn’t just a simple reference, but a genuine immersion in the ’70s. We didn’t want to simply give the rooms a style, but a story that hadn’t been there before. To achieve this, we worked with authentic materials like wood, stone, and glass. At the same time, we developed a clear color scheme that runs throughout the entire apartment. Everything interlocks seamlessly, without feeling arbitrary.\n\nWe researched and curated furniture and objects in close collaboration with the client. The whole was complemented by custom-made built-ins such as the bed and bathroom cabinets. For details like picture frames, we developed our own solutions and had them reproduced in the style of the era. Palm trees inside and on the balcony add deliberate accents. In the end, the apartment doesn’t just look furnished; it feels like a place that has existed for a long time. Authentic, yet stylish and cozy. Designed, yet lived in.\n\nPhotography: Maike Piorr"
     },
     year: "2025",
-    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1777292150/IMG_8177_qrohh0.jpg",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto:good,w_1920,c_limit/v1777292150/IMG_8177_qrohh0.jpg",
     gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775468829/060625_SonyMusic-0112_144dpi_SCREEN_ug76wg.jpg",
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775653742/060625_SonyMusic-0324_144dpi_SCREEN_uk7ozb.jpg",
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775468820/060625_SonyMusic-0005_144dpi_SCREEN_onbmjr.jpg",
@@ -169,8 +169,8 @@ export const PROJECTS: Project[] = [
     en: "Bags with personality.\n\nFor LOQI, we developed and implemented visual concepts for the product range. Each bag has its own personality, which we didn’t want to overshadow, but rather bring to the forefront. Instead of a uniform look, we worked with recurring principles. Clean sets that adapt to the respective designs. Materiality, color, and context intertwine, giving each scene its own charm while still adhering to a consistent aesthetic.\n\nThe result is a visual language that remains flexible. New products, new contexts, new seasons—the world we’ve built grows with them."
   },
   year: "2025", // Gefixt: Gerade Anführungszeichen
-  image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775379704/LOQI_Rolex_Shanghai_1_gfmomc.jpg",
-  imagePortrait: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1786000421/LOQI_Rolex_Shanghai_1_hoch_byz3bt.jpg",
+  image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto:good,w_1920,c_limit/v1775379704/LOQI_Rolex_Shanghai_1_gfmomc.jpg",
+  imagePortrait: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto:good,w_1080,c_limitv1786000421/LOQI_Rolex_Shanghai_1_hoch_byz3bt.jpg",
   gallery: [
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775379704/LOQI_Rolex_Shanghai_1_gfmomc.jpg",
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775379798/250807_LOQI_TravelRetail_Banner_dvuadv.jpg",
@@ -196,7 +196,7 @@ export const PROJECTS: Project[] = [
       en: "A garage for people and machines.\n\nWhat started as a grey, functional underground garage with a workshop and washing station became a place designed for spending time. The goal was to create a setting for the cars while shaping an environment that feels welcoming, comfortable, and lived in. Across roughly 700 square meters, we developed a series of spaces that move between clubhouse, cabinet of curiosities, and lounge.\n\nKey features include a Mid Century inspired workshop and a washing station finished with distinctive Art Nouveau tiles. In between, plant walls, collected objects, and unusual finds create the atmosphere of a modern Wunderkammer. The vehicles become part of the interior itself, entering into a direct dialogue with the space around them. Throughout the garage, lounge areas and seating groups invite visitors to discover the cars from constantly changing perspectives."
     },
     year: "2023",
-    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781256513/Bildschirmfoto_2026-06-11_um_10.15.36_gvmqce.jpg",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto:good,w_1920,c_limit/v1781256513/Bildschirmfoto_2026-06-11_um_10.15.36_gvmqce.jpg",
     gallery: [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781258060/image_31_dl00lc.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781255440/_DSC0056_fza0du.jpg",
@@ -224,8 +224,8 @@ export const PROJECTS: Project[] = [
     en: "Monochromatic clarity.\n\nFor a new Momox campaign, we handled production and built the visual world spatially. The starting point was Momox blue and a minimalist, monochromatic look, which serve as connecting elements running through all motifs.\n\nThe goal was to develop distinct still-life settings for each category that function individually while remaining part of a larger whole. This also involved the deliberate development and selection of props to clearly direct the focus toward the product and category.\n\nAgency: I LIKE VISUALS"
     },
     year: "2025",
-    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775553750/250120_FL_Alle_Momox_ILV_3_i4phy8.jpg",
-    imagePortrait: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1786000749/250120_FL_Alle_Momox_ILV_3_hoch_xaqxdl.jpg",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto:good,w_1920,c_limit/v1775553750/250120_FL_Alle_Momox_ILV_3_i4phy8.jpg",
+    imagePortrait: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto:good,w_1080,c_limitv1786000749/250120_FL_Alle_Momox_ILV_3_hoch_xaqxdl.jpg",
     gallery: [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775472374/250120_4Arms_Momox_ILV_anpivr.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775472375/250120_DVD_Momox_ILV_qayaha.jpg",
@@ -248,8 +248,8 @@ export const PROJECTS: Project[] = [
       en: "A room tells its stories.\n\nFor our photo series, we developed a visual world that captures moments you can’t quite grasp. These images transport the viewer into a cinematic aesthetic inspired by Americana, capturing individual scenes in a hotel room where it remains unclear what happened before or after.\n\nEach image opens up a world of its own. Inspired by Old Hollywood glamour, surreal lighting, and fantastical characters, a total of 25 different motifs were created. For each story, we reimagined the color palette, costumes, and hair & makeup. The sets were built from scratch, the lighting tailored to each scene, and props—including lifelike animal replicas—handcrafted. In post-production, we brought everything together and gave the images their final look."
     },
     year: "2017",
-    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1786105386/02_-_Fisch_q9rvsk.webp",
-    imagePortrait: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1786105360/02_-_Fisch_hoch_brquvb.webp",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto:good,w_1920,c_limit/v1786105386/02_-_Fisch_q9rvsk.webp",
+    imagePortrait: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto:good,w_1080,c_limit/v1786105360/02_-_Fisch_hoch_brquvb.webp",
     gallery: [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773294351/Nachtzimmer0_MagicPop2024.jpg_ylyg9j.webp",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773261659/08---Mermaid_bk4obw.jpg",
@@ -275,8 +275,8 @@ export const PROJECTS: Project[] = [
       en: "Juckt mich nicht!\n\nFor Dermapharm’s “Juckt Mich Nicht!” campaign, we handled the creative production of a promotional film. The story centers on a family whose approach to mosquito repellent gradually veers into the absurd.\n\nWe designed and built six distinct sets that, together with costumes and props, form a cohesive world. Each set was treated as its own character, with its own color palette and intensity, thereby reinforcing the slightly over-the-top reality.\n\nAgency: I LIKE VISUALS"
     },
     year: "2024",
-    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1786092162/Bildschirmfoto_2024-04-29_um_09.46.40.png_oggl6i.jpg",
-    imagePortrait: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1786092171/Biteaway_hoch_x68u8j.jpg",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto:good,w_1920,c_limit/v1786092162/Bildschirmfoto_2024-04-29_um_09.46.40.png_oggl6i.jpg",
+    imagePortrait: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto:good,w_1080,c_limit/v1786092171/Biteaway_hoch_x68u8j.jpg",
     gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775457439/Bildschirmfoto_2024-04-29_um_09.47.07.png_o0xgqk.webp",
              "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775457437/Bildschirmfoto_2024-04-29_um_09.46.10.png_ql21ep.webp",
              "https://res.cloudinary.com/dpe3jvf3e/video/upload/v1775458767/YTDown.com_YouTube_bite-away-Insektenstich-Juckt-mich-nicht_Media_1s06Wkf_Q6U_001_1080p_g96cmk.mp4",
@@ -294,8 +294,8 @@ export const PROJECTS: Project[] = [
       en: "All built from scratch.\n\nFor the music video “Suitcase” by Ameli in the Woods, we closely collaborated with Amores Production on the visual execution and helped shape the concept. Aesthetically, the video oscillates between the late ’90s and early 2000s. The analog approach was crucial here. Handmade special effects such as mechanically beating hearts, zombie makeup, and projected backgrounds were developed and implemented for the production.\n\nThrough close co-production with Amores Production and the band, we were able to bring our shared vision to life. Slightly exaggerated but deliberately executed, the result is fantastic, evoking nostalgia for the old MTV days.\n\nBand: Ameli in the Woods & Production: Amores Production"
     },
     year: "2023",
-    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775420840/Bildschirmfoto_2026-04-05_um_22.26.25_oxn9ne.png",
-    imagePortrait: "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1786000774/Bildschirmfoto_2026-04-05_um_22.26_mknpi2.jpg",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto:good,w_1920,c_limit/v1775420840/Bildschirmfoto_2026-04-05_um_22.26.25_oxn9ne.png",
+    imagePortrait: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto:good,w_1080,c_limit/v1786000774/Bildschirmfoto_2026-04-05_um_22.26_mknpi2.jpg",
     gallery: ["https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775420863/Bildschirmfoto_2026-04-05_um_22.26.13_kgvhnw.png",
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/v1775457660/ezgif-1bdb65971b5e9ce5_xb4jej.gif",
               "https://res.cloudinary.com/dpe3jvf3e/video/upload/v1773394785/2023-magic-pop-production-set-design-props-suitcase-ameli-in-the-woods-amores-production_ike2mz.mp4"],
@@ -312,7 +312,7 @@ export const PROJECTS: Project[] = [
       en: "A place between two worlds.\n\nFor HANA Berlin at the Berlin Hilton, we further developed the existing interior and adapted it to the new restaurant concept. The vision was a Japanese-Mediterranean approach that should also be reflected in the space. The venue already had a clear color palette, which we built upon. Our goal was to preserve this foundation while bringing both influences together. Japanese design language meets Mediterranean warmth and materiality.\n\nWe worked with new textures, colors, and selected elements without losing the character of the space. It was important to us that HANA blend harmoniously into the client’s existing location and function as part of a larger design concept. Lively, warm, and clear. Designed without appearing cluttered.\n\nPhotographed by Steffen Sinzinger"
     },
     year: "2024",
-    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773296846/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_uiplwp.jpg",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto:good,w_1920,c_limit/v1773296846/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_uiplwp.jpg",
     gallery: [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773296846/HANA_-_Exterior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-1_dtaliv.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773297077/HANA_-_Interior_-_Detail_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-13_vsmruo.jpg",
@@ -334,7 +334,7 @@ export const PROJECTS: Project[] = [
       en: "Telling a story through absence.\n\nFor the short film ENDSPIEL, we designed dystopian sets that make an impact not through their scale, but through what is missing.\n\nAbandoned buildings, overgrown streets, rooms where traces of people remain—but no people themselves. Both inside and out, we treated the locations in a way that underscores the story’s somber mood. In the abandoned house, dust, chaos, and personal relics tell of lives that once took place here.\n\ndirected by Dre Amiro & Anna Mochow"
     },
     year: "2024",
-    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773390417/2024-magic-pop-setdesign-endspiel-hero_h41buh.jpg",
+    image: "https://res.cloudinary.com/dpe3jvf3e/image/upload/f_auto,q_auto:good,w_1920,c_limit/v1773390417/2024-magic-pop-setdesign-endspiel-hero_h41buh.jpg",
     gallery: [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773390422/2024-magic-pop-setdesign-endspiel-interior-3_gauhkz.png",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773390419/2024-magic-pop-setdesign-endspiel-outdoor_lzri8u.png",
