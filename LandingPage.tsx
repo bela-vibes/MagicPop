@@ -14,7 +14,7 @@ import ProximityImage from './components/ProximityImage';
 import { Mail, Phone } from 'lucide-react';
 
 const BrandMarquee = ({ title, isMobile }: { title: string; isMobile: boolean }) => {
-  const brands = ["LOQI", "Paul Kalkbrenner", "Dussmann", "I Like Visuals",  "Arte", "Momox", "Biteaway", "Cornelsen", "Studio Stellar"];
+  const brands = ["LOQI", "Paul Kalkbrenner", "Dussmann", "I Like Visuals",  "Arte", "Momox", "Biteaway", "Cornelsen", "Kleinanzeigen"];
 
   const row = (keyPrefix: string) =>
     [...brands, ...brands].map((brand, i) => (
