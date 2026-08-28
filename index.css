@@ -2,7 +2,9 @@
 
 @theme {
   --color-magic-black: #000000;
-  --color-magic-dark: #000000;
+  --color-magic-dark: #12100D;
+  /* Dark mode: slightly raised surface (footer) so it reads as its own band */
+  --color-magic-surface: #201C17;
   --color-off-white: #F9F7F2;
   --color-magic-orange: #FF4D00;
   --color-magic-blue: #0038FF;

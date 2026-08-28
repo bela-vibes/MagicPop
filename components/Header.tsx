@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Language } from '../types';
 import { TRANSLATIONS } from '../constants';
@@ -28,6 +28,72 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
   ];
 
   const delayClasses = ['delay-100', 'delay-150', 'delay-200', 'delay-300'];
+
+  // ── Pill header ───────────────────────────────────────────────────────
+  // Scrolling past the threshold swishes the bar up; once it's off-screen it
+  // morphs into a floating pill and slides back down. Reverses at the top.
+  // Desktop: centred, width follows content. Mobile: near-full-width inset,
+  // because logo + language switch + burger don't fit a compact pill at 375px.
+  const PILL_THRESHOLD = 140;
+  const SWISH_MS = 320;
+  const [layout, setLayout] = useState<'bar' | 'pill'>('bar');
+  const [visible, setVisible] = useState(true);
+  const layoutRef = useRef<'bar' | 'pill'>('bar');
+  const swishTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [isDesktop, setIsDesktop] = useState(
+    () => typeof window !== 'undefined' && window.matchMedia('(min-width: 1024px)').matches
+  );
+
+  useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)');
+    const sync = () => setIsDesktop(mq.matches);
+    sync();
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
+  }, []);
+
+  useEffect(() => {
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        ticking = false;
+        const y = window.scrollY;
+        const want: 'bar' | 'pill' = y > PILL_THRESHOLD ? 'pill' : 'bar';
+        if (want === layoutRef.current) return;
+
+        layoutRef.current = want;
+        setVisible(false); // swish up
+        if (swishTimer.current) clearTimeout(swishTimer.current);
+        swishTimer.current = setTimeout(() => {
+          setLayout(want); // morph while hidden
+          setVisible(true); // slide back down
+        }, SWISH_MS);
+      });
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      if (swishTimer.current) clearTimeout(swishTimer.current);
+    };
+  }, []);
+
+  // The mobile menu must never sit behind a hidden/pill header
+  const isPill = layout === 'pill' && !isMenuOpen;
+
+  // Over sections with a transparent theme (hero, legal pages) the pill needs
+  // its own glass surface — tinted to match whichever text colour is active.
+  // `!` beats the inline background-color the scroll theme writes on #main-header.
+  const themeIsTransparent = bgColor.includes('bg-transparent');
+  const wantsLightText = /text-(off-white|white)(\s|$)/.test(textColor.trim());
+  const pillGlass = !themeIsTransparent
+    ? ''
+    : wantsLightText
+      ? 'bg-magic-dark/55! ring-white/15'
+      : 'bg-off-white/70! ring-black/5';
 
   const handleNavItemClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -62,22 +128,39 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
     <>
       <header
         id="main-header"
-        className={`fixed top-0 left-0 w-full z-[700] transition-[background-color,padding,box-shadow] duration-200 ease-out py-5 lg:py-6 flex justify-between items-center ${bgColor}`}
+        className={`fixed z-[700] flex items-center ${
+          isPill
+            ? `${
+                isDesktop
+                  ? 'top-4 left-1/2 w-auto gap-8 xl:gap-12 py-3'
+                  : 'top-3 left-3 right-3 w-auto justify-between py-2.5'
+              } rounded-full backdrop-blur-md shadow-[0_10px_40px_-10px_rgba(0,0,0,0.35)] ring-1 ${pillGlass || 'ring-white/10'}`
+            : 'top-0 left-0 w-full justify-between py-5 lg:py-6'
+        } ${bgColor}`}
         style={{
-          paddingLeft: 'max(1.5rem, env(safe-area-inset-left))',
-          paddingRight: 'max(1.5rem, env(safe-area-inset-right))',
+          paddingLeft: isPill ? (isDesktop ? '1.75rem' : '1.25rem') : 'max(1.5rem, env(safe-area-inset-left))',
+          paddingRight: isPill ? (isDesktop ? '1.75rem' : '1.25rem') : 'max(1.5rem, env(safe-area-inset-right))',
+          // Centering lives on `translate` (never transitioned) so the swish on
+          // `transform` stays purely vertical instead of drifting diagonally.
+          // Mobile pills are inset via left/right, so they need no centering.
+          translate: isPill && isDesktop ? '-50% 0' : '0 0',
+          transform: `translateY(${visible ? '0' : '-160%'})`,
+          pointerEvents: visible ? undefined : 'none',
+          transition:
+            `transform ${SWISH_MS}ms cubic-bezier(0.65, 0, 0.35, 1),` +
+            ' background-color 200ms ease-out, padding 200ms ease-out, box-shadow 200ms ease-out',
         }}
       >
-        <div className="font-archivo text-2xl md:text-3xl tracking-tighter uppercase relative z-[110] leading-[0.9]">
+        <div className={`font-archivo ${isPill ? 'text-xl' : 'text-2xl md:text-3xl'} tracking-tighter uppercase relative z-[110] leading-[0.9] transition-[font-size] duration-200`}>
           <a 
             href="#hero" 
             onClick={(e) => handleNavItemClick(e, '#hero')} 
-            className="hover:opacity-60 flex flex-wrap items-baseline"
+            className="hover:opacity-60 flex flex-nowrap items-baseline whitespace-nowrap"
           >
             <span className={`${textColor} transition-colors duration-200 ease-out mr-1.5`}>Magic</span>
             <div className="flex items-baseline">
               <span className={`${textColor} transition-colors duration-200 ease-out`}>Pop</span>
-              <span className={`font-editorial lowercase text-xl md:text-2xl ml-2 ${textColor} transition-colors duration-200 ease-out`}>studio</span>
+              <span className={`font-editorial lowercase ${isPill ? 'text-base' : 'text-xl md:text-2xl'} ml-2 ${textColor} transition-colors duration-200 ease-out`}>studio</span>
             </div>
           </a>
         </div>
@@ -89,7 +172,7 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
                 key={item.label}
                 href={item.href}
                 onClick={(e) => handleNavItemClick(e, item.href)}
-                className={`font-archivo text-xs uppercase tracking-widest hover:opacity-60 transition-colors duration-200 ease-out ${textColor}`}
+                className={`font-archivo text-xs uppercase tracking-widest whitespace-nowrap hover:opacity-60 transition-colors duration-200 ease-out ${textColor}`}
               >
                 {item.label}
               </a>
