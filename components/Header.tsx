@@ -29,10 +29,6 @@ const Header: React.FC<HeaderProps> = ({ bgColor, textColor, lang, setLang, isDa
 
   const delayClasses = ['delay-100', 'delay-150', 'delay-200', 'delay-300'];
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
   const handleNavItemClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setIsMenuOpen(false);
