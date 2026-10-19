@@ -6,6 +6,26 @@ import { PROJECTS, TRANSLATIONS } from '../constants';
 import { Project, Language } from '../types';
 import ProximityImage from './ProximityImage';
 
+/** A YouTube link can't be fed to <video> — it needs an iframe embed. */
+const youTubeId = (url: string): string | null => {
+  const m = url.match(/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/i);
+  return m ? m[1] : null;
+};
+
+/** nocookie so the embed matches the rest of the site's GDPR setup (local fonts, no trackers). */
+const YouTubeEmbed: React.FC<{ url: string }> = ({ url }) => (
+  <div className="relative w-full aspect-video">
+    <iframe
+      src={`https://www.youtube-nocookie.com/embed/${youTubeId(url)}?rel=0&modestbranding=1`}
+      title="Video"
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      className="absolute inset-0 h-full w-full rounded-sm border-0"
+    />
+  </div>
+);
+
 interface ProjectsGridProps {
   lang: Language;
   selectedProject: Project | null;
@@ -108,7 +128,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
 
   const handleOpenProject = (project: Project) => {
     const first = project.gallery[0];
-    if (first && !first.toLowerCase().endsWith('.mp4')) {
+    if (first && !first.toLowerCase().endsWith('.mp4') && !youTubeId(first)) {
       new Image().src = first;
     }
     const prefix = lang === 'en' ? '/en' : '';
@@ -223,7 +243,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
             className="w-[75vw] md:w-[60vw] lg:w-[28vw] lg:max-w-[640px] flex-shrink-0 snap-start group cursor-pointer"
           >
             <div
-              className="relative isolate overflow-hidden bg-magic-black/5 dark:bg-off-white/5 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] md:group-hover:scale-[1.02] md:group-hover:shadow-[0_40px_80px_-20px_rgba(28,25,23,0.3)] dark:md:group-hover:shadow-[0_40px_80px_-20px_rgba(255,77,0,0.3)] rounded-sm"
+              className="relative isolate overflow-hidden rounded-sm bg-magic-black/5 dark:bg-off-white/5 transition-all duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] md:group-hover:scale-[1.02] md:group-hover:shadow-[0_40px_80px_-20px_rgba(28,25,23,0.3)] dark:md:group-hover:shadow-[0_40px_80px_-20px_rgba(255,77,0,0.3)]"
               style={{ aspectRatio: '3/2' }}
             >
               {project.image.toLowerCase().endsWith('.mp4') ? (
@@ -248,7 +268,7 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
               )}
 
               {/* Über dem Medium: Farbe + Blur sichtbar (früher war z-[11] auf dem Bild darüber) */}
-              <div className="pointer-events-none absolute inset-0 z-[12] flex items-center justify-center overflow-hidden opacity-0 md:group-hover:opacity-100">
+              <div className="pointer-events-none absolute inset-0 z-[12] flex items-center justify-center overflow-hidden rounded-sm opacity-0 md:group-hover:opacity-100">
                 <div
                   className={`aspect-square w-[72%] max-w-[min(400px,94%)] scale-[0.6] rounded-full ${project.color} blur-[48px] md:blur-[64px] lg:blur-[44px] 2xl:blur-[64px] transition-transform duration-700 ease-[cubic-bezier(0.19,1,0.22,1)] mix-blend-plus-lighter md:group-hover:scale-100`}
                 />
@@ -326,7 +346,9 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
                       <div 
                         className="w-full overflow-hidden rounded-sm mb-12"
                       >
-                        {selectedProject.gallery[0]?.toLowerCase().endsWith('.mp4') ? (
+                        {selectedProject.gallery[0] && youTubeId(selectedProject.gallery[0]) ? (
+                          <YouTubeEmbed url={selectedProject.gallery[0]} />
+                        ) : selectedProject.gallery[0]?.toLowerCase().endsWith('.mp4') ? (
                           <div className="relative">
                             <video 
                               src={selectedProject.gallery[0]} 
@@ -365,7 +387,9 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
                         <div 
                           className="w-full overflow-hidden rounded-sm"
                         >
-                          {selectedProject.gallery[1].toLowerCase().endsWith('.mp4') ? (
+                          {youTubeId(selectedProject.gallery[1]) ? (
+                            <YouTubeEmbed url={selectedProject.gallery[1]} />
+                          ) : selectedProject.gallery[1].toLowerCase().endsWith('.mp4') ? (
                             <div className="relative">
                               <video 
                                 src={selectedProject.gallery[1]} 
@@ -455,7 +479,9 @@ const ProjectsGrid: React.FC<ProjectsGridProps> = ({
                         transition={{ duration: 0.8 }}
                         className={`${span} overflow-hidden rounded-sm group relative`}
                       >
-                        {isVideo ? (
+                        {youTubeId(img) ? (
+                          <YouTubeEmbed url={img} />
+                        ) : isVideo ? (
                           <div className="relative group/video">
                             <video 
                               src={img} 

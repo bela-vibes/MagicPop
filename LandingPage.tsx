@@ -61,7 +61,7 @@ const HERO_TOP_THEME = {
   text: SLIDESHOW_HERO ? 'text-off-white' : 'text-magic-black dark:text-off-white',
   shadow: '',
   // Yellow blob behind the hero → smooth transition into the yellow first section.
-  blobColor: 'bg-yellow-400',
+  blobColor: 'bg-magic-yellow',
 };
 // Light overlay pages (Impressum/Datenschutz) need dark text on off-white.
 const LIGHT_TOP_THEME = {
@@ -110,6 +110,23 @@ const LandingPage: React.FC = () => {
   useEffect(() => {
     document.title = "Magic Pop Studio — Creative Studio Berlin";
   }, []);
+
+  // A draft project is reachable by URL so it can be sent around for approval,
+  // but it must not end up in a search index while it is open.
+  useEffect(() => {
+    const isDraft = selectedProject?.published === false;
+    let tag = document.querySelector<HTMLMetaElement>('meta[name="robots"]');
+    if (isDraft) {
+      if (!tag) {
+        tag = document.createElement('meta');
+        tag.name = 'robots';
+        document.head.appendChild(tag);
+      }
+      tag.content = 'noindex, nofollow';
+    } else {
+      tag?.remove();
+    }
+  }, [selectedProject]);
 
   const wasProjectOpen = useRef(false);
 
@@ -244,6 +261,38 @@ const LandingPage: React.FC = () => {
   }, []);
 
 
+  // Blobs react to scrolling: they get dragged along and spring back, plus a
+  // slight vertical stretch while moving fast. Written as CSS variables so the
+  // mobile (CSS-var positioned) and desktop (transform positioned) blobs share it.
+  // The offset carries the effect — stretching a 140px-blurred circle alone is
+  // barely visible, a shifted light source is not.
+  const scrollVel = useRef({ last: 0, vel: 0, ready: false });
+  const applyBlobScrollReaction = () => {
+    const s = scrollVel.current;
+    const y = window.scrollY;
+    if (!s.ready) {
+      s.last = y;
+      s.ready = true;
+      return;
+    }
+    const delta = y - s.last;
+    s.last = y;
+    s.vel += (delta - s.vel) * 0.15; // reacts quickly, decays to 0 when idle
+
+    const capped = Math.max(Math.min(s.vel, 60), -60);
+    const mag = Math.abs(capped) / 60; // 0..1
+    const offset = -capped * 2.2;      // px — blob is pulled along the scroll
+    const sy = 1 + mag * 0.25;
+    const sx = 1 - mag * 0.1;
+
+    for (const el of [blob1HostRef.current, blob2HostRef.current]) {
+      if (!el) continue;
+      el.style.setProperty('--boy', `${offset.toFixed(1)}px`);
+      el.style.setProperty('--bsy', sy.toFixed(3));
+      el.style.setProperty('--bsx', sx.toFixed(3));
+    }
+  };
+
   // Mobile blobs: gentle drift toward touch, no React state
   useEffect(() => {
     if (!isMobile) return;
@@ -265,6 +314,8 @@ const LandingPage: React.FC = () => {
       blob1HostRef.current?.style.setProperty('--by', `${b1y}px`);
       blob2HostRef.current?.style.setProperty('--bx', `${b2x}px`);
       blob2HostRef.current?.style.setProperty('--by', `${b2y}px`);
+
+      applyBlobScrollReaction();
 
       rafId = requestAnimationFrame(animate);
     };
@@ -297,6 +348,7 @@ const LandingPage: React.FC = () => {
       b2y += (m.y - driftY - b2y) * 0.03;
       setBlob1Pos({ x: b1x, y: b1y });
       setBlob2Pos({ x: b2x, y: b2y });
+      applyBlobScrollReaction();
       requestRef.current = requestAnimationFrame(animate);
     };
     requestRef.current = requestAnimationFrame(animate);
@@ -327,7 +379,7 @@ const LandingPage: React.FC = () => {
     const colorMap: Record<string, { light: string; dark: string }> = {
       'bg-transparent':  { light: '#F9F7F2', dark: '#000000' },
       'bg-magic-orange': { light: '#FF4D00', dark: '#FF4D00' },
-      'bg-yellow-400':   { light: '#FACC15', dark: '#FACC15' },
+      'bg-magic-yellow':   { light: '#FFD400', dark: '#FFD400' },
       'bg-magic-blue':   { light: '#0038FF', dark: '#0038FF' },
       'bg-magic-pink':   { light: '#FFB7D5', dark: '#FFB7D5' },
     };
@@ -346,9 +398,9 @@ const LandingPage: React.FC = () => {
       contact:  { bg: '#FFB7D5', blob: '#FFB7D5', react: { bg: 'bg-magic-pink',   text: 'text-magic-black',            shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,183,213,0.6)]', blobColor: 'bg-magic-pink'   } },
       about:    { bg: '#0038FF', blob: '#0038FF', react: { bg: 'bg-magic-blue',   text: 'text-white',                  shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(0,56,255,0.6)]',   blobColor: 'bg-magic-blue'   } },
       // WAS WIR TUN (services) → yellow; PROJEKTE → orange.
-      services: { bg: '#FACC15', blob: '#FACC15', react: { bg: 'bg-yellow-400',   text: 'text-magic-black',            shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(250,204,21,0.6)]', blobColor: 'bg-yellow-400'   } },
+      services: { bg: '#FFD400', blob: '#FFD400', react: { bg: 'bg-magic-yellow',   text: 'text-magic-black',            shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,212,0,0.6)]', blobColor: 'bg-magic-yellow'   } },
       projects: { bg: '#FF4D00', blob: '#FF4D00', react: { bg: 'bg-magic-orange', text: 'text-white',                  shadow: 'dark:shadow-[0_10px_40px_-10px_rgba(255,77,0,0.6)]',   blobColor: 'bg-magic-orange' } },
-      heroTop:  { bg: 'transparent', blob: '#FACC15', react: HERO_TOP_THEME },
+      heroTop:  { bg: 'transparent', blob: '#FFD400', react: HERO_TOP_THEME },
       lightTop: { bg: 'transparent', blob: '#FF4D00', react: LIGHT_TOP_THEME },
     };
 
@@ -432,7 +484,7 @@ const LandingPage: React.FC = () => {
               ? {
                   left: 'var(--bx, 50vw)',
                   top: 'var(--by, 45vh)',
-                  transform: 'translate3d(-50%, -50%, 0)',
+                  transform: 'translate3d(-50%, -50%, 0) translateY(var(--boy, 0px)) scaleY(var(--bsy, 1)) scaleX(var(--bsx, 1))',
                   willChange: 'transform',
                   WebkitBackfaceVisibility: 'hidden',
                   backfaceVisibility: 'hidden',
@@ -440,7 +492,7 @@ const LandingPage: React.FC = () => {
                   filter: 'blur(56px)',
                 }
               : {
-                  transform: `translate3d(${blob1Pos.x}px, ${blob1Pos.y}px, 0) translate(-50%, -50%)`,
+                  transform: `translate3d(${blob1Pos.x}px, ${blob1Pos.y}px, 0) translate(-50%, -50%) translateY(var(--boy, 0px)) scaleY(var(--bsy, 1)) scaleX(var(--bsx, 1))`,
                   willChange: 'transform, filter',
                   WebkitBackfaceVisibility: 'hidden',
                   backfaceVisibility: 'hidden',
@@ -459,7 +511,7 @@ const LandingPage: React.FC = () => {
               ? {
                   left: 'var(--bx, 60vw)',
                   top: 'var(--by, 55vh)',
-                  transform: 'translate3d(-50%, -50%, 0)',
+                  transform: 'translate3d(-50%, -50%, 0) translateY(var(--boy, 0px)) scaleY(var(--bsy, 1)) scaleX(var(--bsx, 1))',
                   willChange: 'transform',
                   WebkitBackfaceVisibility: 'hidden',
                   backfaceVisibility: 'hidden',
@@ -467,7 +519,7 @@ const LandingPage: React.FC = () => {
                   filter: 'blur(72px)',
                 }
               : {
-                  transform: `translate3d(${blob2Pos.x}px, ${blob2Pos.y}px, 0) translate(-50%, -50%)`,
+                  transform: `translate3d(${blob2Pos.x}px, ${blob2Pos.y}px, 0) translate(-50%, -50%) translateY(var(--boy, 0px)) scaleY(var(--bsy, 1)) scaleX(var(--bsx, 1))`,
                   willChange: 'transform, filter',
                   WebkitBackfaceVisibility: 'hidden',
                   backfaceVisibility: 'hidden',
@@ -591,7 +643,7 @@ const LandingPage: React.FC = () => {
                     repeat: Infinity, 
                     ease: "easeInOut" 
                   }}
-                  className="relative aspect-square w-full bg-yellow-400 rounded-full flex flex-col items-center justify-center text-center p-8 md:p-12 lg:p-9 2xl:p-12 shadow-[0_30px_80px_-20px_rgba(250,204,21,0.4)] transition-shadow duration-500"
+                  className="relative aspect-square w-full bg-magic-yellow rounded-full flex flex-col items-center justify-center text-center p-8 md:p-12 lg:p-9 2xl:p-12 shadow-[0_30px_80px_-20px_rgba(255,212,0,0.4)] transition-shadow duration-500"
                 >
                   <div className="space-y-4 md:space-y-6 lg:space-y-4 2xl:space-y-6 flex flex-col items-center">
                     <h3 className="font-editorial text-4xl md:text-5xl lg:text-5xl 2xl:text-6xl text-magic-black italic leading-[1.1] max-w-[200px] md:max-w-[260px] lg:max-w-[240px] 2xl:max-w-[300px]">

@@ -44,8 +44,8 @@ const StyleGuide: React.FC = () => {
       pantone: '172 C',
       text: 'text-off-white' 
     },
-    { 
-      name: 'Magic Blue', 
+    {
+      name: 'Magic Blue',
       hex: '#0038FF', 
       rgb: '0, 56, 255', 
       cmyk: '90, 70, 0, 0', 
@@ -62,11 +62,19 @@ const StyleGuide: React.FC = () => {
     },
     { 
       name: 'Magic Yellow', 
-      hex: '#FACC15', 
-      rgb: '250, 204, 21', 
-      cmyk: '0, 15, 95, 0', 
-      pantone: '116 C',
+      hex: '#FFD400', 
+      rgb: '255, 212, 0', 
+      cmyk: '0, 17, 100, 0', 
+      pantone: '109 C',
       text: 'text-magic-black' 
+    },
+    {
+      name: 'Magic Red',
+      hex: '#DC2626',
+      rgb: '220, 38, 38',
+      cmyk: '0, 83, 83, 14',
+      pantone: '485 C',
+      text: 'text-off-white'
     },
   ];
 
@@ -223,7 +231,7 @@ const StyleGuide: React.FC = () => {
                 }
               }
             }}
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"
+            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-7 gap-4"
           >
             {colors.map((color) => (
               <motion.div

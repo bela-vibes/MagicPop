@@ -157,7 +157,7 @@ export const PROJECTS: Project[] = [
               "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775468824/060625_SonyMusic-0559_144dpi_SCREEN_ycg5r1.jpg"
               
               ],
-    color: "bg-orange-500"
+    color: "bg-magic-orange"
   },
   {
   id: 2,
@@ -184,7 +184,7 @@ export const PROJECTS: Project[] = [
     "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775380316/LOQI_BKR_1_Kopie_small_srtze4.jpg"
     
   ],
-  color: "bg-yellow-400"
+  color: "bg-magic-yellow"
 },
 {
     id: 9,
@@ -211,7 +211,7 @@ export const PROJECTS: Project[] = [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1781255105/Bildschirmfoto_2026-06-11_um_10.16.39_nuolor.jpg"
       
     ],
-    color: "bg-red-600"
+    color: "bg-magic-red"
   },
    
 {
@@ -236,7 +236,7 @@ export const PROJECTS: Project[] = [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775552774/250120_game_Momox_ILV_pspj2v.jpg"
       
     ],
-    color: "bg-orange-500"
+    color: "bg-magic-orange"
   },
  {
     id: 3,
@@ -263,7 +263,7 @@ export const PROJECTS: Project[] = [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773247515/lowe_2_Kopie_xqmf6g.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773247514/hexenfinal_Kopie_gn2dvb.jpg"
     ],
-    color: "bg-red-600"
+    color: "bg-magic-red"
   },
  {
     id: 6,
@@ -282,7 +282,7 @@ export const PROJECTS: Project[] = [
              "https://res.cloudinary.com/dpe3jvf3e/video/upload/v1775458767/YTDown.com_YouTube_bite-away-Insektenstich-Juckt-mich-nicht_Media_1s06Wkf_Q6U_001_1080p_g96cmk.mp4",
              "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1775457440/Bildschirmfoto_2024-04-29_um_09.46.26.png_fcivma.webp"],
     videoPosters: {"https://res.cloudinary.com/dpe3jvf3e/video/upload/v1775458767/YTDown.com_YouTube_bite-away-Insektenstich-Juckt-mich-nicht_Media_1s06Wkf_Q6U_001_1080p_g96cmk.mp4": "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/v1775457438/Bildschirmfoto_2024-04-29_um_09.46.40.png_oggl6i.webp"},
-    color: "bg-yellow-400"
+    color: "bg-magic-yellow"
   },
      {
     id: 5,
@@ -322,7 +322,7 @@ export const PROJECTS: Project[] = [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773296849/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-10_zjrcsr.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773296848/HANA_-_Interior_-_c_Steffen_Sinzinger_Content_Communication_-_241102_-3_zrias3.jpg"
     ],
-    color: "bg-pink-400"
+    color: "bg-magic-pink"
   },
    {
     id: 7,
@@ -343,7 +343,30 @@ export const PROJECTS: Project[] = [
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773390418/2024-magic-pop-setdesign-endspiel-interior-4_gfeidc.jpg",
       "https://res.cloudinary.com/dpe3jvf3e/image/upload/q_auto/f_auto/w_1400/v1773390421/2024-magic-pop-setdesign-endspiel-interior-2_iv6y1h.png"
     ],
-    color: "bg-orange-500"
+    color: "bg-magic-orange"
+  },
+  {
+    id: 10,
+    slug: "kleinanzeigen",
+    // Entwurf: nicht im Grid, nicht in der Sitemap. Zum Freigeben: Zeile löschen.
+    published: false,
+    title: { de: "Klein­anzeigen", en: "Klein­anzeigen" },
+    category: { de: "Brands", en: "Brands" },
+    description: {
+      de: "Ein Zuhause, das aussieht, als wäre es gefunden.\n\nFür Kleinanzeigen haben wir das Set Design zweier Spots übernommen. Mehrere Sets wurden von uns gebaut, ausgestattet und bis ins Detail eingerichtet, vom Kinderzimmer bis zur Spielecke. Jeder Raum sollte sich anfühlen, als wäre er über die Zeit gewachsen. Gebraucht, kombiniert, weitergegeben. Genau das, wofür die Plattform steht.\n\nNichts wirkt neu gekauft. Alles wirkt gefunden.",
+      en: "A home that looks found, not bought.\n\nFor Kleinanzeigen we handled the set design for two commercials. We built, dressed and furnished several sets down to the last detail, from the children’s room to the play corner. Every space had to feel like it had grown over time. Used, combined, passed on. Exactly what the platform stands for.\n\nNothing looks newly bought. Everything looks found."
+    },
+    year: "2025",
+    image: "https://img.youtube.com/vi/IWYu9I0hRbE/maxresdefault.jpg",
+    // Die ersten beiden Einträge sitzen oben neben dem Text, alles ab Index 2
+    // läuft darunter. Platzhalter: Video-Stills, bitte durch echte Fotos ersetzen.
+    gallery: [
+      "https://img.youtube.com/vi/IWYu9I0hRbE/maxresdefault.jpg",
+      "https://img.youtube.com/vi/MdrMJnJQ-1U/maxresdefault.jpg",
+      "https://www.youtube.com/watch?v=IWYu9I0hRbE",
+      "https://www.youtube.com/watch?v=MdrMJnJQ-1U"
+    ],
+    color: "bg-magic-blue"
   },
 
 ];

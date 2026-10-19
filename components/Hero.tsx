@@ -135,7 +135,7 @@ const Hero: React.FC<HeroProps> = ({ lang, isMobile = false, blob1Ref, blob2Ref 
   // ── New slideshow hero ─────────────────────────────────────────────────
   if (SLIDESHOW_HERO) {
     return (
-      <section id="hero" className="relative h-[100svh] overflow-hidden bg-yellow-400">
+      <section id="hero" className="relative h-[100svh] overflow-hidden bg-magic-yellow">
         {/* Full-bleed crossfading slideshow */}
         <div
           ref={slideLayerRef}

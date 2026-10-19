@@ -9,6 +9,7 @@ import { Analytics } from '@vercel/analytics/react';
 const App: React.FC = () => {
   const navigate = useNavigate();
 
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       // Skip shortcuts when typing in inputs

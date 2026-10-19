@@ -5,9 +5,12 @@
   --color-magic-dark: #000000;
   --color-off-white: #F9F7F2;
   --color-magic-orange: #FF4D00;
+  --color-magic-red: #DC2626;
   --color-magic-blue: #0038FF;
   --color-magic-pink: #FFB7D5;
-  --color-magic-yellow: #FFEE00;
+  /* The yellow actually in use everywhere (and the one the styleguide shows).
+     Was #FFEE00, which no code referenced and which contradicted the palette. */
+  --color-magic-yellow: #FFD400;
 
   --font-archivo: "Archivo Black", sans-serif;
   --font-editorial: "Instrument Serif", serif;
